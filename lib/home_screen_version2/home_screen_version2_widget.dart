@@ -1,0 +1,1218 @@
+import '/backend/api_requests/api_calls.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_language_selector.dart';
+import '/flutter_flow/flutter_flow_place_picker.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/place.dart';
+import 'dart:io';
+import '/custom_code/actions/index.dart' as actions;
+import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'home_screen_version2_model.dart';
+export 'home_screen_version2_model.dart';
+
+class HomeScreenVersion2Widget extends StatefulWidget {
+  const HomeScreenVersion2Widget({Key? key}) : super(key: key);
+
+  @override
+  _HomeScreenVersion2WidgetState createState() =>
+      _HomeScreenVersion2WidgetState();
+}
+
+class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
+  late HomeScreenVersion2Model _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+  LatLng? currentUserLocationValue;
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => HomeScreenVersion2Model());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.ipAddress = await IpifyCall.call();
+    });
+
+    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
+        .then((loc) => setState(() => currentUserLocationValue = loc));
+    _model.textController1 ??= TextEditingController();
+    _model.textController2 ??= TextEditingController();
+    _model.textController3 ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
+          _model.textController1?.text = FFLocalizations.of(context).getText(
+            '8hfw5a1w' /* 0 */,
+          );
+          _model.textController2?.text = FFLocalizations.of(context).getText(
+            'xsl1vxf1' /* 2000 */,
+          );
+          _model.textController3?.text = FFLocalizations.of(context).getText(
+            'w0dzstuw' /* school */,
+          );
+        }));
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    _unfocusNode.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+    if (currentUserLocationValue == null) {
+      return Container(
+        color: FlutterFlowTheme.of(context).primaryBackground,
+        child: Center(
+          child: SizedBox(
+            width: 50.0,
+            height: 50.0,
+            child: CircularProgressIndicator(
+              color: FlutterFlowTheme.of(context).primary,
+            ),
+          ),
+        ),
+      );
+    }
+
+    return FutureBuilder<ApiCallResponse>(
+      future: LinkBageLoginCall.call(
+        username: 'username',
+        os: isAndroid.toString(),
+        device: 'mobile',
+        browser: 'Dowell Browser',
+        location: currentUserLocationValue?.toString(),
+        time: valueOrDefault<String>(
+          dateTimeFormat(
+            'Hm',
+            getCurrentTimestamp,
+            locale: FFLocalizations.of(context).languageCode,
+          ),
+          '00:00',
+        ),
+        connection: 'wifi',
+        ip: '192.168.00.1',
+      ),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Center(
+            child: SizedBox(
+              width: 50.0,
+              height: 50.0,
+              child: CircularProgressIndicator(
+                color: FlutterFlowTheme.of(context).primary,
+              ),
+            ),
+          );
+        }
+        final homeScreenVersion2LinkBageLoginResponse = snapshot.data!;
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            body: SafeArea(
+              top: true,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(0.0, -1.0),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 1.0,
+                      height: MediaQuery.of(context).size.height * 0.07,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF015534),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            20.0, 0.0, 20.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'io9irfs3' /* DoWell Maps */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .displaySmall
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context).white,
+                                      fontSize: 18.0,
+                                    ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    40.0, 0.0, 0.0, 0.0),
+                                child: FlutterFlowLanguageSelector(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.4,
+                                  borderColor:
+                                      FlutterFlowTheme.of(context).white,
+                                  dropdownColor: Color(0x00000000),
+                                  dropdownIconColor: Color(0xFF14181B),
+                                  borderRadius: 8.0,
+                                  textStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 13.0,
+                                  ),
+                                  hideFlags: false,
+                                  flagSize: 24.0,
+                                  flagTextGap: 8.0,
+                                  currentLanguage:
+                                      FFLocalizations.of(context).languageCode,
+                                  languages: FFLocalizations.languages(),
+                                  onChanged: (lang) =>
+                                      setAppLanguage(context, lang),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onDoubleTap: () async {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Add Place',
+                              style: TextStyle(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
+                            ),
+                            duration: Duration(milliseconds: 4000),
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).secondary,
+                            action: SnackBarAction(
+                              label: 'Add Place to map',
+                              onPressed: () async {
+                                context.pushNamed('placedetails');
+                              },
+                            ),
+                          ),
+                        );
+                      },
+                      onLongPress: () async {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Add Place',
+                              style: TextStyle(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
+                            ),
+                            duration: Duration(milliseconds: 4000),
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).secondary,
+                            action: SnackBarAction(
+                              label: 'Add Place to map',
+                              onPressed: () async {
+                                context.pushNamed('placedetails');
+                              },
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: double.infinity,
+                        child: custom_widgets.MapWithPolygonsAndCircles(
+                          width: double.infinity,
+                          height: double.infinity,
+                          radius1: double.parse(_model.textController1.text),
+                          radius2: double.parse(_model.textController2.text),
+                          query: _model.textController3.text,
+                          iOSGoogleMapsApiKey:
+                              'AIzaSyB7PtpTGrFkqnywzF5HaF8Hv_E1a5rThtc',
+                          androidGoogleMapsApiKey:
+                              'AIzaSyBTawRJ-NAZYEir5H8PsPOCJCtx9AuJf6Q',
+                          webGoogleMapsApiKey:
+                              'AIzaSyD0CJ8u_oqdbNMIRa3y0ygjxXoEIlCHvew',
+                          origin:
+                              FFAppState().currentLocation == 'Current Location'
+                                  ? currentUserLocationValue
+                                  : _model.placePickerValue.latLng,
+                          result: _model.result,
+                          address: _model.addr,
+                          clearmap: FFAppState().clearmap,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(),
+                      child: Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Material(
+                                color: Colors.transparent,
+                                elevation: 16.0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(0.0),
+                                    bottomRight: Radius.circular(0.0),
+                                    topLeft: Radius.circular(12.0),
+                                    topRight: Radius.circular(12.0),
+                                  ),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(0.0),
+                                    bottomRight: Radius.circular(0.0),
+                                    topLeft: Radius.circular(12.0),
+                                    topRight: Radius.circular(12.0),
+                                  ),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(0.0),
+                                        bottomRight: Radius.circular(0.0),
+                                        topLeft: Radius.circular(12.0),
+                                        topRight: Radius.circular(12.0),
+                                      ),
+                                      shape: BoxShape.rectangle,
+                                    ),
+                                    child: Align(
+                                      alignment:
+                                          AlignmentDirectional(-0.15, 0.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          if (FFAppState().currentLocation ==
+                                              'Specified Location')
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.05, -1.0),
+                                              child: FlutterFlowPlacePicker(
+                                                iOSGoogleMapsApiKey:
+                                                    'AIzaSyCliE7u-orVPQ0ySFKc-K2DfOIPXlbcIBc',
+                                                androidGoogleMapsApiKey:
+                                                    'AIzaSyC_oMIdGvpBALKg6W6TPgpwVLb-viGwonY',
+                                                webGoogleMapsApiKey:
+                                                    'AIzaSyAxLAc6DqZKXf2lo71F34XaDN0KuhdAiy0',
+                                                onSelect: (place) async {
+                                                  setState(() =>
+                                                      _model.placePickerValue =
+                                                          place);
+                                                },
+                                                defaultText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'rvtbj3b1' /* Select Location */,
+                                                ),
+                                                icon: Icon(
+                                                  Icons.place,
+                                                  color: Colors.white,
+                                                  size: 16.0,
+                                                ),
+                                                buttonOptions: FFButtonOptions(
+                                                  width: double.infinity,
+                                                  height: 56.0,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.white,
+                                                        letterSpacing: 2.0,
+                                                      ),
+                                                  borderSide: BorderSide(
+                                                    color: Colors.transparent,
+                                                    width: 0.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          0.0),
+                                                ),
+                                              ),
+                                            ),
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 8.0, 10.0, 8.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    FlutterFlowRadioButton(
+                                                      options: [
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'qo71u3i4' /* Current  Location */,
+                                                        ),
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'h2m12tpi' /* Select  Location */,
+                                                        )
+                                                      ].toList(),
+                                                      onChanged: (val) async {
+                                                        setState(() {});
+                                                        FFAppState().update(() {
+                                                          FFAppState()
+                                                                  .currentLocation =
+                                                              _model
+                                                                  .radioButtonValue!;
+                                                        });
+                                                      },
+                                                      controller: _model
+                                                              .radioButtonValueController ??=
+                                                          FormFieldController<
+                                                              String>(null),
+                                                      optionHeight: 24.0,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: Colors
+                                                                    .black,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                              ),
+                                                      textPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0),
+                                                      buttonPosition:
+                                                          RadioButtonPosition
+                                                              .left,
+                                                      direction:
+                                                          Axis.horizontal,
+                                                      radioButtonColor:
+                                                          Color(0xFF015534),
+                                                      inactiveRadioButtonColor:
+                                                          Color(0x8A000000),
+                                                      toggleable: false,
+                                                      horizontalAlignment:
+                                                          WrapAlignment.start,
+                                                      verticalAlignment:
+                                                          WrapCrossAlignment
+                                                              .start,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        20.0, 0.0, 20.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        '6o4t534y' /* Distance Between */,
+                                                      ),
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                    ),
+                                                    Expanded(
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Container(
+                                                          width:
+                                                              double.infinity,
+                                                          child: TextFormField(
+                                                            controller: _model
+                                                                .textController1,
+                                                            autofocus: true,
+                                                            obscureText: false,
+                                                            decoration:
+                                                                InputDecoration(
+                                                              hintText:
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                'hp70dxua' /* From Distance */,
+                                                              ),
+                                                              hintStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmall,
+                                                              enabledBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0xFF015534),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              focusedBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .background,
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              errorBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .customColor3,
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              focusedErrorBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .customColor3,
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                            keyboardType:
+                                                                TextInputType
+                                                                    .number,
+                                                            validator: _model
+                                                                .textController1Validator
+                                                                .asValidator(
+                                                                    context),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    5.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Container(
+                                                          width:
+                                                              double.infinity,
+                                                          child: TextFormField(
+                                                            controller: _model
+                                                                .textController2,
+                                                            autofocus: true,
+                                                            obscureText: false,
+                                                            decoration:
+                                                                InputDecoration(
+                                                              hintText:
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                'r0p0qepe' /* To Distance */,
+                                                              ),
+                                                              hintStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmall,
+                                                              enabledBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0xFF015534),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              focusedBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .background,
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              errorBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .customColor3,
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              focusedErrorBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .customColor3,
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium,
+                                                            keyboardType:
+                                                                TextInputType
+                                                                    .number,
+                                                            validator: _model
+                                                                .textController2Validator
+                                                                .asValidator(
+                                                                    context),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        20.0, 12.0, 10.0, 16.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0),
+                                                      child:
+                                                          FlutterFlowIconButton(
+                                                        borderColor:
+                                                            Colors.transparent,
+                                                        borderRadius: 5.0,
+                                                        borderWidth: 1.0,
+                                                        buttonSize: 43.0,
+                                                        fillColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        icon: Icon(
+                                                          Icons.refresh,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .white,
+                                                          size: 20.0,
+                                                        ),
+                                                        showLoadingIndicator:
+                                                            true,
+                                                        onPressed: () async {
+                                                          setState(() {
+                                                            FFAppState()
+                                                                    .clearmap =
+                                                                true;
+                                                          });
+                                                        },
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8.0,
+                                                                    0.0,
+                                                                    8.0,
+                                                                    0.0),
+                                                        child: Container(
+                                                          width:
+                                                              double.infinity,
+                                                          child: TextFormField(
+                                                            controller: _model
+                                                                .textController3,
+                                                            autofocus: true,
+                                                            obscureText: false,
+                                                            decoration:
+                                                                InputDecoration(
+                                                              hintText:
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                'q1wze4a2' /* Search  eg School, Park */,
+                                                              ),
+                                                              hintStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmall,
+                                                              enabledBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0xFF015534),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              focusedBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .background,
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              errorBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .customColor3,
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              focusedErrorBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .customColor3,
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                            validator: _model
+                                                                .textController3Validator
+                                                                .asValidator(
+                                                                    context),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    FlutterFlowIconButton(
+                                                      borderColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .lineColor,
+                                                      borderRadius: 5.0,
+                                                      borderWidth: 1.0,
+                                                      buttonSize: 46.0,
+                                                      fillColor:
+                                                          Color(0xFF015534),
+                                                      icon: Icon(
+                                                        Icons.search_rounded,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryBtnText,
+                                                        size: 20.0,
+                                                      ),
+                                                      showLoadingIndicator:
+                                                          true,
+                                                      onPressed: () async {
+                                                        currentUserLocationValue =
+                                                            await getCurrentUserLocation(
+                                                                defaultLocation:
+                                                                    LatLng(0.0,
+                                                                        0.0));
+                                                        var _shouldSetState =
+                                                            false;
+                                                        setState(() {
+                                                          FFAppState()
+                                                              .clearmap = false;
+                                                        });
+                                                        _model.nearbyPlaceResponse =
+                                                            await NearbyPlaceCall
+                                                                .call(
+                                                          query: _model
+                                                              .textController3
+                                                              .text,
+                                                          location: functions.latlngToString(FFAppState()
+                                                                      .currentLocation ==
+                                                                  'Current Location'
+                                                              ? currentUserLocationValue!
+                                                              : _model
+                                                                  .placePickerValue
+                                                                  .latLng),
+                                                          radius: int.tryParse(
+                                                              _model
+                                                                  .textController2
+                                                                  .text),
+                                                        );
+                                                        _shouldSetState = true;
+                                                        if ((_model
+                                                                .nearbyPlaceResponse
+                                                                ?.succeeded ??
+                                                            true)) {
+                                                          _model.result =
+                                                              await actions
+                                                                  .newCustomAction(
+                                                            getJsonField(
+                                                              (_model.nearbyPlaceResponse
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                              r'''$.results[:].geometry.location.lat''',
+                                                            )!,
+                                                            getJsonField(
+                                                              (_model.nearbyPlaceResponse
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                              r'''$.results[:].geometry.location.lng''',
+                                                            )!,
+                                                            double.parse(_model
+                                                                .textController1
+                                                                .text),
+                                                            double.parse(_model
+                                                                .textController2
+                                                                .text),
+                                                            FFAppState().currentLocation ==
+                                                                    'Current Location'
+                                                                ? currentUserLocationValue!
+                                                                : _model
+                                                                    .placePickerValue
+                                                                    .latLng,
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (_model.result
+                                                                  ?.length ==
+                                                              0) {
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .showSnackBar(
+                                                              SnackBar(
+                                                                content: Text(
+                                                                  'Search not found',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                  ),
+                                                                ),
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        4000),
+                                                                backgroundColor:
+                                                                    Color(
+                                                                        0x00000000),
+                                                              ),
+                                                            );
+                                                          }
+                                                          _model.addr =
+                                                              await actions
+                                                                  .newCustomAction3(
+                                                            getJsonField(
+                                                              (_model.nearbyPlaceResponse
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                              r'''$.results[:].name''',
+                                                            ),
+                                                            double.parse(_model
+                                                                .textController1
+                                                                .text),
+                                                            FFAppState().currentLocation ==
+                                                                    'Current Location'
+                                                                ? currentUserLocationValue!
+                                                                : _model
+                                                                    .placePickerValue
+                                                                    .latLng,
+                                                            double.parse(_model
+                                                                .textController2
+                                                                .text),
+                                                            getJsonField(
+                                                              (_model.nearbyPlaceResponse
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                              r'''$.results[:].geometry.location.lat''',
+                                                            )!,
+                                                            getJsonField(
+                                                              (_model.nearbyPlaceResponse
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                              r'''$.results[:].geometry.location.lng''',
+                                                            )!,
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          _model.evenntID =
+                                                              await CreateEventCall
+                                                                  .call(
+                                                            ipAddress:
+                                                                getJsonField(
+                                                              (_model.ipAddress
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                              r'''$.ip''',
+                                                            ).toString(),
+                                                            loginId:
+                                                                LinkBageLoginCall
+                                                                    .sessionID(
+                                                              homeScreenVersion2LinkBageLoginResponse
+                                                                  .jsonBody,
+                                                            ).toString(),
+                                                            sessionId:
+                                                                LinkBageLoginCall
+                                                                    .sessionID(
+                                                              homeScreenVersion2LinkBageLoginResponse
+                                                                  .jsonBody,
+                                                            ).toString(),
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (!(_model.evenntID
+                                                                  ?.succeeded ??
+                                                              true)) {
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .showSnackBar(
+                                                              SnackBar(
+                                                                content: Text(
+                                                                  'An eerror has occured',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                  ),
+                                                                ),
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        4000),
+                                                                backgroundColor:
+                                                                    Color(
+                                                                        0x00000000),
+                                                              ),
+                                                            );
+                                                          }
+                                                          _model.doWellMap =
+                                                              await NearbyPlacesDataCall
+                                                                  .call(
+                                                            startLocation: FFAppState()
+                                                                        .currentLocation ==
+                                                                    'Current Location'
+                                                                ? currentUserLocationValue
+                                                                    ?.toString()
+                                                                : functions
+                                                                    .latlngToString(_model
+                                                                        .placePickerValue
+                                                                        .latLng),
+                                                            queryText: _model
+                                                                .textController3
+                                                                .text,
+                                                            radiusDistanceFrom:
+                                                                _model
+                                                                    .textController1
+                                                                    .text,
+                                                            radiusDistanceTo: _model
+                                                                .textController2
+                                                                .text,
+                                                            startAddress: _model
+                                                                .placePickerValue
+                                                                .address,
+                                                            eventId:
+                                                                CreateEventCall
+                                                                    .eventID(
+                                                              (_model.evenntID
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            ).toString(),
+                                                            isError: false,
+                                                            error: 'None',
+                                                            dateTimeDone:
+                                                                dateTimeFormat(
+                                                              'yMMMd',
+                                                              getCurrentTimestamp,
+                                                              locale: FFLocalizations
+                                                                      .of(context)
+                                                                  .languageCode,
+                                                            ),
+                                                            responseJson:
+                                                                functions.jsondata(
+                                                                    _model.addr
+                                                                        ?.toList(),
+                                                                    _model
+                                                                        .result
+                                                                        ?.toList()),
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (!(_model.doWellMap
+                                                                  ?.succeeded ??
+                                                              true)) {
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .showSnackBar(
+                                                              SnackBar(
+                                                                content: Text(
+                                                                  'An Error occured',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                  ),
+                                                                ),
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        4000),
+                                                                backgroundColor:
+                                                                    Color(
+                                                                        0x00000000),
+                                                              ),
+                                                            );
+                                                          }
+                                                          _model.logResponse =
+                                                              await SendLogDataCall
+                                                                  .call(
+                                                            mongoID:
+                                                                NearbyPlacesDataCall
+                                                                    .insertID(
+                                                              (_model.doWellMap
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            ).toString(),
+                                                            reqID:
+                                                                NearbyPlacesDataCall
+                                                                    .insertID(
+                                                              (_model.doWellMap
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            ).toString(),
+                                                            reqType:
+                                                                'nearby_places',
+                                                            eventId:
+                                                                CreateEventCall
+                                                                    .eventID(
+                                                              (_model.evenntID
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            ).toString(),
+                                                            dataTimeDone:
+                                                                dateTimeFormat(
+                                                              'yMMMd',
+                                                              getCurrentTimestamp,
+                                                              locale: FFLocalizations
+                                                                      .of(context)
+                                                                  .languageCode,
+                                                            ),
+                                                            userName:
+                                                                random_data
+                                                                    .randomName(
+                                                                        true,
+                                                                        false),
+                                                            sessionId:
+                                                                LinkBageLoginCall
+                                                                    .sessionID(
+                                                              homeScreenVersion2LinkBageLoginResponse
+                                                                  .jsonBody,
+                                                            ).toString(),
+                                                            locationDone: functions
+                                                                .latlngToString(
+                                                                    _model
+                                                                        .placePickerValue
+                                                                        .latLng),
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (_shouldSetState)
+                                                            setState(() {});
+                                                          return;
+                                                        } else {
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .showSnackBar(
+                                                            SnackBar(
+                                                              content: Text(
+                                                                'Nearby place search failed!',
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                ),
+                                                              ),
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      4000),
+                                                              backgroundColor:
+                                                                  Color(
+                                                                      0x00000000),
+                                                            ),
+                                                          );
+                                                        }
+
+                                                        if (_shouldSetState)
+                                                          setState(() {});
+                                                      },
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
