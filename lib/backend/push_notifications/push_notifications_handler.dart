@@ -56,7 +56,7 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
         final parameterData = await parametersBuilder(initialParameterData);
         context.pushNamed(
           initialPageName,
-          params: parameterData.params,
+          pathParameters: parameterData.pathParameters,
           extra: parameterData.extra,
         );
       }
@@ -82,7 +82,7 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
           child: Center(
             child: Image.asset(
               'assets/images/dowell_maps.png',
-              width: MediaQuery.of(context).size.width * 0.6,
+              width: MediaQuery.sizeOf(context).width * 0.6,
               fit: BoxFit.contain,
             ),
           ),
@@ -96,7 +96,7 @@ class ParameterData {
   final Map<String, String?> requiredParams;
   final Map<String, dynamic> allParams;
 
-  Map<String, String> get params => Map.fromEntries(
+  Map<String, String> get pathParameters => Map.fromEntries(
         requiredParams.entries
             .where((e) => e.value != null)
             .map((e) => MapEntry(e.key, e.value!)),
@@ -113,8 +113,16 @@ final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
   'maps': ParameterData.none(),
   'HomeScreenVersion1': ParameterData.none(),
-  'HomeScreenBackup7March': ParameterData.none(),
+  'placedetailsCopy': (data) async => ParameterData(
+        allParams: {
+          'ipAddress': getParameter<String>(data, 'ipAddress'),
+          'sessionID': getParameter<String>(data, 'sessionID'),
+          'currentCord': getParameter<String>(data, 'currentCord'),
+        },
+      ),
   'HomeScreenVersion2': ParameterData.none(),
+  'OnboardingPage': ParameterData.none(),
+  'LoginComponent': ParameterData.none(),
   'placedetails': (data) async => ParameterData(
         allParams: {
           'ipAddress': getParameter<String>(data, 'ipAddress'),
@@ -122,8 +130,8 @@ final parametersBuilderMap =
           'currentCord': getParameter<String>(data, 'currentCord'),
         },
       ),
-  'OnboardingPage': ParameterData.none(),
-  'LoginComponent': ParameterData.none(),
+  'Signup': ParameterData.none(),
+  'appbartester': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

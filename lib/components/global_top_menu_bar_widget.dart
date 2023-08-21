@@ -27,6 +27,8 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => GlobalTopMenuBarModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -41,7 +43,7 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
     context.watch<FFAppState>();
 
     return Container(
-      width: MediaQuery.of(context).size.width * 1.0,
+      width: MediaQuery.sizeOf(context).width * 1.0,
       height: 50.0,
       decoration: BoxDecoration(),
       alignment: AlignmentDirectional(1.0, 0.0),
@@ -54,7 +56,7 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                width: MediaQuery.of(context).size.width * 0.12,
+                width: MediaQuery.sizeOf(context).width * 0.12,
                 height: 50.0,
                 decoration: BoxDecoration(),
                 child: FlutterFlowIconButton(
@@ -73,7 +75,7 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
                 ),
               ),
               Container(
-                width: MediaQuery.of(context).size.width * 0.12,
+                width: MediaQuery.sizeOf(context).width * 0.12,
                 height: 50.0,
                 decoration: BoxDecoration(),
                 child: FlutterFlowIconButton(
@@ -142,7 +144,7 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
                 ),
               ),
               Container(
-                width: MediaQuery.of(context).size.width * 0.12,
+                width: MediaQuery.sizeOf(context).width * 0.12,
                 height: 50.0,
                 decoration: BoxDecoration(),
                 child: FlutterFlowIconButton(
@@ -161,7 +163,7 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
                 ),
               ),
               Container(
-                width: MediaQuery.of(context).size.width * 0.12,
+                width: MediaQuery.sizeOf(context).width * 0.12,
                 height: 50.0,
                 decoration: BoxDecoration(),
                 child: FlutterFlowIconButton(
@@ -186,14 +188,14 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
                   shape: BoxShape.rectangle,
                 ),
                 child: Image.asset(
-                  'assets/images/zx6w1_1.jpg',
+                  'assets/images/cxi3o_1.jpg',
                   width: 100.0,
                   height: 90.0,
                   fit: BoxFit.cover,
                 ),
               ),
               Container(
-                width: MediaQuery.of(context).size.width * 0.01,
+                width: MediaQuery.sizeOf(context).width * 0.01,
                 height: 50.0,
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,

@@ -5,8 +5,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <application
-        android:label="LivingLabMaps"
+        android:label="LivinglabMaps"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">
@@ -56,7 +57,7 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyC_oMIdGvpBALKg6W6TPgpwVLb-viGwonY"/>
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyA_i4bbFV0iKxU_nUI7L3p0--r6UR89du4"/>
 
 
     </application>

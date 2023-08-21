@@ -1,3 +1,4 @@
+import '/components/category_item_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -12,15 +13,21 @@ class CategoriesModel extends FlutterFlowModel {
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // Model for categoryItem component.
+  late CategoryItemModel categoryItemModel;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    categoryItemModel = createModel(context, () => CategoryItemModel());
+  }
 
   void dispose() {
     textController?.dispose();
+    categoryItemModel.dispose();
   }
 
-  /// Additional helper methods are added here.
+  /// Action blocks are added here.
 
+  /// Additional helper methods are added here.
 }

@@ -14,7 +14,7 @@ import 'dart:core';
 import '../../flutter_flow/custom_functions.dart' as fun;
 import 'dart:math';
 
-Future<List<LatLng>> newCustomAction(List<dynamic> lat, List<dynamic> lng,
+Future<List<LatLng>> refineGoogleResult(List<dynamic> lat, List<dynamic> lng,
     double radius1, double radius2, LatLng center) async {
   List<LatLng> latlngs = [];
   for (int i = 0; i < lat.length; i++) {

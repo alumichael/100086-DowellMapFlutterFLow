@@ -32,7 +32,6 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
   late HomeScreenVersion1Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
   LatLng? currentUserLocationValue;
 
   @override
@@ -67,7 +66,6 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -82,7 +80,9 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
             width: 50.0,
             height: 50.0,
             child: CircularProgressIndicator(
-              color: FlutterFlowTheme.of(context).primary,
+              valueColor: AlwaysStoppedAnimation<Color>(
+                FlutterFlowTheme.of(context).primary,
+              ),
             ),
           ),
         ),
@@ -110,19 +110,24 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 50.0,
-              height: 50.0,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primary,
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            body: Center(
+              child: SizedBox(
+                width: 50.0,
+                height: 50.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).primary,
+                  ),
+                ),
               ),
             ),
           );
         }
         final homeScreenVersion1LinkBageLoginResponse = snapshot.data!;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -134,8 +139,8 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                   Align(
                     alignment: AlignmentDirectional(0.0, -1.0),
                     child: Container(
-                      width: MediaQuery.of(context).size.width * 1.0,
-                      height: MediaQuery.of(context).size.height * 0.07,
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: MediaQuery.sizeOf(context).height * 0.07,
                       decoration: BoxDecoration(
                         color: Color(0xFF015534),
                       ),
@@ -164,8 +169,7 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     40.0, 0.0, 0.0, 0.0),
                                 child: FlutterFlowLanguageSelector(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.4,
+                                  width: MediaQuery.sizeOf(context).width * 0.4,
                                   borderColor:
                                       FlutterFlowTheme.of(context).white,
                                   dropdownColor: Color(0x00000000),
@@ -193,83 +197,95 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                     ),
                   ),
                   Expanded(
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onDoubleTap: () async {
-                        currentUserLocationValue = await getCurrentUserLocation(
-                            defaultLocation: LatLng(0.0, 0.0));
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              'Add Place',
-                              style: TextStyle(
-                                color: FlutterFlowTheme.of(context).primaryText,
+                    child: Stack(
+                      children: [
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onDoubleTap: () async {
+                            currentUserLocationValue =
+                                await getCurrentUserLocation(
+                                    defaultLocation: LatLng(0.0, 0.0));
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Add Place',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).white,
+                                action: SnackBarAction(
+                                  label: 'Add',
+                                  onPressed: () async {
+                                    context.pushNamed(
+                                      'placedetailsCopy',
+                                      queryParameters: {
+                                        'ipAddress': serializeParam(
+                                          getJsonField(
+                                            (_model.ipAddress?.jsonBody ?? ''),
+                                            r'''$.ip''',
+                                          ).toString(),
+                                          ParamType.String,
+                                        ),
+                                        'sessionID': serializeParam(
+                                          LinkBageLoginCall.sessionID(
+                                            homeScreenVersion1LinkBageLoginResponse
+                                                .jsonBody,
+                                          ).toString(),
+                                          ParamType.String,
+                                        ),
+                                        'currentCord': serializeParam(
+                                          valueOrDefault<String>(
+                                            functions.latlngToString(
+                                                currentUserLocationValue!),
+                                            '78.32,76.83',
+                                          ),
+                                          ParamType.String,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                ),
                               ),
-                            ),
-                            duration: Duration(milliseconds: 4000),
-                            backgroundColor: FlutterFlowTheme.of(context).white,
-                            action: SnackBarAction(
-                              label: 'Add',
-                              onPressed: () async {
-                                context.pushNamed(
-                                  'placedetails',
-                                  queryParams: {
-                                    'ipAddress': serializeParam(
-                                      getJsonField(
-                                        (_model.ipAddress?.jsonBody ?? ''),
-                                        r'''$.ip''',
-                                      ).toString(),
-                                      ParamType.String,
-                                    ),
-                                    'sessionID': serializeParam(
-                                      LinkBageLoginCall.sessionID(
-                                        homeScreenVersion1LinkBageLoginResponse
-                                            .jsonBody,
-                                      ).toString(),
-                                      ParamType.String,
-                                    ),
-                                    'currentCord': serializeParam(
-                                      valueOrDefault<String>(
-                                        functions.latlngToString(
-                                            currentUserLocationValue!),
-                                        '78.32,76.83',
-                                      ),
-                                      ParamType.String,
-                                    ),
-                                  }.withoutNulls,
-                                );
-                              },
-                            ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        height: double.infinity,
-                        child: custom_widgets.MapWithPolygonsAndCircles(
-                          width: double.infinity,
-                          height: double.infinity,
-                          radius1: double.parse(_model.textController1.text),
-                          radius2: double.parse(_model.textController2.text),
-                          query: _model.textController3.text,
-                          iOSGoogleMapsApiKey:
-                              'AIzaSyB7PtpTGrFkqnywzF5HaF8Hv_E1a5rThtc',
-                          androidGoogleMapsApiKey:
-                              'AIzaSyBTawRJ-NAZYEir5H8PsPOCJCtx9AuJf6Q',
-                          webGoogleMapsApiKey:
-                              'AIzaSyD0CJ8u_oqdbNMIRa3y0ygjxXoEIlCHvew',
-                          origin:
-                              FFAppState().currentLocation == 'Current Location'
+                            );
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: double.infinity,
+                            child: custom_widgets.MyMapWidget(
+                              width: double.infinity,
+                              height: double.infinity,
+                              radius1:
+                                  double.parse(_model.textController1.text),
+                              radius2:
+                                  double.parse(_model.textController2.text),
+                              query: _model.textController3.text,
+                              iOSGoogleMapsApiKey:
+                                  'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk',
+                              androidGoogleMapsApiKey:
+                                  'AIzaSyA_i4bbFV0iKxU_nUI7L3p0--r6UR89du4',
+                              webGoogleMapsApiKey:
+                                  'AIzaSyAsH8omDk8y0lSGLTW9YtZiiQ2MkmsF-uQ',
+                              origin: FFAppState().currentLocation ==
+                                      'Current Location'
                                   ? currentUserLocationValue
                                   : _model.placePickerValue.latLng,
-                          result: _model.result,
-                          address: _model.addr,
-                          clearmap: FFAppState().clearmap,
+                              result: _model.result,
+                              address: _model.addr,
+                              clearmap: FFAppState().clearmap,
+                              dbResult: _model.result,
+                              dbAddress: _model.addr,
+                              navigateTo: () async {},
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
                   Align(
@@ -329,11 +345,11 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                                   0.05, -1.0),
                                               child: FlutterFlowPlacePicker(
                                                 iOSGoogleMapsApiKey:
-                                                    'AIzaSyCliE7u-orVPQ0ySFKc-K2DfOIPXlbcIBc',
+                                                    'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk',
                                                 androidGoogleMapsApiKey:
-                                                    'AIzaSyC_oMIdGvpBALKg6W6TPgpwVLb-viGwonY',
+                                                    'AIzaSyA_i4bbFV0iKxU_nUI7L3p0--r6UR89du4',
                                                 webGoogleMapsApiKey:
-                                                    'AIzaSyAxLAc6DqZKXf2lo71F34XaDN0KuhdAiy0',
+                                                    'AIzaSyAsH8omDk8y0lSGLTW9YtZiiQ2MkmsF-uQ',
                                                 onSelect: (place) async {
                                                   setState(() =>
                                                       _model.placePickerValue =
@@ -884,7 +900,7 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                                             true)) {
                                                           _model.result =
                                                               await actions
-                                                                  .newCustomAction(
+                                                                  .refineGoogleResult(
                                                             getJsonField(
                                                               (_model.nearbyPlaceResponse
                                                                       ?.jsonBody ??
@@ -939,7 +955,7 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                                           }
                                                           _model.addr =
                                                               await actions
-                                                                  .newCustomAction3(
+                                                                  .getGooglePlaceName(
                                                             getJsonField(
                                                               (_model.nearbyPlaceResponse
                                                                       ?.jsonBody ??

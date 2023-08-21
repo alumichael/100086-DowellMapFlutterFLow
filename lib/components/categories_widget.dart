@@ -1,3 +1,4 @@
+import '/components/category_item_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -30,6 +31,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
     _model = createModel(context, () => CategoriesModel());
 
     _model.textController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -47,8 +49,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Container(
-          width: MediaQuery.of(context).size.width * 1.0,
-          height: MediaQuery.of(context).size.height * 1.0,
+          width: MediaQuery.sizeOf(context).width * 1.0,
+          height: MediaQuery.sizeOf(context).height * 1.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
           ),
@@ -57,8 +59,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width * 1.0,
-                  height: MediaQuery.of(context).size.height * 2.0,
+                  width: MediaQuery.sizeOf(context).width * 1.0,
+                  height: MediaQuery.sizeOf(context).height * 2.0,
                   child: Stack(
                     children: [
                       Align(
@@ -73,7 +75,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                       Align(
                         alignment: AlignmentDirectional(-0.24, -0.9),
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.8,
+                          width: MediaQuery.sizeOf(context).width * 0.8,
                           child: TextFormField(
                             controller: _model.textController,
                             autofocus: true,
@@ -142,54 +144,24 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                       Align(
                         alignment: AlignmentDirectional(0.0, -0.71),
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          height: MediaQuery.of(context).size.height * 0.06,
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          height: MediaQuery.sizeOf(context).height * 0.06,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                           ),
-                          child: Stack(
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(-0.91, 0.12),
-                                child: Icon(
-                                  Icons.fastfood_outlined,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  size: 24.0,
-                                ),
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(-0.46, 0.18),
-                                child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'attx56yo' /* Food & Drinks */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                ),
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(0.92, 0.21),
-                                child: FaIcon(
-                                  FontAwesomeIcons.angleRight,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 24.0,
-                                ),
-                              ),
-                            ],
+                          child: wrapWithModel(
+                            model: _model.categoryItemModel,
+                            updateCallback: () => setState(() {}),
+                            child: CategoryItemWidget(),
                           ),
                         ),
                       ),
                       Align(
                         alignment: AlignmentDirectional(0.0, -0.62),
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          height: MediaQuery.of(context).size.height * 0.06,
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          height: MediaQuery.sizeOf(context).height * 0.06,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -220,8 +192,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                               ),
                               Align(
                                 alignment: AlignmentDirectional(0.92, 0.21),
-                                child: FaIcon(
-                                  FontAwesomeIcons.angleRight,
+                                child: Icon(
+                                  Icons.arrow_forward_ios_rounded,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   size: 24.0,
@@ -234,8 +206,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                       Align(
                         alignment: AlignmentDirectional(0.0, -0.53),
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          height: MediaQuery.of(context).size.height * 0.06,
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          height: MediaQuery.sizeOf(context).height * 0.06,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -244,8 +216,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                             children: [
                               Align(
                                 alignment: AlignmentDirectional(-0.91, 0.12),
-                                child: FaIcon(
-                                  FontAwesomeIcons.couch,
+                                child: Icon(
+                                  Icons.construction_sharp,
                                   color: FlutterFlowTheme.of(context).primary,
                                   size: 24.0,
                                 ),
@@ -266,8 +238,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                               ),
                               Align(
                                 alignment: AlignmentDirectional(0.92, 0.21),
-                                child: FaIcon(
-                                  FontAwesomeIcons.angleRight,
+                                child: Icon(
+                                  Icons.arrow_forward_ios,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   size: 24.0,
@@ -280,8 +252,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                       Align(
                         alignment: AlignmentDirectional(0.0, -0.45),
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          height: MediaQuery.of(context).size.height * 0.06,
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          height: MediaQuery.sizeOf(context).height * 0.06,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -312,8 +284,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                               ),
                               Align(
                                 alignment: AlignmentDirectional(0.92, 0.21),
-                                child: FaIcon(
-                                  FontAwesomeIcons.angleRight,
+                                child: Icon(
+                                  Icons.arrow_forward_ios,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   size: 24.0,
@@ -326,8 +298,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                       Align(
                         alignment: AlignmentDirectional(0.0, -0.35),
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          height: MediaQuery.of(context).size.height * 0.06,
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          height: MediaQuery.sizeOf(context).height * 0.06,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -336,8 +308,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                             children: [
                               Align(
                                 alignment: AlignmentDirectional(-0.91, 0.12),
-                                child: FaIcon(
-                                  FontAwesomeIcons.tree,
+                                child: Icon(
+                                  Icons.shopping_bag_outlined,
                                   color: FlutterFlowTheme.of(context).primary,
                                   size: 24.0,
                                 ),
@@ -358,8 +330,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                               ),
                               Align(
                                 alignment: AlignmentDirectional(0.92, 0.21),
-                                child: FaIcon(
-                                  FontAwesomeIcons.angleRight,
+                                child: Icon(
+                                  Icons.arrow_forward_ios,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   size: 24.0,
@@ -372,8 +344,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                       Align(
                         alignment: AlignmentDirectional(0.0, -0.26),
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          height: MediaQuery.of(context).size.height * 0.06,
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          height: MediaQuery.sizeOf(context).height * 0.06,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -382,8 +354,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                             children: [
                               Align(
                                 alignment: AlignmentDirectional(-0.91, 0.12),
-                                child: FaIcon(
-                                  FontAwesomeIcons.pray,
+                                child: Icon(
+                                  Icons.house_outlined,
                                   color: FlutterFlowTheme.of(context).primary,
                                   size: 24.0,
                                 ),
@@ -404,8 +376,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                               ),
                               Align(
                                 alignment: AlignmentDirectional(0.92, 0.21),
-                                child: FaIcon(
-                                  FontAwesomeIcons.angleRight,
+                                child: Icon(
+                                  Icons.arrow_forward_ios,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   size: 24.0,
@@ -418,8 +390,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                       Align(
                         alignment: AlignmentDirectional(0.0, -0.18),
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          height: MediaQuery.of(context).size.height * 0.06,
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          height: MediaQuery.sizeOf(context).height * 0.06,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -428,8 +400,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                             children: [
                               Align(
                                 alignment: AlignmentDirectional(-0.91, 0.12),
-                                child: FaIcon(
-                                  FontAwesomeIcons.building,
+                                child: Icon(
+                                  Icons.business_sharp,
                                   color: FlutterFlowTheme.of(context).primary,
                                   size: 24.0,
                                 ),
@@ -450,8 +422,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                               ),
                               Align(
                                 alignment: AlignmentDirectional(0.92, 0.21),
-                                child: FaIcon(
-                                  FontAwesomeIcons.angleRight,
+                                child: Icon(
+                                  Icons.arrow_forward_ios,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   size: 24.0,
@@ -464,8 +436,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                       Align(
                         alignment: AlignmentDirectional(0.0, -0.09),
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          height: MediaQuery.of(context).size.height * 0.06,
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          height: MediaQuery.sizeOf(context).height * 0.06,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -496,8 +468,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                               ),
                               Align(
                                 alignment: AlignmentDirectional(0.92, 0.21),
-                                child: FaIcon(
-                                  FontAwesomeIcons.angleRight,
+                                child: Icon(
+                                  Icons.arrow_forward_ios,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   size: 24.0,
@@ -510,8 +482,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                       Align(
                         alignment: AlignmentDirectional(-0.12, 0.0),
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          height: MediaQuery.of(context).size.height * 0.06,
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          height: MediaQuery.sizeOf(context).height * 0.06,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -542,8 +514,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                               ),
                               Align(
                                 alignment: AlignmentDirectional(0.92, 0.21),
-                                child: FaIcon(
-                                  FontAwesomeIcons.angleRight,
+                                child: Icon(
+                                  Icons.arrow_forward_ios,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   size: 24.0,

@@ -23,13 +23,16 @@ class LoginForm extends StatefulWidget {
     this.createAJsonVariableInAppStateNamedResponse =
         "this will have response from login",
     required this.navigateTo,
+    required this.signUp,
   }) : super(key: key);
   final String? createAJsonVariableInAppStateNamedResponse;
   final double? width;
   final double? height;
   final String? location;
   final String? os;
+  final Future<dynamic> Function() signUp;
   final Future<dynamic> Function() navigateTo;
+
   @override
   _LoginFormState createState() => _LoginFormState();
 }
@@ -172,6 +175,8 @@ class _LoginFormState extends State<LoginForm> {
                             setState(() => _username = val);
                           },
                           controller: user,
+                          cursorColor: Colors.black,
+                          style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             contentPadding:
                                 EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 0.0),
@@ -249,6 +254,8 @@ class _LoginFormState extends State<LoginForm> {
                           onChanged: (val) => setState(() => _password = val),
                           controller: pass,
                           obscureText: !_passwordVisible,
+                          cursorColor: Colors.black,
+                          style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             contentPadding:
                                 EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 0.0),
@@ -351,6 +358,15 @@ class _LoginFormState extends State<LoginForm> {
                               : Text('Login'),
                         ),
                       ),
+                      SizedBox(height: 20),
+                      TextButton(
+                          onPressed: () {
+                            widget.signUp();
+                          },
+                          child: Text("Signup",
+                              style: TextStyle(
+                                color: Color(0xFF187B2B),
+                              ))),
                     ],
                   ),
                 ),

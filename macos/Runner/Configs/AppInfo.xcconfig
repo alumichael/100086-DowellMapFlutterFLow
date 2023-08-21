@@ -5,10 +5,10 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = LivingLabMaps
+PRODUCT_NAME = LivinglabMaps
 
 // The application's bundle identifier
 PRODUCT_BUNDLE_IDENTIFIER = com.dowell.dowellmaps
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2022 LivingLabMaps. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2022 LivinglabMaps. All rights reserved.

@@ -1,2 +1,3 @@
-export 'map_with_polygons_and_circles.dart' show MapWithPolygonsAndCircles;
+export 'my_map_widget.dart' show MyMapWidget;
 export 'login_form.dart' show LoginForm;
+export 'app_bar_component.dart' show AppBarComponent;

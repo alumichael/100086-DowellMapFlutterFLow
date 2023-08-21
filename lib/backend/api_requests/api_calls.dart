@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import '../../flutter_flow/flutter_flow_util.dart';
+import '../cloud_functions/cloud_functions.dart';
 
 import 'api_manager.dart';
 
@@ -66,7 +67,7 @@ class CreateRoomForDigitalQCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'create room for digitalQ',
-      apiUrl: 'http://100069.pythonanywhere.com/chat/create-room/',
+      apiUrl: 'https://100069.pythonanywhere.com/chat/create-room',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -85,24 +86,21 @@ class NearbyPlaceCall {
     String? query = 'school',
     String? location = '6.5243793, 3.3792057',
     int? radius = 2000,
-    String? key = '',
-  }) {
-    return ApiManager.instance.makeApiCall(
-      callName: 'NearbyPlace',
-      apiUrl: 'https://maps.googleapis.com/maps/api/place/textsearch/json',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {
-        'query': query,
-        'location': location,
-        'radius': radius,
-        'key': "AIzaSyAxLAc6DqZKXf2lo71F34XaDN0KuhdAiy0",
+    String? key = 'AIzaSyAsH8omDk8y0lSGLTW9YtZiiQ2MkmsF-uQ',
+  }) async {
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'NearbyPlaceCall',
+        'variables': {
+          'query': query,
+          'location': location,
+          'radius': radius,
+          'key': key,
+        },
       },
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   static dynamic lat(dynamic response) => getJsonField(
@@ -125,6 +123,20 @@ class NearbyPlaceCall {
         r'''$.results[:].formatted_address''',
         true,
       );
+  static dynamic placeName(dynamic response) => getJsonField(
+        response,
+        r'''$.results[:].name''',
+        true,
+      );
+  static dynamic data(dynamic response) => getJsonField(
+        response,
+        r'''$.results''',
+        true,
+      );
+  static dynamic status(dynamic response) => getJsonField(
+        response,
+        r'''$.status''',
+      );
 }
 
 class DirectionCall {
@@ -133,35 +145,35 @@ class DirectionCall {
     String? destination = '',
     String? mode = '',
     String? waypoint = '',
-    String? key = '',
-  }) {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Direction',
-      apiUrl: 'https://maps.googleapis.com/maps/api/place/directions/json',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
+    String? key = 'AIzaSyAsH8omDk8y0lSGLTW9YtZiiQ2MkmsF-uQ',
+  }) async {
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'DirectionCall',
+        'variables': {
+          'origin': origin,
+          'destination': destination,
+          'mode': mode,
+          'waypoint': waypoint,
+          'key': key,
+        },
+      },
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 }
 
 class DirectionDetailsCall {
-  static Future<ApiCallResponse> call() {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Direction details',
-      apiUrl: 'https://maps.googleapis.com/maps/api/place/details/json',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
+  static Future<ApiCallResponse> call() async {
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'DirectionDetailsCall',
+        'variables': {},
+      },
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 }
 
@@ -173,50 +185,31 @@ class CreateEventCall {
     String? regionalTime = '',
     String? dowellTime = '',
     String? location = '',
-  }) {
-    final body = '''
-{
-  "platformcode": "FB",
-  "citycode": "101",
-  "daycode": "0",
-  "dbcode": "pfm",
-  "ip_address": "${ipAddress}",
-  "login_id": "${loginId}",
-  "session_id": "${sessionId}",
-  "processcode": "1",
-  "location": "${location}",
-  "objectcode": "1",
-  "instancecode": "100051",
-  "context": "afdafa ",
-  "document_id": "3004",
-  "rules": "some rules",
-  "status": "work",
-  "data_type": "learn",
-  "purpose_of_usage": "add",
-  "colour": "color value",
-  "hashtags": "hash tag alue",
-  "mentions": "mentions value",
-  "emojis": "emojis",
-  "bookmarks": "a book marks"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'Create Event',
-      apiUrl: 'https://uxlivinglab.pythonanywhere.com/create_event',
-      callType: ApiCallType.POST,
-      headers: {},
-      params: {},
-      body: body,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
+  }) async {
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'CreateEventCall',
+        'variables': {
+          'ipAddress': ipAddress,
+          'loginId': loginId,
+          'sessionId': sessionId,
+          'regionalTime': regionalTime,
+          'dowellTime': dowellTime,
+          'location': location,
+        },
+      },
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   static dynamic eventID(dynamic response) => getJsonField(
         response,
         r'''$.event_id''',
+      );
+  static dynamic isSuccess(dynamic response) => getJsonField(
+        response,
+        r'''$.is_success''',
       );
 }
 
@@ -267,9 +260,11 @@ class NearbyPlacesDataCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Nearby Places Data',
-      apiUrl: 'http://100002.pythonanywhere.com',
+      apiUrl: 'https://uxlivinglab.pythonanywhere.com/',
       callType: ApiCallType.POST,
-      headers: {},
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
       params: {},
       body: body,
       bodyType: BodyType.JSON,
@@ -327,9 +322,11 @@ class SendLogDataCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Send Log Data',
-      apiUrl: 'http://100002.pythonanywhere.com',
+      apiUrl: 'https://uxlivinglab.pythonanywhere.com/',
       callType: ApiCallType.POST,
-      headers: {},
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
       params: {},
       body: body,
       bodyType: BodyType.JSON,
@@ -355,6 +352,11 @@ class IpifyCall {
       cache: false,
     );
   }
+
+  static dynamic deviceIP(dynamic response) => getJsonField(
+        response,
+        r'''$.ip''',
+      );
 }
 
 class MymapCall {
@@ -402,9 +404,11 @@ class MymapCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'mymap',
-      apiUrl: 'http://100002.pythonanywhere.com/',
+      apiUrl: 'https://uxlivinglab.pythonanywhere.com/',
       callType: ApiCallType.POST,
-      headers: {},
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
       params: {},
       body: body,
       bodyType: BodyType.JSON,
@@ -425,11 +429,78 @@ class MymapCall {
       );
 }
 
-class MymapGETCall {
+class GetMymapCall {
+  static Future<ApiCallResponse> call({
+    double? radius1,
+    double? radius2,
+    double? centerLat,
+    double? centerLon,
+    String? query = '',
+    String? dataType = '',
+    String? apiKey = 'EhdQUTM2K0hNLCBOYWlyb2JpLCBLZW55YSImOiQKCg2PPDr',
+  }) {
+    final body = '''
+{
+  "radius1": ${radius1},
+  "radius2": ${radius2},
+  "center_lat": ${centerLat},
+  "center_lon": ${centerLon},
+  "query_string": "${query}",
+  "data_type": "registered",
+  "api_key": "${apiKey}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetMymap',
+      apiUrl: 'https://100086.pythonanywhere.com/accounts/get-local-nearby/',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: body,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic locationCord(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].location_coord''',
+        true,
+      );
+  static dynamic distance(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].hav_distances''',
+        true,
+      );
+  static dynamic category(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].category''',
+        true,
+      );
+  static dynamic placeId(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].place_id''',
+        true,
+      );
+  static dynamic placeName(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].place_name''',
+        true,
+      );
+  static dynamic refinedData(dynamic response) => getJsonField(
+        response,
+        r'''$.data''',
+        true,
+      );
+}
+
+class GetCategoryCall {
   static Future<ApiCallResponse> call() {
     return ApiManager.instance.makeApiCall(
-      callName: 'mymapGET',
-      apiUrl: 'http://100002.pythonanywhere.com/',
+      callName: 'Get Category',
+      apiUrl: 'https://100086.pythonanywhere.com/accounts/get-categories/',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -439,6 +510,12 @@ class MymapGETCall {
       cache: false,
     );
   }
+
+  static dynamic categoryList(dynamic response) => getJsonField(
+        response,
+        r'''$.categories''',
+        true,
+      );
 }
 
 class ApiPagingParams {
@@ -466,11 +543,11 @@ String _serializeList(List? list) {
   }
 }
 
-String _serializeJson(dynamic jsonVar) {
-  jsonVar ??= {};
+String _serializeJson(dynamic jsonVar, [bool isList = false]) {
+  jsonVar ??= (isList ? [] : {});
   try {
     return json.encode(jsonVar);
   } catch (_) {
-    return '{}';
+    return isList ? '[]' : '{}';
   }
 }

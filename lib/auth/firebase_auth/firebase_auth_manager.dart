@@ -16,6 +16,7 @@ import 'email_auth.dart';
 import 'firebase_user_provider.dart';
 import 'google_auth.dart';
 import 'jwt_token_auth.dart';
+import 'github_auth.dart';
 
 export '../base_auth_user_provider.dart';
 
@@ -48,6 +49,7 @@ class FirebaseAuthManager extends AuthManager
         AnonymousSignInManager,
         AppleSignInManager,
         GoogleSignInManager,
+        GithubSignInManager,
         JwtSignInManager,
         PhoneSignInManager {
   // Set when using phone verification (after phone number is provided).
@@ -76,6 +78,30 @@ class FirebaseAuthManager extends AuthManager
           SnackBar(
               content: Text(
                   'Too long since most recent sign in. Sign in again before deleting your account.')),
+        );
+      }
+    }
+  }
+
+  @override
+  Future updateEmail({
+    required String email,
+    required BuildContext context,
+  }) async {
+    try {
+      if (!loggedIn) {
+        print('Error: update email attempted with no logged in user!');
+        return;
+      }
+      await currentUser?.updateEmail(email);
+      await updateUserDocument(email: email);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'requires-recent-login') {
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+              content: Text(
+                  'Too long since most recent sign in. Sign in again before updating your email.')),
         );
       }
     }
@@ -139,8 +165,14 @@ class FirebaseAuthManager extends AuthManager
       _signInOrCreateAccount(context, googleSignInFunc, 'GOOGLE');
 
   @override
+  Future<BaseAuthUser?> signInWithGithub(BuildContext context) =>
+      _signInOrCreateAccount(context, githubSignInFunc, 'GITHUB');
+
+  @override
   Future<BaseAuthUser?> signInWithJwtToken(
-          BuildContext context, String jwtToken) =>
+    BuildContext context,
+    String jwtToken,
+  ) =>
       _signInOrCreateAccount(context, () => jwtTokenSignIn(jwtToken), 'JWT');
 
   void handlePhoneAuthStateChanges(BuildContext context) {
@@ -184,7 +216,8 @@ class FirebaseAuthManager extends AuthManager
     // * Finally modify verificationCompleted below as instructed.
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: phoneNumber,
-      timeout: Duration(seconds: 5),
+      timeout:
+          Duration(seconds: 0), // Skips Android's default auto-verification
       verificationCompleted: (phoneAuthCredential) async {
         await FirebaseAuth.instance.signInWithCredential(phoneAuthCredential);
         phoneAuthManager.update(() {
@@ -258,7 +291,7 @@ class FirebaseAuthManager extends AuthManager
       }
       return userCredential == null
           ? null
-          : LivingLabMapsFirebaseUser.fromUserCredential(userCredential);
+          : LivinglabMapsFirebaseUser.fromUserCredential(userCredential);
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(

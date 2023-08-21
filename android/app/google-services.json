@@ -1,45 +1,37 @@
 {
   "project_info": {
-    "project_number": "332318742979",
-    "project_id": "dowell-maps",
-    "storage_bucket": "dowell-maps.appspot.com"
+    "project_number": "15839972586",
+    "project_id": "livinglabmaps-98809",
+    "storage_bucket": "livinglabmaps-98809.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:332318742979:android:71f9f086cba938c584c576",
+        "mobilesdk_app_id": "1:15839972586:android:d730443e742f8e35139b93",
         "android_client_info": {
           "package_name": "com.dowell.dowellmaps"
         }
       },
       "oauth_client": [
         {
-          "client_id": "332318742979-ouclgpc2oli2ps8l9cdi9cdo8tc25dvd.apps.googleusercontent.com",
+          "client_id": "15839972586-6id93inbletkluctek97j8ddpo8svtg3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.dowell.dowellmaps",
             "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
           }
-        },
-        {
-          "client_id": "332318742979-3rh332ki3cu8e44f7t8cceia7pdkvumu.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC_oMIdGvpBALKg6W6TPgpwVLb-viGwonY"
+          "current_key": "AIzaSyA_i4bbFV0iKxU_nUI7L3p0--r6UR89du4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "332318742979-3rh332ki3cu8e44f7t8cceia7pdkvumu.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "332318742979-rerbee4ua4a08cuc0f1fif4d1ianq2me.apps.googleusercontent.com",
+              "client_id": "15839972586-v96qfgfr97lq6avgsbeg00oi4l9ulmq2.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.dowell.dowellmaps"

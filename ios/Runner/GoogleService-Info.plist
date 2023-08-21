@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>332318742979-rerbee4ua4a08cuc0f1fif4d1ianq2me.apps.googleusercontent.com</string>
+	<string>15839972586-v96qfgfr97lq6avgsbeg00oi4l9ulmq2.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.332318742979-rerbee4ua4a08cuc0f1fif4d1ianq2me</string>
+	<string>com.googleusercontent.apps.15839972586-v96qfgfr97lq6avgsbeg00oi4l9ulmq2</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>332318742979-ouclgpc2oli2ps8l9cdi9cdo8tc25dvd.apps.googleusercontent.com</string>
+	<string>15839972586-6id93inbletkluctek97j8ddpo8svtg3.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCliE7u-orVPQ0ySFKc-K2DfOIPXlbcIBc</string>
+	<string>AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk</string>
 	<key>GCM_SENDER_ID</key>
-	<string>332318742979</string>
+	<string>15839972586</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.dowell.dowellmaps</string>
 	<key>PROJECT_ID</key>
-	<string>dowell-maps</string>
+	<string>livinglabmaps-98809</string>
 	<key>STORAGE_BUCKET</key>
-	<string>dowell-maps.appspot.com</string>
+	<string>livinglabmaps-98809.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:332318742979:ios:ed2b418cae01664d84c576</string>
+	<string>1:15839972586:ios:607f6e0d7bb9f8c7139b93</string>
 </dict>
 </plist>

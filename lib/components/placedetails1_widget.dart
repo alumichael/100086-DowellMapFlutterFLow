@@ -35,6 +35,7 @@ class _Placedetails1WidgetState extends State<Placedetails1Widget> {
     _model.textController3 ??= TextEditingController();
     _model.textController4 ??= TextEditingController();
     _model.textController5 ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -53,8 +54,8 @@ class _Placedetails1WidgetState extends State<Placedetails1Widget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Container(
-            width: MediaQuery.of(context).size.width * 1.0,
-            height: MediaQuery.of(context).size.height * 1.0,
+            width: MediaQuery.sizeOf(context).width * 1.0,
+            height: MediaQuery.sizeOf(context).height * 1.0,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
             ),
@@ -63,8 +64,8 @@ class _Placedetails1WidgetState extends State<Placedetails1Widget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Container(
-                    width: MediaQuery.of(context).size.width * 1.0,
-                    height: MediaQuery.of(context).size.height * 2.0,
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    height: MediaQuery.sizeOf(context).height * 2.0,
                     child: Stack(
                       children: [
                         Align(
@@ -82,7 +83,7 @@ class _Placedetails1WidgetState extends State<Placedetails1Widget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 10.0, 0.0),
                             child: Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
+                              width: MediaQuery.sizeOf(context).width * 0.9,
                               child: TextFormField(
                                 controller: _model.textController1,
                                 autofocus: true,
@@ -151,8 +152,8 @@ class _Placedetails1WidgetState extends State<Placedetails1Widget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 10.0, 0.0),
                             child: Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height: MediaQuery.of(context).size.height * 0.07,
+                              width: MediaQuery.sizeOf(context).width * 0.9,
+                              height: MediaQuery.sizeOf(context).height * 0.07,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -220,15 +221,6 @@ class _Placedetails1WidgetState extends State<Placedetails1Widget> {
                                           () => _model.dropDownValue = val),
                                       width: 180.0,
                                       height: 50.0,
-                                      searchHintTextStyle:
-                                          FlutterFlowTheme.of(context)
-                                              .bodyLarge
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                              ),
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -238,10 +230,6 @@ class _Placedetails1WidgetState extends State<Placedetails1Widget> {
                                       hintText:
                                           FFLocalizations.of(context).getText(
                                         '3qaayyfz' /* select categories */,
-                                      ),
-                                      searchHintText:
-                                          FFLocalizations.of(context).getText(
-                                        'pkscu0g2' /* Search for an item... */,
                                       ),
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -253,6 +241,7 @@ class _Placedetails1WidgetState extends State<Placedetails1Widget> {
                                           12.0, 4.0, 12.0, 4.0),
                                       hidesUnderline: true,
                                       isSearchable: false,
+                                      isMultiSelect: false,
                                     ),
                                   ),
                                 ],
@@ -266,7 +255,7 @@ class _Placedetails1WidgetState extends State<Placedetails1Widget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 10.0, 0.0),
                             child: Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
+                              width: MediaQuery.sizeOf(context).width * 0.9,
                               child: TextFormField(
                                 controller: _model.textController2,
                                 autofocus: true,
@@ -334,7 +323,7 @@ class _Placedetails1WidgetState extends State<Placedetails1Widget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 5.0, 10.0, 0.0),
                             child: Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
+                              width: MediaQuery.sizeOf(context).width * 0.9,
                               child: TextFormField(
                                 controller: _model.textController3,
                                 autofocus: true,
@@ -411,7 +400,7 @@ class _Placedetails1WidgetState extends State<Placedetails1Widget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 5.0, 10.0, 0.0),
                             child: Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
+                              width: MediaQuery.sizeOf(context).width * 0.9,
                               child: TextFormField(
                                 controller: _model.textController4,
                                 autofocus: true,
@@ -489,7 +478,7 @@ class _Placedetails1WidgetState extends State<Placedetails1Widget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 5.0, 10.0, 0.0),
                             child: Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
+                              width: MediaQuery.sizeOf(context).width * 0.9,
                               child: TextFormField(
                                 controller: _model.textController5,
                                 autofocus: true,

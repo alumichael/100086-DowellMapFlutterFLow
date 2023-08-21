@@ -27,7 +27,6 @@ class _MapsWidgetState extends State<MapsWidget> {
   late MapsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -38,13 +37,14 @@ class _MapsWidgetState extends State<MapsWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.ip = await actions.getIpAddress();
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -66,19 +66,24 @@ class _MapsWidgetState extends State<MapsWidget> {
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 50.0,
-              height: 50.0,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primary,
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            body: Center(
+              child: SizedBox(
+                width: 50.0,
+                height: 50.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).primary,
+                  ),
+                ),
               ),
             ),
           );
         }
         final mapsLinkBageLoginResponse = snapshot.data!;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
             resizeToAvoidBottomInset: false,
@@ -104,7 +109,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                       action: SnackBarAction(
                         label: 'Add',
                         onPressed: () async {
-                          context.pushNamed('placedetails');
+                          context.pushNamed('placedetailsCopy');
                         },
                       ),
                     ),
@@ -117,8 +122,8 @@ class _MapsWidgetState extends State<MapsWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Container(
-                          width: MediaQuery.of(context).size.width * 10.0,
-                          height: MediaQuery.of(context).size.height * 1.0,
+                          width: MediaQuery.sizeOf(context).width * 10.0,
+                          height: MediaQuery.sizeOf(context).height * 1.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -171,7 +176,8 @@ class _MapsWidgetState extends State<MapsWidget> {
                                         action: SnackBarAction(
                                           label: 'Add Place to map',
                                           onPressed: () async {
-                                            context.pushNamed('placedetails');
+                                            context
+                                                .pushNamed('placedetailsCopy');
                                           },
                                         ),
                                       ),
@@ -179,8 +185,8 @@ class _MapsWidgetState extends State<MapsWidget> {
                                   },
                                   child: Container(
                                     width:
-                                        MediaQuery.of(context).size.width * 1.0,
-                                    height: MediaQuery.of(context).size.height *
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    height: MediaQuery.sizeOf(context).height *
                                         0.07,
                                     decoration: BoxDecoration(
                                       color: Color(0xFF015534),
@@ -209,8 +215,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     40.0, 0.0, 0.0, 0.0),
                                             child: FlutterFlowLanguageSelector(
-                                              width: MediaQuery.of(context)
-                                                      .size
+                                              width: MediaQuery.sizeOf(context)
                                                       .width *
                                                   0.4,
                                               borderColor:
@@ -249,11 +254,11 @@ class _MapsWidgetState extends State<MapsWidget> {
                                   alignment: AlignmentDirectional(0.0, 0.41),
                                   child: FlutterFlowPlacePicker(
                                     iOSGoogleMapsApiKey:
-                                        'AIzaSyCliE7u-orVPQ0ySFKc-K2DfOIPXlbcIBc',
+                                        'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk',
                                     androidGoogleMapsApiKey:
-                                        'AIzaSyC_oMIdGvpBALKg6W6TPgpwVLb-viGwonY',
+                                        'AIzaSyA_i4bbFV0iKxU_nUI7L3p0--r6UR89du4',
                                     webGoogleMapsApiKey:
-                                        'AIzaSyAxLAc6DqZKXf2lo71F34XaDN0KuhdAiy0',
+                                        'AIzaSyAsH8omDk8y0lSGLTW9YtZiiQ2MkmsF-uQ',
                                     onSelect: (place) async {
                                       setState(() =>
                                           _model.placePickerValue = place);
@@ -290,10 +295,9 @@ class _MapsWidgetState extends State<MapsWidget> {
                               Align(
                                 alignment: AlignmentDirectional(0.0, 0.94),
                                 child: Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 1.0,
-                                  height: MediaQuery.of(context).size.height *
-                                      0.251,
+                                  width: MediaQuery.sizeOf(context).width * 1.0,
+                                  height:
+                                      MediaQuery.sizeOf(context).height * 0.251,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,

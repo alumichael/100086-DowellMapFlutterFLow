@@ -1,2 +1,4 @@
-NSLocationWhenInUseUsageDescription = "Your location helps us to show you the nearby places  aroubd you, and also provide valuable tips.";
+NSLocationWhenInUseUsageDescription = "To get nearby places around you, app needs your permission to access your location.";
 PermissionGroupNotification = "The Notifications help us communicate with you better";
+NSUserNotificationsUsageDescription = "The Notifications help us communicate with you better";
+NSLocationAlwaysAndWhenInUseUsageDescription = "To get nearby places around you, app needs your permission to access your location.";

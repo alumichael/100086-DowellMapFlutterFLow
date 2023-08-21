@@ -13,9 +13,46 @@ import 'dart:core';
 //import "package:latlong/latlong.dart";
 import '../../flutter_flow/custom_functions.dart' as fun;
 import 'dart:math';
+// Set your action name, define your arguments and return parameter,
+// and then add the boilerplate code using the button on the right!
 
-Future<List<String>> newCustomAction3(
-  List<dynamic>? add,
+Future<List<String>> refineplaceid(
+  double radius1,
+  double radius2,
+  List<dynamic> lat,
+  List<dynamic> lng,
+  List<dynamic> PlaceIDS,
+  LatLng center,
+) async {
+  List<LatLng> latlngs = [];
+  for (int i = 0; i < lat.length; i++) {
+    latlngs.add(LatLng(lat[i], lng[i]));
+  }
+
+  List<String> result = [];
+  int i = 0;
+  for (LatLng latlng in latlngs) {
+    double lat1 = latlng.latitude * pi / 180;
+    double lat2 = center.latitude * pi / 180;
+    double lng1 = latlng.longitude * pi / 180;
+    double lng2 = center.longitude * pi / 180;
+    double deltaLat = lat2 - lat1;
+    double deltaLng = lng2 - lng1;
+    double a = sin(deltaLat / 2) * sin(deltaLat / 2) +
+        cos(lat1) * cos(lat2) * sin(deltaLng / 2) * sin(deltaLng / 2);
+    double c = 2 * atan2(sqrt(a), sqrt(1 - a));
+    double distance = 6371 * c;
+    debugPrint(
+        "${lat[i]} ${lng[i]} | ${center.latitude}  ${center.longitude}  {Distance = ${distance} ::: ${radius1 * radius1} :::: ${radius2 * radius2}");
+    if (distance > radius1 / 1000 && distance <= radius2 / 1000) {
+      result.add(PlaceIDS!.elementAt(i));
+    }
+    i++;
+  }
+  debugPrint("${result}");
+  return result;
+}
+/* List<dynamic>? add,
   double radius1,
   LatLng center,
   double radius2,
@@ -47,5 +84,4 @@ Future<List<String>> newCustomAction3(
     i++;
   }
   debugPrint("${result}");
-  return result;
-}
+  return result;*/

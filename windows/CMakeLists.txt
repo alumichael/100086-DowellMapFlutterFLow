@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(living_lab_maps LANGUAGES CXX)
+project(livinglab_maps LANGUAGES CXX)
 
-set(BINARY_NAME "living_lab_maps")
+set(BINARY_NAME "livinglab_maps")
 
 cmake_policy(SET CMP0063 NEW)
 

@@ -13,6 +13,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,7 +33,6 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
   late HomeScreenVersion2Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
   LatLng? currentUserLocationValue;
 
   @override
@@ -42,7 +42,47 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.ipAddress = await IpifyCall.call();
+      if (FFAppState().sessionId != null && FFAppState().sessionId != '') {
+        setState(() {
+          FFAppState().isAuthUser = true;
+        });
+      } else {
+        setState(() {
+          FFAppState().isAuthUser = false;
+        });
+      }
+
+      _model.isLocationEnable = await actions.checkLocationEnabled();
+      if (_model.isLocationEnable != true) {
+        var confirmDialogResponse = await showDialog<bool>(
+              context: context,
+              builder: (alertDialogContext) {
+                return AlertDialog(
+                  title: Text('Location Service'),
+                  content: Text(
+                      'To continue, please turn on  your location using Google  location service.'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext, false),
+                      child: Text('Cancel'),
+                    ),
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext, true),
+                      child: Text('Turn on'),
+                    ),
+                  ],
+                );
+              },
+            ) ??
+            false;
+        await actions.gotoSettings();
+      }
+      _model.myIPAddress = await IpifyCall.call();
+      setState(() {
+        FFAppState().myIpAddress = IpifyCall.deviceIP(
+          (_model.myIPAddress?.jsonBody ?? ''),
+        ).toString().toString();
+      });
     });
 
     getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
@@ -52,13 +92,13 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
     _model.textController3 ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.textController1?.text = FFLocalizations.of(context).getText(
-            '8hfw5a1w' /* 0 */,
+            '43vzrbt9' /* 0 */,
           );
           _model.textController2?.text = FFLocalizations.of(context).getText(
-            'xsl1vxf1' /* 2000 */,
+            '8md5rse0' /* 2000 */,
           );
           _model.textController3?.text = FFLocalizations.of(context).getText(
-            'w0dzstuw' /* school */,
+            '5kaubrwe' /* school */,
           );
         }));
   }
@@ -67,7 +107,6 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -82,7 +121,9 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
             width: 50.0,
             height: 50.0,
             child: CircularProgressIndicator(
-              color: FlutterFlowTheme.of(context).primary,
+              valueColor: AlwaysStoppedAnimation<Color>(
+                FlutterFlowTheme.of(context).primary,
+              ),
             ),
           ),
         ),
@@ -105,24 +146,29 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
           '00:00',
         ),
         connection: 'wifi',
-        ip: '192.168.00.1',
+        ip: FFAppState().myIpAddress,
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 50.0,
-              height: 50.0,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primary,
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            body: Center(
+              child: SizedBox(
+                width: 50.0,
+                height: 50.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).primary,
+                  ),
+                ),
               ),
             ),
           );
         }
         final homeScreenVersion2LinkBageLoginResponse = snapshot.data!;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -134,8 +180,8 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                   Align(
                     alignment: AlignmentDirectional(0.0, -1.0),
                     child: Container(
-                      width: MediaQuery.of(context).size.width * 1.0,
-                      height: MediaQuery.of(context).size.height * 0.07,
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: MediaQuery.sizeOf(context).height * 0.07,
                       decoration: BoxDecoration(
                         color: Color(0xFF015534),
                       ),
@@ -148,7 +194,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                             Expanded(
                               child: Text(
                                 FFLocalizations.of(context).getText(
-                                  'io9irfs3' /* DoWell Maps */,
+                                  'chsdy7fd' /* DoWell Maps */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .displaySmall
@@ -164,8 +210,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     40.0, 0.0, 0.0, 0.0),
                                 child: FlutterFlowLanguageSelector(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.4,
+                                  width: MediaQuery.sizeOf(context).width * 0.4,
                                   borderColor:
                                       FlutterFlowTheme.of(context).white,
                                   dropdownColor: Color(0x00000000),
@@ -193,77 +238,91 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                     ),
                   ),
                   Expanded(
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onDoubleTap: () async {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              'Add Place',
-                              style: TextStyle(
-                                color: FlutterFlowTheme.of(context).primaryText,
-                              ),
-                            ),
-                            duration: Duration(milliseconds: 4000),
-                            backgroundColor:
-                                FlutterFlowTheme.of(context).secondary,
-                            action: SnackBarAction(
-                              label: 'Add Place to map',
-                              onPressed: () async {
-                                context.pushNamed('placedetails');
-                              },
-                            ),
-                          ),
-                        );
-                      },
-                      onLongPress: () async {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              'Add Place',
-                              style: TextStyle(
-                                color: FlutterFlowTheme.of(context).primaryText,
-                              ),
-                            ),
-                            duration: Duration(milliseconds: 4000),
-                            backgroundColor:
-                                FlutterFlowTheme.of(context).secondary,
-                            action: SnackBarAction(
-                              label: 'Add Place to map',
-                              onPressed: () async {
-                                context.pushNamed('placedetails');
-                              },
-                            ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        height: double.infinity,
-                        child: custom_widgets.MapWithPolygonsAndCircles(
+                    child: Stack(
+                      children: [
+                        Container(
                           width: double.infinity,
                           height: double.infinity,
-                          radius1: double.parse(_model.textController1.text),
-                          radius2: double.parse(_model.textController2.text),
-                          query: _model.textController3.text,
-                          iOSGoogleMapsApiKey:
-                              'AIzaSyB7PtpTGrFkqnywzF5HaF8Hv_E1a5rThtc',
-                          androidGoogleMapsApiKey:
-                              'AIzaSyBTawRJ-NAZYEir5H8PsPOCJCtx9AuJf6Q',
-                          webGoogleMapsApiKey:
-                              'AIzaSyD0CJ8u_oqdbNMIRa3y0ygjxXoEIlCHvew',
-                          origin:
-                              FFAppState().currentLocation == 'Current Location'
-                                  ? currentUserLocationValue
-                                  : _model.placePickerValue.latLng,
-                          result: _model.result,
-                          address: _model.addr,
-                          clearmap: FFAppState().clearmap,
+                          child: custom_widgets.MyMapWidget(
+                            width: double.infinity,
+                            height: double.infinity,
+                            radius1: double.parse(_model.textController1.text),
+                            radius2: double.parse(_model.textController2.text),
+                            query: _model.textController3.text,
+                            iOSGoogleMapsApiKey: FFAppState().iosAPIKey,
+                            androidGoogleMapsApiKey: FFAppState().androidKey,
+                            webGoogleMapsApiKey: FFAppState().webMapApiKey,
+                            origin:
+                                _model.radioButtonValue == 'Current Location'
+                                    ? currentUserLocationValue
+                                    : _model.placePickerValue.latLng,
+                            result: _model.googleResult,
+                            address: _model.googlePlaceName,
+                            clearmap: FFAppState().clearmap,
+                            dbResult: _model.dblocationCord,
+                            dbAddress: _model.dbPlacename,
+                            PlaceIds: _model.placeIDs,
+                            navigateTo: () async {
+                              context.pushNamed(
+                                'placedetails',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType:
+                                        PageTransitionType.bottomToTop,
+                                  ),
+                                },
+                              );
+                            },
+                          ),
                         ),
-                      ),
+                        if (FFAppState().isAuthUser == false)
+                          Align(
+                            alignment: AlignmentDirectional(1.03, -0.97),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                context.pushNamed(
+                                  'LoginComponent',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType:
+                                          PageTransitionType.rightToLeft,
+                                    ),
+                                  },
+                                );
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                'vevr35hm' /* Log in */,
+                              ),
+                              options: FFButtonOptions(
+                                height: 49.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: Color(0xB8005734),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                    ),
+                                elevation: 3.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(16.0),
+                                  bottomRight: Radius.circular(0.0),
+                                  topLeft: Radius.circular(16.0),
+                                  topRight: Radius.circular(0.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                   ),
                   Align(
@@ -317,17 +376,17 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           if (FFAppState().currentLocation ==
-                                              'Specified Location')
+                                              'Select Location')
                                             Align(
                                               alignment: AlignmentDirectional(
                                                   0.05, -1.0),
                                               child: FlutterFlowPlacePicker(
                                                 iOSGoogleMapsApiKey:
-                                                    'AIzaSyCliE7u-orVPQ0ySFKc-K2DfOIPXlbcIBc',
+                                                    'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk',
                                                 androidGoogleMapsApiKey:
-                                                    'AIzaSyC_oMIdGvpBALKg6W6TPgpwVLb-viGwonY',
+                                                    'AIzaSyA_i4bbFV0iKxU_nUI7L3p0--r6UR89du4',
                                                 webGoogleMapsApiKey:
-                                                    'AIzaSyAxLAc6DqZKXf2lo71F34XaDN0KuhdAiy0',
+                                                    'AIzaSyAsH8omDk8y0lSGLTW9YtZiiQ2MkmsF-uQ',
                                                 onSelect: (place) async {
                                                   setState(() =>
                                                       _model.placePickerValue =
@@ -336,7 +395,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                 defaultText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'rvtbj3b1' /* Select Location */,
+                                                  'ftuuk568' /* Search Location */,
                                                 ),
                                                 icon: Icon(
                                                   Icons.place,
@@ -385,17 +444,17 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          'qo71u3i4' /* Current  Location */,
+                                                          '3m4cjybt' /* Current Location */,
                                                         ),
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          'h2m12tpi' /* Select  Location */,
+                                                          'uwez65ii' /* Select Location */,
                                                         )
                                                       ].toList(),
                                                       onChanged: (val) async {
                                                         setState(() {});
-                                                        FFAppState().update(() {
+                                                        setState(() {
                                                           FFAppState()
                                                                   .currentLocation =
                                                               _model
@@ -405,7 +464,12 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                       controller: _model
                                                               .radioButtonValueController ??=
                                                           FormFieldController<
-                                                              String>(null),
+                                                                  String>(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                        'nafsnd4d' /* Current Location */,
+                                                      )),
                                                       optionHeight: 24.0,
                                                       textStyle:
                                                           FlutterFlowTheme.of(
@@ -458,7 +522,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        '6o4t534y' /* Distance Between */,
+                                                        'xqq2741e' /* Distance Between */,
                                                       ),
                                                       textAlign:
                                                           TextAlign.start,
@@ -492,7 +556,6 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                           child: TextFormField(
                                                             controller: _model
                                                                 .textController1,
-                                                            autofocus: true,
                                                             obscureText: false,
                                                             decoration:
                                                                 InputDecoration(
@@ -500,7 +563,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                                   FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                'hp70dxua' /* From Distance */,
+                                                                'glhs1dmh' /* From Distance */,
                                                               ),
                                                               hintStyle:
                                                                   FlutterFlowTheme.of(
@@ -598,7 +661,6 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                           child: TextFormField(
                                                             controller: _model
                                                                 .textController2,
-                                                            autofocus: true,
                                                             obscureText: false,
                                                             decoration:
                                                                 InputDecoration(
@@ -606,7 +668,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                                   FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                'r0p0qepe' /* To Distance */,
+                                                                'xi26lxat' /* To Distance */,
                                                               ),
                                                               hintStyle:
                                                                   FlutterFlowTheme.of(
@@ -711,12 +773,12 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                         fillColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primary,
+                                                                .warning,
                                                         icon: Icon(
                                                           Icons.refresh,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .white,
+                                                              .primary,
                                                           size: 20.0,
                                                         ),
                                                         showLoadingIndicator:
@@ -727,6 +789,33 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                                     .clearmap =
                                                                 true;
                                                           });
+                                                          if (FFAppState()
+                                                                  .clearmap ==
+                                                              true) {
+                                                            setState(() {
+                                                              _model.textController1
+                                                                      ?.text =
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                '43vzrbt9' /* 0 */,
+                                                              );
+                                                              _model.textController2
+                                                                      ?.text =
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                '8md5rse0' /* 2000 */,
+                                                              );
+                                                              _model.textController3
+                                                                      ?.text =
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                '5kaubrwe' /* school */,
+                                                              );
+                                                            });
+                                                          }
                                                         },
                                                       ),
                                                     ),
@@ -745,7 +834,16 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                           child: TextFormField(
                                                             controller: _model
                                                                 .textController3,
-                                                            autofocus: true,
+                                                            onChanged: (_) =>
+                                                                EasyDebounce
+                                                                    .debounce(
+                                                              '_model.textController3',
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      2000),
+                                                              () => setState(
+                                                                  () {}),
+                                                            ),
                                                             obscureText: false,
                                                             decoration:
                                                                 InputDecoration(
@@ -753,7 +851,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                                   FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                'q1wze4a2' /* Search  eg School, Park */,
+                                                                'pinl7bvf' /* Search  e.g School, Park */,
                                                               ),
                                                               hintStyle:
                                                                   FlutterFlowTheme.of(
@@ -814,6 +912,30 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                                         .circular(
                                                                             8.0),
                                                               ),
+                                                              suffixIcon: _model
+                                                                      .textController3!
+                                                                      .text
+                                                                      .isNotEmpty
+                                                                  ? InkWell(
+                                                                      onTap:
+                                                                          () async {
+                                                                        _model
+                                                                            .textController3
+                                                                            ?.clear();
+                                                                        setState(
+                                                                            () {});
+                                                                      },
+                                                                      child:
+                                                                          Icon(
+                                                                        Icons
+                                                                            .clear,
+                                                                        color: Color(
+                                                                            0xFF757575),
+                                                                        size:
+                                                                            22.0,
+                                                                      ),
+                                                                    )
+                                                                  : null,
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -833,362 +955,413 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                         ),
                                                       ),
                                                     ),
-                                                    FlutterFlowIconButton(
-                                                      borderColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .lineColor,
-                                                      borderRadius: 5.0,
-                                                      borderWidth: 1.0,
-                                                      buttonSize: 46.0,
-                                                      fillColor:
-                                                          Color(0xFF015534),
-                                                      icon: Icon(
-                                                        Icons.search_rounded,
-                                                        color:
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  4.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child:
+                                                          FlutterFlowIconButton(
+                                                        borderColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryBtnText,
-                                                        size: 20.0,
-                                                      ),
-                                                      showLoadingIndicator:
-                                                          true,
-                                                      onPressed: () async {
-                                                        currentUserLocationValue =
-                                                            await getCurrentUserLocation(
-                                                                defaultLocation:
-                                                                    LatLng(0.0,
-                                                                        0.0));
-                                                        var _shouldSetState =
-                                                            false;
-                                                        setState(() {
-                                                          FFAppState()
-                                                              .clearmap = false;
-                                                        });
-                                                        _model.nearbyPlaceResponse =
-                                                            await NearbyPlaceCall
-                                                                .call(
-                                                          query: _model
-                                                              .textController3
-                                                              .text,
-                                                          location: functions.latlngToString(FFAppState()
-                                                                      .currentLocation ==
-                                                                  'Current Location'
-                                                              ? currentUserLocationValue!
-                                                              : _model
-                                                                  .placePickerValue
-                                                                  .latLng),
-                                                          radius: int.tryParse(
-                                                              _model
-                                                                  .textController2
-                                                                  .text),
-                                                        );
-                                                        _shouldSetState = true;
-                                                        if ((_model
-                                                                .nearbyPlaceResponse
-                                                                ?.succeeded ??
-                                                            true)) {
-                                                          _model.result =
-                                                              await actions
-                                                                  .newCustomAction(
-                                                            getJsonField(
-                                                              (_model.nearbyPlaceResponse
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                              r'''$.results[:].geometry.location.lat''',
-                                                            )!,
-                                                            getJsonField(
-                                                              (_model.nearbyPlaceResponse
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                              r'''$.results[:].geometry.location.lng''',
-                                                            )!,
-                                                            double.parse(_model
-                                                                .textController1
-                                                                .text),
-                                                            double.parse(_model
-                                                                .textController2
-                                                                .text),
-                                                            FFAppState().currentLocation ==
-                                                                    'Current Location'
-                                                                ? currentUserLocationValue!
-                                                                : _model
-                                                                    .placePickerValue
-                                                                    .latLng,
-                                                          );
-                                                          _shouldSetState =
-                                                              true;
-                                                          if (_model.result
-                                                                  ?.length ==
-                                                              0) {
-                                                            ScaffoldMessenger
-                                                                    .of(context)
-                                                                .showSnackBar(
-                                                              SnackBar(
-                                                                content: Text(
-                                                                  'Search not found',
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                  ),
-                                                                ),
-                                                                duration: Duration(
-                                                                    milliseconds:
-                                                                        4000),
-                                                                backgroundColor:
-                                                                    Color(
-                                                                        0x00000000),
-                                                              ),
-                                                            );
-                                                          }
-                                                          _model.addr =
-                                                              await actions
-                                                                  .newCustomAction3(
-                                                            getJsonField(
-                                                              (_model.nearbyPlaceResponse
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                              r'''$.results[:].name''',
-                                                            ),
-                                                            double.parse(_model
-                                                                .textController1
-                                                                .text),
-                                                            FFAppState().currentLocation ==
-                                                                    'Current Location'
-                                                                ? currentUserLocationValue!
-                                                                : _model
-                                                                    .placePickerValue
-                                                                    .latLng,
-                                                            double.parse(_model
-                                                                .textController2
-                                                                .text),
-                                                            getJsonField(
-                                                              (_model.nearbyPlaceResponse
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                              r'''$.results[:].geometry.location.lat''',
-                                                            )!,
-                                                            getJsonField(
-                                                              (_model.nearbyPlaceResponse
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                              r'''$.results[:].geometry.location.lng''',
-                                                            )!,
-                                                          );
-                                                          _shouldSetState =
-                                                              true;
-                                                          _model.evenntID =
-                                                              await CreateEventCall
+                                                                .lineColor,
+                                                        borderRadius: 5.0,
+                                                        borderWidth: 1.0,
+                                                        buttonSize: 46.0,
+                                                        fillColor:
+                                                            Color(0xFF015534),
+                                                        icon: Icon(
+                                                          Icons.search_rounded,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBtnText,
+                                                          size: 20.0,
+                                                        ),
+                                                        showLoadingIndicator:
+                                                            true,
+                                                        onPressed: () async {
+                                                          currentUserLocationValue =
+                                                              await getCurrentUserLocation(
+                                                                  defaultLocation:
+                                                                      LatLng(
+                                                                          0.0,
+                                                                          0.0));
+                                                          setState(() {
+                                                            FFAppState()
+                                                                    .clearmap =
+                                                                false;
+                                                          });
+                                                          await actions
+                                                              .hideSoftKeyboard();
+                                                          _model.nearbyPlaceResponse =
+                                                              await NearbyPlaceCall
                                                                   .call(
-                                                            ipAddress:
-                                                                getJsonField(
-                                                              (_model.ipAddress
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                              r'''$.ip''',
-                                                            ).toString(),
-                                                            loginId:
-                                                                LinkBageLoginCall
-                                                                    .sessionID(
-                                                              homeScreenVersion2LinkBageLoginResponse
-                                                                  .jsonBody,
-                                                            ).toString(),
-                                                            sessionId:
-                                                                LinkBageLoginCall
-                                                                    .sessionID(
-                                                              homeScreenVersion2LinkBageLoginResponse
-                                                                  .jsonBody,
-                                                            ).toString(),
-                                                          );
-                                                          _shouldSetState =
-                                                              true;
-                                                          if (!(_model.evenntID
-                                                                  ?.succeeded ??
-                                                              true)) {
-                                                            ScaffoldMessenger
-                                                                    .of(context)
-                                                                .showSnackBar(
-                                                              SnackBar(
-                                                                content: Text(
-                                                                  'An eerror has occured',
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                  ),
-                                                                ),
-                                                                duration: Duration(
-                                                                    milliseconds:
-                                                                        4000),
-                                                                backgroundColor:
-                                                                    Color(
-                                                                        0x00000000),
-                                                              ),
-                                                            );
-                                                          }
-                                                          _model.doWellMap =
-                                                              await NearbyPlacesDataCall
-                                                                  .call(
-                                                            startLocation: FFAppState()
-                                                                        .currentLocation ==
-                                                                    'Current Location'
-                                                                ? currentUserLocationValue
-                                                                    ?.toString()
-                                                                : functions
-                                                                    .latlngToString(_model
-                                                                        .placePickerValue
-                                                                        .latLng),
-                                                            queryText: _model
+                                                            query: _model
                                                                 .textController3
                                                                 .text,
-                                                            radiusDistanceFrom:
-                                                                _model
-                                                                    .textController1
-                                                                    .text,
-                                                            radiusDistanceTo: _model
-                                                                .textController2
-                                                                .text,
-                                                            startAddress: _model
-                                                                .placePickerValue
-                                                                .address,
-                                                            eventId:
-                                                                CreateEventCall
-                                                                    .eventID(
-                                                              (_model.evenntID
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            ).toString(),
-                                                            isError: false,
-                                                            error: 'None',
-                                                            dateTimeDone:
-                                                                dateTimeFormat(
-                                                              'yMMMd',
-                                                              getCurrentTimestamp,
-                                                              locale: FFLocalizations
-                                                                      .of(context)
-                                                                  .languageCode,
-                                                            ),
-                                                            responseJson:
-                                                                functions.jsondata(
-                                                                    _model.addr
-                                                                        ?.toList(),
-                                                                    _model
-                                                                        .result
-                                                                        ?.toList()),
+                                                            location: functions.latlngToString(FFAppState()
+                                                                        .currentLocation ==
+                                                                    'Current Location'
+                                                                ? currentUserLocationValue!
+                                                                : _model
+                                                                    .placePickerValue
+                                                                    .latLng),
+                                                            radius: int
+                                                                .tryParse(_model
+                                                                    .textController2
+                                                                    .text),
+                                                            key: () {
+                                                              if (isAndroid) {
+                                                                return FFAppState()
+                                                                    .androidKey;
+                                                              } else if (isiOS) {
+                                                                return FFAppState()
+                                                                    .iosAPIKey;
+                                                              } else {
+                                                                return FFAppState()
+                                                                    .webMapApiKey;
+                                                              }
+                                                            }(),
                                                           );
-                                                          _shouldSetState =
-                                                              true;
-                                                          if (!(_model.doWellMap
+                                                          if ((_model
+                                                                  .nearbyPlaceResponse
                                                                   ?.succeeded ??
                                                               true)) {
+                                                            if (functions
+                                                                    .convertToList(
+                                                                        NearbyPlaceCall
+                                                                            .data(
+                                                                      (_model.nearbyPlaceResponse
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                    )?.toList())
+                                                                    ?.length !=
+                                                                0) {
+                                                              _model.googleResult =
+                                                                  await actions
+                                                                      .refineGoogleResult(
+                                                                getJsonField(
+                                                                  (_model.nearbyPlaceResponse
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.results[:].geometry.location.lat''',
+                                                                )!,
+                                                                getJsonField(
+                                                                  (_model.nearbyPlaceResponse
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.results[:].geometry.location.lng''',
+                                                                )!,
+                                                                double.parse(_model
+                                                                    .textController1
+                                                                    .text),
+                                                                double.parse(_model
+                                                                    .textController2
+                                                                    .text),
+                                                                FFAppState().currentLocation ==
+                                                                        'Current Location'
+                                                                    ? currentUserLocationValue!
+                                                                    : _model
+                                                                        .placePickerValue
+                                                                        .latLng,
+                                                              );
+                                                              _model.placeIDs =
+                                                                  await actions
+                                                                      .refineplaceid(
+                                                                double.parse(_model
+                                                                    .textController1
+                                                                    .text),
+                                                                double.parse(_model
+                                                                    .textController2
+                                                                    .text),
+                                                                getJsonField(
+                                                                  (_model.nearbyPlaceResponse
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.results[:].geometry.location.lat''',
+                                                                )!,
+                                                                getJsonField(
+                                                                  (_model.nearbyPlaceResponse
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.results[:].geometry.location.lng''',
+                                                                )!,
+                                                                getJsonField(
+                                                                  (_model.nearbyPlaceResponse
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.results[:].place_id''',
+                                                                )!,
+                                                                FFAppState().currentLocation ==
+                                                                        'Current Location'
+                                                                    ? currentUserLocationValue!
+                                                                    : _model
+                                                                        .placePickerValue
+                                                                        .latLng,
+                                                              );
+                                                              _model.googlePlaceName =
+                                                                  await actions
+                                                                      .getGooglePlaceName(
+                                                                getJsonField(
+                                                                  (_model.nearbyPlaceResponse
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.results[:].name''',
+                                                                ),
+                                                                double.parse(_model
+                                                                    .textController1
+                                                                    .text),
+                                                                FFAppState().currentLocation ==
+                                                                        'Current Location'
+                                                                    ? currentUserLocationValue!
+                                                                    : _model
+                                                                        .placePickerValue
+                                                                        .latLng,
+                                                                double.parse(_model
+                                                                    .textController2
+                                                                    .text),
+                                                                getJsonField(
+                                                                  (_model.nearbyPlaceResponse
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.results[:].geometry.location.lat''',
+                                                                )!,
+                                                                getJsonField(
+                                                                  (_model.nearbyPlaceResponse
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.results[:].geometry.location.lng''',
+                                                                )!,
+                                                              );
+                                                              _model.evenntID =
+                                                                  await CreateEventCall
+                                                                      .call(
+                                                                ipAddress:
+                                                                    FFAppState()
+                                                                        .myIpAddress,
+                                                                loginId:
+                                                                    FFAppState()
+                                                                        .sessionId,
+                                                                sessionId:
+                                                                    FFAppState()
+                                                                        .sessionId,
+                                                              );
+                                                              if ((_model
+                                                                      .evenntID
+                                                                      ?.succeeded ??
+                                                                  true)) {
+                                                                _model.currentAddress =
+                                                                    await actions
+                                                                        .getAddressFromLatLng(
+                                                                  FFAppState().currentLocation ==
+                                                                          'Current Location'
+                                                                      ? currentUserLocationValue!
+                                                                      : _model
+                                                                          .placePickerValue
+                                                                          .latLng,
+                                                                );
+                                                                _model.logResponse =
+                                                                    await SendLogDataCall
+                                                                        .call(
+                                                                  mongoID:
+                                                                      random_data
+                                                                          .randomString(
+                                                                    1,
+                                                                    10,
+                                                                    true,
+                                                                    false,
+                                                                    false,
+                                                                  ),
+                                                                  reqID: random_data
+                                                                      .randomString(
+                                                                    1,
+                                                                    10,
+                                                                    true,
+                                                                    false,
+                                                                    false,
+                                                                  ),
+                                                                  reqType:
+                                                                      'nearby_place',
+                                                                  eventId:
+                                                                      CreateEventCall
+                                                                          .eventID(
+                                                                    (_model.evenntID
+                                                                            ?.jsonBody ??
+                                                                        ''),
+                                                                  ).toString(),
+                                                                  dataTimeDone:
+                                                                      dateTimeFormat(
+                                                                    'yMMMd',
+                                                                    getCurrentTimestamp,
+                                                                    locale: FFLocalizations.of(
+                                                                            context)
+                                                                        .languageCode,
+                                                                  ),
+                                                                  userName: random_data
+                                                                      .randomName(
+                                                                          true,
+                                                                          false),
+                                                                  sessionId:
+                                                                      FFAppState()
+                                                                          .sessionId,
+                                                                  locationDone:
+                                                                      functions.latlngToString(_model
+                                                                          .placePickerValue
+                                                                          .latLng),
+                                                                );
+                                                              } else {
+                                                                ScaffoldMessenger.of(
+                                                                        context)
+                                                                    .showSnackBar(
+                                                                  SnackBar(
+                                                                    content:
+                                                                        Text(
+                                                                      'Search event failed!',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryBackground,
+                                                                      ),
+                                                                    ),
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            4000),
+                                                                    backgroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                  ),
+                                                                );
+                                                              }
+                                                            } else {
+                                                              ScaffoldMessenger
+                                                                      .of(context)
+                                                                  .showSnackBar(
+                                                                SnackBar(
+                                                                  content: Text(
+                                                                    'No  category of place search',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryBackground,
+                                                                    ),
+                                                                  ),
+                                                                  duration: Duration(
+                                                                      milliseconds:
+                                                                          4000),
+                                                                  backgroundColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                ),
+                                                              );
+                                                            }
+                                                          } else {
                                                             ScaffoldMessenger
                                                                     .of(context)
                                                                 .showSnackBar(
                                                               SnackBar(
                                                                 content: Text(
-                                                                  'An Error occured',
+                                                                  'Search failed!',
                                                                   style:
                                                                       TextStyle(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primaryText,
+                                                                        .primaryBackground,
                                                                   ),
                                                                 ),
                                                                 duration: Duration(
                                                                     milliseconds:
                                                                         4000),
                                                                 backgroundColor:
-                                                                    Color(
-                                                                        0x00000000),
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                               ),
                                                             );
                                                           }
-                                                          _model.logResponse =
-                                                              await SendLogDataCall
-                                                                  .call(
-                                                            mongoID:
-                                                                NearbyPlacesDataCall
-                                                                    .insertID(
-                                                              (_model.doWellMap
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            ).toString(),
-                                                            reqID:
-                                                                NearbyPlacesDataCall
-                                                                    .insertID(
-                                                              (_model.doWellMap
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            ).toString(),
-                                                            reqType:
-                                                                'nearby_places',
-                                                            eventId:
-                                                                CreateEventCall
-                                                                    .eventID(
-                                                              (_model.evenntID
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            ).toString(),
-                                                            dataTimeDone:
-                                                                dateTimeFormat(
-                                                              'yMMMd',
-                                                              getCurrentTimestamp,
-                                                              locale: FFLocalizations
-                                                                      .of(context)
-                                                                  .languageCode,
-                                                            ),
-                                                            userName:
-                                                                random_data
-                                                                    .randomName(
-                                                                        true,
-                                                                        false),
-                                                            sessionId:
-                                                                LinkBageLoginCall
-                                                                    .sessionID(
-                                                              homeScreenVersion2LinkBageLoginResponse
-                                                                  .jsonBody,
-                                                            ).toString(),
-                                                            locationDone: functions
-                                                                .latlngToString(
-                                                                    _model
-                                                                        .placePickerValue
-                                                                        .latLng),
-                                                          );
-                                                          _shouldSetState =
-                                                              true;
-                                                          if (_shouldSetState)
-                                                            setState(() {});
-                                                          return;
-                                                        } else {
-                                                          ScaffoldMessenger.of(
-                                                                  context)
-                                                              .showSnackBar(
-                                                            SnackBar(
-                                                              content: Text(
-                                                                'Nearby place search failed!',
-                                                                style:
-                                                                    TextStyle(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                                ),
-                                                              ),
-                                                              duration: Duration(
-                                                                  milliseconds:
-                                                                      4000),
-                                                              backgroundColor:
-                                                                  Color(
-                                                                      0x00000000),
-                                                            ),
-                                                          );
-                                                        }
 
-                                                        if (_shouldSetState)
+                                                          _model.mymapBackendRefinedResult =
+                                                              await GetMymapCall
+                                                                  .call(
+                                                            radius1: double
+                                                                .tryParse(_model
+                                                                    .textController1
+                                                                    .text),
+                                                            radius2: double
+                                                                .tryParse(_model
+                                                                    .textController2
+                                                                    .text),
+                                                            query: _model
+                                                                .textController3
+                                                                .text,
+                                                            centerLat: functions.getlan(FFAppState()
+                                                                        .currentLocation ==
+                                                                    'Current Location'
+                                                                ? currentUserLocationValue!
+                                                                : _model
+                                                                    .placePickerValue
+                                                                    .latLng),
+                                                            centerLon: functions.getlon(FFAppState()
+                                                                        .currentLocation ==
+                                                                    'Current Location'
+                                                                ? currentUserLocationValue!
+                                                                : _model
+                                                                    .placePickerValue
+                                                                    .latLng),
+                                                            dataType:
+                                                                'registered',
+                                                            apiKey: FFAppState()
+                                                                .dowellKey,
+                                                          );
+                                                          if ((_model
+                                                                  .mymapBackendRefinedResult
+                                                                  ?.succeeded ??
+                                                              true)) {
+                                                            if (functions
+                                                                    .convertToList(
+                                                                        GetMymapCall
+                                                                            .refinedData(
+                                                                      (_model.mymapBackendRefinedResult
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                    )?.toList())
+                                                                    ?.length !=
+                                                                0) {
+                                                              _model.dblocationCord =
+                                                                  await actions
+                                                                      .getLocatCordFromString(
+                                                                (getJsonField(
+                                                                  (_model.mymapBackendRefinedResult
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.data[:].location_coord''',
+                                                                ) as List)
+                                                                    .map<String>(
+                                                                        (s) => s
+                                                                            .toString())
+                                                                    .toList(),
+                                                              );
+                                                              _model.dbPlacename =
+                                                                  await actions
+                                                                      .getDbPlaceName(
+                                                                getJsonField(
+                                                                  (_model.mymapBackendRefinedResult
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.data[:].place_name''',
+                                                                ),
+                                                              );
+                                                            }
+                                                          }
+
                                                           setState(() {});
-                                                      },
+                                                        },
+                                                      ),
                                                     ),
                                                   ],
                                                 ),

@@ -13,6 +13,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,8 +26,11 @@ class HomeScreenVersion2Model extends FlutterFlowModel {
 
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
+  // Stores action output result for [Custom Action - checkLocationEnabled] action in HomeScreenVersion2 widget.
+  bool? isLocationEnable;
   // Stores action output result for [Backend Call - API (ipify)] action in HomeScreenVersion2 widget.
-  ApiCallResponse? ipAddress;
+  ApiCallResponse? myIPAddress;
   // State field(s) for PlacePicker widget.
   var placePickerValue = FFPlace();
   // State field(s) for RadioButton widget.
@@ -42,26 +46,37 @@ class HomeScreenVersion2Model extends FlutterFlowModel {
   String? Function(BuildContext, String?)? textController3Validator;
   // Stores action output result for [Backend Call - API (NearbyPlace)] action in IconButton widget.
   ApiCallResponse? nearbyPlaceResponse;
-  // Stores action output result for [Custom Action - newCustomAction] action in IconButton widget.
-  List<LatLng>? result;
-  // Stores action output result for [Custom Action - newCustomAction3] action in IconButton widget.
-  List<String>? addr;
+  // Stores action output result for [Custom Action - refineGoogleResult] action in IconButton widget.
+  List<LatLng>? googleResult;
+  // Stores action output result for [Custom Action - refineplaceid] action in IconButton widget.
+  List<String>? placeIDs;
+  // Stores action output result for [Custom Action - getGooglePlaceName] action in IconButton widget.
+  List<String>? googlePlaceName;
   // Stores action output result for [Backend Call - API (Create Event)] action in IconButton widget.
   ApiCallResponse? evenntID;
-  // Stores action output result for [Backend Call - API (Nearby Places Data)] action in IconButton widget.
-  ApiCallResponse? doWellMap;
+  // Stores action output result for [Custom Action - getAddressFromLatLng] action in IconButton widget.
+  String? currentAddress;
   // Stores action output result for [Backend Call - API (Send Log Data)] action in IconButton widget.
   ApiCallResponse? logResponse;
+  // Stores action output result for [Backend Call - API (GetMymap)] action in IconButton widget.
+  ApiCallResponse? mymapBackendRefinedResult;
+  // Stores action output result for [Custom Action - getLocatCordFromString] action in IconButton widget.
+  List<LatLng>? dblocationCord;
+  // Stores action output result for [Custom Action - getDbPlaceName] action in IconButton widget.
+  List<String>? dbPlacename;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
   void dispose() {
+    unfocusNode.dispose();
     textController1?.dispose();
     textController2?.dispose();
     textController3?.dispose();
   }
+
+  /// Action blocks are added here.
 
   /// Additional helper methods are added here.
 

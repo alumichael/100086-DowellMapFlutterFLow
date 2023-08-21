@@ -25,6 +25,7 @@ class HomeScreenVersion1Model extends FlutterFlowModel {
 
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (ipify)] action in HomeScreenVersion1 widget.
   ApiCallResponse? ipAddress;
   // State field(s) for PlacePicker widget.
@@ -42,9 +43,9 @@ class HomeScreenVersion1Model extends FlutterFlowModel {
   String? Function(BuildContext, String?)? textController3Validator;
   // Stores action output result for [Backend Call - API (NearbyPlace)] action in IconButton widget.
   ApiCallResponse? nearbyPlaceResponse;
-  // Stores action output result for [Custom Action - newCustomAction] action in IconButton widget.
+  // Stores action output result for [Custom Action - refineGoogleResult] action in IconButton widget.
   List<LatLng>? result;
-  // Stores action output result for [Custom Action - newCustomAction3] action in IconButton widget.
+  // Stores action output result for [Custom Action - getGooglePlaceName] action in IconButton widget.
   List<String>? addr;
   // Stores action output result for [Backend Call - API (Create Event)] action in IconButton widget.
   ApiCallResponse? evenntID;
@@ -58,10 +59,13 @@ class HomeScreenVersion1Model extends FlutterFlowModel {
   void initState(BuildContext context) {}
 
   void dispose() {
+    unfocusNode.dispose();
     textController1?.dispose();
     textController2?.dispose();
     textController3?.dispose();
   }
+
+  /// Action blocks are added here.
 
   /// Additional helper methods are added here.
 

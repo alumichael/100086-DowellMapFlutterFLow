@@ -18,7 +18,6 @@ class _LoginComponentWidgetState extends State<LoginComponentWidget> {
   late LoginComponentModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
   LatLng? currentUserLocationValue;
 
   @override
@@ -28,13 +27,13 @@ class _LoginComponentWidgetState extends State<LoginComponentWidget> {
 
     getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -49,7 +48,9 @@ class _LoginComponentWidgetState extends State<LoginComponentWidget> {
             width: 50.0,
             height: 50.0,
             child: CircularProgressIndicator(
-              color: FlutterFlowTheme.of(context).primary,
+              valueColor: AlwaysStoppedAnimation<Color>(
+                FlutterFlowTheme.of(context).primary,
+              ),
             ),
           ),
         ),
@@ -57,24 +58,35 @@ class _LoginComponentWidgetState extends State<LoginComponentWidget> {
     }
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         body: SafeArea(
           top: true,
           child: Container(
-            width: MediaQuery.of(context).size.width * 1.0,
-            height: MediaQuery.of(context).size.height * 1.0,
+            width: MediaQuery.sizeOf(context).width * 1.0,
+            height: MediaQuery.sizeOf(context).height * 1.0,
             child: custom_widgets.LoginForm(
-              width: MediaQuery.of(context).size.width * 1.0,
-              height: MediaQuery.of(context).size.height * 1.0,
+              width: MediaQuery.sizeOf(context).width * 1.0,
+              height: MediaQuery.sizeOf(context).height * 1.0,
               location: currentUserLocationValue?.toString(),
               os: isAndroid ? 'Android' : 'Ios',
               createAJsonVariableInAppStateNamedResponse:
                   'this will have response from login',
               navigateTo: () async {
-                context.pushNamed('HomeScreenVersion1');
+                context.pushNamed(
+                  'HomeScreenVersion2',
+                  extra: <String, dynamic>{
+                    kTransitionInfoKey: TransitionInfo(
+                      hasTransition: true,
+                      transitionType: PageTransitionType.leftToRight,
+                    ),
+                  },
+                );
+              },
+              signUp: () async {
+                context.pushNamed('Signup');
               },
             ),
           ),

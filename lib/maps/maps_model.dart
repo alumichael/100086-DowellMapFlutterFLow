@@ -17,6 +17,7 @@ import 'package:provider/provider.dart';
 class MapsModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // Stores action output result for [Custom Action - getIpAddress] action in maps widget.
   String? ip;
   // State field(s) for GoogleMap widget.
@@ -34,9 +35,11 @@ class MapsModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    unfocusNode.dispose();
     searchboxCopyModel.dispose();
   }
 
-  /// Additional helper methods are added here.
+  /// Action blocks are added here.
 
+  /// Additional helper methods are added here.
 }

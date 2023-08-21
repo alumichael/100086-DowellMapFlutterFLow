@@ -1,9 +1,12 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -21,24 +24,53 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
   late OnboardingPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
-  int get pageViewCurrentIndex => _model.pageViewController != null &&
-          _model.pageViewController!.hasClients &&
-          _model.pageViewController!.page != null
-      ? _model.pageViewController!.page!.round()
-      : 0;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => OnboardingPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.isLocationEnable = await actions.checkLocationEnabled();
+      if (_model.isLocationEnable != true) {
+        var confirmDialogResponse = await showDialog<bool>(
+              context: context,
+              builder: (alertDialogContext) {
+                return AlertDialog(
+                  title: Text('Location Service'),
+                  content: Text(
+                      'To continue, please turn on  your location using Google  location service.'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext, false),
+                      child: Text('Cancel'),
+                    ),
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext, true),
+                      child: Text('Turn on'),
+                    ),
+                  ],
+                );
+              },
+            ) ??
+            false;
+        await actions.gotoSettings();
+      }
+      _model.myIPAddress = await IpifyCall.call();
+      FFAppState().myIpAddress = getJsonField(
+        (_model.myIPAddress?.jsonBody ?? ''),
+        r'''$.ip''',
+      ).toString().toString();
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -47,7 +79,7 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
@@ -359,7 +391,7 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                     });
 
                     context.goNamed(
-                      'HomeScreenVersion1',
+                      'HomeScreenVersion2',
                       extra: <String, dynamic>{
                         kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,

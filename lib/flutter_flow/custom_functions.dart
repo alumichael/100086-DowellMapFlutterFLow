@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'lat_lng.dart';
 import 'place.dart';
+import 'uploaded_file.dart';
 import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '/auth/firebase_auth/auth_util.dart';
@@ -49,4 +50,32 @@ dynamic jsondata(
     data.add(map);
   }
   return json.encode(data);
+}
+
+double getlan(LatLng latlng) {
+  double lat = latlng.latitude;
+  return lat!;
+}
+
+double getlon(LatLng latlng) {
+  double lng = latlng.longitude;
+  //String lat = latlng.latitude as String;
+  //String lng = latlng.longitude as String;
+  return lng!;
+}
+
+List<dynamic>? convertToList(List<dynamic>? data) {
+  return data;
+}
+
+List<String>? refineCategoryList(
+  List<String>? categoryList,
+  String? categoryAdded,
+) {
+  if (!categoryList!.contains(categoryAdded)) {
+    categoryList.add(categoryAdded!);
+    //FFAppState().categoriesState.add(categoryAdded!);
+  }
+
+  return categoryList;
 }

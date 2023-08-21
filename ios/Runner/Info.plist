@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>LivingLabMaps</string>
+	<string>LivinglabMaps</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>LivingLabMaps</string>
+	<string>LivinglabMaps</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleLocalizations</key>
@@ -35,7 +35,7 @@
             <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>com.googleusercontent.apps.332318742979-rerbee4ua4a08cuc0f1fif4d1ianq2me</string>
+                <string>com.googleusercontent.apps.15839972586-v96qfgfr97lq6avgsbeg00oi4l9ulmq2</string>
                 
             </array>
         </dict>
@@ -61,9 +61,15 @@
 	<true/>
 
 	<key>NSLocationWhenInUseUsageDescription</key>
-    <string>Your location helps us to show you the nearby places  aroubd you, and also provide valuable tips</string>
+    <string>To get nearby places around you, app needs your permission to access your location.</string>
 	<key>PermissionGroupNotification</key>
     <string>The Notifications help us communicate with you better</string>
+	<key>NSUserNotificationsUsageDescription</key>
+    <string>The Notifications help us communicate with you better</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>To get nearby places around you, app needs your permission to access your location.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>To get nearby places around you, app needs your permission to access your location.</string>
     <key>UIBackgroundModes</key>
     <array>
         <string>fetch</string>
