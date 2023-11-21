@@ -15,6 +15,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'livinglabs_map_component_model.dart';
@@ -48,8 +49,14 @@ class _LivinglabsMapComponentWidgetState
     getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
     _model.textController1 ??= TextEditingController();
+    _model.textFieldFocusNode1 ??= FocusNode();
+
     _model.textController2 ??= TextEditingController();
+    _model.textFieldFocusNode2 ??= FocusNode();
+
     _model.textController3 ??= TextEditingController();
+    _model.textFieldFocusNode3 ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.textController1?.text = FFLocalizations.of(context).getText(
             '2hg7pv7u' /* 0 */,
@@ -94,7 +101,7 @@ class _LivinglabsMapComponentWidgetState
       mainAxisSize: MainAxisSize.max,
       children: [
         Align(
-          alignment: AlignmentDirectional(0.0, -1.0),
+          alignment: AlignmentDirectional(0.00, -1.00),
           child: Container(
             width: MediaQuery.sizeOf(context).width * 1.0,
             height: MediaQuery.sizeOf(context).height * 0.07,
@@ -183,6 +190,8 @@ class _LivinglabsMapComponentWidgetState
                       },
                     );
                   },
+                  deleteAction: () async {},
+                  updateAction: () async {},
                 ),
               ),
               if (FFAppState().isAuthUser == false)
@@ -233,18 +242,18 @@ class _LivinglabsMapComponentWidgetState
           ),
         ),
         Align(
-          alignment: AlignmentDirectional(0.0, 0.0),
+          alignment: AlignmentDirectional(0.00, 0.00),
           child: Container(
             width: double.infinity,
             decoration: BoxDecoration(),
             child: Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
+              alignment: AlignmentDirectional(0.00, 0.00),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.00, 0.00),
                     child: Material(
                       color: Colors.transparent,
                       elevation: 16.0,
@@ -277,14 +286,15 @@ class _LivinglabsMapComponentWidgetState
                             shape: BoxShape.rectangle,
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(-0.15, 0.0),
+                            alignment: AlignmentDirectional(-0.15, 0.00),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 if (FFAppState().currentLocation ==
                                     'Select Location')
                                   Align(
-                                    alignment: AlignmentDirectional(0.05, -1.0),
+                                    alignment:
+                                        AlignmentDirectional(0.05, -1.00),
                                     child: FlutterFlowPlacePicker(
                                       iOSGoogleMapsApiKey:
                                           'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk',
@@ -420,6 +430,8 @@ class _LivinglabsMapComponentWidgetState
                                                 child: TextFormField(
                                                   controller:
                                                       _model.textController1,
+                                                  focusNode: _model
+                                                      .textFieldFocusNode1,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     hintText:
@@ -509,6 +521,8 @@ class _LivinglabsMapComponentWidgetState
                                                 child: TextFormField(
                                                   controller:
                                                       _model.textController2,
+                                                  focusNode: _model
+                                                      .textFieldFocusNode2,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     hintText:
@@ -655,6 +669,8 @@ class _LivinglabsMapComponentWidgetState
                                                 child: TextFormField(
                                                   controller:
                                                       _model.textController3,
+                                                  focusNode: _model
+                                                      .textFieldFocusNode3,
                                                   onChanged: (_) =>
                                                       EasyDebounce.debounce(
                                                     '_model.textController3',
@@ -820,7 +836,7 @@ class _LivinglabsMapComponentWidgetState
                                                         ?.succeeded ??
                                                     true)) {
                                                   if (functions
-                                                          .convertToList(
+                                                          .groupLocsConverter(
                                                               NearbyPlaceCall
                                                                   .data(
                                                             (_model.nearbyPlaceResponse
@@ -837,12 +853,14 @@ class _LivinglabsMapComponentWidgetState
                                                                 ?.jsonBody ??
                                                             ''),
                                                         r'''$.results[:].geometry.location.lat''',
+                                                        true,
                                                       )!,
                                                       getJsonField(
                                                         (_model.nearbyPlaceResponse
                                                                 ?.jsonBody ??
                                                             ''),
                                                         r'''$.results[:].geometry.location.lng''',
+                                                        true,
                                                       )!,
                                                       double.parse(_model
                                                           .textController1
@@ -871,18 +889,21 @@ class _LivinglabsMapComponentWidgetState
                                                                 ?.jsonBody ??
                                                             ''),
                                                         r'''$.results[:].geometry.location.lat''',
+                                                        true,
                                                       )!,
                                                       getJsonField(
                                                         (_model.nearbyPlaceResponse
                                                                 ?.jsonBody ??
                                                             ''),
                                                         r'''$.results[:].geometry.location.lng''',
+                                                        true,
                                                       )!,
                                                       getJsonField(
                                                         (_model.nearbyPlaceResponse
                                                                 ?.jsonBody ??
                                                             ''),
                                                         r'''$.results[:].place_id''',
+                                                        true,
                                                       )!,
                                                       FFAppState().currentLocation ==
                                                               'Current Location'
@@ -899,6 +920,7 @@ class _LivinglabsMapComponentWidgetState
                                                                 ?.jsonBody ??
                                                             ''),
                                                         r'''$.results[:].name''',
+                                                        true,
                                                       ),
                                                       double.parse(_model
                                                           .textController1
@@ -917,12 +939,14 @@ class _LivinglabsMapComponentWidgetState
                                                                 ?.jsonBody ??
                                                             ''),
                                                         r'''$.results[:].geometry.location.lat''',
+                                                        true,
                                                       )!,
                                                       getJsonField(
                                                         (_model.nearbyPlaceResponse
                                                                 ?.jsonBody ??
                                                             ''),
                                                         r'''$.results[:].geometry.location.lng''',
+                                                        true,
                                                       )!,
                                                     );
                                                     _model.evenntID =
@@ -1092,7 +1116,7 @@ class _LivinglabsMapComponentWidgetState
                                                         ?.succeeded ??
                                                     true)) {
                                                   if (functions
-                                                          .convertToList(
+                                                          .groupLocsConverter(
                                                               GetMymapCall
                                                                   .refinedData(
                                                             (_model.mymapBackendRefinedResult
@@ -1109,6 +1133,7 @@ class _LivinglabsMapComponentWidgetState
                                                                 ?.jsonBody ??
                                                             ''),
                                                         r'''$.data[:].location_coord''',
+                                                        true,
                                                       ) as List)
                                                           .map<String>((s) =>
                                                               s.toString())
@@ -1122,6 +1147,7 @@ class _LivinglabsMapComponentWidgetState
                                                                 ?.jsonBody ??
                                                             ''),
                                                         r'''$.data[:].place_name''',
+                                                        true,
                                                       ),
                                                     );
                                                   } else {

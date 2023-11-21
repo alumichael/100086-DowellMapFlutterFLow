@@ -7,9 +7,11 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'onboarding_page_model.dart';
 export 'onboarding_page_model.dart';
 
@@ -37,7 +39,8 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
         var confirmDialogResponse = await showDialog<bool>(
               context: context,
               builder: (alertDialogContext) {
-                return AlertDialog(
+                return WebViewAware(
+                    child: AlertDialog(
                   title: Text('Location Service'),
                   content: Text(
                       'To continue, please turn on  your location using Google  location service.'),
@@ -51,7 +54,7 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                       child: Text('Turn on'),
                     ),
                   ],
-                );
+                ));
               },
             ) ??
             false;
@@ -76,10 +79,21 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
@@ -308,7 +322,7 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 1.0),
+                        alignment: AlignmentDirectional(0.00, 1.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 10.0),

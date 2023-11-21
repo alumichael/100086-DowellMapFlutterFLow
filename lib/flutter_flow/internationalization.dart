@@ -128,81 +128,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Domicile',
     },
   },
-  // HomeScreenVersion1
-  {
-    'o0fh54ty': {
-      'en': 'DoWell Maps',
-      'de': 'DoWell Maps',
-      'es': 'DoWell Maps',
-      'fr': 'DoWell Maps',
-    },
-    '53diz7lu': {
-      'en': 'Select Location',
-      'de': 'Ort auswählen',
-      'es': 'Seleccionar ubicación',
-      'fr': 'Sélectionnez l\'emplacement',
-    },
-    'pal0e3p8': {
-      'en': 'Current  Location',
-      'de': 'Aktueller Standort',
-      'es': 'Ubicación actual',
-      'fr': 'Localisation actuelle',
-    },
-    'xqute3hf': {
-      'en': 'Select  Location',
-      'de': 'Angegebener Ort',
-      'es': 'Ubicación especificada',
-      'fr': 'Emplacement spécifié',
-    },
-    'k9zleaja': {
-      'en': 'Distance Between(m)',
-      'de': 'Abstand zwischen',
-      'es': 'Distancia entre',
-      'fr': 'Distance entre',
-    },
-    '7b5qp2fr': {
-      'en': 'From Distance',
-      'de': 'Aus der Ferne',
-      'es': 'Desde la distancia',
-      'fr': 'À distance',
-    },
-    '7l37sekx': {
-      'en': '0',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '1s42a42a': {
-      'en': 'To Distance',
-      'de': 'Sich distanzieren',
-      'es': 'a la distancia',
-      'fr': 'À distance',
-    },
-    '4kjdjttk': {
-      'en': '0',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'vpp9tzbc': {
-      'en': 'Search  eg School, Park',
-      'de': 'Stadt suchen',
-      'es': 'Buscar ciudad',
-      'fr': 'Rechercher une ville',
-    },
-    '5x34ca9g': {
-      'en': 'school',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '6ijffmvv': {
-      'en': 'Home',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-  },
   // placedetailsCopy
   {
     'qp1ib2nn': {
@@ -284,87 +209,75 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
-  // HomeScreenVersion2
+  // HomeScreenVersion1
   {
-    'chsdy7fd': {
+    'o0fh54ty': {
       'en': 'DoWell Maps',
       'de': 'DoWell Maps',
       'es': 'DoWell Maps',
       'fr': 'DoWell Maps',
     },
-    'vevr35hm': {
-      'en': 'Log in',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'ftuuk568': {
-      'en': 'Search Location',
+    '53diz7lu': {
+      'en': 'Select Location',
       'de': 'Ort auswählen',
       'es': 'Seleccionar ubicación',
       'fr': 'Sélectionnez l\'emplacement',
     },
-    'nafsnd4d': {
-      'en': 'Current Location',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '3m4cjybt': {
-      'en': 'Current Location',
+    'pal0e3p8': {
+      'en': 'Current  Location',
       'de': 'Aktueller Standort',
       'es': 'Ubicación actual',
       'fr': 'Localisation actuelle',
     },
-    'uwez65ii': {
-      'en': 'Select Location',
+    'xqute3hf': {
+      'en': 'Select  Location',
       'de': 'Angegebener Ort',
       'es': 'Ubicación especificada',
       'fr': 'Emplacement spécifié',
     },
-    'xqq2741e': {
-      'en': 'Distance Between',
+    'k9zleaja': {
+      'en': 'Distance Between(m)',
       'de': 'Abstand zwischen',
       'es': 'Distancia entre',
       'fr': 'Distance entre',
     },
-    'glhs1dmh': {
+    '7b5qp2fr': {
       'en': 'From Distance',
       'de': 'Aus der Ferne',
       'es': 'Desde la distancia',
       'fr': 'À distance',
     },
-    '43vzrbt9': {
+    '7l37sekx': {
       'en': '0',
       'de': '',
       'es': '',
       'fr': '',
     },
-    'xi26lxat': {
+    '1s42a42a': {
       'en': 'To Distance',
       'de': 'Sich distanzieren',
       'es': 'a la distancia',
       'fr': 'À distance',
     },
-    '8md5rse0': {
-      'en': '2000',
+    '4kjdjttk': {
+      'en': '0',
       'de': '',
       'es': '',
       'fr': '',
     },
-    'pinl7bvf': {
-      'en': 'Search  e.g School, Park',
+    'vpp9tzbc': {
+      'en': 'Search  eg School, Park',
       'de': 'Stadt suchen',
       'es': 'Buscar ciudad',
       'fr': 'Rechercher une ville',
     },
-    '5kaubrwe': {
+    '5x34ca9g': {
       'en': 'school',
       'de': '',
       'es': '',
       'fr': '',
     },
-    'g9icpwdl': {
+    '6ijffmvv': {
       'en': 'Home',
       'de': '',
       'es': '',
@@ -448,74 +361,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // placedetails
   {
-    '5ix35poa': {
-      'en': 'Place Name (required)',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'mbc63peh': {
-      'en': 'Food & Drinks',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '0x69k2wb': {
-      'en': 'Shopping',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'r0y8lmhr': {
-      'en': 'Services',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'b1fxreby': {
-      'en': 'Hotels & Lodging',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '1vpld1px': {
-      'en': 'Outdoors & Recreation',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'o5xx0jeu': {
-      'en': 'Religion',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '2dn9jee4': {
-      'en': 'Office  & Industrial',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'nh2lu4jo': {
-      'en': 'Residental',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '0llw9qth': {
-      'en': 'Education',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'wdvtvyr3': {
-      'en': 'category (required)',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '9y1w2afu': {
-      'en': 'Search for an item...',
+    'sn9393cn': {
+      'en': 'Add a place',
       'de': '',
       'es': '',
       'fr': '',
@@ -550,20 +397,104 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '',
       'fr': '',
     },
-    'ppuuvdjy': {
+    'fsk6pt0q': {
+      'en': '',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '5i3suqhv': {
+      'en': 'Place Name (required)',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'na94g8mj': {
       'en': 'Located within',
       'de': '',
       'es': '',
       'fr': '',
     },
-    'fsk6pt0q': {
+    'm8kq14vr': {
       'en': 'Website (Optional)',
       'de': '',
       'es': '',
       'fr': '',
     },
-    'sn9393cn': {
-      'en': 'Add a place',
+    '6rlsog4l': {
+      'en': 'Select Collection',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '4w7w4xge': {
+      'en': 'Search for an item...',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '3zhr2f5s': {
+      'en': 'Food & Drinks',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '8letu1bb': {
+      'en': 'Shopping',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'xci4hq21': {
+      'en': 'Services',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'dkrg1boa': {
+      'en': 'Hotels & Lodging',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'me2oyhk6': {
+      'en': 'Outdoors & Recreation',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '8xo5vqar': {
+      'en': 'Religion',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '73gowqqv': {
+      'en': 'Office  & Industrial',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '6dkx9s37': {
+      'en': 'Residental',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'yqudu3xl': {
+      'en': 'Education',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '52hwnuws': {
+      'en': 'category (required)',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'rcnzbemm': {
+      'en': 'Search for an item...',
       'de': '',
       'es': '',
       'fr': '',
@@ -587,6 +518,726 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // appbartester
   {
     'icvec9c1': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // HomeScreenVersion2Copy
+  {
+    'xux1qyiz': {
+      'en': 'DoWell Maps',
+      'de': 'DoWell Maps',
+      'es': 'DoWell Maps',
+      'fr': 'DoWell Maps',
+    },
+    '46vnb5wv': {
+      'en': 'Log in',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'f6g5z04w': {
+      'en': 'Search Location',
+      'de': 'Ort auswählen',
+      'es': 'Seleccionar ubicación',
+      'fr': 'Sélectionnez l\'emplacement',
+    },
+    '8k1nkrkp': {
+      'en': 'Current Location',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'tmezntb8': {
+      'en': 'Current Location',
+      'de': 'Aktueller Standort',
+      'es': 'Ubicación actual',
+      'fr': 'Localisation actuelle',
+    },
+    'q7jbzx15': {
+      'en': 'Select Location',
+      'de': 'Angegebener Ort',
+      'es': 'Ubicación especificada',
+      'fr': 'Emplacement spécifié',
+    },
+    'qs58vf6e': {
+      'en': 'Distance Between',
+      'de': 'Abstand zwischen',
+      'es': 'Distancia entre',
+      'fr': 'Distance entre',
+    },
+    'njxsjz8o': {
+      'en': 'From Distance',
+      'de': 'Aus der Ferne',
+      'es': 'Desde la distancia',
+      'fr': 'À distance',
+    },
+    '0533qs5s': {
+      'en': '0',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '17yzinbh': {
+      'en': 'To Distance',
+      'de': 'Sich distanzieren',
+      'es': 'a la distancia',
+      'fr': 'À distance',
+    },
+    'z2mgwp4s': {
+      'en': '2000',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'e3srnczy': {
+      'en': 'Search  e.g School, Park',
+      'de': 'Stadt suchen',
+      'es': 'Buscar ciudad',
+      'fr': 'Rechercher une ville',
+    },
+    'hnwf52n5': {
+      'en': 'school',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'oz3uvlrl': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // SelectOrg
+  {
+    'wqoufdot': {
+      'en': 'Option 1',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '70qesb8w': {
+      'en': 'Please select Profile',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '575uccuh': {
+      'en': 'Search for an item...',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'gwbhdjnu': {
+      'en': 'Button',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'o9tsu1yg': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // NewHomePageCopy
+  {
+    'ii28kcab': {
+      'en': 'View Profile',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '55x27oln': {
+      'en': 'English',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'zsif69p2': {
+      'en': 'French',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '77ojrjcn': {
+      'en': 'Dutch',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'u9knlb9c': {
+      'en': 'Spanish',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'rldtkxxv': {
+      'en': 'Please select...',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '6vimewet': {
+      'en': 'Search for an item...',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '902hfkre': {
+      'en': 'Settings',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'wsnexbn8': {
+      'en': 'Support',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '1d3r81ju': {
+      'en': 'About',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'gs51qqcv': {
+      'en': 'You are not Logged in',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'dgiqyfi5': {
+      'en': 'Click here to Log in',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'tfewvq5c': {
+      'en': 'Logout',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '5umnblxq': {
+      'en': 'Login',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '9b9bwebh': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // HomeScreenVersion2
+  {
+    'chsdy7fd': {
+      'en': 'DoWell Maps',
+      'de': 'DoWell Maps',
+      'es': 'DoWell Maps',
+      'fr': 'DoWell Maps',
+    },
+    'vevr35hm': {
+      'en': 'Log in',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '0a0dhqsr': {
+      'en': 'Log out',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'ftuuk568': {
+      'en': 'Search Location',
+      'de': 'Ort auswählen',
+      'es': 'Seleccionar ubicación',
+      'fr': 'Sélectionnez l\'emplacement',
+    },
+    'nafsnd4d': {
+      'en': 'Current Location',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '3m4cjybt': {
+      'en': 'Current Location',
+      'de': 'Aktueller Standort',
+      'es': 'Ubicación actual',
+      'fr': 'Localisation actuelle',
+    },
+    'uwez65ii': {
+      'en': 'Select Location',
+      'de': 'Angegebener Ort',
+      'es': 'Ubicación especificada',
+      'fr': 'Emplacement spécifié',
+    },
+    'xqq2741e': {
+      'en': 'Distance Between',
+      'de': 'Abstand zwischen',
+      'es': 'Distancia entre',
+      'fr': 'Distance entre',
+    },
+    'glhs1dmh': {
+      'en': 'From Distance',
+      'de': 'Aus der Ferne',
+      'es': 'Desde la distancia',
+      'fr': 'À distance',
+    },
+    '43vzrbt9': {
+      'en': '0',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'xi26lxat': {
+      'en': 'To Distance',
+      'de': 'Sich distanzieren',
+      'es': 'a la distancia',
+      'fr': 'À distance',
+    },
+    '8md5rse0': {
+      'en': '2000',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'pinl7bvf': {
+      'en': 'Search  e.g School, Park',
+      'de': 'Stadt suchen',
+      'es': 'Buscar ciudad',
+      'fr': 'Rechercher une ville',
+    },
+    '5kaubrwe': {
+      'en': 'school',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'bqtxna94': {
+      'en': 'Payment Status : ',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '5otvpbn4': {
+      'en': 'Balance Credit : ',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'g9icpwdl': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // NewHomePage
+  {
+    'odsts4lf': {
+      'en': 'View Profile',
+      'de': 'Profil anzeigen',
+      'es': 'Ver perfil',
+      'fr': 'Voir le profil',
+    },
+    'tos25ie5': {
+      'en': 'Add Group',
+      'de': 'Verbindung hinzufügen',
+      'es': 'Agregar conexión',
+      'fr': 'Ajouter une connexion',
+    },
+    's7bromby': {
+      'en': 'Settings',
+      'de': 'Einstellungen',
+      'es': 'Ajustes',
+      'fr': 'Paramètres',
+    },
+    'xhy66cy5': {
+      'en': 'Support',
+      'de': 'Unterstützung',
+      'es': 'Apoyo',
+      'fr': 'Soutien',
+    },
+    '97mp010r': {
+      'en': 'About',
+      'de': 'Um',
+      'es': 'Acerca de',
+      'fr': 'À propos',
+    },
+    'r3p5dnq7': {
+      'en': 'You are not Logged in',
+      'de': 'Du bist nicht eingeloggt',
+      'es': 'Usted no se ha identificado',
+      'fr': 'Vous n\'êtes pas connecté',
+    },
+    'obtnbk5o': {
+      'en': 'Click here to Log in',
+      'de': 'Klicken Sie hier, um sich einzuloggen',
+      'es': 'Haga clic aquí para ingresar',
+      'fr': 'Cliquez ici pour vous identifier',
+    },
+    'aizjlehk': {
+      'en': 'Logout',
+      'de': 'Ausloggen',
+      'es': 'Cerrar sesión',
+      'fr': 'Se déconnecter',
+    },
+    'xww5jydn': {
+      'en': 'Login',
+      'de': 'Anmeldung',
+      'es': 'Acceso',
+      'fr': 'Se connecter',
+    },
+    'tkk4nv2b': {
+      'en': 'Group',
+      'de': 'Gruppe',
+      'es': 'Grupo',
+      'fr': 'Groupe',
+    },
+    'fz3xrc4g': {
+      'en': 'Search Location',
+      'de': 'Ort auswählen',
+      'es': 'Seleccionar ubicación',
+      'fr': 'Sélectionnez l\'emplacement',
+    },
+    '44krtudf': {
+      'en': 'Current Location',
+      'de': 'Aktueller Standort',
+      'es': 'Ubicación actual',
+      'fr': 'Localisation actuelle',
+    },
+    's9n78sg8': {
+      'en': 'Current Location',
+      'de': 'Aktueller Standort',
+      'es': 'Ubicación actual',
+      'fr': 'Localisation actuelle',
+    },
+    'hgx4ok5m': {
+      'en': 'Select Location',
+      'de': 'Angegebener Ort',
+      'es': 'Ubicación especificada',
+      'fr': 'Emplacement spécifié',
+    },
+    'jgnwzq85': {
+      'en': 'Distance\nBetween',
+      'de': 'Distanz\nZwischen',
+      'es': 'Distancia\nEntre',
+      'fr': 'Distance\nEntre',
+    },
+    '7i1t896a': {
+      'en': '0',
+      'de': '0',
+      'es': '0',
+      'fr': '0',
+    },
+    '8trror0k': {
+      'en': '0',
+      'de': '0',
+      'es': '0',
+      'fr': '0',
+    },
+    'aphmltz6': {
+      'en': '2000',
+      'de': '2000',
+      'es': '2000',
+      'fr': '2000',
+    },
+    'gtvva87o': {
+      'en': '2000',
+      'de': '2000',
+      'es': '2000',
+      'fr': '2000',
+    },
+    'cvep8u39': {
+      'en': 'M',
+      'de': 'M',
+      'es': 'M',
+      'fr': 'M',
+    },
+    'rp439f9l': {
+      'en': 'Search here',
+      'de': 'Suche hier',
+      'es': 'Busca aquí',
+      'fr': 'Cherche ici',
+    },
+    '680541h4': {
+      'en': 'school',
+      'de': 'Schule',
+      'es': 'escuela',
+      'fr': 'école',
+    },
+    'in74qj5s': {
+      'en': 'Home',
+      'de': 'Heim',
+      'es': 'Hogar',
+      'fr': 'Maison',
+    },
+  },
+  // Userdetails
+  {
+    '0is70yii': {
+      'en': 'Name : ',
+      'de': 'Name',
+      'es': 'Nombre:',
+      'fr': 'Nom',
+    },
+    '5to835l5': {
+      'en': 'Email : ',
+      'de': 'E-mail:',
+      'es': 'Correo electrónico:',
+      'fr': 'E-mail:',
+    },
+    '220y0rtu': {
+      'en': 'Payment Status : ',
+      'de': 'Zahlungsstatus :',
+      'es': 'Estado de pago :',
+      'fr': 'Statut de paiement :',
+    },
+    '47zn190d': {
+      'en': 'Home',
+      'de': 'Heim',
+      'es': 'Hogar',
+      'fr': 'Maison',
+    },
+  },
+  // NewHomePageCopy2
+  {
+    'liu5epeo': {
+      'en': 'View Profile',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'ao5whf88': {
+      'en': 'English',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'fr9ink8j': {
+      'en': 'French',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '4f75p0ev': {
+      'en': 'Dutch',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'tqym2gol': {
+      'en': 'Spanish',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '7af9nh9x': {
+      'en': 'Please select...',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'eezwq3u7': {
+      'en': 'Search for an item...',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'ddzvzx5i': {
+      'en': 'Settings',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '179rcz6y': {
+      'en': 'Support',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'u8v2sigb': {
+      'en': 'About',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    't42ifqgx': {
+      'en': 'You are not Logged in',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '6vi0t0cp': {
+      'en': 'Click here to Log in',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'rm2o6dek': {
+      'en': 'Logout',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'dgn2plob': {
+      'en': 'Login',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'wv622zuz': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // newplacedetails
+  {
+    '842romr0': {
+      'en': 'Add a place',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'mqmmxmre': {
+      'en': 'Schools',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'xd1c8bg1': {
+      'en': 'Select Group',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'hs8fuafm': {
+      'en': 'Search for an item...',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'vvkq2g4j': {
+      'en': 'Place Name (required)',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'qowwl918': {
+      'en': 'Address (required)',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'jorgyc6f': {
+      'en': 'Food & Drinks',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'u91n5u0d': {
+      'en': 'Shopping',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'ue4p956q': {
+      'en': 'Services',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'nldipyq5': {
+      'en': 'Hotels & Lodging',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'uf0lolgk': {
+      'en': 'Outdoors & Recreation',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'hqenvl7o': {
+      'en': 'Religion',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'b3vi54e7': {
+      'en': 'Office  & Industrial',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'xslvxas0': {
+      'en': 'Residental',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'epipcmki': {
+      'en': 'Education',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '1ol1cnqd': {
+      'en': 'category (required)',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'w70sgojl': {
+      'en': 'Search for an item...',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'f62j8lxl': {
+      'en': 'Located within',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'u1z164x4': {
+      'en': 'Hours e.g 10am - 5pm',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'fpz54ec3': {
+      'en': 'Phone Number',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'jcb1s3v9': {
+      'en': 'Country',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '6dlk01wl': {
+      'en': 'Website (Optional)',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'a6ly8b9q': {
       'en': 'Home',
       'de': '',
       'es': '',
@@ -731,135 +1382,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
-  // Placedetails1
-  {
-    'qzza8wra': {
-      'en': 'Add a place',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'c9dpczdm': {
-      'en': 'Place Name (required)',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'i12osgwl': {
-      'en': 'Category (required)',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'n8nnhrav': {
-      'en': 'Food & Drinks',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'aysq1xu3': {
-      'en': 'Shopping',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'edrx4m92': {
-      'en': 'Services',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'xmwr21pw': {
-      'en': 'Hotels & Lodging',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '8czrswr8': {
-      'en': 'Outdoors & Recreation',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'u2htf5pa': {
-      'en': 'Religion',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'hk9wemve': {
-      'en': 'Office  & Industrial',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '33pd74vv': {
-      'en': 'Residental',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '9waxh2qy': {
-      'en': 'Education',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '3qaayyfz': {
-      'en': 'select categories',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'pkscu0g2': {
-      'en': 'Search for an item...',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'hpq2qctr': {
-      'en': 'Address (required)',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'wpb7y9si': {
-      'en': 'Located within',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'herv2o12': {
-      'en': 'Hours',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'fzy62408': {
-      'en': 'Hours',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'izjpoc7i': {
-      'en': 'Contact',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'leshr8jz': {
-      'en': 'Phone Number',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '0vf6s70c': {
-      'en': 'Submit',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-  },
   // addCategoryItem
   {
     'kht4sogw': {
@@ -869,22 +1391,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
-  // addCategoryTextBox
+  // AddGroupDialog
   {
     'wy7twllq': {
-      'en': 'Category',
+      'en': 'Group Name',
       'de': '',
       'es': '',
       'fr': '',
     },
     'w389jou7': {
-      'en': 'Enter category',
+      'en': 'Hint:  Employees, or Junior class',
       'de': '',
       'es': '',
       'fr': '',
     },
     'ant38qi8': {
-      'en': 'Type in the new category yoou will like to add',
+      'en': 'Type in the new group you will like to add',
       'de': '',
       'es': '',
       'fr': '',
@@ -896,7 +1418,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     'n4h0tw7w': {
-      'en': 'Submit',
+      'en': 'Add',
       'de': '',
       'es': '',
       'fr': '',
@@ -978,6 +1500,270 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'p855uqzc': {
       'en': 'school',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // SearchBottomSheet
+  {
+    'afj62t78': {
+      'en': 'Search Location',
+      'de': 'Ort auswählen',
+      'es': 'Seleccionar ubicación',
+      'fr': 'Sélectionnez l\'emplacement',
+    },
+    'gm817yco': {
+      'en': 'Current  Location',
+      'de': 'Aktueller Standort',
+      'es': 'Ubicación actual',
+      'fr': 'Localisation actuelle',
+    },
+    '828ysqx0': {
+      'en': 'Select  Location',
+      'de': 'Angegebener Ort',
+      'es': 'Ubicación especificada',
+      'fr': 'Emplacement spécifié',
+    },
+    'bqyscjaa': {
+      'en': 'Distance\nBetween',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'cx71j7bs': {
+      'en': '0',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'tj4rgf9x': {
+      'en': '2000',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'n3tveenp': {
+      'en': 'M',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'dfefdlvf': {
+      'en': 'Search here',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // ButtomSheet
+  {
+    '5emdajmx': {
+      'en': 'Search Location',
+      'de': 'Ort auswählen',
+      'es': 'Seleccionar ubicación',
+      'fr': 'Sélectionnez l\'emplacement',
+    },
+    '0rdfxr3p': {
+      'en': 'Current  Location',
+      'de': 'Aktueller Standort',
+      'es': 'Ubicación actual',
+      'fr': 'Localisation actuelle',
+    },
+    'qqyi3agc': {
+      'en': 'Select  Location',
+      'de': 'Angegebener Ort',
+      'es': 'Ubicación especificada',
+      'fr': 'Emplacement spécifié',
+    },
+    'idrts9vp': {
+      'en': 'Distance\nBetween',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'zjjjdp8s': {
+      'en': '0',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'q21m3e1v': {
+      'en': '2000',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '0atk3eti': {
+      'en': 'M',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'd9sb4fxc': {
+      'en': 'Search here',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // GroupListDialogComponent
+  {
+    'jnfk1ntq': {
+      'en': 'Groups',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'nleto60u': {
+      'en': 'Schools',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '7wgxe1i5': {
+      'en': 'select collection',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'tbfzlsp7': {
+      'en': 'Search for an item...',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // Placedetails2
+  {
+    'yal01m4s': {
+      'en': 'Add a place',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'vv2x4pun': {
+      'en': 'Schools',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '56mkftya': {
+      'en': 'Select Group',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'nd0ecjko': {
+      'en': 'Search for an item...',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'jbtu6d1v': {
+      'en': 'Place Name (required)',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'b93nrvte': {
+      'en': 'Category (required)',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'pospb49u': {
+      'en': 'Food & Drinks',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    't1v3xc36': {
+      'en': 'Shopping',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'ovqais7g': {
+      'en': 'Services',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'fe9lob1j': {
+      'en': 'Hotels & Lodging',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'e1ga9ov3': {
+      'en': 'Outdoors & Recreation',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'y4vj7wvn': {
+      'en': 'Religion',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '5x5klm4y': {
+      'en': 'Office  & Industrial',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'jqzrewo0': {
+      'en': 'Residental',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '4kj5xzwo': {
+      'en': 'Education',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '2yz21wgr': {
+      'en': 'select categories',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '832coscg': {
+      'en': 'Search for an item...',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'c6je79v1': {
+      'en': 'Address (required)',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'qea3hlyo': {
+      'en': 'Located within',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'xks0ywav': {
+      'en': 'Hours',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'akwmb5e0': {
+      'en': 'Phone Number',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'dv33b8g5': {
+      'en': 'Submit',
       'de': '',
       'es': '',
       'fr': '',

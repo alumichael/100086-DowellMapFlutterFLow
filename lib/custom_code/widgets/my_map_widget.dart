@@ -31,25 +31,30 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 
 class MyMapWidget extends StatefulWidget {
-  const MyMapWidget(
-      {Key? key,
-      this.width,
-      this.height,
-      this.origin,
-      required this.radius1,
-      required this.radius2,
-      this.query,
-      this.result,
-      this.address,
-      required this.clearmap,
-      required this.iOSGoogleMapsApiKey,
-      required this.androidGoogleMapsApiKey,
-      required this.webGoogleMapsApiKey,
-      this.dbResult,
-      this.dbAddress,
-      this.PlaceIds,
-      required this.navigateTo})
-      : super(key: key);
+  const MyMapWidget({
+    Key? key,
+    this.width,
+    this.height,
+    this.origin,
+    required this.radius1,
+    required this.radius2,
+    this.query,
+    this.result,
+    this.groupLocList,
+    this.groupLocAddress,
+    this.googleLocsId,
+    this.address,
+    required this.clearmap,
+    required this.iOSGoogleMapsApiKey,
+    required this.androidGoogleMapsApiKey,
+    required this.webGoogleMapsApiKey,
+    this.dbResult,
+    this.dbAddress,
+    this.PlaceIds,
+    required this.navigateTo,
+    required this.deleteAction,
+    required this.updateAction,
+  }) : super(key: key);
 
   final double? width;
   final double? height;
@@ -58,6 +63,7 @@ class MyMapWidget extends StatefulWidget {
   final double radius2;
   final String? query;
   final List<LatLng>? result;
+  final List<LatLng>? groupLocList;
   final List<String>? address;
   final bool clearmap;
   final String iOSGoogleMapsApiKey;
@@ -65,21 +71,25 @@ class MyMapWidget extends StatefulWidget {
   final String webGoogleMapsApiKey;
   final List<LatLng>? dbResult;
   final List<String>? dbAddress;
+  final List<String>? groupLocAddress;
+  final List<String>? googleLocsId;
   final List<String>? PlaceIds;
   final Future<dynamic> Function() navigateTo;
+  final Future<dynamic> Function() deleteAction;
+  final Future<dynamic> Function() updateAction;
 
   @override
   _MyMapWidget createState() => _MyMapWidget();
 }
 
 class _MyMapWidget extends State<MyMapWidget> {
-  //late var ori;
-  //Completer<GoogleMapController> _controller = Completer();
   GoogleMapController? _controller;
   Position? position;
   late GoogleMapPolyline? googleMapPolyline;
-  final Set<Marker> markers = new Set();
-  final Set<Marker> draggableMarkers = new Set();
+
+  Set<Marker> markers = new Set();
+  Set<Marker> draggableMarkers = new Set();
+
   late var placepicked;
   late var selectedlocatn;
   late BitmapDescriptor pinLocationIcon;
@@ -124,74 +134,117 @@ class _MyMapWidget extends State<MyMapWidget> {
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
+    debugPrint(":::from the marker room:: ${FFAppState().groupList}");
     bool isOriginZero =
         (widget.origin!.latitude == 0 && widget.origin!.longitude == 0);
+
     latlng.LatLng repPosition =
         latlng.LatLng(position?.latitude ?? 0, position?.longitude ?? 0);
 
-    return Container(
-        width: widget.width,
-        height: widget.height,
-        child: GoogleMap(
-          zoomControlsEnabled: false,
-          tiltGesturesEnabled: true,
-          markers: getmarkers(
-                  widget.PlaceIds,
-                  widget.result,
-                  widget.dbResult,
-                  widget.dbAddress,
-                  widget.address,
-                  widget.origin!,
-                  widget.clearmap,
-                  context)
-              .toSet(),
-          //debugPrint(
-          //"..............................THIS Check Point crossed.....................");
-          polylines: Set.from(polyline),
-          initialCameraPosition: CameraPosition(
-              target: getPlacePicker(), bearing: 180.0, tilt: 30.0),
-          circles: Set.from([
-            Circle(
-                circleId: CircleId(generateRandomString(10)),
-                center: isOriginZero
-                    ? repPosition
-                    : latlng.LatLng(
-                        widget.origin!.latitude, widget.origin!.longitude),
-                radius: widget.radius1,
-                strokeWidth: 2,
-                strokeColor: Color.fromARGB(255, 3, 124, 7),
-                fillColor: Colors.transparent),
-            Circle(
-                circleId: CircleId(generateRandomString(10)),
-                center: isOriginZero
-                    ? repPosition
-                    : latlng.LatLng(
-                        widget.origin!.latitude, widget.origin!.longitude),
-                radius: widget.radius2,
-                strokeWidth: 2,
-                strokeColor: Color.fromARGB(255, 3, 124, 7),
-                fillColor: Colors.transparent),
-          ]),
-          myLocationEnabled: true,
-          onMapCreated: (GoogleMapController controller) {
-            setState(() {
-              _controller = controller;
-              googleMapPolyline =
-                  new GoogleMapPolyline(apiKey: googleMapsApiKey);
-              _controller?.animateCamera(
-                CameraUpdate.newCameraPosition(
-                  CameraPosition(
-                    target: latlng.LatLng(
-                        widget.origin!.latitude, widget.origin!.longitude),
-                    zoom: 16,
-                    bearing: 180.0,
-                    tilt: 30.0,
+    debugPrint("------widget redbuilding ::: ----${widget.origin}-");
+
+    return Stack(children: [
+      Container(
+          width: widget.width,
+          height: widget.height,
+          child: GoogleMap(
+            zoomControlsEnabled: false,
+            tiltGesturesEnabled: true,
+            //debugPrint(
+            //"..............................THIS Check Point crossed.....................");
+            polylines: Set.from(polyline),
+            initialCameraPosition: CameraPosition(
+                target: getPlacePicker(), bearing: 180.0, tilt: 30.0),
+            circles: Set.from([
+              Circle(
+                  circleId: CircleId(generateRandomString(10)),
+                  center: isOriginZero
+                      ? repPosition
+                      : latlng.LatLng(
+                          widget.origin!.latitude, widget.origin!.longitude),
+                  radius: widget.radius1,
+                  strokeWidth: 2,
+                  strokeColor: Color.fromARGB(255, 3, 124, 7),
+                  fillColor: Colors.transparent),
+              Circle(
+                  circleId: CircleId(generateRandomString(10)),
+                  center: isOriginZero
+                      ? repPosition
+                      : latlng.LatLng(
+                          widget.origin!.latitude, widget.origin!.longitude),
+                  radius: widget.radius2,
+                  strokeWidth: 2,
+                  strokeColor: Color.fromARGB(255, 3, 124, 7),
+                  fillColor: Colors.transparent),
+            ]),
+            markers: getmarkers(
+                    widget.PlaceIds,
+                    widget.result,
+                    widget.dbResult,
+                    widget.dbAddress,
+                    widget.address,
+                    isOriginZero
+                        ? repPosition
+                        : latlng.LatLng(
+                            widget.origin!.latitude, widget.origin!.longitude),
+                    widget.clearmap,
+                    context,
+                    widget.groupLocList,
+                    widget.groupLocAddress,
+                    widget.googleLocsId)
+                .toSet(),
+            myLocationEnabled: true,
+            onMapCreated: (GoogleMapController controller) {
+              setState(() {
+                _controller = controller;
+                googleMapPolyline =
+                    new GoogleMapPolyline(apiKey: googleMapsApiKey);
+                _controller?.animateCamera(
+                  CameraUpdate.newCameraPosition(
+                    CameraPosition(
+                      target: latlng.LatLng(
+                          widget.origin!.latitude, widget.origin!.longitude),
+                      zoom: 14,
+                      bearing: 180.0,
+                      tilt: 30.0,
+                    ),
                   ),
-                ),
-              );
-            });
-          },
-        ));
+                );
+              });
+            },
+          )),
+      Visibility(
+        visible: !(FFAppState().showBottomSheet),
+        child: Positioned(
+          left: 0,
+          right: 0,
+          bottom: 0,
+          child: GestureDetector(
+              onTap: () {
+                FFAppState().update(() {
+                  FFAppState().showBottomSheet = true;
+                });
+                // setState(() {});
+              },
+              child: Container(
+                height: 45,
+                alignment: Alignment.center,
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15),
+                      topRight: Radius.circular(15),
+                    )),
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Icon(
+                    Icons.keyboard_arrow_up,
+                  ),
+                ]),
+              )),
+        ),
+      )
+    ]);
   }
 
   String getlatlngToString(latlng.LatLng latlng) {
@@ -214,16 +267,12 @@ class _MyMapWidget extends State<MyMapWidget> {
   ///
 
   _getDraggableMarkers(
-      LatLng origin, bool clearmap, BuildContext context) async {
+      latlng.LatLng origin, bool clearmap, BuildContext context) async {
     setState(() async {
       double meters = 800;
       double coef = meters / 111320.0;
-      double originLat = widget.origin!.latitude == 0
-          ? position?.latitude ?? 0
-          : widget.origin!.latitude;
-      double originLong = widget.origin!.longitude == 0
-          ? position?.longitude ?? 0
-          : widget.origin!.longitude;
+      double originLat = origin!.latitude;
+      double originLong = origin!.longitude;
 
       // debugPrint(
       //     ":::: The origin lat and long is :::::: $originLat  :::::: $originLong >>>><<<<");
@@ -257,20 +306,10 @@ class _MyMapWidget extends State<MyMapWidget> {
               },
             );
 
-            Widget FeatureB = SimpleDialogOption(
-              child: const Text('Feature B'),
-              onPressed: () {},
-            );
-
-            Widget FeatureC = SimpleDialogOption(
-              child: const Text('Feature C'),
-              onPressed: () {},
-            );
-
             // set up the SimpleDialog
             SimpleDialog dialog = SimpleDialog(
               title: Text('Location Selected: $selectedlocatn'),
-              children: <Widget>[addToMyMap, FeatureB, FeatureC],
+              children: <Widget>[addToMyMap],
             );
 
             showDialog(
@@ -283,81 +322,304 @@ class _MyMapWidget extends State<MyMapWidget> {
     });
   }
 
+  addGroupLocs(
+      latlng.LatLng origin,
+      bool clearmap,
+      BuildContext context,
+      List<LatLng>? groupLocList,
+      List<String>? groupLocAddress,
+      List<String>? googleLocsId) async {
+    setState(() async {
+      if (groupLocList != null) {
+        debugPrint("$groupLocList.length");
+        debugPrint("This is run groupLoc");
+        CameraPosition nepPos = CameraPosition(
+            target: latlng.LatLng(
+                groupLocList[0].latitude, groupLocList[0].longitude),
+            zoom: 12,
+            bearing: 180.0,
+            tilt: 30.0);
+        _controller?.animateCamera(CameraUpdate.newCameraPosition(nepPos));
+
+        for (var i = 0; i < groupLocList.length; i++) {
+          markers.add(Marker(
+              markerId: MarkerId(googleLocsId!.elementAt(i)),
+              position: latlng.LatLng(groupLocList[i].latitude,
+                  groupLocList[i].longitude), //position of marker
+              infoWindow: InfoWindow(title: groupLocAddress!.elementAt(i)),
+              icon: BitmapDescriptor.defaultMarkerWithHue(
+                  BitmapDescriptor.hueOrange),
+              onTap: () async {
+                // logic for direction api request
+                _computePath(
+                    latlng.LatLng(origin!.latitude, origin!.longitude),
+                    latlng.LatLng(
+                        groupLocList[i].latitude, groupLocList[i].longitude));
+                getGroupPlaceDetails(context, i);
+                // );
+              }));
+        }
+        // ));
+      }
+    });
+  }
+
+  getGroupPlaceDetails(BuildContext context, int index) async {
+    List<dynamic> dataList = FFAppState().groupLocs;
+    if (dataList.isNotEmpty) {
+      dynamic dataBox = dataList[index];
+      if (dataBox != null) {
+        await showModalBottomSheet(
+            context: context,
+            isDismissible: false,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(24),
+                    topRight: Radius.circular(24))),
+            builder: (context) {
+              var locDetails = dataBox["loc_details"];
+              return Stack(children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.7,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 10),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const SizedBox.shrink(),
+                              Container(
+                                  height: 5,
+                                  width: 80,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.black54,
+                                  )),
+                              const SizedBox.shrink()
+                            ]),
+                        const SizedBox(height: 50),
+                        SingleChildScrollView(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            child: Column(children: [
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.8,
+                                child: FittedBox(
+                                  alignment: Alignment.centerLeft,
+                                  child: CustomText(
+                                    text: locDetails["place_name"].toString(),
+                                    weight: FontWeight.w600,
+                                    size: 20,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              CustomText(
+                                text: locDetails["day_hours"].toString(),
+                                weight: FontWeight.w500,
+                                size: 13,
+                                color: Colors.black,
+                              ),
+                              buildMapInfoTap(
+                                context,
+                                icon: Icons.location_city,
+                                label:
+                                    "${locDetails["address"]}, ${locDetails["country"]}. ",
+                              ),
+                              const SizedBox(height: 15),
+                              buildMapInfoTap(
+                                context,
+                                icon: Icons.phone,
+                                label: locDetails["phone"] ?? "N/A",
+                              ),
+                              const SizedBox(height: 15),
+                              buildMapInfoTap(
+                                context,
+                                icon: Icons.wb_cloudy,
+                                label: locDetails["website"] ?? "N/A",
+                              ),
+                              const SizedBox(height: 30),
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          FFAppState().toEditJson = dataBox;
+                                          print(
+                                              "toEditJson: ${FFAppState().toEditJson}");
+                                        });
+
+                                        widget.updateAction();
+                                        Navigator.pop(context);
+                                      },
+                                      style: TextButton.styleFrom(
+                                          foregroundColor: Colors.white,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          backgroundColor: Colors.green,
+                                          fixedSize: Size(100, 50)),
+                                      child: Text(
+                                        "Update",
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        FFAppState().deleteId = dataBox["_id"];
+
+                                        print(
+                                            "deleteId: ${FFAppState().deleteId}");
+
+                                        widget.deleteAction();
+                                        Navigator.pop(context);
+                                      },
+                                      style: TextButton.styleFrom(
+                                          foregroundColor: Colors.white,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          backgroundColor: Colors.red,
+                                          fixedSize: Size(100, 50)),
+                                      child: Text(
+                                        "Delete",
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ]),
+                            ]),
+                          ),
+                        ),
+                      ]),
+                ),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.black54,
+                      child: Icon(
+                        Icons.close,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                )
+              ]);
+            });
+      }
+    }
+  }
+
   Set<Marker> getmarkers(
       List<String>? PlaceIds,
       List<LatLng>? locationInfo,
       List<LatLng>? dblocationInfo,
       List<String>? dbAddress,
       List<String>? googeAddress,
-      LatLng origin,
+      latlng.LatLng origin,
       bool clearmap,
-      BuildContext context) {
+      BuildContext context,
+      List<LatLng>? groupLocList,
+      List<String>? groupLocAddress,
+      List<String>? googleLocsId) {
+    debugPrint(
+        "from the getmarkers section checking the given address:: $dbAddress::::> googleAddress::: $googeAddress::::locationInf0::>>>$locationInfo::::placeIds::::$PlaceIds");
+
+    debugPrint(
+        "from the getmarkers section checking the clearmarker value:::0:: $clearmap :::");
     if (clearmap) {
-      if (markers.length > 1) {
+      setState(() {
+        polyline.clear();
+      });
+      debugPrint(
+          "from the getmarkers section checking the clearmarker value:::1:: $clearmap :::");
+      if (markers.length >= 1) {
+        debugPrint(
+            "from the getmarkers section checking the clearmarker value:::2:: $clearmap :::");
         removeMarker();
       }
     } else {
-      // setState(() {});
-      setState(() {
-        if (markers.length > 1) {
-          removeMarker();
-        }
+      debugPrint(
+          "from the getmarkers section checking the clearmarker value:::3:: ${markers.length} :::");
+      if (markers.length > 1) {
+        debugPrint(
+            "from the getmarkers section checking the clearmarker value:::4:: $clearmap :::");
 
-        if (FFAppState().isAuthUser == true) {
-          _getDraggableMarkers(origin, clearmap, context);
-        }
-        if (locationInfo == null) {
-          debugPrint("Location Info is null");
-        }
-        if (locationInfo != null) {
-          debugPrint("$locationInfo.length");
-          debugPrint("This is run");
-          for (var i = 0; i < locationInfo.length; i++) {
-            markers.add(Marker(
-                markerId: MarkerId(PlaceIds!.elementAt(i)),
-                position: latlng.LatLng(locationInfo[i].latitude,
-                    locationInfo[i].longitude), //position of marker
-                infoWindow: InfoWindow(title: googeAddress!.elementAt(i)),
-                icon: BitmapDescriptor.defaultMarkerWithHue(
-                    BitmapDescriptor.hueBlue),
-                onTap: () async {
-                  //logic for direction api request
-                  _computePath(
-                      latlng.LatLng(
-                          widget.origin!.latitude, widget.origin!.longitude),
-                      latlng.LatLng(
-                          locationInfo[i].latitude, locationInfo[i].longitude));
+        setState(() {});
+      }
 
-                  getPlaceDetail(
-                      context, PlaceIds.elementAt(i), locationInfo[i]);
-                }));
-          }
-          debugPrint("G Markers $markers");
-        }
+      if (FFAppState().isAuthUser == true) {
+        _getDraggableMarkers(origin, clearmap, context);
+      }
+      if (FFAppState().showMyLocs == true) {
+        addGroupLocs(origin, clearmap, context, groupLocList, groupLocAddress,
+            googleLocsId);
+      }
+      if (locationInfo == null) {
+        debugPrint("Location Info is null");
+      }
+      if (locationInfo != null) {
+        debugPrint("$locationInfo.length");
+        debugPrint("This is run");
+        for (var i = 0; i < locationInfo.length; i++) {
+          markers.add(Marker(
+              markerId: MarkerId(PlaceIds!.elementAt(i)),
+              position: latlng.LatLng(locationInfo[i].latitude,
+                  locationInfo[i].longitude), //position of marker
+              infoWindow: InfoWindow(title: googeAddress!.elementAt(i)),
+              icon: BitmapDescriptor.defaultMarkerWithHue(
+                  BitmapDescriptor.hueBlue),
+              onTap: () async {
+                //logic for direction api request
+                _computePath(
+                    latlng.LatLng(origin!.latitude, origin!.longitude),
+                    latlng.LatLng(
+                        locationInfo[i].latitude, locationInfo[i].longitude));
 
-        if (dblocationInfo != null) {
-          for (var i = 0; i < dblocationInfo.length; i++) {
-            markers.add(Marker(
-                markerId: MarkerId(PlaceIds!.elementAt(i)),
-                position: latlng.LatLng(dblocationInfo[i].latitude,
-                    dblocationInfo[i].longitude), //position of marker
-                infoWindow: InfoWindow(title: dbAddress!.elementAt(i)),
-                icon: BitmapDescriptor.defaultMarkerWithHue(
-                    BitmapDescriptor.hueOrange),
-                onTap: () async {
-                  _computePath(
-                      latlng.LatLng(
-                          widget.origin!.latitude, widget.origin!.longitude),
-                      latlng.LatLng(dblocationInfo[i].latitude,
-                          dblocationInfo[i].longitude));
-                }));
-          }
-          debugPrint("Db Markers $markers");
-          debugPrint("Db Markers ${markers.length}");
+                getPlaceDetail(context, PlaceIds.elementAt(i), locationInfo[i]);
+              }));
         }
-      });
+        debugPrint("G Markers $markers");
+      }
+
+      if (dblocationInfo != null) {
+        for (var i = 0; i < dblocationInfo.length; i++) {
+          markers.add(Marker(
+              markerId: MarkerId(PlaceIds!.elementAt(i)),
+              position: latlng.LatLng(dblocationInfo[i].latitude,
+                  dblocationInfo[i].longitude), //position of marker
+              infoWindow: InfoWindow(title: dbAddress!.elementAt(i)),
+              icon: BitmapDescriptor.defaultMarkerWithHue(
+                  BitmapDescriptor.hueOrange),
+              onTap: () async {
+                _computePath(
+                    latlng.LatLng(origin!.latitude, origin!.longitude),
+                    latlng.LatLng(dblocationInfo[i].latitude,
+                        dblocationInfo[i].longitude));
+              }));
+        }
+        debugPrint("Db Markers $markers");
+        debugPrint("Db Markers ${markers.length}");
+      }
     }
-
+    setState(() {});
     return markers;
   }
 
@@ -531,19 +793,22 @@ class _MyMapWidget extends State<MyMapWidget> {
   }
 
   removeMarker() {
-    setState(() {
-      if (markers.length > 1) {
-        // Keep the first marker
-      }
-      polyline.clear();
+    for (latlng.Polyline? line in polyline) {
+      polyline.removeWhere((m) => m.polylineId.value == line?.polylineId);
+      //polyline.removeWhere((key, value) => key == line?.polylineId);
+    }
+    //polyline.removeWhere((key, value) => key == polyline.polylineId);
+    // polyline.clear();
+    if (markers.length > 1) {
       final firstMarker = markers.first;
       markers.clear();
       markers.add(firstMarker);
-    });
+    }
 
     setState(() {});
   }
 
+  ///
   Future<Uint8List> getBytesFromAsset(String path, int width) async {
     ByteData data = await rootBundle.load(path);
     ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
@@ -554,6 +819,7 @@ class _MyMapWidget extends State<MyMapWidget> {
         .asUint8List();
   }
 
+//COMPUTE DISTANCE
   _computePath(latlng.LatLng origin, latlng.LatLng destination) async {
     routeCoords = await googleMapPolyline?.getCoordinatesWithLocation(
         origin: origin, destination: destination, mode: RouteMode.driving);
@@ -561,11 +827,16 @@ class _MyMapWidget extends State<MyMapWidget> {
     debugPrint("Result --- ${routeCoords}");
 
     CameraPosition nepPos =
-        CameraPosition(target: origin, zoom: 16, bearing: 180.0, tilt: 30.0);
+        CameraPosition(target: origin, zoom: 14, bearing: 180.0, tilt: 30.0);
 
     _controller?.animateCamera(CameraUpdate.newCameraPosition(nepPos));
 
     setState(() {
+      for (latlng.Polyline? line in polyline) {
+        polyline.removeWhere((m) => m.polylineId.value == line?.polylineId);
+        // polyline.removeWhere((key, value) => key == line?.polylineId);
+      }
+      //polyline.removeWhere((key, value) => key == polyline.polylineId);
       polyline.clear();
       if (routeCoords != null) {
         polyline.add(latlng.Polyline(
@@ -583,34 +854,38 @@ class _MyMapWidget extends State<MyMapWidget> {
   // function for place picked
 
   latlng.LatLng getPlacePicker() {
-    if (markers.length > 0) {
-      // debugPrint(":::::; from the marker trancing::: 00");
+    debugPrint("Marker Length --0- ${markers.length}");
+    if (markers.length >= 1) {
+      debugPrint("from getPlacePicker the inner room clear marker is called");
       markers.clear();
       setState(() {});
     }
-    setState(() {
-      if (widget.origin!.latitude == 0 && widget.origin!.longitude == 0) {
-        placepicked =
-            latlng.LatLng(position?.latitude ?? 0, position?.longitude ?? 0);
-      } else {
-        placepicked =
-            latlng.LatLng(widget.origin!.latitude, widget.origin!.longitude);
-      }
-      // debugPrint(":::::; from the marker trancing::: 3");
-      _controller?.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-          target: placepicked, zoom: 14, bearing: 180.0, tilt: 30.0)));
 
-      markers.add(Marker(
-        markerId: MarkerId(generateRandomString(10)),
-        position: placepicked, //position of marker
-        infoWindow: InfoWindow(
-            //popup info
-            title: "Starting Point"),
-        icon: BitmapDescriptor.defaultMarker, //Icon for Marker
-      ));
-    });
-    debugPrint(":::::; from the marker trancing::: 4");
+    debugPrint("Marker Length --1- ${markers.length}");
+
+    placepicked =
+        (widget.origin!.latitude == 0 && widget.origin!.longitude == 0)
+            ? latlng.LatLng(position?.latitude ?? 0, position?.longitude ?? 0)
+            : latlng.LatLng(widget.origin!.latitude, widget.origin!.longitude);
+    // debugPrint(":::::; from the marker trancing::: 3");
+
+    debugPrint("placepicked Latitude--- ${placepicked}");
+    markers.add(Marker(
+      markerId: MarkerId(generateRandomString(10)),
+      position: placepicked, //position of marker
+      infoWindow: InfoWindow(
+          //popup info
+          title: "Starting Point"),
+      icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+    ));
+
+    debugPrint("Marker Length --- ${markers.length}");
+
+    _controller?.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+        target: placepicked, zoom: 14, bearing: 180.0, tilt: 30.0)));
     debugPrint("Place picked $placepicked");
+
+    setState(() {});
     return placepicked;
   }
 }
@@ -654,6 +929,7 @@ class DistanceTime {
   }
 }
 
+///
 class Rows {
   List<Elements>? elements;
 
@@ -677,6 +953,7 @@ class Rows {
   }
 }
 
+///
 class Elements {
   Distance? distance;
   Distance? duration;
@@ -707,6 +984,7 @@ class Elements {
   }
 }
 
+///
 class Distance {
   String? text;
   int? value;
@@ -790,6 +1068,7 @@ RatingBar generateRating(
   );
 }
 
+///
 class MakerBottomDetailsBuilder extends StatefulWidget {
   final Map<String, dynamic> dataInfo;
   final Elements distanceInfo;
@@ -809,51 +1088,6 @@ class _MakerBottomDetailsBuilderState extends State<MakerBottomDetailsBuilder> {
       SizedBox(
         height: MediaQuery.of(context).size.height * 0.7,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          // Stack(children: [
-          //   ClipRRect(
-          //     borderRadius: const BorderRadius.only(
-          //       topLeft: Radius.circular(24),
-          //       topRight: Radius.circular(24),
-          //     ),
-          //     child: Image.network(
-          //       "https://images.pexels.com/photos/13911606/pexels-photo-13911606.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-          //       height: 150,
-          //       width: double.infinity,
-          //       fit: BoxFit.cover,
-          //       loadingBuilder: (BuildContext context, Widget child,
-          //           ImageChunkEvent? loadingProgress) {
-          //         if (loadingProgress == null) return child;
-          //         return Center(
-          //           child: CircularProgressIndicator(
-          //             value: loadingProgress.expectedTotalBytes != null
-          //                 ? loadingProgress.cumulativeBytesLoaded /
-          //                     loadingProgress.expectedTotalBytes!
-          //                 : null,
-          //           ),
-          //         );
-          //       },
-          //     ),
-          //   ),
-          //   Positioned(
-          //     top: 10,
-          //     right: 10,
-          //     child: GestureDetector(
-          //       onTap: () {
-          //         Navigator.pop(context);
-          //       },
-          //       child: const CircleAvatar(
-          //         backgroundColor: Colors.black54,
-          //         child: Icon(
-          //           Icons.close,
-          //           color: Colors.white,
-          //         ),
-          //       ),
-          //     ),
-          //   )
-          // ]),
-          ///
-          ///
-          ///
           const SizedBox(height: 10),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             const SizedBox.shrink(),
@@ -867,28 +1101,30 @@ class _MakerBottomDetailsBuilderState extends State<MakerBottomDetailsBuilder> {
             const SizedBox.shrink()
           ]),
           const SizedBox(height: 50),
-
           SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
               child: Column(children: [
                 Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                   //
-                  // TESTER 2
+                  // TESTER 3
                   //
-                  // CircleAvatar(
-                  //   radius: 15,
-                  //   backgroundColor: Color(
-                  //     int.parse(widget.dataInfo["icon_background_color"]
-                  //         .replaceFirst("#", "0xff")),
-                  //   ),
-                  //   child: Image.network(
-                  //     widget.dataInfo["icon"],
-                  //     height: 20,
-                  //     width: 20,
-                  //     fit: BoxFit.cover,
-                  //   ),
-                  // ),
+                  if (widget.dataInfo["icon_background_color"] != null &&
+                      widget.dataInfo["icon"] != null)
+                    CircleAvatar(
+                      radius: 15,
+                      backgroundColor: Color(
+                        int.tryParse(widget.dataInfo["icon_background_color"]
+                                .replaceFirst("#", "0xff")) ??
+                            0xff000000,
+                      ),
+                      child: Image.network(
+                        widget.dataInfo["icon"],
+                        height: 20,
+                        width: 20,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   const SizedBox(width: 10),
 
                   SizedBox(
@@ -967,7 +1203,7 @@ class _MakerBottomDetailsBuilderState extends State<MakerBottomDetailsBuilder> {
                   context,
                   icon: Icons.social_distance,
                   label:
-                      "${widget.distanceInfo.distance?.value}m ( ${((widget.distanceInfo.distance?.value ?? 0) / 1000).toStringAsFixed(2)} Km )",
+                      "${widget.distanceInfo.distance?.value ?? "N/A"}m ( ${((widget.distanceInfo.distance?.value ?? 0) / 1000).toStringAsFixed(2)} Km )",
                 ),
                 //
                 // TESTER 2
@@ -976,7 +1212,7 @@ class _MakerBottomDetailsBuilderState extends State<MakerBottomDetailsBuilder> {
                 buildMapInfoTap(
                   context,
                   icon: Icons.timer,
-                  label: "${widget.distanceInfo.duration?.text}",
+                  label: "${widget.distanceInfo.duration?.text ?? "N/A"}",
                 ),
 
                 ///

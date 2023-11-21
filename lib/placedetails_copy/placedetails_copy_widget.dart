@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'placedetails_copy_model.dart';
@@ -36,14 +37,28 @@ class _PlacedetailsCopyWidgetState extends State<PlacedetailsCopyWidget> {
     _model = createModel(context, () => PlacedetailsCopyModel());
 
     _model.textController1 ??= TextEditingController();
+    _model.textFieldFocusNode1 ??= FocusNode();
+
     _model.textController2 ??= TextEditingController();
+    _model.textFieldFocusNode2 ??= FocusNode();
+
     _model.textController3 ??= TextEditingController();
+    _model.textFieldFocusNode3 ??= FocusNode();
+
     _model.textController4 ??= TextEditingController();
+    _model.textFieldFocusNode4 ??= FocusNode();
+
     _model.textController5 ??= TextEditingController();
+    _model.textFieldFocusNode5 ??= FocusNode();
+
     _model.textController6 ??=
         TextEditingController(text: FFAppState().selectedLocation);
+    _model.textFieldFocusNode6 ??= FocusNode();
+
     _model.textController7 ??=
         TextEditingController(text: FFAppState().selectedCategory);
+    _model.textFieldFocusNode7 ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -56,10 +71,21 @@ class _PlacedetailsCopyWidgetState extends State<PlacedetailsCopyWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -154,6 +180,8 @@ class _PlacedetailsCopyWidgetState extends State<PlacedetailsCopyWidget> {
                                               child: TextFormField(
                                                 controller:
                                                     _model.textController1,
+                                                focusNode:
+                                                    _model.textFieldFocusNode1,
                                                 autofocus: true,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
@@ -249,7 +277,7 @@ class _PlacedetailsCopyWidgetState extends State<PlacedetailsCopyWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.09, -0.9),
+                                              AlignmentDirectional(0.09, -0.90),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -261,6 +289,8 @@ class _PlacedetailsCopyWidgetState extends State<PlacedetailsCopyWidget> {
                                               child: TextFormField(
                                                 controller:
                                                     _model.textController2,
+                                                focusNode:
+                                                    _model.textFieldFocusNode2,
                                                 autofocus: true,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
@@ -382,6 +412,8 @@ class _PlacedetailsCopyWidgetState extends State<PlacedetailsCopyWidget> {
                                               child: TextFormField(
                                                 controller:
                                                     _model.textController3,
+                                                focusNode:
+                                                    _model.textFieldFocusNode3,
                                                 autofocus: true,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
@@ -500,6 +532,8 @@ class _PlacedetailsCopyWidgetState extends State<PlacedetailsCopyWidget> {
                                               child: TextFormField(
                                                 controller:
                                                     _model.textController4,
+                                                focusNode:
+                                                    _model.textFieldFocusNode4,
                                                 autofocus: true,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
@@ -595,7 +629,7 @@ class _PlacedetailsCopyWidgetState extends State<PlacedetailsCopyWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.85, -0.33),
+                                              AlignmentDirectional(0.84, -0.33),
                                           child: FFButtonWidget(
                                             onPressed: () async {
                                               _model.myMapEvent =
@@ -763,6 +797,8 @@ class _PlacedetailsCopyWidgetState extends State<PlacedetailsCopyWidget> {
                                               child: TextFormField(
                                                 controller:
                                                     _model.textController5,
+                                                focusNode:
+                                                    _model.textFieldFocusNode5,
                                                 autofocus: true,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
@@ -874,6 +910,8 @@ class _PlacedetailsCopyWidgetState extends State<PlacedetailsCopyWidget> {
                                               child: TextFormField(
                                                 controller:
                                                     _model.textController6,
+                                                focusNode:
+                                                    _model.textFieldFocusNode6,
                                                 readOnly: true,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
@@ -969,7 +1007,7 @@ class _PlacedetailsCopyWidgetState extends State<PlacedetailsCopyWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, -0.82),
+                                              AlignmentDirectional(0.00, -0.82),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -990,6 +1028,8 @@ class _PlacedetailsCopyWidgetState extends State<PlacedetailsCopyWidget> {
                                                     child: TextFormField(
                                                       controller: _model
                                                           .textController7,
+                                                      focusNode: _model
+                                                          .textFieldFocusNode7,
                                                       onFieldSubmitted:
                                                           (_) async {},
                                                       readOnly: true,

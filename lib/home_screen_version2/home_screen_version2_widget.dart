@@ -16,8 +16,10 @@ import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'home_screen_version2_model.dart';
 export 'home_screen_version2_model.dart';
 
@@ -42,6 +44,8 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      currentUserLocationValue =
+          await getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0));
       if (FFAppState().sessionId != null && FFAppState().sessionId != '') {
         setState(() {
           FFAppState().isAuthUser = true;
@@ -57,7 +61,8 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
         var confirmDialogResponse = await showDialog<bool>(
               context: context,
               builder: (alertDialogContext) {
-                return AlertDialog(
+                return WebViewAware(
+                    child: AlertDialog(
                   title: Text('Location Service'),
                   content: Text(
                       'To continue, please turn on  your location using Google  location service.'),
@@ -71,7 +76,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                       child: Text('Turn on'),
                     ),
                   ],
-                );
+                ));
               },
             ) ??
             false;
@@ -83,13 +88,38 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
           (_model.myIPAddress?.jsonBody ?? ''),
         ).toString().toString();
       });
+      if (FFAppState().isAuthUser == false) {
+        _model.apiResultzlp = await LinkBageLoginCall.call(
+          time: dateTimeFormat(
+            'yMd',
+            getCurrentTimestamp,
+            locale: FFLocalizations.of(context).languageCode,
+          ),
+          location: functions.latlngToString(currentUserLocationValue!),
+          username: 'username',
+          os: 'linux',
+          device: 'mobile',
+          browser: 'chrome',
+          connection: 'wifi',
+          ip: FFAppState().myIpAddress,
+        );
+        if ((_model.apiResultzlp?.succeeded ?? true)) {
+          setState(() {});
+        }
+      }
     });
 
     getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
     _model.textController1 ??= TextEditingController();
+    _model.textFieldFocusNode1 ??= FocusNode();
+
     _model.textController2 ??= TextEditingController();
+    _model.textFieldFocusNode2 ??= FocusNode();
+
     _model.textController3 ??= TextEditingController();
+    _model.textFieldFocusNode3 ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.textController1?.text = FFLocalizations.of(context).getText(
             '43vzrbt9' /* 0 */,
@@ -112,6 +142,15 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
     if (currentUserLocationValue == null) {
       return Container(
@@ -168,75 +207,289 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
         }
         final homeScreenVersion2LinkBageLoginResponse = snapshot.data!;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            drawer: WebViewAware(
+                child: Drawer(
+              elevation: 16.0,
+              child: Container(
+                width: 100.0,
+                height: 100.0,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).primary,
+                ),
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    Container(
+                      width: 100.0,
+                      height: 100.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                      ),
+                      alignment: AlignmentDirectional(0.00, 0.00),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 10.0, 16.0, 10.0),
+                              child: Container(
+                                width: 55.0,
+                                height: 55.0,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Image.network(
+                                  getJsonField(
+                                    FFAppState().response,
+                                    r'''$.userinfo.profile_img''',
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: Align(
+                              alignment: AlignmentDirectional(-1.00, 0.00),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 0.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(-1.00, 0.00),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 8.0, 0.0, 8.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              valueOrDefault<String>(
+                                                getJsonField(
+                                                  FFAppState().response,
+                                                  r'''$.userinfo.first_name''',
+                                                ).toString(),
+                                                'First Name',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                            Text(
+                                              valueOrDefault<String>(
+                                                getJsonField(
+                                                  FFAppState().response,
+                                                  r'''$.userinfo.last_name''',
+                                                ).toString(),
+                                                'Last Name',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  -1.00, 0.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 1.0, 0.0, 0.0),
+                                                child: Text(
+                                                  getJsonField(
+                                                    FFAppState().response,
+                                                    r'''$.userinfo.email''',
+                                                  ).toString(),
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(-1.00, 0.00),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 6.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'bqtxna94' /* Payment Status :  */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                ),
+                                Flexible(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 8.0, 0.0),
+                                    child: Text(
+                                      valueOrDefault<String>(
+                                        getJsonField(
+                                          FFAppState().response,
+                                          r'''$.userinfo.payment_status''',
+                                        ).toString(),
+                                        'Status',
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ].addToStart(SizedBox(width: 16.0)),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(-1.00, 0.00),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 6.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    '5otvpbn4' /* Balance Credit :  */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                ),
+                                Flexible(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 8.0, 0.0),
+                                    child: Text(
+                                      valueOrDefault<String>(
+                                        getJsonField(
+                                          FFAppState().response,
+                                          r'''$.userinfo.payment_status''',
+                                        ).toString(),
+                                        'Status',
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ].addToStart(SizedBox(width: 16.0)),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            )),
+            appBar: AppBar(
+              backgroundColor: FlutterFlowTheme.of(context).primary,
+              automaticallyImplyLeading: true,
+              title: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(-1.00, 0.00),
+                    child: Text(
+                      FFLocalizations.of(context).getText(
+                        'chsdy7fd' /* DoWell Maps */,
+                      ),
+                      style: FlutterFlowTheme.of(context).displaySmall.override(
+                            fontFamily: 'Poppins',
+                            color: FlutterFlowTheme.of(context).white,
+                            fontSize: 18.0,
+                          ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
+                      child: FlutterFlowLanguageSelector(
+                        width: MediaQuery.sizeOf(context).width * 0.4,
+                        borderColor: FlutterFlowTheme.of(context).white,
+                        dropdownColor: Color(0x00000000),
+                        dropdownIconColor: Color(0xFF14181B),
+                        borderRadius: 8.0,
+                        textStyle: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.normal,
+                          fontSize: 13.0,
+                        ),
+                        hideFlags: false,
+                        flagSize: 24.0,
+                        flagTextGap: 8.0,
+                        currentLanguage:
+                            FFLocalizations.of(context).languageCode,
+                        languages: FFLocalizations.languages(),
+                        onChanged: (lang) => setAppLanguage(context, lang),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              actions: [],
+              centerTitle: false,
+              elevation: 4.0,
+            ),
             body: SafeArea(
               top: true,
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
-                    child: Container(
-                      width: MediaQuery.sizeOf(context).width * 1.0,
-                      height: MediaQuery.sizeOf(context).height * 0.07,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF015534),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 0.0, 20.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'chsdy7fd' /* DoWell Maps */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .displaySmall
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context).white,
-                                      fontSize: 18.0,
-                                    ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    40.0, 0.0, 0.0, 0.0),
-                                child: FlutterFlowLanguageSelector(
-                                  width: MediaQuery.sizeOf(context).width * 0.4,
-                                  borderColor:
-                                      FlutterFlowTheme.of(context).white,
-                                  dropdownColor: Color(0x00000000),
-                                  dropdownIconColor: Color(0xFF14181B),
-                                  borderRadius: 8.0,
-                                  textStyle: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 13.0,
-                                  ),
-                                  hideFlags: false,
-                                  flagSize: 24.0,
-                                  flagTextGap: 8.0,
-                                  currentLanguage:
-                                      FFLocalizations.of(context).languageCode,
-                                  languages: FFLocalizations.languages(),
-                                  onChanged: (lang) =>
-                                      setAppLanguage(context, lang),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
                   Expanded(
                     child: Stack(
                       children: [
@@ -274,6 +527,8 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                 },
                               );
                             },
+                            deleteAction: () async {},
+                            updateAction: () async {},
                           ),
                         ),
                         if (FFAppState().isAuthUser == false)
@@ -322,22 +577,93 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                               ),
                             ),
                           ),
+                        if (FFAppState().isAuthUser)
+                          Align(
+                            alignment: AlignmentDirectional(1.03, -0.97),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                var confirmDialogResponse =
+                                    await showDialog<bool>(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return WebViewAware(
+                                                child: AlertDialog(
+                                              title: Text('Log Out'),
+                                              content: Text('Are you sure?'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          false),
+                                                  child: Text('Cancel'),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          true),
+                                                  child: Text('Confirm'),
+                                                ),
+                                              ],
+                                            ));
+                                          },
+                                        ) ??
+                                        false;
+                                if (confirmDialogResponse) {
+                                  setState(() {
+                                    FFAppState().isAuthUser = false;
+                                  });
+                                } else {
+                                  Navigator.pop(context);
+                                }
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                '0a0dhqsr' /* Log out */,
+                              ),
+                              options: FFButtonOptions(
+                                height: 49.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: Color(0xB8005734),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                    ),
+                                elevation: 3.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(16.0),
+                                  bottomRight: Radius.circular(0.0),
+                                  topLeft: Radius.circular(16.0),
+                                  topRight: Radius.circular(0.0),
+                                ),
+                              ),
+                            ),
+                          ),
                       ],
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.00, 0.00),
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(),
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.00, 0.00),
                               child: Material(
                                 color: Colors.transparent,
                                 elevation: 16.0,
@@ -371,7 +697,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                     ),
                                     child: Align(
                                       alignment:
-                                          AlignmentDirectional(-0.15, 0.0),
+                                          AlignmentDirectional(-0.15, 0.00),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -379,7 +705,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                               'Select Location')
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.05, -1.0),
+                                                  0.05, -1.00),
                                               child: FlutterFlowPlacePicker(
                                                 iOSGoogleMapsApiKey:
                                                     'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk',
@@ -556,6 +882,8 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                           child: TextFormField(
                                                             controller: _model
                                                                 .textController1,
+                                                            focusNode: _model
+                                                                .textFieldFocusNode1,
                                                             obscureText: false,
                                                             decoration:
                                                                 InputDecoration(
@@ -661,6 +989,8 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                           child: TextFormField(
                                                             controller: _model
                                                                 .textController2,
+                                                            focusNode: _model
+                                                                .textFieldFocusNode2,
                                                             obscureText: false,
                                                             decoration:
                                                                 InputDecoration(
@@ -834,6 +1164,8 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                           child: TextFormField(
                                                             controller: _model
                                                                 .textController3,
+                                                            focusNode: _model
+                                                                .textFieldFocusNode3,
                                                             onChanged: (_) =>
                                                                 EasyDebounce
                                                                     .debounce(
@@ -1032,7 +1364,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                                   ?.succeeded ??
                                                               true)) {
                                                             if (functions
-                                                                    .convertToList(
+                                                                    .groupLocsConverter(
                                                                         NearbyPlaceCall
                                                                             .data(
                                                                       (_model.nearbyPlaceResponse
@@ -1049,12 +1381,14 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                                           ?.jsonBody ??
                                                                       ''),
                                                                   r'''$.results[:].geometry.location.lat''',
+                                                                  true,
                                                                 )!,
                                                                 getJsonField(
                                                                   (_model.nearbyPlaceResponse
                                                                           ?.jsonBody ??
                                                                       ''),
                                                                   r'''$.results[:].geometry.location.lng''',
+                                                                  true,
                                                                 )!,
                                                                 double.parse(_model
                                                                     .textController1
@@ -1083,18 +1417,21 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                                           ?.jsonBody ??
                                                                       ''),
                                                                   r'''$.results[:].geometry.location.lat''',
+                                                                  true,
                                                                 )!,
                                                                 getJsonField(
                                                                   (_model.nearbyPlaceResponse
                                                                           ?.jsonBody ??
                                                                       ''),
                                                                   r'''$.results[:].geometry.location.lng''',
+                                                                  true,
                                                                 )!,
                                                                 getJsonField(
                                                                   (_model.nearbyPlaceResponse
                                                                           ?.jsonBody ??
                                                                       ''),
                                                                   r'''$.results[:].place_id''',
+                                                                  true,
                                                                 )!,
                                                                 FFAppState().currentLocation ==
                                                                         'Current Location'
@@ -1111,6 +1448,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                                           ?.jsonBody ??
                                                                       ''),
                                                                   r'''$.results[:].name''',
+                                                                  true,
                                                                 ),
                                                                 double.parse(_model
                                                                     .textController1
@@ -1129,12 +1467,14 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                                           ?.jsonBody ??
                                                                       ''),
                                                                   r'''$.results[:].geometry.location.lat''',
+                                                                  true,
                                                                 )!,
                                                                 getJsonField(
                                                                   (_model.nearbyPlaceResponse
                                                                           ?.jsonBody ??
                                                                       ''),
                                                                   r'''$.results[:].geometry.location.lng''',
+                                                                  true,
                                                                 )!,
                                                               );
                                                               _model.evenntID =
@@ -1323,7 +1663,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                                   ?.succeeded ??
                                                               true)) {
                                                             if (functions
-                                                                    .convertToList(
+                                                                    .groupLocsConverter(
                                                                         GetMymapCall
                                                                             .refinedData(
                                                                       (_model.mymapBackendRefinedResult
@@ -1340,6 +1680,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                                           ?.jsonBody ??
                                                                       ''),
                                                                   r'''$.data[:].location_coord''',
+                                                                  true,
                                                                 ) as List)
                                                                     .map<String>(
                                                                         (s) => s
@@ -1354,6 +1695,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                                           ?.jsonBody ??
                                                                       ''),
                                                                   r'''$.data[:].place_name''',
+                                                                  true,
                                                                 ),
                                                               );
                                                             }

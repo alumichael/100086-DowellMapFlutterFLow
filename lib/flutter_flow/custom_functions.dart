@@ -64,8 +64,30 @@ double getlon(LatLng latlng) {
   return lng!;
 }
 
-List<dynamic>? convertToList(List<dynamic>? data) {
-  return data;
+List<LatLng>? groupLocsConverter(List<dynamic>? data) {
+  List<LatLng> dataValue = [];
+  if (data != null) {
+    for (int i = 0; i < data.length; i++) {
+      print("mData $data");
+      //var locInfo = data[0][i];
+      dynamic locInfo = data[i];
+      print("locInfoData $locInfo");
+
+      //print("realData $realData");
+      String locString = locInfo["loc_details"]["location_coord"] ?? "";
+
+      print("locString $locString");
+
+      if (locString != "null" && locString.isNotEmpty) {
+        var splitCoord = locString.split(",");
+        double lat = double.parse(splitCoord[0]);
+        double lng = double.parse(splitCoord[1]);
+        print("splitCoord $splitCoord");
+        dataValue.add(LatLng(lat, lng));
+      }
+    }
+  }
+  return dataValue;
 }
 
 List<String>? refineCategoryList(
@@ -78,4 +100,124 @@ List<String>? refineCategoryList(
   }
 
   return categoryList;
+}
+
+String? username(String? name) {
+  if (name != "null") {
+    return name;
+  }
+
+  return "Public User";
+}
+
+String? email(String? mail) {
+  if (mail != "null") {
+    return mail;
+  }
+
+  return " ";
+}
+
+dynamic userprofile(String? path) {
+  if (path != "null") {
+    return path;
+  }
+
+  return "https://100014.pythonanywhere.com/media/user.png";
+}
+
+bool? isuserlogedin(String? username) {
+  if (username != "null") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+String? payment(String? status) {
+  if (status != "null" && status != "unpaid") {
+    status = "$status   ✔";
+    return status;
+  }
+  return "Unpaid    ❌";
+}
+
+String? totalcredit(String? credit) {
+  if (credit != "null") {
+    return "Credit : $credit";
+  }
+  return "Credit : 0";
+}
+
+List<String>? groupLocsIdExtractor(List<dynamic>? dataBox) {
+  var dataValue = <String>[];
+  if (dataBox != null) {
+    for (int i = 0; i < dataBox.length; i++) {
+      List<dynamic> locInfo = dataBox[i];
+      for (int j = 0; j < locInfo.length; j++) {
+        var realData = locInfo[j];
+        String locPlace = realData["loc_details"]["location_coord"] ?? "";
+        String locString = realData["_id"] ?? "";
+        if (locPlace != "null" && locString.isNotEmpty) {
+          dataValue.add(locString);
+        }
+      }
+    }
+  }
+  return dataValue;
+}
+
+List<String> groupLocsDetailsExtractor(List<dynamic>? dataBox) {
+  List<String> dataValue = [];
+
+  if (dataBox != null) {
+    for (int i = 0; i < dataBox.length; i++) {
+      List<dynamic> locInfo = dataBox[i];
+      for (int j = 0; j < locInfo.length; j++) {
+        var realData = locInfo[j];
+        String locPlace = realData["loc_details"]["location_coord"] ?? "";
+        String locString = realData["loc_details"]["place_name"] ?? "";
+        if (locPlace != "null" && locString.isNotEmpty) {
+          dataValue.add(locString);
+        }
+      }
+    }
+  }
+  return dataValue;
+}
+
+List<dynamic>? newCustomFunction2(List<dynamic>? dataBox) {
+  List<String> dataValue = [];
+
+  if (dataBox != null) {
+    for (int i = 0; i < dataBox.length; i++) {
+      // List<dynamic> locInfo = dataBox[i];
+      // for (int j = 0; j < locInfo.length; j++) {
+      var realData = dataBox[i];
+      String locPlace = realData["loc_details"]["location_coord"] ?? "";
+      String locString = realData["loc_details"]["place_name"] ?? "";
+      if (locPlace != "null" && locString.isNotEmpty) {
+        dataValue.add(locString);
+      }
+      // }
+    }
+  }
+  return dataValue;
+}
+
+List<dynamic> removeNullLoc(List<dynamic>? dataBox) {
+  var dataValue = [];
+  if (dataBox != null) {
+    for (int i = 0; i < dataBox.length; i++) {
+      List<dynamic> locInfo = dataBox[i];
+      for (int j = 0; j < locInfo.length; j++) {
+        var realData = locInfo[j];
+        String locString = realData["loc_details"]["location_coord"] ?? "";
+        if (locString.isNotEmpty) {
+          dataValue.add(locInfo);
+        }
+      }
+    }
+  }
+  return dataValue;
 }

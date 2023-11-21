@@ -3,10 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 
-import '../../auth/base_auth_user_provider.dart';
-import '../../backend/push_notifications/push_notifications_handler.dart'
+import '/auth/base_auth_user_provider.dart';
+
+import '/backend/push_notifications/push_notifications_handler.dart'
     show PushNotificationsHandler;
 import '/index.dart';
 import '/main.dart';
@@ -80,24 +82,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
           ? LoginComponentWidget()
-          : HomeScreenVersion2Widget(),
+          : NewHomePageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
               ? LoginComponentWidget()
-              : HomeScreenVersion2Widget(),
+              : NewHomePageWidget(),
           routes: [
             FFRoute(
               name: 'maps',
               path: 'maps',
               builder: (context, params) => MapsWidget(),
-            ),
-            FFRoute(
-              name: 'HomeScreenVersion1',
-              path: 'homeScreenVersion1',
-              builder: (context, params) => HomeScreenVersion1Widget(),
             ),
             FFRoute(
               name: 'placedetailsCopy',
@@ -109,9 +106,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'HomeScreenVersion2',
-              path: 'homeScreenVersion2',
-              builder: (context, params) => HomeScreenVersion2Widget(),
+              name: 'HomeScreenVersion1',
+              path: 'homeScreenVersion1',
+              builder: (context, params) => HomeScreenVersion1Widget(),
             ),
             FFRoute(
               name: 'OnboardingPage',
@@ -141,6 +138,48 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'appbartester',
               path: 'appbartester',
               builder: (context, params) => AppbartesterWidget(),
+            ),
+            FFRoute(
+              name: 'HomeScreenVersion2Copy',
+              path: 'homeScreenVersion2Copy',
+              builder: (context, params) => HomeScreenVersion2CopyWidget(),
+            ),
+            FFRoute(
+              name: 'SelectOrg',
+              path: 'selectOrg',
+              builder: (context, params) => SelectOrgWidget(),
+            ),
+            FFRoute(
+              name: 'NewHomePageCopy',
+              path: 'newHomePageCopy',
+              builder: (context, params) => NewHomePageCopyWidget(),
+            ),
+            FFRoute(
+              name: 'HomeScreenVersion2',
+              path: 'homeScreenVersion2',
+              builder: (context, params) => HomeScreenVersion2Widget(),
+            ),
+            FFRoute(
+              name: 'NewHomePage',
+              path: 'newHomePage',
+              builder: (context, params) => NewHomePageWidget(),
+            ),
+            FFRoute(
+              name: 'Userdetails',
+              path: 'userdetails',
+              builder: (context, params) => UserdetailsWidget(),
+            ),
+            FFRoute(
+              name: 'NewHomePageCopy2',
+              path: 'newHomePageCopy2',
+              builder: (context, params) => NewHomePageCopy2Widget(),
+            ),
+            FFRoute(
+              name: 'newplacedetails',
+              path: 'newplacedetails',
+              builder: (context, params) => NewplacedetailsWidget(
+                currentCord: params.getParam('currentCord', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -309,7 +348,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/homeScreenVersion2';
+            return '/newHomePage';
           }
           return null;
         },
@@ -368,4 +407,24 @@ class TransitionInfo {
   final Alignment? alignment;
 
   static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+}
+
+class RootPageContext {
+  const RootPageContext(this.isRootPage, [this.errorRoute]);
+  final bool isRootPage;
+  final String? errorRoute;
+
+  static bool isInactiveRootPage(BuildContext context) {
+    final rootPageContext = context.read<RootPageContext?>();
+    final isRootPage = rootPageContext?.isRootPage ?? false;
+    final location = GoRouter.of(context).location;
+    return isRootPage &&
+        location != '/' &&
+        location != rootPageContext?.errorRoute;
+  }
+
+  static Widget wrap(Widget child, {String? errorRoute}) => Provider.value(
+        value: RootPageContext(true, errorRoute),
+        child: child,
+      );
 }

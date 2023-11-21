@@ -1,7 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'login_component_model.dart';
@@ -39,6 +41,15 @@ class _LoginComponentWidgetState extends State<LoginComponentWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
     if (currentUserLocationValue == null) {
       return Container(
@@ -58,7 +69,9 @@ class _LoginComponentWidgetState extends State<LoginComponentWidget> {
     }
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
@@ -72,18 +85,9 @@ class _LoginComponentWidgetState extends State<LoginComponentWidget> {
               height: MediaQuery.sizeOf(context).height * 1.0,
               location: currentUserLocationValue?.toString(),
               os: isAndroid ? 'Android' : 'Ios',
-              createAJsonVariableInAppStateNamedResponse:
-                  'this will have response from login',
+              createAJsonVariableInAppStateNamedResponse: 'done',
               navigateTo: () async {
-                context.pushNamed(
-                  'HomeScreenVersion2',
-                  extra: <String, dynamic>{
-                    kTransitionInfoKey: TransitionInfo(
-                      hasTransition: true,
-                      transitionType: PageTransitionType.leftToRight,
-                    ),
-                  },
-                );
+                context.pushNamed('NewHomePage');
               },
               signUp: () async {
                 context.pushNamed('Signup');

@@ -9,12 +9,15 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/place.dart';
 import 'dart:io';
 import '/custom_code/actions/index.dart' as actions;
+import 'maps_widget.dart' show MapsWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pointer_interceptor/pointer_interceptor.dart';
 import 'package:provider/provider.dart';
 
-class MapsModel extends FlutterFlowModel {
+class MapsModel extends FlutterFlowModel<MapsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

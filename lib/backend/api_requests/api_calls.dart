@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'dart:typed_data';
-
-import '../../flutter_flow/flutter_flow_util.dart';
 import '../cloud_functions/cloud_functions.dart';
 
+import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
@@ -20,8 +19,8 @@ class LinkBageLoginCall {
     String? time = '',
     String? connection = '',
     String? ip = '',
-  }) {
-    final body = '''
+  }) async {
+    final ffApiRequestBody = '''
 {
   "Username": "${username}",
   "OS": "${os}",
@@ -38,7 +37,7 @@ class LinkBageLoginCall {
       callType: ApiCallType.POST,
       headers: {},
       params: {},
-      body: body,
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -58,8 +57,8 @@ class CreateRoomForDigitalQCall {
     String? username = '',
     String? qrid = '',
     String? product = 'DigitalQ',
-  }) {
-    final body = '''
+  }) async {
+    final ffApiRequestBody = '''
 {
   "user_name": "${username}",
   "qrid": "${qrid}",
@@ -71,7 +70,7 @@ class CreateRoomForDigitalQCall {
       callType: ApiCallType.POST,
       headers: {},
       params: {},
-      body: body,
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -228,11 +227,11 @@ class NearbyPlacesDataCall {
     List<String>? addressList,
     String? data = '',
     dynamic? responseJson,
-  }) {
+  }) async {
     final address = _serializeList(addressList);
     final latLong = _serializeJson(latLongJson);
     final response = _serializeJson(responseJson);
-    final body = '''
+    final ffApiRequestBody = '''
 {
   "cluster": "dowellmap",
   "database": "dowellmap",
@@ -266,7 +265,7 @@ class NearbyPlacesDataCall {
         'Access-Control-Allow-Origin': '*',
       },
       params: {},
-      body: body,
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -295,8 +294,8 @@ class SendLogDataCall {
     String? userName = '',
     String? sessionId = '',
     String? locationDone = '',
-  }) {
-    final body = '''
+  }) async {
+    final ffApiRequestBody = '''
 {
   "cluster": "dowellmap",
   "collection": "log",
@@ -328,7 +327,7 @@ class SendLogDataCall {
         'Access-Control-Allow-Origin': '*',
       },
       params: {},
-      body: body,
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -339,7 +338,7 @@ class SendLogDataCall {
 }
 
 class IpifyCall {
-  static Future<ApiCallResponse> call() {
+  static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'ipify',
       apiUrl: 'https://api.ipify.org/?format=json',
@@ -373,8 +372,8 @@ class MymapCall {
     String? eventId = '',
     bool? isTestData = true,
     String? country = '',
-  }) {
-    final body = '''
+  }) async {
+    final ffApiRequestBody = '''
 {
   "cluster": "dowellmap",
   "database": "dowellmap",
@@ -410,7 +409,7 @@ class MymapCall {
         'Access-Control-Allow-Origin': '*',
       },
       params: {},
-      body: body,
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -438,8 +437,8 @@ class GetMymapCall {
     String? query = '',
     String? dataType = '',
     String? apiKey = 'EhdQUTM2K0hNLCBOYWlyb2JpLCBLZW55YSImOiQKCg2PPDr',
-  }) {
-    final body = '''
+  }) async {
+    final ffApiRequestBody = '''
 {
   "radius1": ${radius1},
   "radius2": ${radius2},
@@ -455,7 +454,7 @@ class GetMymapCall {
       callType: ApiCallType.POST,
       headers: {},
       params: {},
-      body: body,
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -497,7 +496,7 @@ class GetMymapCall {
 }
 
 class GetCategoryCall {
-  static Future<ApiCallResponse> call() {
+  static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'Get Category',
       apiUrl: 'https://100086.pythonanywhere.com/accounts/get-categories/',
@@ -516,6 +515,485 @@ class GetCategoryCall {
         r'''$.categories''',
         true,
       );
+}
+
+class GetUserAPIKeyCall {
+  static Future<ApiCallResponse> call({
+    String? type = 'get_api_key',
+    String? workspaceId = '63a2b3fb2be81449d3a30d3f',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get User API Key',
+      apiUrl: 'https://100105.pythonanywhere.com/api/v3/user/',
+      callType: ApiCallType.GET,
+      headers: {
+        'Accept': '*/*',
+      },
+      params: {
+        'type': type,
+        'workspace_id': workspaceId,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic success(dynamic response) => getJsonField(
+        response,
+        r'''$.success''',
+      );
+  static dynamic isActive(dynamic response) => getJsonField(
+        response,
+        r'''$.data.is_active''',
+      );
+  static dynamic apiKey(dynamic response) => getJsonField(
+        response,
+        r'''$.data.api_key''',
+      );
+  static dynamic totalCredits(dynamic response) => getJsonField(
+        response,
+        r'''$.data.total_credits''',
+      );
+}
+
+class ProcessProductRequestCall {
+  static Future<ApiCallResponse> call({
+    String? type = 'api_service',
+    String? apiKey = '',
+    String? serviceId = '',
+    String? subServiceIds = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "sub_service_ids": [
+    "${subServiceIds}"
+  ],
+  "service_id": "${serviceId}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Process Product Request',
+      apiUrl:
+          'https://100105.pythonanywhere.com/api/v3/process-services/?type=product_service&api_key=${apiKey}',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic credits(dynamic response) => getJsonField(
+        response,
+        r'''$.remaining_credits''',
+      );
+  static dynamic message(dynamic response) => getJsonField(
+        response,
+        r'''$.message''',
+      );
+}
+
+class GetLocationByUserCall {
+  static Future<ApiCallResponse> call({
+    String? apiKey = '',
+    String? username = '',
+    String? docType = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "filters": {
+    "username": "${username}",
+    "doc_type": "${docType}"
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get Location by User',
+      apiUrl:
+          'https://100086.pythonanywhere.com/accounts/get-locs/?api_key=${apiKey}',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic data(dynamic response) => getJsonField(
+        response,
+        r'''$.data''',
+        true,
+      );
+  static dynamic groupList(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].group_list''',
+        true,
+      );
+  static dynamic docType(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].doc_type''',
+      );
+}
+
+class CreateProfileCall {
+  static Future<ApiCallResponse> call({
+    String? apiKey = '',
+    String? username = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "username": "${username}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Create Profile',
+      apiUrl:
+          'https://100086.pythonanywhere.com/accounts/create-profile/?api_key=${apiKey}',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic isSucess(dynamic response) => getJsonField(
+        response,
+        r'''$.success''',
+      );
+}
+
+class CreateLocationGroupCall {
+  static Future<ApiCallResponse> call({
+    String? username = '',
+    String? groupName = '',
+    String? apiKey = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "username": "${username}",
+  "group_name": "${groupName}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Create Location Group',
+      apiUrl:
+          'https://100086.pythonanywhere.com/accounts/create-loc-group/?api_key=${apiKey}',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class CreateLocationCall {
+  static Future<ApiCallResponse> call({
+    String? apiKey = '',
+    String? username = '',
+    String? groupName = '',
+    String? placeName = '',
+    String? placeCategory = '',
+    String? placeAddress = '',
+    String? country = '',
+    String? locationCord = '',
+    String? dayHours = '',
+    String? phoneNumber = '',
+    String? website = '',
+    String? hours = '',
+    String? typeOfData = '',
+    bool? isTestData,
+    bool? makePublic,
+    bool? isDeleted,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "username": "${username}",
+  "group_name": "${groupName}",
+  "loc_detail": {
+    "place_name": "${placeName}",
+    "category": "${placeCategory}",
+    "address": "${placeAddress}",
+    "country": "${country}",
+    "location_coord": "${locationCord}",
+    "day_hours": "${dayHours}",
+    "phone": "${phoneNumber}",
+    "website": "${website}",
+    "hours": "${hours}",
+    "type_of_data": "${typeOfData}",
+    "is_test_data": ${isTestData},
+    "make_public": ${makePublic},
+    "is_deleted": ${isDeleted}
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Create Location',
+      apiUrl:
+          'https://100086.pythonanywhere.com/accounts/create-location/?api_key=${apiKey}',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class UpdateGroupLocationCall {
+  static Future<ApiCallResponse> call({
+    String? apiKey = '',
+    String? username = '',
+    String? oldGroupName = '',
+    String? newGroupName = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "username": "${username}",
+  "old_group_name": "${oldGroupName}",
+  "new_group_name": "${newGroupName}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Update Group Location',
+      apiUrl:
+          'https://100086.pythonanywhere.com/accounts/update-loc-group/?api_key=${apiKey}',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class UpdateLocationCall {
+  static Future<ApiCallResponse> call({
+    String? apiKey = '',
+    String? locationId = '',
+    String? placeName = '',
+    String? country = '',
+    String? locationCoordinate = '',
+    String? dayHours = '',
+    String? phoneNumber = '',
+    String? website = '',
+    int? hours,
+    String? typeOfData = '',
+    String? eventId = '',
+    bool? isTestData,
+    bool? makePublic,
+    bool? isDeleted,
+    String? category = '',
+    String? address = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "loc_id": "${locationId}",
+  "new_loc_detail": {
+    "place_name": "${placeName}",
+    "category": "${category}",
+    "address": "${address}",
+    "country": "${country}",
+    "location_coord": "${locationCoordinate}",
+    "day_hours": "${dayHours}",
+    "phone": "${phoneNumber}",
+    "website": "${website}",
+    "hours": ${hours},
+    "type_of_data": "${typeOfData}",
+    "eventId": "${eventId}",
+    "is_test_data": ${isTestData},
+    "make_public": ${makePublic},
+    "is_deleted": ${isDeleted}
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Update Location',
+      apiUrl:
+          'https://100086.pythonanywhere.com/accounts/update-location/?api_key=${apiKey}',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class DeleteUserLocsCall {
+  static Future<ApiCallResponse> call({
+    String? apiKey = '',
+    String? username = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "username": "${username}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Delete User Locs',
+      apiUrl:
+          'https://100086.pythonanywhere.com/accounts/delete-user-loc/?api_key=${apiKey}',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class DeleteLocationGroupCall {
+  static Future<ApiCallResponse> call({
+    String? apiKey = '',
+    String? username = '',
+    String? groupName = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "username": "${username}",
+  "group_name": "${groupName}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Delete Location Group',
+      apiUrl:
+          'https://100086.pythonanywhere.com/accounts/delete-loc-group/?api_key=${apiKey}',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class DeleteLocCall {
+  static Future<ApiCallResponse> call({
+    String? apiKey = '',
+    String? dataId = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Delete Loc',
+      apiUrl:
+          'https://100086.pythonanywhere.com/accounts/delete-loc/?api_key=${apiKey}',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class GetLocationByGroupNameCall {
+  static Future<ApiCallResponse> call({
+    String? apiKey = '',
+    String? username = '',
+    String? groupName = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "filters": {
+    "username": "${username}",
+    "group_name": "${groupName}"
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get Location by group name',
+      apiUrl:
+          'https://100086.pythonanywhere.com/accounts/get-locs/?api_key=${apiKey}',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic data(dynamic response) => getJsonField(
+        response,
+        r'''$.data''',
+        true,
+      );
+  static dynamic locationId(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:]._id''',
+        true,
+      );
+  static dynamic locationObject(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].loc_details''',
+        true,
+      );
+  static dynamic groupName(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].group_name''',
+        true,
+      );
+  static dynamic locationCord(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].loc_details.location_coord''',
+        true,
+      );
+  static dynamic locationAddress(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].loc_details.address''',
+        true,
+      );
+}
+
+class NineCall {
+  static Future<ApiCallResponse> call() async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'nine',
+      apiUrl: 'www.google.com',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
 }
 
 class ApiPagingParams {

@@ -6,7 +6,7 @@ import 'flutter_flow/flutter_flow_util.dart';
 import 'dart:convert';
 
 class FFAppState extends ChangeNotifier {
-  static final FFAppState _instance = FFAppState._internal();
+  static FFAppState _instance = FFAppState._internal();
 
   factory FFAppState() {
     return _instance;
@@ -14,12 +14,47 @@ class FFAppState extends ChangeNotifier {
 
   FFAppState._internal();
 
-  Future initializePersistedState() async {}
+  static void reset() {
+    _instance = FFAppState._internal();
+  }
+
+  Future initializePersistedState() async {
+    prefs = await SharedPreferences.getInstance();
+    _safeInit(() {
+      _sessionId = prefs.getString('ff_sessionId') ?? _sessionId;
+    });
+    _safeInit(() {
+      _username = prefs.getString('ff_username') ?? _username;
+    });
+    _safeInit(() {
+      _otherorgid = prefs.getString('ff_otherorgid') ?? _otherorgid;
+    });
+    _safeInit(() {
+      _isAuthUser = prefs.getBool('ff_isAuthUser') ?? _isAuthUser;
+    });
+    _safeInit(() {
+      _apiKey = prefs.getString('ff_apiKey') ?? _apiKey;
+    });
+    _safeInit(() {
+      _groupList = prefs.getStringList('ff_groupList') ?? _groupList;
+    });
+    _safeInit(() {
+      if (prefs.containsKey('ff_response')) {
+        try {
+          _response = jsonDecode(prefs.getString('ff_response') ?? '');
+        } catch (e) {
+          print("Can't decode persisted json. Error: $e.");
+        }
+      }
+    });
+  }
 
   void update(VoidCallback callback) {
     callback();
     notifyListeners();
   }
+
+  late SharedPreferences prefs;
 
   String _currentLocation = 'Current Location';
   String get currentLocation => _currentLocation;
@@ -33,28 +68,10 @@ class FFAppState extends ChangeNotifier {
     _clearmap = _value;
   }
 
-  dynamic _response;
-  dynamic get response => _response;
-  set response(dynamic _value) {
-    _response = _value;
-  }
-
   String _usernametype = 'User Name';
   String get usernametype => _usernametype;
   set usernametype(String _value) {
     _usernametype = _value;
-  }
-
-  bool _isAuthUser = false;
-  bool get isAuthUser => _isAuthUser;
-  set isAuthUser(bool _value) {
-    _isAuthUser = _value;
-  }
-
-  String _sessionId = '';
-  String get sessionId => _sessionId;
-  set sessionId(String _value) {
-    _sessionId = _value;
   }
 
   String _iosAPIKey = 'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk';
@@ -128,6 +145,10 @@ class FFAppState extends ChangeNotifier {
     _categoriesState[_index] = updateFn(_categoriesState[_index]);
   }
 
+  void insertAtIndexInCategoriesState(int _index, String _value) {
+    _categoriesState.insert(_index, _value);
+  }
+
   String _selectedCategory = '';
   String get selectedCategory => _selectedCategory;
   set selectedCategory(String _value) {
@@ -156,6 +177,241 @@ class FFAppState extends ChangeNotifier {
   String get dowellKey => _dowellKey;
   set dowellKey(String _value) {
     _dowellKey = _value;
+  }
+
+  String _sessionId = 'null';
+  String get sessionId => _sessionId;
+  set sessionId(String _value) {
+    _sessionId = _value;
+    prefs.setString('ff_sessionId', _value);
+  }
+
+  String _username = '';
+  String get username => _username;
+  set username(String _value) {
+    _username = _value;
+    prefs.setString('ff_username', _value);
+  }
+
+  String _otherorgid = '';
+  String get otherorgid => _otherorgid;
+  set otherorgid(String _value) {
+    _otherorgid = _value;
+    prefs.setString('ff_otherorgid', _value);
+  }
+
+  bool _isAuthUser = false;
+  bool get isAuthUser => _isAuthUser;
+  set isAuthUser(bool _value) {
+    _isAuthUser = _value;
+    prefs.setBool('ff_isAuthUser', _value);
+  }
+
+  String _credit = '0';
+  String get credit => _credit;
+  set credit(String _value) {
+    _credit = _value;
+  }
+
+  String _apiKey = '';
+  String get apiKey => _apiKey;
+  set apiKey(String _value) {
+    _apiKey = _value;
+    prefs.setString('ff_apiKey', _value);
+  }
+
+  bool _showBottomSheet = false;
+  bool get showBottomSheet => _showBottomSheet;
+  set showBottomSheet(bool _value) {
+    _showBottomSheet = _value;
+  }
+
+  dynamic _MyMapResponseData;
+  dynamic get MyMapResponseData => _MyMapResponseData;
+  set MyMapResponseData(dynamic _value) {
+    _MyMapResponseData = _value;
+  }
+
+  bool _isProfiledUser = false;
+  bool get isProfiledUser => _isProfiledUser;
+  set isProfiledUser(bool _value) {
+    _isProfiledUser = _value;
+  }
+
+  List<String> _groupList = [];
+  List<String> get groupList => _groupList;
+  set groupList(List<String> _value) {
+    _groupList = _value;
+    prefs.setStringList('ff_groupList', _value);
+  }
+
+  void addToGroupList(String _value) {
+    _groupList.add(_value);
+    prefs.setStringList('ff_groupList', _groupList);
+  }
+
+  void removeFromGroupList(String _value) {
+    _groupList.remove(_value);
+    prefs.setStringList('ff_groupList', _groupList);
+  }
+
+  void removeAtIndexFromGroupList(int _index) {
+    _groupList.removeAt(_index);
+    prefs.setStringList('ff_groupList', _groupList);
+  }
+
+  void updateGroupListAtIndex(
+    int _index,
+    String Function(String) updateFn,
+  ) {
+    _groupList[_index] = updateFn(_groupList[_index]);
+    prefs.setStringList('ff_groupList', _groupList);
+  }
+
+  void insertAtIndexInGroupList(int _index, String _value) {
+    _groupList.insert(_index, _value);
+    prefs.setStringList('ff_groupList', _groupList);
+  }
+
+  List<dynamic> _groupLocs = [];
+  List<dynamic> get groupLocs => _groupLocs;
+  set groupLocs(List<dynamic> _value) {
+    _groupLocs = _value;
+  }
+
+  void addToGroupLocs(dynamic _value) {
+    _groupLocs.add(_value);
+  }
+
+  void removeFromGroupLocs(dynamic _value) {
+    _groupLocs.remove(_value);
+  }
+
+  void removeAtIndexFromGroupLocs(int _index) {
+    _groupLocs.removeAt(_index);
+  }
+
+  void updateGroupLocsAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _groupLocs[_index] = updateFn(_groupLocs[_index]);
+  }
+
+  void insertAtIndexInGroupLocs(int _index, dynamic _value) {
+    _groupLocs.insert(_index, _value);
+  }
+
+  bool _showMyLocs = false;
+  bool get showMyLocs => _showMyLocs;
+  set showMyLocs(bool _value) {
+    _showMyLocs = _value;
+  }
+
+  List<LatLng> _groupCoordLocs = [];
+  List<LatLng> get groupCoordLocs => _groupCoordLocs;
+  set groupCoordLocs(List<LatLng> _value) {
+    _groupCoordLocs = _value;
+  }
+
+  void addToGroupCoordLocs(LatLng _value) {
+    _groupCoordLocs.add(_value);
+  }
+
+  void removeFromGroupCoordLocs(LatLng _value) {
+    _groupCoordLocs.remove(_value);
+  }
+
+  void removeAtIndexFromGroupCoordLocs(int _index) {
+    _groupCoordLocs.removeAt(_index);
+  }
+
+  void updateGroupCoordLocsAtIndex(
+    int _index,
+    LatLng Function(LatLng) updateFn,
+  ) {
+    _groupCoordLocs[_index] = updateFn(_groupCoordLocs[_index]);
+  }
+
+  void insertAtIndexInGroupCoordLocs(int _index, LatLng _value) {
+    _groupCoordLocs.insert(_index, _value);
+  }
+
+  List<String> _groupAddress = [];
+  List<String> get groupAddress => _groupAddress;
+  set groupAddress(List<String> _value) {
+    _groupAddress = _value;
+  }
+
+  void addToGroupAddress(String _value) {
+    _groupAddress.add(_value);
+  }
+
+  void removeFromGroupAddress(String _value) {
+    _groupAddress.remove(_value);
+  }
+
+  void removeAtIndexFromGroupAddress(int _index) {
+    _groupAddress.removeAt(_index);
+  }
+
+  void updateGroupAddressAtIndex(
+    int _index,
+    String Function(String) updateFn,
+  ) {
+    _groupAddress[_index] = updateFn(_groupAddress[_index]);
+  }
+
+  void insertAtIndexInGroupAddress(int _index, String _value) {
+    _groupAddress.insert(_index, _value);
+  }
+
+  List<String> _groupIds = [];
+  List<String> get groupIds => _groupIds;
+  set groupIds(List<String> _value) {
+    _groupIds = _value;
+  }
+
+  void addToGroupIds(String _value) {
+    _groupIds.add(_value);
+  }
+
+  void removeFromGroupIds(String _value) {
+    _groupIds.remove(_value);
+  }
+
+  void removeAtIndexFromGroupIds(int _index) {
+    _groupIds.removeAt(_index);
+  }
+
+  void updateGroupIdsAtIndex(
+    int _index,
+    String Function(String) updateFn,
+  ) {
+    _groupIds[_index] = updateFn(_groupIds[_index]);
+  }
+
+  void insertAtIndexInGroupIds(int _index, String _value) {
+    _groupIds.insert(_index, _value);
+  }
+
+  dynamic _toEditJson;
+  dynamic get toEditJson => _toEditJson;
+  set toEditJson(dynamic _value) {
+    _toEditJson = _value;
+  }
+
+  String _deleteId = '';
+  String get deleteId => _deleteId;
+  set deleteId(String _value) {
+    _deleteId = _value;
+  }
+
+  dynamic _response;
+  dynamic get response => _response;
+  set response(dynamic _value) {
+    _response = _value;
+    prefs.setString('ff_response', jsonEncode(_value));
   }
 }
 

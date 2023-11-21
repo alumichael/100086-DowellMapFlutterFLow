@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -31,6 +32,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
     _model = createModel(context, () => CategoriesModel());
 
     _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -73,11 +76,12 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-0.24, -0.9),
+                        alignment: AlignmentDirectional(-0.24, -0.90),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.8,
                           child: TextFormField(
                             controller: _model.textController,
+                            focusNode: _model.textFieldFocusNode,
                             autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
@@ -133,7 +137,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-0.89, -0.8),
+                        alignment: AlignmentDirectional(-0.89, -0.80),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             '8gawanoy' /* Popular Categories */,
@@ -142,7 +146,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -0.71),
+                        alignment: AlignmentDirectional(0.00, -0.71),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -158,7 +162,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -0.62),
+                        alignment: AlignmentDirectional(0.00, -0.61),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -204,7 +208,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -0.53),
+                        alignment: AlignmentDirectional(0.00, -0.53),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -250,7 +254,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -0.45),
+                        alignment: AlignmentDirectional(0.00, -0.45),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -296,7 +300,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -0.35),
+                        alignment: AlignmentDirectional(0.00, -0.35),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -342,7 +346,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -0.26),
+                        alignment: AlignmentDirectional(0.00, -0.26),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -388,7 +392,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -0.18),
+                        alignment: AlignmentDirectional(0.00, -0.17),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -434,7 +438,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -0.09),
+                        alignment: AlignmentDirectional(0.00, -0.09),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -480,7 +484,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-0.12, 0.0),
+                        alignment: AlignmentDirectional(-0.12, 0.00),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,

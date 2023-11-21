@@ -13,13 +13,17 @@ import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'home_screen_version2_widget.dart' show HomeScreenVersion2Widget;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
-class HomeScreenVersion2Model extends FlutterFlowModel {
+class HomeScreenVersion2Model
+    extends FlutterFlowModel<HomeScreenVersion2Widget> {
   ///  Local state fields for this page.
 
   String? iip;
@@ -31,17 +35,22 @@ class HomeScreenVersion2Model extends FlutterFlowModel {
   bool? isLocationEnable;
   // Stores action output result for [Backend Call - API (ipify)] action in HomeScreenVersion2 widget.
   ApiCallResponse? myIPAddress;
+  // Stores action output result for [Backend Call - API (link bage login )] action in HomeScreenVersion2 widget.
+  ApiCallResponse? apiResultzlp;
   // State field(s) for PlacePicker widget.
   var placePickerValue = FFPlace();
   // State field(s) for RadioButton widget.
   FormFieldController<String>? radioButtonValueController;
   // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
   // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
   // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode3;
   TextEditingController? textController3;
   String? Function(BuildContext, String?)? textController3Validator;
   // Stores action output result for [Backend Call - API (NearbyPlace)] action in IconButton widget.
@@ -71,8 +80,13 @@ class HomeScreenVersion2Model extends FlutterFlowModel {
 
   void dispose() {
     unfocusNode.dispose();
+    textFieldFocusNode1?.dispose();
     textController1?.dispose();
+
+    textFieldFocusNode2?.dispose();
     textController2?.dispose();
+
+    textFieldFocusNode3?.dispose();
     textController3?.dispose();
   }
 

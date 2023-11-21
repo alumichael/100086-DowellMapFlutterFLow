@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'global_top_menu_bar_model.dart';
@@ -46,9 +47,9 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
       width: MediaQuery.sizeOf(context).width * 1.0,
       height: 50.0,
       decoration: BoxDecoration(),
-      alignment: AlignmentDirectional(1.0, 0.0),
+      alignment: AlignmentDirectional(1.00, 0.00),
       child: Align(
-        alignment: AlignmentDirectional(0.0, 0.0),
+        alignment: AlignmentDirectional(0.00, 0.00),
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
           child: Row(
@@ -102,7 +103,7 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
                   ),
                 ),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'pop7fj2v' /* 6 */,
@@ -122,7 +123,7 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
                 height: 50.0,
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),

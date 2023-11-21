@@ -15,6 +15,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_screen_version1_model.dart';
@@ -47,8 +48,14 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
     getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
     _model.textController1 ??= TextEditingController();
+    _model.textFieldFocusNode1 ??= FocusNode();
+
     _model.textController2 ??= TextEditingController();
+    _model.textFieldFocusNode2 ??= FocusNode();
+
     _model.textController3 ??= TextEditingController();
+    _model.textFieldFocusNode3 ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.textController1?.text = FFLocalizations.of(context).getText(
             '7l37sekx' /* 0 */,
@@ -71,6 +78,15 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
     if (currentUserLocationValue == null) {
       return Container(
@@ -127,7 +143,9 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
         }
         final homeScreenVersion1LinkBageLoginResponse = snapshot.data!;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -137,7 +155,7 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.00, -1.00),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: MediaQuery.sizeOf(context).height * 0.07,
@@ -282,6 +300,8 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                               dbResult: _model.result,
                               dbAddress: _model.addr,
                               navigateTo: () async {},
+                              deleteAction: () async {},
+                              updateAction: () async {},
                             ),
                           ),
                         ),
@@ -289,18 +309,18 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.00, 0.00),
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(),
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.00, 0.00),
                               child: Material(
                                 color: Colors.transparent,
                                 elevation: 16.0,
@@ -334,7 +354,7 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                     ),
                                     child: Align(
                                       alignment:
-                                          AlignmentDirectional(-0.15, 0.0),
+                                          AlignmentDirectional(-0.15, 0.00),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -342,7 +362,7 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                               'Select  Location')
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.05, -1.0),
+                                                  0.05, -1.00),
                                               child: FlutterFlowPlacePicker(
                                                 iOSGoogleMapsApiKey:
                                                     'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk',
@@ -514,6 +534,8 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                                           child: TextFormField(
                                                             controller: _model
                                                                 .textController1,
+                                                            focusNode: _model
+                                                                .textFieldFocusNode1,
                                                             autofocus: true,
                                                             obscureText: false,
                                                             decoration:
@@ -620,6 +642,8 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                                           child: TextFormField(
                                                             controller: _model
                                                                 .textController2,
+                                                            focusNode: _model
+                                                                .textFieldFocusNode2,
                                                             autofocus: true,
                                                             obscureText: false,
                                                             decoration:
@@ -757,6 +781,8 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                                           child: TextFormField(
                                                             controller: _model
                                                                 .textController3,
+                                                            focusNode: _model
+                                                                .textFieldFocusNode3,
                                                             autofocus: true,
                                                             obscureText: false,
                                                             decoration:
@@ -906,12 +932,14 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                                                       ?.jsonBody ??
                                                                   ''),
                                                               r'''$.results[:].geometry.location.lat''',
+                                                              true,
                                                             )!,
                                                             getJsonField(
                                                               (_model.nearbyPlaceResponse
                                                                       ?.jsonBody ??
                                                                   ''),
                                                               r'''$.results[:].geometry.location.lng''',
+                                                              true,
                                                             )!,
                                                             double.parse(_model
                                                                 .textController1
@@ -961,6 +989,7 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                                                       ?.jsonBody ??
                                                                   ''),
                                                               r'''$.results[:].name''',
+                                                              true,
                                                             ),
                                                             double.parse(_model
                                                                 .textController1
@@ -979,12 +1008,14 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                                                       ?.jsonBody ??
                                                                   ''),
                                                               r'''$.results[:].geometry.location.lat''',
+                                                              true,
                                                             )!,
                                                             getJsonField(
                                                               (_model.nearbyPlaceResponse
                                                                       ?.jsonBody ??
                                                                   ''),
                                                               r'''$.results[:].geometry.location.lng''',
+                                                              true,
                                                             )!,
                                                           );
                                                           _shouldSetState =

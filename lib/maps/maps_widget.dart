@@ -11,7 +11,9 @@ import 'dart:io';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pointer_interceptor/pointer_interceptor.dart';
 import 'package:provider/provider.dart';
 import 'maps_model.dart';
 export 'maps_model.dart';
@@ -50,6 +52,15 @@ class _MapsWidgetState extends State<MapsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return FutureBuilder<ApiCallResponse>(
@@ -83,7 +94,9 @@ class _MapsWidgetState extends State<MapsWidget> {
         }
         final mapsLinkBageLoginResponse = snapshot.data!;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
             resizeToAvoidBottomInset: false,
@@ -131,7 +144,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                           child: Stack(
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.00, 0.00),
                                 child: FlutterFlowGoogleMap(
                                   controller: _model.googleMapsController,
                                   onCameraIdle: (latLng) =>
@@ -153,96 +166,110 @@ class _MapsWidgetState extends State<MapsWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.0, -1.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onDoubleTap: () async {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Add Place',
-                                          style: TextStyle(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                          ),
-                                        ),
-                                        duration: Duration(milliseconds: 4000),
-                                        backgroundColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondary,
-                                        action: SnackBarAction(
-                                          label: 'Add Place to map',
-                                          onPressed: () async {
-                                            context
-                                                .pushNamed('placedetailsCopy');
-                                          },
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 1.0,
-                                    height: MediaQuery.sizeOf(context).height *
-                                        0.07,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFF015534),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 20.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            FFLocalizations.of(context).getText(
-                                              'ewi5pxl1' /* DoWell Maps */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .displaySmall
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .white,
-                                                ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    40.0, 0.0, 0.0, 0.0),
-                                            child: FlutterFlowLanguageSelector(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.4,
-                                              borderColor:
+                                alignment: AlignmentDirectional(0.00, -1.00),
+                                child: PointerInterceptor(
+                                  intercepting: isWeb,
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onDoubleTap: () async {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Add Place',
+                                            style: TextStyle(
+                                              color:
                                                   FlutterFlowTheme.of(context)
-                                                      .white,
-                                              dropdownColor: Color(0x00000000),
-                                              dropdownIconColor:
-                                                  Color(0xFF14181B),
-                                              borderRadius: 8.0,
-                                              textStyle: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.normal,
-                                                fontSize: 13.0,
-                                              ),
-                                              hideFlags: false,
-                                              flagSize: 24.0,
-                                              flagTextGap: 8.0,
-                                              currentLanguage:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                              languages:
-                                                  FFLocalizations.languages(),
-                                              onChanged: (lang) =>
-                                                  setAppLanguage(context, lang),
+                                                      .primaryText,
                                             ),
                                           ),
-                                        ],
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondary,
+                                          action: SnackBarAction(
+                                            label: 'Add Place to map',
+                                            onPressed: () async {
+                                              context.pushNamed(
+                                                  'placedetailsCopy');
+                                            },
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          1.0,
+                                      height:
+                                          MediaQuery.sizeOf(context).height *
+                                              0.07,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFF015534),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 0.0, 20.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'ewi5pxl1' /* DoWell Maps */,
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .displaySmall
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .white,
+                                                      ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      40.0, 0.0, 0.0, 0.0),
+                                              child:
+                                                  FlutterFlowLanguageSelector(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        0.4,
+                                                borderColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .white,
+                                                dropdownColor:
+                                                    Color(0x00000000),
+                                                dropdownIconColor:
+                                                    Color(0xFF14181B),
+                                                borderRadius: 8.0,
+                                                textStyle: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.normal,
+                                                  fontSize: 13.0,
+                                                ),
+                                                hideFlags: false,
+                                                flagSize: 24.0,
+                                                flagTextGap: 8.0,
+                                                currentLanguage:
+                                                    FFLocalizations.of(context)
+                                                        .languageCode,
+                                                languages:
+                                                    FFLocalizations.languages(),
+                                                onChanged: (lang) =>
+                                                    setAppLanguage(
+                                                        context, lang),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -251,66 +278,74 @@ class _MapsWidgetState extends State<MapsWidget> {
                               if (FFAppState().currentLocation ==
                                   'Specified Location')
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 0.41),
-                                  child: FlutterFlowPlacePicker(
-                                    iOSGoogleMapsApiKey:
-                                        'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk',
-                                    androidGoogleMapsApiKey:
-                                        'AIzaSyA_i4bbFV0iKxU_nUI7L3p0--r6UR89du4',
-                                    webGoogleMapsApiKey:
-                                        'AIzaSyAsH8omDk8y0lSGLTW9YtZiiQ2MkmsF-uQ',
-                                    onSelect: (place) async {
-                                      setState(() =>
-                                          _model.placePickerValue = place);
-                                    },
-                                    defaultText:
-                                        FFLocalizations.of(context).getText(
-                                      'ktsb4915' /* Select Location */,
-                                    ),
-                                    icon: Icon(
-                                      Icons.place,
-                                      color: Colors.white,
-                                      size: 16.0,
-                                    ),
-                                    buttonOptions: FFButtonOptions(
-                                      width: double.infinity,
-                                      height: 56.0,
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Colors.white,
-                                            letterSpacing: 2.0,
-                                          ),
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 0.0,
+                                  alignment: AlignmentDirectional(0.00, 0.41),
+                                  child: PointerInterceptor(
+                                    intercepting: isWeb,
+                                    child: FlutterFlowPlacePicker(
+                                      iOSGoogleMapsApiKey:
+                                          'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk',
+                                      androidGoogleMapsApiKey:
+                                          'AIzaSyA_i4bbFV0iKxU_nUI7L3p0--r6UR89du4',
+                                      webGoogleMapsApiKey:
+                                          'AIzaSyAsH8omDk8y0lSGLTW9YtZiiQ2MkmsF-uQ',
+                                      onSelect: (place) async {
+                                        setState(() =>
+                                            _model.placePickerValue = place);
+                                      },
+                                      defaultText:
+                                          FFLocalizations.of(context).getText(
+                                        'ktsb4915' /* Select Location */,
                                       ),
-                                      borderRadius: BorderRadius.circular(0.0),
+                                      icon: Icon(
+                                        Icons.place,
+                                        color: Colors.white,
+                                        size: 16.0,
+                                      ),
+                                      buttonOptions: FFButtonOptions(
+                                        width: double.infinity,
+                                        height: 56.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color: Colors.white,
+                                              letterSpacing: 2.0,
+                                            ),
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 0.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
+                                      ),
                                     ),
                                   ),
                                 ),
                               Align(
-                                alignment: AlignmentDirectional(0.0, 0.94),
-                                child: Container(
-                                  width: MediaQuery.sizeOf(context).width * 1.0,
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 0.251,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      wrapWithModel(
-                                        model: _model.searchboxCopyModel,
-                                        updateCallback: () => setState(() {}),
-                                        child: SearchboxCopyWidget(),
-                                      ),
-                                    ],
+                                alignment: AlignmentDirectional(0.00, 0.94),
+                                child: PointerInterceptor(
+                                  intercepting: isWeb,
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    height: MediaQuery.sizeOf(context).height *
+                                        0.251,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        wrapWithModel(
+                                          model: _model.searchboxCopyModel,
+                                          updateCallback: () => setState(() {}),
+                                          child: SearchboxCopyWidget(),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
