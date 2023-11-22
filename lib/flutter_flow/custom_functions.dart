@@ -149,43 +149,6 @@ String? totalcredit(String? credit) {
   return "Credit : 0";
 }
 
-List<String>? groupLocsIdExtractor(List<dynamic>? dataBox) {
-  var dataValue = <String>[];
-  if (dataBox != null) {
-    for (int i = 0; i < dataBox.length; i++) {
-      List<dynamic> locInfo = dataBox[i];
-      for (int j = 0; j < locInfo.length; j++) {
-        var realData = locInfo[j];
-        String locPlace = realData["loc_details"]["location_coord"] ?? "";
-        String locString = realData["_id"] ?? "";
-        if (locPlace != "null" && locString.isNotEmpty) {
-          dataValue.add(locString);
-        }
-      }
-    }
-  }
-  return dataValue;
-}
-
-List<String> groupLocsDetailsExtractor(List<dynamic>? dataBox) {
-  List<String> dataValue = [];
-
-  if (dataBox != null) {
-    for (int i = 0; i < dataBox.length; i++) {
-      List<dynamic> locInfo = dataBox[i];
-      for (int j = 0; j < locInfo.length; j++) {
-        var realData = locInfo[j];
-        String locPlace = realData["loc_details"]["location_coord"] ?? "";
-        String locString = realData["loc_details"]["place_name"] ?? "";
-        if (locPlace != "null" && locString.isNotEmpty) {
-          dataValue.add(locString);
-        }
-      }
-    }
-  }
-  return dataValue;
-}
-
 List<dynamic>? newCustomFunction2(List<dynamic>? dataBox) {
   List<String> dataValue = [];
 
@@ -200,23 +163,6 @@ List<dynamic>? newCustomFunction2(List<dynamic>? dataBox) {
         dataValue.add(locString);
       }
       // }
-    }
-  }
-  return dataValue;
-}
-
-List<dynamic> removeNullLoc(List<dynamic>? dataBox) {
-  var dataValue = [];
-  if (dataBox != null) {
-    for (int i = 0; i < dataBox.length; i++) {
-      List<dynamic> locInfo = dataBox[i];
-      for (int j = 0; j < locInfo.length; j++) {
-        var realData = locInfo[j];
-        String locString = realData["loc_details"]["location_coord"] ?? "";
-        if (locString.isNotEmpty) {
-          dataValue.add(locInfo);
-        }
-      }
     }
   }
   return dataValue;

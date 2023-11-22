@@ -892,18 +892,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Cerrar sesión',
       'fr': 'Se déconnecter',
     },
-    'xww5jydn': {
-      'en': 'Login',
-      'de': 'Anmeldung',
-      'es': 'Acceso',
-      'fr': 'Se connecter',
-    },
-    'tkk4nv2b': {
-      'en': 'Group',
-      'de': 'Gruppe',
-      'es': 'Grupo',
-      'fr': 'Groupe',
-    },
     'fz3xrc4g': {
       'en': 'Search Location',
       'de': 'Ort auswählen',
@@ -975,6 +963,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'Schule',
       'es': 'escuela',
       'fr': 'école',
+    },
+    'xww5jydn': {
+      'en': 'Login',
+      'de': 'Anmeldung',
+      'es': 'Acceso',
+      'fr': 'Se connecter',
+    },
+    'tkk4nv2b': {
+      'en': 'Group',
+      'de': 'Gruppe',
+      'es': 'Grupo',
+      'fr': 'Groupe',
     },
     'in74qj5s': {
       'en': 'Home',
