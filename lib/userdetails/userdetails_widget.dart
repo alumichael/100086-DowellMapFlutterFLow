@@ -87,15 +87,17 @@ class _UserdetailsWidgetState extends State<UserdetailsWidget> {
                           shape: BoxShape.circle,
                         ),
                         child: Image.network(
-                          functions.userprofile(getJsonField(
-                            FFAppState().response,
-                            r'''$.userinfo.profile_img''',
-                          ).toString())!,
+                          functions
+                              .userprofile(getJsonField(
+                                FFAppState().response,
+                                r'''$.userinfo.profile_img''',
+                              ).toString())!
+                              .toString(),
                           fit: BoxFit.cover,
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
@@ -117,7 +119,7 @@ class _UserdetailsWidgetState extends State<UserdetailsWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 20.0, 20.0, 0.0),
@@ -175,7 +177,7 @@ class _UserdetailsWidgetState extends State<UserdetailsWidget> {
                                   ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(-1.00, 0.00),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
                                   functions.email(getJsonField(
@@ -196,7 +198,7 @@ class _UserdetailsWidgetState extends State<UserdetailsWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 10.0, 20.0, 0.0),
@@ -234,7 +236,7 @@ class _UserdetailsWidgetState extends State<UserdetailsWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-1.00, 0.00),
+                        alignment: AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 10.0, 20.0, 0.0),

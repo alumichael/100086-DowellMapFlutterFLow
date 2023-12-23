@@ -43,13 +43,14 @@ class LinkBageLoginCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic sessionID(dynamic response) => getJsonField(
+  static String? sessionID(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.qrid''',
-      );
+      ));
 }
 
 class CreateRoomForDigitalQCall {
@@ -76,6 +77,7 @@ class CreateRoomForDigitalQCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -102,40 +104,60 @@ class NearbyPlaceCall {
     return ApiCallResponse.fromCloudCallResponse(response);
   }
 
-  static dynamic lat(dynamic response) => getJsonField(
+  static List<double>? lat(dynamic response) => (getJsonField(
         response,
         r'''$.results[:].geometry.location.lat''',
         true,
-      );
-  static dynamic lng(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<double>(x))
+          .withoutNulls
+          .toList();
+  static List<double>? lng(dynamic response) => (getJsonField(
         response,
         r'''$.results[:].geometry.location.lng''',
         true,
-      );
-  static dynamic placeID(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<double>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? placeID(dynamic response) => (getJsonField(
         response,
         r'''$.results[:].place_id''',
         true,
-      );
-  static dynamic address(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? address(dynamic response) => (getJsonField(
         response,
         r'''$.results[:].formatted_address''',
         true,
-      );
-  static dynamic placeName(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? placeName(dynamic response) => (getJsonField(
         response,
         r'''$.results[:].name''',
         true,
-      );
-  static dynamic data(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List? data(dynamic response) => getJsonField(
         response,
         r'''$.results''',
         true,
-      );
-  static dynamic status(dynamic response) => getJsonField(
+      ) as List?;
+  static String? status(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.status''',
-      );
+      ));
 }
 
 class DirectionCall {
@@ -202,14 +224,14 @@ class CreateEventCall {
     return ApiCallResponse.fromCloudCallResponse(response);
   }
 
-  static dynamic eventID(dynamic response) => getJsonField(
+  static String? eventID(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.event_id''',
-      );
-  static dynamic isSuccess(dynamic response) => getJsonField(
+      ));
+  static bool? isSuccess(dynamic response) => castToType<bool>(getJsonField(
         response,
         r'''$.is_success''',
-      );
+      ));
 }
 
 class NearbyPlacesDataCall {
@@ -271,17 +293,18 @@ class NearbyPlacesDataCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic success(dynamic response) => getJsonField(
+  static bool? success(dynamic response) => castToType<bool>(getJsonField(
         response,
         r'''$.isSuccess''',
-      );
-  static dynamic insertID(dynamic response) => getJsonField(
+      ));
+  static String? insertID(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.inserted_id''',
-      );
+      ));
 }
 
 class SendLogDataCall {
@@ -333,6 +356,7 @@ class SendLogDataCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -349,6 +373,7 @@ class IpifyCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -415,6 +440,7 @@ class MymapCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -460,39 +486,60 @@ class GetMymapCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic locationCord(dynamic response) => getJsonField(
+  static List<String>? locationCord(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].location_coord''',
         true,
-      );
-  static dynamic distance(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<double>? distance(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].hav_distances''',
         true,
-      );
-  static dynamic category(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<double>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? category(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].category''',
         true,
-      );
-  static dynamic placeId(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? placeId(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].place_id''',
         true,
-      );
-  static dynamic placeName(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? placeName(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].place_name''',
         true,
-      );
-  static dynamic refinedData(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List? refinedData(dynamic response) => getJsonField(
         response,
         r'''$.data''',
         true,
-      );
+      ) as List?;
 }
 
 class GetCategoryCall {
@@ -507,14 +554,19 @@ class GetCategoryCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic categoryList(dynamic response) => getJsonField(
+  static List<String>? categoryList(dynamic response) => (getJsonField(
         response,
         r'''$.categories''',
         true,
-      );
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
 }
 
 class GetUserAPIKeyCall {
@@ -537,21 +589,22 @@ class GetUserAPIKeyCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic success(dynamic response) => getJsonField(
+  static bool? success(dynamic response) => castToType<bool>(getJsonField(
         response,
         r'''$.success''',
-      );
-  static dynamic isActive(dynamic response) => getJsonField(
+      ));
+  static bool? isActive(dynamic response) => castToType<bool>(getJsonField(
         response,
         r'''$.data.is_active''',
-      );
-  static dynamic apiKey(dynamic response) => getJsonField(
+      ));
+  static String? apiKey(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.api_key''',
-      );
+      ));
   static dynamic totalCredits(dynamic response) => getJsonField(
         response,
         r'''$.data.total_credits''',
@@ -585,6 +638,7 @@ class ProcessProductRequestCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -592,10 +646,10 @@ class ProcessProductRequestCall {
         response,
         r'''$.remaining_credits''',
       );
-  static dynamic message(dynamic response) => getJsonField(
+  static String? message(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.message''',
-      );
+      ));
 }
 
 class GetLocationByUserCall {
@@ -624,19 +678,20 @@ class GetLocationByUserCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic data(dynamic response) => getJsonField(
+  static List? data(dynamic response) => getJsonField(
         response,
         r'''$.data''',
         true,
-      );
-  static dynamic groupList(dynamic response) => getJsonField(
+      ) as List?;
+  static List? groupList(dynamic response) => getJsonField(
         response,
         r'''$.data[:].group_list''',
         true,
-      );
+      ) as List?;
   static dynamic docType(dynamic response) => getJsonField(
         response,
         r'''$.data[:].doc_type''',
@@ -665,6 +720,7 @@ class CreateProfileCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -698,6 +754,7 @@ class CreateLocationGroupCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -754,6 +811,7 @@ class CreateLocationCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -784,6 +842,7 @@ class UpdateGroupLocationCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -840,6 +899,7 @@ class UpdateLocationCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -866,6 +926,7 @@ class DeleteUserLocsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -894,6 +955,7 @@ class DeleteLocationGroupCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -915,6 +977,7 @@ class DeleteLocCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -945,39 +1008,56 @@ class GetLocationByGroupNameCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic data(dynamic response) => getJsonField(
+  static List? data(dynamic response) => getJsonField(
         response,
         r'''$.data''',
         true,
-      );
-  static dynamic locationId(dynamic response) => getJsonField(
+      ) as List?;
+  static List<String>? locationId(dynamic response) => (getJsonField(
         response,
         r'''$.data[:]._id''',
         true,
-      );
-  static dynamic locationObject(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List? locationObject(dynamic response) => getJsonField(
         response,
         r'''$.data[:].loc_details''',
         true,
-      );
-  static dynamic groupName(dynamic response) => getJsonField(
+      ) as List?;
+  static List<String>? groupName(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].group_name''',
         true,
-      );
-  static dynamic locationCord(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? locationCord(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].loc_details.location_coord''',
         true,
-      );
-  static dynamic locationAddress(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? locationAddress(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].loc_details.address''',
         true,
-      );
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
 }
 
 class NineCall {
@@ -992,6 +1072,7 @@ class NineCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }

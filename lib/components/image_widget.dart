@@ -52,7 +52,7 @@ class _ImageWidgetState extends State<ImageWidget> {
             r'''$.userinfo.profile_img''',
           ).toString()),
           r'''$''',
-        ),
+        ).toString(),
         width: 300.0,
         height: 200.0,
         fit: BoxFit.cover,

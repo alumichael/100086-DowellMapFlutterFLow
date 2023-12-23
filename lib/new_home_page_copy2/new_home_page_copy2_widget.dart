@@ -130,10 +130,12 @@ class _NewHomePageCopy2WidgetState extends State<NewHomePageCopy2Widget> {
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: Image.network(
-                                    functions.userprofile(getJsonField(
-                                      FFAppState().response,
-                                      r'''$.userinfo.profile_img''',
-                                    ).toString())!,
+                                    functions
+                                        .userprofile(getJsonField(
+                                          FFAppState().response,
+                                          r'''$.userinfo.profile_img''',
+                                        ).toString())!
+                                        .toString(),
                                   ).image,
                                 ),
                                 shape: BoxShape.circle,
@@ -602,7 +604,7 @@ class _NewHomePageCopy2WidgetState extends State<NewHomePageCopy2Widget> {
                                               ? getJsonField(
                                                   FFAppState().response,
                                                   r'''$.userinfo.profile_img''',
-                                                )
+                                                ).toString()
                                               : 'https://100014.pythonanywhere.com/media/user.png',
                                         ).image,
                                       ),
@@ -642,8 +644,7 @@ class _NewHomePageCopy2WidgetState extends State<NewHomePageCopy2Widget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 10.0, 10.0, 10.0),
+                                      padding: EdgeInsets.all(10.0),
                                       child: FaIcon(
                                         FontAwesomeIcons.userSlash,
                                         color: FlutterFlowTheme.of(context)

@@ -232,12 +232,12 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
-                      alignment: AlignmentDirectional(0.00, 0.00),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            alignment: AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 10.0, 16.0, 10.0),
@@ -252,7 +252,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                   getJsonField(
                                     FFAppState().response,
                                     r'''$.userinfo.profile_img''',
-                                  ),
+                                  ).toString(),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -260,7 +260,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                           ),
                           Flexible(
                             child: Align(
-                              alignment: AlignmentDirectional(-1.00, 0.00),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 0.0),
@@ -270,7 +270,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                   children: [
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(-1.00, 0.00),
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 8.0, 0.0, 8.0),
@@ -305,7 +305,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  -1.00, 0.00),
+                                                  -1.0, 0.0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -338,7 +338,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(-1.00, 0.00),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 6.0, 0.0, 0.0),
@@ -384,7 +384,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(-1.00, 0.00),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 6.0, 0.0, 0.0),
@@ -442,7 +442,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(-1.00, 0.00),
+                    alignment: AlignmentDirectional(-1.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'chsdy7fd' /* DoWell Maps */,
@@ -652,18 +652,18 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(),
                       child: Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Material(
                                 color: Colors.transparent,
                                 elevation: 16.0,
@@ -697,7 +697,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                     ),
                                     child: Align(
                                       alignment:
-                                          AlignmentDirectional(-0.15, 0.00),
+                                          AlignmentDirectional(-0.15, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -705,7 +705,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                               'Select Location')
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.05, -1.00),
+                                                  0.05, -1.0),
                                               child: FlutterFlowPlacePicker(
                                                 iOSGoogleMapsApiKey:
                                                     'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk',

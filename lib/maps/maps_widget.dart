@@ -144,7 +144,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                           child: Stack(
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(0.00, 0.00),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: FlutterFlowGoogleMap(
                                   controller: _model.googleMapsController,
                                   onCameraIdle: (latLng) =>
@@ -166,7 +166,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.00, -1.00),
+                                alignment: AlignmentDirectional(0.0, -1.0),
                                 child: PointerInterceptor(
                                   intercepting: isWeb,
                                   child: InkWell(
@@ -278,7 +278,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                               if (FFAppState().currentLocation ==
                                   'Specified Location')
                                 Align(
-                                  alignment: AlignmentDirectional(0.00, 0.41),
+                                  alignment: AlignmentDirectional(0.0, 0.41),
                                   child: PointerInterceptor(
                                     intercepting: isWeb,
                                     child: FlutterFlowPlacePicker(
@@ -324,7 +324,7 @@ class _MapsWidgetState extends State<MapsWidget> {
                                   ),
                                 ),
                               Align(
-                                alignment: AlignmentDirectional(0.00, 0.94),
+                                alignment: AlignmentDirectional(0.0, 0.94),
                                 child: PointerInterceptor(
                                   intercepting: isWeb,
                                   child: Container(

@@ -135,7 +135,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
           setState(() {
             FFAppState().apiKey = GetUserAPIKeyCall.apiKey(
               (_model.serviceApiKey?.jsonBody ?? ''),
-            ).toString();
+            ).toString()!;
             FFAppState().credit = valueOrDefault<String>(
               GetUserAPIKeyCall.totalCredits(
                 (_model.serviceApiKey?.jsonBody ?? ''),
@@ -164,9 +164,15 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
           docType: 'master',
         );
         setState(() {
+          FFAppState().noMoreCredit = (_model
+                      .getLocationByUserResponse?.bodyText ??
+                  '') ==
+              '\"You have less credits. If you want to buy more credits click the \'Buy Credits\' button\"';
+        });
+        setState(() {
           FFAppState().isProfiledUser = GetLocationByUserCall.data(
                     (_model.getLocationByUserResponse?.jsonBody ?? ''),
-                  ).length ==
+                  )?.length ==
                   0
               ? false
               : true;
@@ -335,10 +341,12 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: Image.network(
-                                    functions.userprofile(getJsonField(
-                                      FFAppState().response,
-                                      r'''$.userinfo.profile_img''',
-                                    ).toString())!,
+                                    functions
+                                        .userprofile(getJsonField(
+                                          FFAppState().response,
+                                          r'''$.userinfo.profile_img''',
+                                        ).toString())!
+                                        .toString(),
                                   ).image,
                                 ),
                                 shape: BoxShape.circle,
@@ -392,14 +400,35 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              Navigator.pop(context);
                               if (functions.isuserlogedin(getJsonField(
                                 FFAppState().response,
                                 r'''$.userinfo.username''',
                               ).toString())!) {
                                 context.pushNamed('Userdetails');
+
+                                _model.serviceApiKeyCopy =
+                                    await GetUserAPIKeyCall.call(
+                                  workspaceId: getJsonField(
+                                    FFAppState().response,
+                                    r'''$.selectedWorkspaceId''',
+                                  ).toString(),
+                                );
+                                if ((_model.serviceApiKeyCopy?.succeeded ??
+                                    true)) {
+                                  FFAppState().update(() {
+                                    FFAppState().credit =
+                                        GetUserAPIKeyCall.totalCredits(
+                                      (_model.serviceApiKeyCopy?.jsonBody ??
+                                          ''),
+                                    ).toString();
+                                  });
+                                }
                               } else {
                                 context.pushNamed('LoginComponent');
                               }
+
+                              setState(() {});
                             },
                             child: Text(
                               FFLocalizations.of(context).getText(
@@ -436,7 +465,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(-1.00, 0.00),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 30.0, 0.0),
@@ -487,32 +516,53 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  await showAlignedDialog(
-                                    context: context,
-                                    isGlobal: true,
-                                    avoidOverflow: false,
-                                    targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                        .resolve(Directionality.of(context)),
-                                    followerAnchor: AlignmentDirectional(
-                                            0.0, 0.0)
-                                        .resolve(Directionality.of(context)),
-                                    builder: (dialogContext) {
-                                      return Material(
-                                        color: Colors.transparent,
-                                        child: WebViewAware(
-                                            child: GestureDetector(
-                                          onTap: () => _model
-                                                  .unfocusNode.canRequestFocus
-                                              ? FocusScope.of(context)
-                                                  .requestFocus(
-                                                      _model.unfocusNode)
-                                              : FocusScope.of(context)
-                                                  .unfocus(),
-                                          child: AddGroupDialogWidget(),
-                                        )),
-                                      );
-                                    },
-                                  ).then((value) => setState(() {}));
+                                  if (FFAppState().noMoreCredit) {
+                                    Navigator.pop(context);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'No more credit.',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 5000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .background,
+                                      ),
+                                    );
+                                  } else {
+                                    Navigator.pop(context);
+                                    await showAlignedDialog(
+                                      context: context,
+                                      isGlobal: true,
+                                      avoidOverflow: false,
+                                      targetAnchor: AlignmentDirectional(
+                                              0.0, 0.0)
+                                          .resolve(Directionality.of(context)),
+                                      followerAnchor: AlignmentDirectional(
+                                              0.0, 0.0)
+                                          .resolve(Directionality.of(context)),
+                                      builder: (dialogContext) {
+                                        return Material(
+                                          color: Colors.transparent,
+                                          child: WebViewAware(
+                                              child: GestureDetector(
+                                            onTap: () => _model
+                                                    .unfocusNode.canRequestFocus
+                                                ? FocusScope.of(context)
+                                                    .requestFocus(
+                                                        _model.unfocusNode)
+                                                : FocusScope.of(context)
+                                                    .unfocus(),
+                                            child: AddGroupDialogWidget(),
+                                          )),
+                                        );
+                                      },
+                                    ).then((value) => setState(() {}));
+                                  }
                                 },
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -828,6 +878,8 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                       FFAppState().isAuthUser = false;
                                       FFAppState().sessionId = 'null';
                                       FFAppState().groupList = [];
+                                      FFAppState().response = null;
+                                      FFAppState().username = '';
                                     });
                                   } else {
                                     Navigator.pop(context);
@@ -870,7 +922,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Container(
                           width: double.infinity,
                           height: MediaQuery.sizeOf(context).height * 1.0,
@@ -983,14 +1035,14 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 1.00),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             if (FFAppState().showBottomSheet)
                               Align(
-                                alignment: AlignmentDirectional(0.00, 1.00),
+                                alignment: AlignmentDirectional(0.0, 1.0),
                                 child: Material(
                                   color: Colors.transparent,
                                   elevation: 5.0,
@@ -1017,8 +1069,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                       ),
                                     ),
                                     child: Align(
-                                      alignment:
-                                          AlignmentDirectional(0.00, 1.00),
+                                      alignment: AlignmentDirectional(0.0, 1.0),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 30.0),
@@ -1080,7 +1131,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                       child: Align(
                                                         alignment:
                                                             AlignmentDirectional(
-                                                                0.05, -1.00),
+                                                                0.05, -1.0),
                                                         child:
                                                             FlutterFlowPlacePicker(
                                                           iOSGoogleMapsApiKey:
@@ -1208,7 +1259,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.00, 0.00),
+                                                  0.0, 0.0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -1812,7 +1863,7 @@ Between */
                                                                 (_model.nearbyPlaceResponse
                                                                         ?.jsonBody ??
                                                                     ''),
-                                                              ).length !=
+                                                              )?.length !=
                                                               0) {
                                                             _model.searchServiceResponse =
                                                                 await ProcessProductRequestCall
@@ -2057,7 +2108,7 @@ Between */
                                                                       (_model.searchServiceResponse
                                                                               ?.jsonBody ??
                                                                           ''),
-                                                                    ).toString(),
+                                                                    ).toString()!,
                                                                     style:
                                                                         TextStyle(
                                                                       color: FlutterFlowTheme.of(
@@ -2146,7 +2197,7 @@ Between */
                                                                 (_model.mymapBackendRefinedResult
                                                                         ?.jsonBody ??
                                                                     ''),
-                                                              ).length !=
+                                                              )?.length !=
                                                               0) {
                                                             _model.getLocationServiceResponse =
                                                                 await ProcessProductRequestCall
@@ -2208,7 +2259,7 @@ Between */
                                                                       (_model.getLocationServiceResponse
                                                                               ?.jsonBody ??
                                                                           ''),
-                                                                    ).toString(),
+                                                                    ).toString()!,
                                                                     style:
                                                                         TextStyle(
                                                                       color: FlutterFlowTheme.of(
@@ -2247,10 +2298,10 @@ Between */
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, -1.00),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              21.0, 35.0, 0.0, 0.0),
+                              21.0, 50.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -2280,9 +2331,10 @@ Between */
                                             valueOrDefault<String>(
                                               functions
                                                   .userprofile(getJsonField(
-                                                FFAppState().response,
-                                                r'''$.userinfo.profile_img''',
-                                              ).toString()),
+                                                    FFAppState().response,
+                                                    r'''$.userinfo.profile_img''',
+                                                  ).toString())
+                                                  ?.toString(),
                                               'https://100014.pythonanywhere.com/media/user.png',
                                             ),
                                           ),
@@ -2326,9 +2378,7 @@ Between */
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 10.0, 10.0, 10.0),
+                                            padding: EdgeInsets.all(10.0),
                                             child: FaIcon(
                                               FontAwesomeIcons.userSlash,
                                               color:
@@ -2380,42 +2430,66 @@ Between */
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        await showAlignedDialog(
-                                          context: context,
-                                          isGlobal: true,
-                                          avoidOverflow: false,
-                                          targetAnchor: AlignmentDirectional(
-                                                  0.0, 0.0)
-                                              .resolve(
-                                                  Directionality.of(context)),
-                                          followerAnchor: AlignmentDirectional(
-                                                  0.0, 0.0)
-                                              .resolve(
-                                                  Directionality.of(context)),
-                                          builder: (dialogContext) {
-                                            return Material(
-                                              color: Colors.transparent,
-                                              child: WebViewAware(
-                                                  child: GestureDetector(
-                                                onTap: () => _model.unfocusNode
-                                                        .canRequestFocus
-                                                    ? FocusScope.of(context)
-                                                        .requestFocus(
-                                                            _model.unfocusNode)
-                                                    : FocusScope.of(context)
-                                                        .unfocus(),
-                                                child: Container(
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          0.8,
-                                                  child:
-                                                      GroupListDialogComponentWidget(),
+                                        if (FFAppState().noMoreCredit) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'You have less credits.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14.0,
                                                 ),
-                                              )),
-                                            );
-                                          },
-                                        ).then((value) => setState(() {}));
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .btnText,
+                                            ),
+                                          );
+                                        } else {
+                                          await showAlignedDialog(
+                                            context: context,
+                                            isGlobal: true,
+                                            avoidOverflow: false,
+                                            targetAnchor: AlignmentDirectional(
+                                                    0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                            followerAnchor:
+                                                AlignmentDirectional(0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                            builder: (dialogContext) {
+                                              return Material(
+                                                color: Colors.transparent,
+                                                child: WebViewAware(
+                                                    child: GestureDetector(
+                                                  onTap: () => _model
+                                                          .unfocusNode
+                                                          .canRequestFocus
+                                                      ? FocusScope.of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode)
+                                                      : FocusScope.of(context)
+                                                          .unfocus(),
+                                                  child: Container(
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.8,
+                                                    child:
+                                                        GroupListDialogComponentWidget(),
+                                                  ),
+                                                )),
+                                              );
+                                            },
+                                          ).then((value) => setState(() {}));
+                                        }
                                       },
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -2423,9 +2497,7 @@ Between */
                                             MainAxisAlignment.start,
                                         children: [
                                           Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 10.0, 10.0, 10.0),
+                                            padding: EdgeInsets.all(10.0),
                                             child: Icon(
                                               Icons.domain_add_rounded,
                                               color:

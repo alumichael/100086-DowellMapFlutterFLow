@@ -97,10 +97,12 @@ class _NewHomePageCopyWidgetState extends State<NewHomePageCopyWidget> {
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: Image.network(
-                                functions.userprofile(getJsonField(
-                                  FFAppState().response,
-                                  r'''$.userinfo.profile_img''',
-                                ).toString())!,
+                                functions
+                                    .userprofile(getJsonField(
+                                      FFAppState().response,
+                                      r'''$.userinfo.profile_img''',
+                                    ).toString())!
+                                    .toString(),
                               ).image,
                             ),
                             shape: BoxShape.circle,
@@ -584,8 +586,7 @@ class _NewHomePageCopyWidgetState extends State<NewHomePageCopyWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 10.0, 10.0, 10.0),
+                                    padding: EdgeInsets.all(10.0),
                                     child: FaIcon(
                                       FontAwesomeIcons.userSlash,
                                       color:

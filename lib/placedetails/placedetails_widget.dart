@@ -180,7 +180,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                           children: [
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.00, -0.75),
+                                                  0.0, -0.75),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -716,7 +716,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                             (_model.addMyMapServiceResponse
                                                                     ?.jsonBody ??
                                                                 ''),
-                                                          ).toString(),
+                                                          ).toString()!,
                                                           style: TextStyle(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
@@ -1463,15 +1463,6 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                 hidesUnderline: true,
                                                 isSearchable: false,
                                                 isMultiSelect: false,
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.00, 0.00),
-                                              child: Stack(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                children: [],
                                               ),
                                             ),
                                           ],

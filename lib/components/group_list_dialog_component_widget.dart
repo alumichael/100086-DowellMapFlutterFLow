@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -69,7 +70,7 @@ class _GroupListDialogComponentWidgetState
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(-1.00, -1.00),
+                    alignment: AlignmentDirectional(-1.0, -1.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(1.0, 0.0, 0.0, 0.0),
@@ -97,6 +98,10 @@ class _GroupListDialogComponentWidgetState
                 options: FFAppState().groupList,
                 onChanged: (val) async {
                   setState(() => _model.dropDownValue = val);
+                  setState(() {
+                    FFAppState().isGettingDroupLocations = true;
+                    FFAppState().clearmap = true;
+                  });
                   _model.getLocationbyGroupResponse =
                       await GetLocationByGroupNameCall.call(
                     apiKey: FFAppState().apiKey,
@@ -104,36 +109,61 @@ class _GroupListDialogComponentWidgetState
                     groupName: _model.dropDownValue,
                   );
                   if ((_model.getLocationbyGroupResponse?.succeeded ?? true)) {
-                    FFAppState().update(() {
-                      FFAppState().groupAddress =
-                          (GetLocationByGroupNameCall.locationAddress(
-                        (_model.getLocationbyGroupResponse?.jsonBody ?? ''),
-                      ) as List)
-                              .map<String>((s) => s.toString())
-                              .toList()!
-                              .toList()
-                              .cast<String>();
-                      FFAppState().groupIds =
-                          (GetLocationByGroupNameCall.locationId(
-                        (_model.getLocationbyGroupResponse?.jsonBody ?? ''),
-                      ) as List)
-                              .map<String>((s) => s.toString())
-                              .toList()!
-                              .toList()
-                              .cast<String>();
-                      FFAppState().showMyLocs = true;
-                      FFAppState().groupLocs = GetLocationByGroupNameCall.data(
-                        (_model.getLocationbyGroupResponse?.jsonBody ?? ''),
-                      )!
-                          .toList()
-                          .cast<dynamic>();
-                      FFAppState().groupCoordLocs = functions
-                          .groupLocsConverter(GetLocationByGroupNameCall.data(
-                            (_model.getLocationbyGroupResponse?.jsonBody ?? ''),
-                          )?.toList())!
-                          .toList()
-                          .cast<LatLng>();
-                    });
+                    if (GetLocationByGroupNameCall.data(
+                          (_model.getLocationbyGroupResponse?.jsonBody ?? ''),
+                        )!
+                            .length >
+                        0) {
+                      FFAppState().update(() {
+                        FFAppState().groupAddress =
+                            (GetLocationByGroupNameCall.locationAddress(
+                          (_model.getLocationbyGroupResponse?.jsonBody ?? ''),
+                        ) as List)
+                                .map<String>((s) => s.toString())
+                                .toList()!
+                                .toList()
+                                .cast<String>();
+                        FFAppState().groupIds =
+                            (GetLocationByGroupNameCall.locationId(
+                          (_model.getLocationbyGroupResponse?.jsonBody ?? ''),
+                        ) as List)
+                                .map<String>((s) => s.toString())
+                                .toList()!
+                                .toList()
+                                .cast<String>();
+                        FFAppState().showMyLocs = true;
+                        FFAppState().groupLocs =
+                            GetLocationByGroupNameCall.data(
+                          (_model.getLocationbyGroupResponse?.jsonBody ?? ''),
+                        )!
+                                .toList()
+                                .cast<dynamic>();
+                        FFAppState().groupCoordLocs = functions
+                            .groupLocsConverter(GetLocationByGroupNameCall.data(
+                              (_model.getLocationbyGroupResponse?.jsonBody ??
+                                  ''),
+                            )?.toList())!
+                            .toList()
+                            .cast<LatLng>();
+                        FFAppState().clearmap = false;
+                      });
+                    } else {
+                      ScaffoldMessenger.of(context).clearSnackBars();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'you don\'t have any saved location on this group',
+                            style: TextStyle(
+                              color: FlutterFlowTheme.of(context).white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 12.0,
+                            ),
+                          ),
+                          duration: Duration(milliseconds: 5000),
+                          backgroundColor: FlutterFlowTheme.of(context).primary,
+                        ),
+                      );
+                    }
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
@@ -149,7 +179,10 @@ class _GroupListDialogComponentWidgetState
                     );
                   }
 
-                  context.safePop();
+                  Navigator.pop(context);
+                  setState(() {
+                    FFAppState().isGettingDroupLocations = false;
+                  });
 
                   setState(() {});
                 },
@@ -175,6 +208,18 @@ class _GroupListDialogComponentWidgetState
                 isMultiSelect: false,
               ),
             ),
+            if (FFAppState().isGettingDroupLocations)
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 10.0),
+                child: Container(
+                  width: 50.0,
+                  height: 50.0,
+                  child: custom_widgets.LoadingIndicatorBuilder(
+                    width: 50.0,
+                    height: 50.0,
+                  ),
+                ),
+              ),
           ],
         ),
       ),

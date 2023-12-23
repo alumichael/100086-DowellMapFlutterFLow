@@ -29,6 +29,7 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:location/location.dart' as loca;
 
 class MyMapWidget extends StatefulWidget {
   const MyMapWidget({
@@ -86,6 +87,8 @@ class _MyMapWidget extends State<MyMapWidget> {
   GoogleMapController? _controller;
   Position? position;
   late GoogleMapPolyline? googleMapPolyline;
+  loca.Location location = loca.Location();
+  Position? currentPosition;
 
   Set<Marker> markers = new Set();
   Set<Marker> draggableMarkers = new Set();
@@ -128,6 +131,7 @@ class _MyMapWidget extends State<MyMapWidget> {
   void initState() {
     googleMapPolyline = new GoogleMapPolyline(apiKey: googleMapsApiKey);
     getCurrentLocation();
+    // trackMe();
     super.initState();
   }
 
@@ -218,7 +222,7 @@ class _MyMapWidget extends State<MyMapWidget> {
         child: Positioned(
           left: 0,
           right: 0,
-          bottom: 8,
+          bottom: 2,
           child: GestureDetector(
               onTap: () {
                 FFAppState().update(() {
@@ -247,10 +251,41 @@ class _MyMapWidget extends State<MyMapWidget> {
     ]);
   }
 
+  ///
+  ///
+  ///
   String getlatlngToString(latlng.LatLng latlng) {
     double lat = latlng.latitude;
     double lng = latlng.longitude;
     return "$lat,$lng";
+  }
+
+  ///
+  ///
+  ///
+  trackMe() {
+    print("from the tracking end::::: 0");
+    location.onLocationChanged.listen((loca.LocationData locationData) {
+      print("from the tracking end::::1: $locationData");
+      setState(() {
+        currentPosition = Position(
+            latitude: locationData.latitude!,
+            longitude: locationData.longitude!,
+            timestamp: DateTime.now(),
+            accuracy: 60,
+            altitude: 0,
+            heading: 0,
+            speed: 100,
+            speedAccuracy: 10);
+        print("from the tracking end::::: 2:::: $currentPosition");
+        _controller?.animateCamera(
+          CameraUpdate.newLatLng(
+            latlng.LatLng(locationData.latitude!, locationData.longitude!),
+          ),
+        );
+        print("from the tracking end::::: 3");
+      });
+    });
   }
 
   ///
@@ -299,6 +334,7 @@ class _MyMapWidget extends State<MyMapWidget> {
                 latlng.LatLng(newPosition.latitude, newPosition.longitude));
           }),
           onTap: () async {
+            FFAppState().toEditJson = null;
             Widget addToMyMap = SimpleDialogOption(
               child: const Text('Add Place to Map'),
               onPressed: () {
@@ -380,7 +416,7 @@ class _MyMapWidget extends State<MyMapWidget> {
               var locDetails = dataBox["loc_details"];
               return Stack(children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.7,
+                  height: MediaQuery.of(context).size.height * 0.5,
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -402,107 +438,126 @@ class _MyMapWidget extends State<MyMapWidget> {
                         SingleChildScrollView(
                           child: Padding(
                             padding: const EdgeInsets.only(left: 10, right: 10),
-                            child: Column(children: [
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.8,
-                                child: FittedBox(
-                                  alignment: Alignment.centerLeft,
-                                  child: CustomText(
-                                    text: locDetails["place_name"].toString(),
-                                    weight: FontWeight.w600,
-                                    size: 20,
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.8,
+                                    child: locDetails["place_name"].length > 25
+                                        ? FittedBox(
+                                            alignment: Alignment.centerLeft,
+                                            child: CustomText(
+                                              text: locDetails["place_name"]
+                                                  .toString(),
+                                              weight: FontWeight.w600,
+                                              size: 15,
+                                            ),
+                                          )
+                                        : CustomText(
+                                            text: locDetails["place_name"]
+                                                .toString(),
+                                            weight: FontWeight.w600,
+                                            size: 15,
+                                          ),
                                   ),
-                                ),
-                              ),
-                              const SizedBox(height: 10),
-                              CustomText(
-                                text: locDetails["day_hours"].toString(),
-                                weight: FontWeight.w500,
-                                size: 13,
-                                color: Colors.black,
-                              ),
-                              buildMapInfoTap(
-                                context,
-                                icon: Icons.location_city,
-                                label:
-                                    "${locDetails["address"]}, ${locDetails["country"]}. ",
-                              ),
-                              const SizedBox(height: 15),
-                              buildMapInfoTap(
-                                context,
-                                icon: Icons.phone,
-                                label: locDetails["phone"] ?? "N/A",
-                              ),
-                              const SizedBox(height: 15),
-                              buildMapInfoTap(
-                                context,
-                                icon: Icons.wb_cloudy,
-                                label: locDetails["website"] ?? "N/A",
-                              ),
-                              const SizedBox(height: 30),
-                              Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    TextButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          FFAppState().toEditJson = dataBox;
-                                          print(
-                                              "toEditJson: ${FFAppState().toEditJson}");
-                                        });
+                                  const SizedBox(height: 10),
+                                  // CustomText(
+                                  //   text: locDetails["day_hours"].toString(),
+                                  //   weight: FontWeight.w500,
+                                  //   size: 13,
+                                  //   color: Colors.black,
+                                  // ),
+                                  buildMapInfoTap(
+                                    context,
+                                    icon: Icons.access_time,
+                                    label: locDetails["day_hours"].toString(),
+                                  ),
+                                  const SizedBox(height: 15),
+                                  buildMapInfoTap(
+                                    context,
+                                    icon: Icons.location_city,
+                                    label:
+                                        "${locDetails["address"]}, ${locDetails["country"]}. ",
+                                  ),
+                                  const SizedBox(height: 15),
+                                  buildMapInfoTap(
+                                    context,
+                                    icon: Icons.phone,
+                                    label: locDetails["phone"] ?? "N/A",
+                                  ),
+                                  const SizedBox(height: 15),
+                                  buildMapInfoTap(
+                                    context,
+                                    icon: Icons.wb_cloudy,
+                                    label: locDetails["website"] ?? "N/A",
+                                  ),
+                                  const SizedBox(height: 30),
+                                  Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        TextButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              FFAppState().toEditJson = dataBox;
+                                              print(
+                                                  "toEditJson: ${FFAppState().toEditJson}");
+                                            });
 
-                                        widget.updateAction();
-                                        Navigator.pop(context);
-                                      },
-                                      style: TextButton.styleFrom(
-                                          foregroundColor: Colors.white,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(8),
+                                            widget.updateAction();
+                                            Navigator.pop(context);
+                                          },
+                                          style: TextButton.styleFrom(
+                                              foregroundColor: Colors.white,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              backgroundColor: Colors.green,
+                                              fixedSize: Size(100, 50)),
+                                          child: Text(
+                                            "Update",
+                                            style: const TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
                                           ),
-                                          backgroundColor: Colors.green,
-                                          fixedSize: Size(100, 50)),
-                                      child: Text(
-                                        "Update",
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white,
                                         ),
-                                      ),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        FFAppState().deleteId = dataBox["_id"];
+                                        TextButton(
+                                          onPressed: () {
+                                            FFAppState().deleteId =
+                                                dataBox["_id"];
 
-                                        print(
-                                            "deleteId: ${FFAppState().deleteId}");
+                                            print(
+                                                "deleteId: ${FFAppState().deleteId}");
 
-                                        widget.deleteAction();
-                                        Navigator.pop(context);
-                                      },
-                                      style: TextButton.styleFrom(
-                                          foregroundColor: Colors.white,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(8),
+                                            widget.deleteAction();
+                                            Navigator.pop(context);
+                                          },
+                                          style: TextButton.styleFrom(
+                                              foregroundColor: Colors.white,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              backgroundColor: Colors.red,
+                                              fixedSize: Size(100, 50)),
+                                          child: Text(
+                                            "Delete",
+                                            style: const TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
                                           ),
-                                          backgroundColor: Colors.red,
-                                          fixedSize: Size(100, 50)),
-                                      child: Text(
-                                        "Delete",
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white,
                                         ),
-                                      ),
-                                    ),
-                                  ]),
-                            ]),
+                                      ]),
+                                ]),
                           ),
                         ),
+                        const SizedBox(height: 10),
                       ]),
                 ),
                 Positioned(
@@ -555,6 +610,9 @@ class _MyMapWidget extends State<MyMapWidget> {
             "from the getmarkers section checking the clearmarker value:::2:: $clearmap :::");
         removeMarker();
       }
+      if (FFAppState().isAuthUser == true) {
+        _getDraggableMarkers(origin, clearmap, context);
+      }
     } else {
       debugPrint(
           "from the getmarkers section checking the clearmarker value:::3:: ${markers.length} :::");
@@ -588,6 +646,9 @@ class _MyMapWidget extends State<MyMapWidget> {
                   BitmapDescriptor.hueBlue),
               onTap: () async {
                 //logic for direction api request
+                if (FFAppState().showBottomSheet) {
+                  FFAppState().showBottomSheet = false;
+                }
                 _computePath(
                     latlng.LatLng(origin!.latitude, origin!.longitude),
                     latlng.LatLng(

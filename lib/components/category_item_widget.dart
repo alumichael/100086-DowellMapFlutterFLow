@@ -54,7 +54,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
     return Stack(
       children: [
         Align(
-          alignment: AlignmentDirectional(-0.90, 0.15),
+          alignment: AlignmentDirectional(-0.9, 0.15),
           child: Text(
             widget.categoryTitle!,
             textAlign: TextAlign.start,

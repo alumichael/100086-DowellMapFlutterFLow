@@ -128,7 +128,7 @@ class _ButtomSheetWidgetState extends State<ButtomSheetWidget> {
                       ))
                         Expanded(
                           child: Align(
-                            alignment: AlignmentDirectional(0.05, -1.00),
+                            alignment: AlignmentDirectional(0.05, -1.0),
                             child: FlutterFlowPlacePicker(
                               iOSGoogleMapsApiKey:
                                   'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk',
@@ -212,7 +212,7 @@ class _ButtomSheetWidgetState extends State<ButtomSheetWidget> {
                   ],
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, 0.00),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(25.0, 16.0, 25.0, 16.0),

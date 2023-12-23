@@ -45,7 +45,7 @@ class _AddCategoryItemWidgetState extends State<AddCategoryItemWidget> {
     return Stack(
       children: [
         Align(
-          alignment: AlignmentDirectional(-1.00, 0.00),
+          alignment: AlignmentDirectional(-1.0, 0.0),
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
             child: Text(
@@ -62,7 +62,7 @@ class _AddCategoryItemWidgetState extends State<AddCategoryItemWidget> {
           ),
         ),
         Align(
-          alignment: AlignmentDirectional(1.00, 0.00),
+          alignment: AlignmentDirectional(1.0, 0.0),
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
             child: Icon(

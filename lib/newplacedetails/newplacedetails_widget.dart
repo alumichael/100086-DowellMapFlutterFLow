@@ -856,6 +856,9 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                                 isTestData: false,
                                 makePublic: true,
                                 isDeleted: true,
+                                apiKey: FFAppState().apiKey,
+                                username: FFAppState().username,
+                                placeName: _model.placeNameEdtController.text,
                               );
                               if ((_model.addLocation?.succeeded ?? true)) {
                                 ScaffoldMessenger.of(context).showSnackBar(
@@ -918,6 +921,7 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                                 category: _model.categoryDropdownValue,
                                 makePublic: true,
                                 isTestData: true,
+                                apiKey: FFAppState().apiKey,
                               );
                               if ((_model.apiResultms0?.succeeded ?? true)) {
                                 ScaffoldMessenger.of(context).showSnackBar(

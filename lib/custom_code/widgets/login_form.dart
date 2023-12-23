@@ -118,8 +118,14 @@ class _LoginFormState extends State<LoginForm> {
         Uri.parse('https://100014.pythonanywhere.com/api/userinfo/');
     var responseIP = await http.get(urlIP);
 
-    var data = jsonDecode(responseIP.body);
-    var ip = data['ip'];
+    late var ip;
+
+    if (responseIP.statusCode == 200) {
+      var data = jsonDecode(responseIP.body);
+      ip = data['ip'];
+    }
+
+    ip = "127.0.0.1";
     var location = widget.location.toString();
     var os = widget.os.toString();
     final body = json.encode({
@@ -228,8 +234,10 @@ class _LoginFormState extends State<LoginForm> {
                       underline: SizedBox(),
                       focusColor: Colors.white,
                       dropdownColor: Colors.white,
-                      disabledHint: Text("Select Wokrspace"),
-                      hint: Text("Select Wokrspace"),
+                      disabledHint: Text("Select Wokrspace",
+                          style: TextStyle(color: Colors.black)),
+                      hint: Text("Select Wokrspace",
+                          style: TextStyle(color: Colors.black)),
                       value: selectedWorkspace,
                       onChanged: (newValue) {
                         setState(() => selectedWorkspace = newValue!);
@@ -248,7 +256,8 @@ class _LoginFormState extends State<LoginForm> {
                                 ),
                               ),
                               padding: EdgeInsets.only(left: 10),
-                              child: Text(value)),
+                              child: Text(value,
+                                  style: TextStyle(color: Colors.black))),
                         );
                       }).toList(),
                     ),
@@ -274,8 +283,10 @@ class _LoginFormState extends State<LoginForm> {
                     child: Center(
                       child: DropdownButton<String>(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
-                        disabledHint: Text("Select Portfolio"),
-                        hint: Text("Select Portfolio"),
+                        disabledHint: Text("Select Portfolio",
+                            style: TextStyle(color: Colors.black)),
+                        hint: Text("Select Portfolio",
+                            style: TextStyle(color: Colors.black)),
                         underline: SizedBox(),
                         focusColor: Colors.white,
                         dropdownColor: Colors.white,
@@ -297,7 +308,8 @@ class _LoginFormState extends State<LoginForm> {
                                   ),
                                 ),
                                 padding: EdgeInsets.only(left: 10),
-                                child: Text(value)),
+                                child: Text(value,
+                                    style: TextStyle(color: Colors.black))),
                           );
                         }).toList(),
                       ),

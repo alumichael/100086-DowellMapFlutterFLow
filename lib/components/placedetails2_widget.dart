@@ -76,7 +76,7 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.00, -0.98),
+                    alignment: AlignmentDirectional(0.0, -0.98),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
@@ -157,7 +157,7 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, -0.90),
+                    alignment: AlignmentDirectional(0.0, -0.9),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
@@ -221,10 +221,9 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, -0.81),
+                    alignment: AlignmentDirectional(0.0, -0.81),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          10.0, 10.0, 10.0, 10.0),
+                      padding: EdgeInsets.all(10.0),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 0.9,
                         height: MediaQuery.sizeOf(context).height * 0.07,
@@ -320,7 +319,7 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(-0.00, -0.71),
+                    alignment: AlignmentDirectional(0.0, -0.71),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
@@ -384,10 +383,9 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, -0.64),
+                    alignment: AlignmentDirectional(0.0, -0.64),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          10.0, 10.0, 10.0, 10.0),
+                      padding: EdgeInsets.all(10.0),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 0.9,
                         child: TextFormField(
@@ -448,7 +446,7 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, -0.50),
+                    alignment: AlignmentDirectional(0.0, -0.5),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 10.0, 0.0),
@@ -512,10 +510,9 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, -0.35),
+                    alignment: AlignmentDirectional(0.0, -0.35),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          10.0, 10.0, 10.0, 10.0),
+                      padding: EdgeInsets.all(10.0),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 0.9,
                         child: TextFormField(

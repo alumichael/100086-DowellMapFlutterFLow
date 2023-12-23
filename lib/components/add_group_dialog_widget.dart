@@ -49,7 +49,7 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+      padding: EdgeInsets.all(10.0),
       child: Container(
         width: double.infinity,
         height: 210.0,
@@ -65,7 +65,7 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
           child: Stack(
             children: [
               Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 60.0, 8.0, 0.0),
                   child: TextFormField(
@@ -119,7 +119,7 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: Text(
@@ -135,10 +135,9 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                  padding: EdgeInsets.all(16.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -310,9 +309,8 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                                 ));
                               },
                             );
+                            Navigator.pop(context);
                           }
-
-                          Navigator.pop(context);
 
                           setState(() {});
                         },

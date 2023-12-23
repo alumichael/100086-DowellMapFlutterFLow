@@ -101,7 +101,7 @@ class _LivinglabsMapComponentWidgetState
       mainAxisSize: MainAxisSize.max,
       children: [
         Align(
-          alignment: AlignmentDirectional(0.00, -1.00),
+          alignment: AlignmentDirectional(0.0, -1.0),
           child: Container(
             width: MediaQuery.sizeOf(context).width * 1.0,
             height: MediaQuery.sizeOf(context).height * 0.07,
@@ -242,18 +242,18 @@ class _LivinglabsMapComponentWidgetState
           ),
         ),
         Align(
-          alignment: AlignmentDirectional(0.00, 0.00),
+          alignment: AlignmentDirectional(0.0, 0.0),
           child: Container(
             width: double.infinity,
             decoration: BoxDecoration(),
             child: Align(
-              alignment: AlignmentDirectional(0.00, 0.00),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Material(
                       color: Colors.transparent,
                       elevation: 16.0,
@@ -286,15 +286,14 @@ class _LivinglabsMapComponentWidgetState
                             shape: BoxShape.rectangle,
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(-0.15, 0.00),
+                            alignment: AlignmentDirectional(-0.15, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 if (FFAppState().currentLocation ==
                                     'Select Location')
                                   Align(
-                                    alignment:
-                                        AlignmentDirectional(0.05, -1.00),
+                                    alignment: AlignmentDirectional(0.05, -1.0),
                                     child: FlutterFlowPlacePicker(
                                       iOSGoogleMapsApiKey:
                                           'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk',

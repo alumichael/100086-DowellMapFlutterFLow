@@ -277,7 +277,7 @@ class _PlacedetailsCopyWidgetState extends State<PlacedetailsCopyWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.09, -0.90),
+                                              AlignmentDirectional(0.09, -0.9),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -1007,11 +1007,9 @@ class _PlacedetailsCopyWidgetState extends State<PlacedetailsCopyWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.00, -0.82),
+                                              AlignmentDirectional(0.0, -0.82),
                                           child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 10.0, 10.0, 10.0),
+                                            padding: EdgeInsets.all(10.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:

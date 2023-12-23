@@ -44,6 +44,8 @@ class NewHomePageModel extends FlutterFlowModel<NewHomePageWidget> {
   ApiCallResponse? serviceApiKey;
   // Stores action output result for [Backend Call - API (Get Location by User)] action in NewHomePage widget.
   ApiCallResponse? getLocationByUserResponse;
+  // Stores action output result for [Backend Call - API (Get User API Key)] action in Text widget.
+  ApiCallResponse? serviceApiKeyCopy;
   // Stores action output result for [Backend Call - API (Delete Loc)] action in MyMapWidget widget.
   ApiCallResponse? apiResulti6o;
   // State field(s) for PlacePicker widget.

@@ -1769,6 +1769,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // LoadingBox
+  {
+    'ezdi5uum': {
+      'en': 'Loading...',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
   // Miscellaneous
   {
     'bwnsa3x4': {

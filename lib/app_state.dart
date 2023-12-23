@@ -413,6 +413,24 @@ class FFAppState extends ChangeNotifier {
     _response = _value;
     prefs.setString('ff_response', jsonEncode(_value));
   }
+
+  bool _noMoreCredit = false;
+  bool get noMoreCredit => _noMoreCredit;
+  set noMoreCredit(bool _value) {
+    _noMoreCredit = _value;
+  }
+
+  bool _isGettingDroupLocations = false;
+  bool get isGettingDroupLocations => _isGettingDroupLocations;
+  set isGettingDroupLocations(bool _value) {
+    _isGettingDroupLocations = _value;
+  }
+
+  bool _enableTracking = false;
+  bool get enableTracking => _enableTracking;
+  set enableTracking(bool _value) {
+    _enableTracking = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
