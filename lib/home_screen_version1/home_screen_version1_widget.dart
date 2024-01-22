@@ -255,7 +255,7 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                           LinkBageLoginCall.sessionID(
                                             homeScreenVersion1LinkBageLoginResponse
                                                 .jsonBody,
-                                          ).toString(),
+                                          ),
                                           ParamType.String,
                                         ),
                                         'currentCord': serializeParam(
@@ -279,10 +279,14 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                             child: custom_widgets.MyMapWidget(
                               width: double.infinity,
                               height: double.infinity,
-                              radius1:
-                                  double.parse(_model.textController1.text),
-                              radius2:
-                                  double.parse(_model.textController2.text),
+                              radius1: valueOrDefault<double>(
+                                double.tryParse(_model.textController1.text),
+                                0.0,
+                              ),
+                              radius2: valueOrDefault<double>(
+                                double.tryParse(_model.textController2.text),
+                                2000.0,
+                              ),
                               query: _model.textController3.text,
                               iOSGoogleMapsApiKey:
                                   'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk',
@@ -1035,13 +1039,13 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                                                     .sessionID(
                                                               homeScreenVersion1LinkBageLoginResponse
                                                                   .jsonBody,
-                                                            ).toString(),
+                                                            ),
                                                             sessionId:
                                                                 LinkBageLoginCall
                                                                     .sessionID(
                                                               homeScreenVersion1LinkBageLoginResponse
                                                                   .jsonBody,
-                                                            ).toString(),
+                                                            ),
                                                           );
                                                           _shouldSetState =
                                                               true;
@@ -1101,7 +1105,7 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                                               (_model.evenntID
                                                                       ?.jsonBody ??
                                                                   ''),
-                                                            ).toString(),
+                                                            ),
                                                             isError: false,
                                                             error: 'None',
                                                             dateTimeDone:
@@ -1156,14 +1160,14 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                                               (_model.doWellMap
                                                                       ?.jsonBody ??
                                                                   ''),
-                                                            ).toString(),
+                                                            ),
                                                             reqID:
                                                                 NearbyPlacesDataCall
                                                                     .insertID(
                                                               (_model.doWellMap
                                                                       ?.jsonBody ??
                                                                   ''),
-                                                            ).toString(),
+                                                            ),
                                                             reqType:
                                                                 'nearbyplaces',
                                                             eventId:
@@ -1172,7 +1176,7 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                                               (_model.evenntID
                                                                       ?.jsonBody ??
                                                                   ''),
-                                                            ).toString(),
+                                                            ),
                                                             dataTimeDone:
                                                                 dateTimeFormat(
                                                               'yMMMd',
@@ -1191,7 +1195,7 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                                                     .sessionID(
                                                               homeScreenVersion1LinkBageLoginResponse
                                                                   .jsonBody,
-                                                            ).toString(),
+                                                            ),
                                                             locationDone: functions
                                                                 .latlngToString(
                                                                     _model

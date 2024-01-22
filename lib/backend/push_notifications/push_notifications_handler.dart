@@ -143,6 +143,11 @@ final parametersBuilderMap =
           'currentCord': getParameter<String>(data, 'currentCord'),
         },
       ),
+  'TrackingPage': ParameterData.none(),
+  'search': ParameterData.none(),
+  'QrScanner': ParameterData.none(),
+  'TrackingDetailsForm': ParameterData.none(),
+  'Create_Qr_Code': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

@@ -2,6 +2,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/components/add_group_dialog_widget.dart';
 import '/components/group_list_dialog_component_widget.dart';
 import '/components/image_widget.dart';
+import '/components/track_permission_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_language_selector.dart';
 import '/flutter_flow/flutter_flow_place_picker.dart';
@@ -18,7 +19,6 @@ import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'new_home_page_widget.dart' show NewHomePageWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +46,14 @@ class NewHomePageModel extends FlutterFlowModel<NewHomePageWidget> {
   ApiCallResponse? getLocationByUserResponse;
   // Stores action output result for [Backend Call - API (Get User API Key)] action in Text widget.
   ApiCallResponse? serviceApiKeyCopy;
+  // Stores action output result for [Custom Action - barcodeScanner] action in Row widget.
+  String? scannerResult;
+  // Stores action output result for [Custom Action - getFinalRedirectedUrl] action in Row widget.
+  String? refineUrl;
+  // Stores action output result for [Custom Action - formatLink] action in Row widget.
+  String? notNeeded;
+  // Stores action output result for [Backend Call - API (FinalizedLink)] action in Row widget.
+  ApiCallResponse? finalizingLink;
   // Stores action output result for [Backend Call - API (Delete Loc)] action in MyMapWidget widget.
   ApiCallResponse? apiResulti6o;
   // State field(s) for PlacePicker widget.
@@ -88,6 +96,8 @@ class NewHomePageModel extends FlutterFlowModel<NewHomePageWidget> {
   List<LatLng>? dblocationCord;
   // Stores action output result for [Custom Action - getDbPlaceName] action in searchButton widget.
   List<String>? dbPlacename;
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue;
 
   /// Initialization and disposal methods.
 

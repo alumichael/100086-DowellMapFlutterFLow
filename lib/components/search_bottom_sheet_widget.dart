@@ -625,7 +625,7 @@ Between */
                                   reqType: 'nearby_place',
                                   eventId: CreateEventCall.eventID(
                                     (_model.evenntID?.jsonBody ?? ''),
-                                  ).toString(),
+                                  ),
                                   dataTimeDone: dateTimeFormat(
                                     'yMMMd',
                                     getCurrentTimestamp,

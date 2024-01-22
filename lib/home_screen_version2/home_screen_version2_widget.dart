@@ -86,7 +86,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
       setState(() {
         FFAppState().myIpAddress = IpifyCall.deviceIP(
           (_model.myIPAddress?.jsonBody ?? ''),
-        ).toString().toString();
+        ).toString();
       });
       if (FFAppState().isAuthUser == false) {
         _model.apiResultzlp = await LinkBageLoginCall.call(
@@ -284,7 +284,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                 getJsonField(
                                                   FFAppState().response,
                                                   r'''$.userinfo.first_name''',
-                                                ).toString(),
+                                                )?.toString(),
                                                 'First Name',
                                               ),
                                               style:
@@ -296,7 +296,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                 getJsonField(
                                                   FFAppState().response,
                                                   r'''$.userinfo.last_name''',
-                                                ).toString(),
+                                                )?.toString(),
                                                 'Last Name',
                                               ),
                                               style:
@@ -366,7 +366,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                         getJsonField(
                                           FFAppState().response,
                                           r'''$.userinfo.payment_status''',
-                                        ).toString(),
+                                        )?.toString(),
                                         'Status',
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -412,7 +412,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                         getJsonField(
                                           FFAppState().response,
                                           r'''$.userinfo.payment_status''',
-                                        ).toString(),
+                                        )?.toString(),
                                         'Status',
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -499,7 +499,8 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                           child: custom_widgets.MyMapWidget(
                             width: double.infinity,
                             height: double.infinity,
-                            radius1: double.parse(_model.textController1.text),
+                            radius1:
+                                double.tryParse(_model.textController1.text),
                             radius2: double.parse(_model.textController2.text),
                             query: _model.textController3.text,
                             iOSGoogleMapsApiKey: FFAppState().iosAPIKey,
@@ -1532,7 +1533,7 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                                                     (_model.evenntID
                                                                             ?.jsonBody ??
                                                                         ''),
-                                                                  ).toString(),
+                                                                  ),
                                                                   dataTimeDone:
                                                                       dateTimeFormat(
                                                                     'yMMMd',

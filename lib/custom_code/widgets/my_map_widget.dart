@@ -60,7 +60,7 @@ class MyMapWidget extends StatefulWidget {
   final double? width;
   final double? height;
   final LatLng? origin;
-  final double radius1;
+  final double? radius1;
   final double radius2;
   final String? query;
   final List<LatLng>? result;
@@ -85,10 +85,13 @@ class MyMapWidget extends StatefulWidget {
 
 class _MyMapWidget extends State<MyMapWidget> {
   GoogleMapController? _controller;
+  StreamSubscription<loca.LocationData>? locationSubscription;
   Position? position;
   late GoogleMapPolyline? googleMapPolyline;
   loca.Location location = loca.Location();
   Position? currentPosition;
+  latlng.LatLng? destinationCoords;
+  double zoomValue = 13;
 
   Set<Marker> markers = new Set();
   Set<Marker> draggableMarkers = new Set();
@@ -131,21 +134,22 @@ class _MyMapWidget extends State<MyMapWidget> {
   void initState() {
     googleMapPolyline = new GoogleMapPolyline(apiKey: googleMapsApiKey);
     getCurrentLocation();
-    // trackMe();
+    trackMe();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-    debugPrint(":::from the marker room:: ${FFAppState().groupList}");
+    debugPrint(
+        ":::from the marker room:: ${FFAppState().groupList} :: radius2 :: ${widget.radius2} :: zoomValue :: $zoomValue");
     bool isOriginZero =
         (widget.origin!.latitude == 0 && widget.origin!.longitude == 0);
 
     latlng.LatLng repPosition =
         latlng.LatLng(position?.latitude ?? 0, position?.longitude ?? 0);
 
-    debugPrint("------widget redbuilding ::: ----${widget.origin}-");
+    // debugPrint("------widget redbuilding ::: ----${widget.origin}-");
 
     return Stack(children: [
       Container(
@@ -166,7 +170,7 @@ class _MyMapWidget extends State<MyMapWidget> {
                       ? repPosition
                       : latlng.LatLng(
                           widget.origin!.latitude, widget.origin!.longitude),
-                  radius: widget.radius1,
+                  radius: widget.radius1 ?? 0,
                   strokeWidth: 2,
                   strokeColor: Color.fromARGB(255, 3, 124, 7),
                   fillColor: Colors.transparent),
@@ -208,7 +212,7 @@ class _MyMapWidget extends State<MyMapWidget> {
                     CameraPosition(
                       target: latlng.LatLng(
                           widget.origin!.latitude, widget.origin!.longitude),
-                      zoom: 14,
+                      zoom: zoomValue,
                       bearing: 180.0,
                       tilt: 30.0,
                     ),
@@ -265,7 +269,8 @@ class _MyMapWidget extends State<MyMapWidget> {
   ///
   trackMe() {
     print("from the tracking end::::: 0");
-    location.onLocationChanged.listen((loca.LocationData locationData) {
+    locationSubscription =
+        location.onLocationChanged.listen((loca.LocationData locationData) {
       print("from the tracking end::::1: $locationData");
       setState(() {
         currentPosition = Position(
@@ -278,12 +283,36 @@ class _MyMapWidget extends State<MyMapWidget> {
             speed: 100,
             speedAccuracy: 10);
         print("from the tracking end::::: 2:::: $currentPosition");
-        _controller?.animateCamera(
-          CameraUpdate.newLatLng(
-            latlng.LatLng(locationData.latitude!, locationData.longitude!),
-          ),
-        );
-        print("from the tracking end::::: 3");
+        if (FFAppState().enableTracking) {
+          print(
+              "from the tracking end::::: 20:::: ${FFAppState().enableTracking}");
+          _controller?.animateCamera(
+            CameraUpdate.newLatLng(
+              latlng.LatLng(locationData.latitude!, locationData.longitude!),
+            ),
+          );
+          //This is for updating the polyline while the user is changing position
+          if (destinationCoords != null) {
+            print(
+                "from the tracking end::::: 21:::: ${FFAppState().enableTracking}");
+            _computeTrackingPath(
+              latlng.LatLng(locationData.latitude!, locationData.longitude!),
+              destinationCoords!,
+            );
+          }
+          print(
+              "from the tracking end::::: 22:::: ${FFAppState().enableTracking}");
+          print("from the tracking end::::: 3 ::: $destinationCoords");
+        } else {
+          print(
+              "from the tracking end::::: 23:::: ${FFAppState().enableTracking}");
+          for (latlng.Polyline? line in polyline) {
+            print(
+                "from the tracking end::::: 24:::: ${FFAppState().enableTracking}");
+            polyline.removeWhere((m) => m.polylineId == 'tracking');
+            // polyline.removeWhere((key, value) => key == line?.polylineId);
+          }
+        }
       });
     });
   }
@@ -326,7 +355,7 @@ class _MyMapWidget extends State<MyMapWidget> {
           icon:
               BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
           onDragEnd: ((newPosition) {
-            debugPrint("Dragged Loc ${newPosition}");
+            // debugPrint("Dragged Loc ${newPosition}");
             selectedlocatn = getlatlngToString(
                 latlng.LatLng(newPosition.latitude, newPosition.longitude));
 
@@ -372,7 +401,7 @@ class _MyMapWidget extends State<MyMapWidget> {
         CameraPosition nepPos = CameraPosition(
             target: latlng.LatLng(
                 groupLocList[0].latitude, groupLocList[0].longitude),
-            zoom: 12,
+            zoom: zoomValue,
             bearing: 180.0,
             tilt: 30.0);
         _controller?.animateCamera(CameraUpdate.newCameraPosition(nepPos));
@@ -655,6 +684,8 @@ class _MyMapWidget extends State<MyMapWidget> {
                         locationInfo[i].latitude, locationInfo[i].longitude));
 
                 getPlaceDetail(context, PlaceIds.elementAt(i), locationInfo[i]);
+                destinationCoords = latlng.LatLng(
+                    locationInfo[i].latitude, locationInfo[i].longitude);
               }));
         }
         debugPrint("G Markers $markers");
@@ -725,7 +756,7 @@ class _MyMapWidget extends State<MyMapWidget> {
             await http.get(Uri.parse(getdetailUrl), headers: headers);
         if (response.statusCode == 200) {
           final jsonResponse = json.decode(response.body);
-          debugPrint("::::::details url:::: $getdetailUrl");
+          // debugPrint("::::::details url:::: $getdetailUrl");
           // debugPrint(":::::: details:::: $jsonResponse");
           if (jsonResponse['status'] == 'OK') {
             markerDetails = jsonResponse['result'];
@@ -745,25 +776,25 @@ class _MyMapWidget extends State<MyMapWidget> {
                 List<Elements?> elements = [];
 
                 if (distanceTime.status == 'OK') {
-                  debugPrint("::::: from the distance room element row:::0");
+                  // debugPrint("::::: from the distance room element row:::0");
                   if (distanceTime.rows != null &&
                       distanceTime.rows!.length != 0) {
-                    debugPrint("::::: from the distance room element row:::1");
+                    // debugPrint("::::: from the distance room element row:::1");
                     for (var i = 0; i < distanceTime.rows!.length; i++) {
-                      debugPrint(
-                          "::::: from the distance room element row:::2");
+                      // debugPrint(
+                      //     "::::: from the distance room element row:::2");
                       for (var j = 0;
                           j < distanceTime.rows!.elementAt(i).elements!.length;
                           j++) {
-                        debugPrint(
-                            "::::: from the distance room element row:::3");
+                        // debugPrint(
+                        //     "::::: from the distance room element row:::3");
                         if (distanceTime.rows
                                 ?.elementAt(i)
                                 .elements
                                 ?.elementAt(j) !=
                             null) {
-                          debugPrint(
-                              "::::: from the distance room element row:::4:: ${distanceTime.rows?.elementAt(i).elements?.elementAt(j)}");
+                          // debugPrint(
+                          //     "::::: from the distance room element row:::4:: ${distanceTime.rows?.elementAt(i).elements?.elementAt(j)}");
                           elements.add(distanceTime.rows
                               ?.elementAt(i)
                               .elements
@@ -773,15 +804,15 @@ class _MyMapWidget extends State<MyMapWidget> {
                     }
                   }
                   elements.isNotEmpty ? distanceListInfo = elements : null;
-                  debugPrint(
-                      "::::: from the distance room element row::: $elements");
+                  // debugPrint(
+                  //     "::::: from the distance room element row::: $elements");
                   // print(distanceTime.rows?.elementAt(0).elements?.elementAt(0));
 
                   ///
                   ///Location for details 2
                   ///
                 } else {
-                  debugPrint("::::: from the distance room element row:::5");
+                  // debugPrint("::::: from the distance room element row:::5");
                   print(
                       'Failed to get distance and time. Status code: ${distanceTimeResponse.statusCode}');
                 }
@@ -815,7 +846,7 @@ class _MyMapWidget extends State<MyMapWidget> {
       ///
       if (markerDetails != null && distanceListInfo != null) {
         Navigator.pop(context);
-        debugPrint(":::::::: we have entered the bottomsheet caller::::");
+        // debugPrint(":::::::: we have entered the bottomsheet caller::::");
         final res = await showModalBottomSheet(
             context: context,
             isDismissible: false,
@@ -824,6 +855,9 @@ class _MyMapWidget extends State<MyMapWidget> {
                     topLeft: Radius.circular(24),
                     topRight: Radius.circular(24))),
             builder: (context) {
+              FFAppState().update(() {
+                FFAppState().isDestinationSelected = true;
+              });
               return MakerBottomDetailsBuilder(
                 dataInfo: markerDetails!,
                 distanceInfo: getShortestDistance(distanceListInfo!)!,
@@ -861,6 +895,7 @@ class _MyMapWidget extends State<MyMapWidget> {
     //polyline.removeWhere((key, value) => key == polyline.polylineId);
     // polyline.clear();
     if (markers.length > 1) {
+      polyline.clear();
       final firstMarker = markers.first;
       markers.clear();
       markers.add(firstMarker);
@@ -885,10 +920,10 @@ class _MyMapWidget extends State<MyMapWidget> {
     routeCoords = await googleMapPolyline?.getCoordinatesWithLocation(
         origin: origin, destination: destination, mode: RouteMode.driving);
 
-    debugPrint("Result --- ${routeCoords}");
-
-    CameraPosition nepPos =
-        CameraPosition(target: origin, zoom: 14, bearing: 180.0, tilt: 30.0);
+    // debugPrint("Result --- ${routeCoords}");
+    zoomValue = 17;
+    CameraPosition nepPos = CameraPosition(
+        target: origin, zoom: zoomValue, bearing: 180.0, tilt: 30.0);
 
     _controller?.animateCamera(CameraUpdate.newCameraPosition(nepPos));
 
@@ -905,7 +940,41 @@ class _MyMapWidget extends State<MyMapWidget> {
             visible: true,
             points: routeCoords!,
             width: 4,
-            color: Colors.blue,
+            color: Color(0xff0746F8),
+            startCap: Cap.roundCap,
+            endCap: Cap.buttCap));
+      }
+    });
+  }
+
+  ///
+  ///
+  ///
+  _computeTrackingPath(latlng.LatLng origin, latlng.LatLng destination) async {
+    routeCoords = await googleMapPolyline?.getCoordinatesWithLocation(
+        origin: origin, destination: destination, mode: RouteMode.driving);
+
+    // debugPrint("Result --- ${routeCoords}");
+    zoomValue = 17;
+    CameraPosition nepPos = CameraPosition(
+        target: origin, zoom: zoomValue, bearing: 180.0, tilt: 30.0);
+
+    _controller?.animateCamera(CameraUpdate.newCameraPosition(nepPos));
+
+    setState(() {
+      // if(polyline.keys.contain('tracking')){
+      for (latlng.Polyline? line in polyline) {
+        polyline.removeWhere((m) => m.polylineId == 'tracking');
+        // polyline.removeWhere((key, value) => key == line?.polylineId);
+      }
+      // polyline.removeWhere((key, value) => key == polyline.polylineId);
+      if (routeCoords != null) {
+        polyline.add(latlng.Polyline(
+            polylineId: latlng.PolylineId('tracking'),
+            visible: true,
+            points: routeCoords!,
+            width: 2,
+            color: Color(0xffF8B907),
             startCap: Cap.roundCap,
             endCap: Cap.buttCap));
       }
@@ -915,14 +984,14 @@ class _MyMapWidget extends State<MyMapWidget> {
   // function for place picked
 
   latlng.LatLng getPlacePicker() {
-    debugPrint("Marker Length --0- ${markers.length}");
+    // debugPrint("Marker Length --0- ${markers.length}");
     if (markers.length >= 1) {
-      debugPrint("from getPlacePicker the inner room clear marker is called");
+      // debugPrint("from getPlacePicker the inner room clear marker is called");
       markers.clear();
       setState(() {});
     }
 
-    debugPrint("Marker Length --1- ${markers.length}");
+    // debugPrint("Marker Length --1- ${markers.length}");
 
     placepicked =
         (widget.origin!.latitude == 0 && widget.origin!.longitude == 0)
@@ -930,7 +999,7 @@ class _MyMapWidget extends State<MyMapWidget> {
             : latlng.LatLng(widget.origin!.latitude, widget.origin!.longitude);
     // debugPrint(":::::; from the marker trancing::: 3");
 
-    debugPrint("placepicked Latitude--- ${placepicked}");
+    // debugPrint("placepicked Latitude--- ${placepicked}");
     markers.add(Marker(
       markerId: MarkerId(generateRandomString(10)),
       position: placepicked, //position of marker
@@ -940,11 +1009,11 @@ class _MyMapWidget extends State<MyMapWidget> {
       icon: BitmapDescriptor.defaultMarker, //Icon for Marker
     ));
 
-    debugPrint("Marker Length --- ${markers.length}");
-
+    // debugPrint("Marker Length --- ${markers.length}");
+    zoomValue = 14;
     _controller?.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: placepicked, zoom: 14, bearing: 180.0, tilt: 30.0)));
-    debugPrint("Place picked $placepicked");
+        target: placepicked, zoom: zoomValue, bearing: 180.0, tilt: 30.0)));
+    // debugPrint("Place picked $placepicked");
 
     setState(() {});
     return placepicked;
@@ -1146,7 +1215,9 @@ class _MakerBottomDetailsBuilderState extends State<MakerBottomDetailsBuilder> {
   Widget build(BuildContext context) {
     debugPrint(":::::marker Details:::: ${widget.dataInfo}");
     return Stack(children: [
-      SizedBox(
+      Container(
+        color: Colors.white,
+        width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height * 0.7,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const SizedBox(height: 10),

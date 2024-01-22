@@ -1060,11 +1060,88 @@ class GetLocationByGroupNameCall {
           .toList();
 }
 
-class NineCall {
-  static Future<ApiCallResponse> call() async {
+class ConvertCoordinatesCall {
+  static Future<ApiCallResponse> call({
+    double? length = 0,
+  }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'nine',
-      apiUrl: 'www.google.com',
+      callName: 'Convert coordinates',
+      apiUrl: 'https://100070.pythonanywhere.com/convert_coordinates/',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {
+        'type': "squares",
+        'length': length,
+        'width': length,
+        'value': 1,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static dynamic allResponse(dynamic response) => getJsonField(
+        response,
+        r'''$''',
+      );
+  static List? convertedCordinate(dynamic response) => getJsonField(
+        response,
+        r'''$.response.converted_coordinates''',
+        true,
+      ) as List?;
+  static int? squareCount(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.response.square_count''',
+      ));
+}
+
+class GuestLoginCall {
+  static Future<ApiCallResponse> call({
+    String? username = '',
+    String? os = '',
+    String? device = '',
+    String? location = '',
+    String? time = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+    "Username":"User_test(2)",
+    "OS":"linux",
+    "Device":"mobile",
+    "Browser":"chrome",
+    "Location":"Mumbai",
+    "Time":"13-10-2022",
+    "Connection":"wifi",
+    "IP":"198.162.1.71"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'guest login',
+      apiUrl: 'https://100014.pythonanywhere.com/api/linklogin/',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetQrCodeByIdCall {
+  static Future<ApiCallResponse> call({
+    String? id = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: ' GetQrCodeById',
+      apiUrl:
+          'https://www.qrcodereviews.uxlivinglab.online/api/v1/update-qr-code/${id}/',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -1075,6 +1152,180 @@ class NineCall {
       alwaysAllowBody: false,
     );
   }
+}
+
+class GetUserInfoCall {
+  static Future<ApiCallResponse> call({
+    String? sessionId = 'xt3u83sb7rt6od6eaywidlx4v8n3n7yt',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "session_id": "${sessionId}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'getUserInfo',
+      apiUrl: 'https://100014.pythonanywhere.com/api/userinfo/',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static String? clientid(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.userinfo.client_admin_id''',
+      ));
+  static List? usernames(dynamic response) => getJsonField(
+        response,
+        r'''$.selected_product.userportfoli''',
+        true,
+      ) as List?;
+}
+
+class FinalizedLinkCall {
+  static Future<ApiCallResponse> call({
+    String? linkId = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "is_finalized": true
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'FinalizedLink',
+      apiUrl:
+          'https://www.qrcodereviews.uxlivinglab.online/api/v3/masterlink/?link_id=${linkId}',
+      callType: ApiCallType.PUT,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GenerateQRcodeCall {
+  static Future<ApiCallResponse> call({
+    dynamic? linksJson,
+    String? cliendId = '',
+  }) async {
+    final links = _serializeJson(linksJson, true);
+    final ffApiRequestBody = '''
+{
+  "qrcode_type": "Link",
+  "quantity": 1,
+  "company_id": "${cliendId}",
+  "links": ${links},
+  "document_name": "Living Lab Maps"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Generate QRcode',
+      apiUrl: 'https://www.qrcodereviews.uxlivinglab.online/api/v3/qr-code/',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static String? imageUrl(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.qrcodes[:].qrcode_image_url''',
+      ));
+  static String? masterLink(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.qrcodes[:].masterlink''',
+      ));
+}
+
+class UpdateGuestTrackingCall {
+  static Future<ApiCallResponse> call({
+    String? email = '',
+    String? companyId = '',
+    String? userId = '',
+    double? lat,
+    double? lng,
+    String? linkId = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "user_email": "${email}",
+  "company_id": "${companyId}",
+  "user_id": "${userId}",
+  "lat": ${lat},
+  "lng": ${lng},
+  "link_id": "${linkId}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'updateGuestTracking',
+      apiUrl: 'google.com',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetPublicLinksCall {
+  static Future<ApiCallResponse> call({
+    String? orgId = '',
+    String? product = 'LivingLab Maps ',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "org_id": "${orgId}",
+  "product": "${product}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get Public Links',
+      apiUrl: 'https://100093.pythonanywhere.com/api/get_public_usernames/',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List<String>? usernameList(dynamic response) => (getJsonField(
+        response,
+        r'''$.usernames''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
 }
 
 class ApiPagingParams {

@@ -164,7 +164,7 @@ class _LivinglabsMapComponentWidgetState
                 child: custom_widgets.MyMapWidget(
                   width: double.infinity,
                   height: double.infinity,
-                  radius1: double.parse(_model.textController1.text),
+                  radius1: double.tryParse(_model.textController1.text),
                   radius2: double.parse(_model.textController2.text),
                   query: _model.textController3.text,
                   iOSGoogleMapsApiKey: FFAppState().iosAPIKey,
@@ -996,7 +996,7 @@ class _LivinglabsMapComponentWidgetState
                                                           (_model.evenntID
                                                                   ?.jsonBody ??
                                                               ''),
-                                                        ).toString(),
+                                                        ),
                                                         dataTimeDone:
                                                             dateTimeFormat(
                                                           'yMMMd',

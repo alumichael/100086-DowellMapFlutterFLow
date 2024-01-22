@@ -426,10 +426,69 @@ class FFAppState extends ChangeNotifier {
     _isGettingDroupLocations = _value;
   }
 
-  bool _enableTracking = false;
+  bool _enableTracking = true;
   bool get enableTracking => _enableTracking;
   set enableTracking(bool _value) {
     _enableTracking = _value;
+  }
+
+  bool _showTrackingToggler = false;
+  bool get showTrackingToggler => _showTrackingToggler;
+  set showTrackingToggler(bool _value) {
+    _showTrackingToggler = _value;
+  }
+
+  bool _isDestinationSelected = false;
+  bool get isDestinationSelected => _isDestinationSelected;
+  set isDestinationSelected(bool _value) {
+    _isDestinationSelected = _value;
+  }
+
+  List<dynamic> _convertedCordinate = [];
+  List<dynamic> get convertedCordinate => _convertedCordinate;
+  set convertedCordinate(List<dynamic> _value) {
+    _convertedCordinate = _value;
+  }
+
+  void addToConvertedCordinate(dynamic _value) {
+    _convertedCordinate.add(_value);
+  }
+
+  void removeFromConvertedCordinate(dynamic _value) {
+    _convertedCordinate.remove(_value);
+  }
+
+  void removeAtIndexFromConvertedCordinate(int _index) {
+    _convertedCordinate.removeAt(_index);
+  }
+
+  void updateConvertedCordinateAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _convertedCordinate[_index] = updateFn(_convertedCordinate[_index]);
+  }
+
+  void insertAtIndexInConvertedCordinate(int _index, dynamic _value) {
+    _convertedCordinate.insert(_index, _value);
+  }
+
+  int _squareCounts = 0;
+  int get squareCounts => _squareCounts;
+  set squareCounts(int _value) {
+    _squareCounts = _value;
+  }
+
+  String _qr = '';
+  String get qr => _qr;
+  set qr(String _value) {
+    _qr = _value;
+  }
+
+  dynamic _guestUserDetails;
+  dynamic get guestUserDetails => _guestUserDetails;
+  set guestUserDetails(dynamic _value) {
+    _guestUserDetails = _value;
   }
 }
 

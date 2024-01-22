@@ -630,7 +630,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                           (_model.myMapEvent
                                                                   ?.jsonBody ??
                                                               ''),
-                                                        ).toString(),
+                                                        ),
                                                         country: _model
                                                             .countryEdtController
                                                             .text,
@@ -716,7 +716,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                             (_model.addMyMapServiceResponse
                                                                     ?.jsonBody ??
                                                                 ''),
-                                                          ).toString()!,
+                                                          )!,
                                                           style: TextStyle(
                                                             color: FlutterFlowTheme
                                                                     .of(context)

@@ -116,19 +116,15 @@ class _GroupListDialogComponentWidgetState
                         0) {
                       FFAppState().update(() {
                         FFAppState().groupAddress =
-                            (GetLocationByGroupNameCall.locationAddress(
+                            GetLocationByGroupNameCall.locationAddress(
                           (_model.getLocationbyGroupResponse?.jsonBody ?? ''),
-                        ) as List)
-                                .map<String>((s) => s.toString())
-                                .toList()!
+                        )!
                                 .toList()
                                 .cast<String>();
                         FFAppState().groupIds =
-                            (GetLocationByGroupNameCall.locationId(
+                            GetLocationByGroupNameCall.locationId(
                           (_model.getLocationbyGroupResponse?.jsonBody ?? ''),
-                        ) as List)
-                                .map<String>((s) => s.toString())
-                                .toList()!
+                        )!
                                 .toList()
                                 .cast<String>();
                         FFAppState().showMyLocs = true;

@@ -193,7 +193,8 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Padding(
+      child: Container(
+        color: Colors.white,
         padding: EdgeInsets.all(18),
         child: isLoggedIn == true
             ? Column(mainAxisAlignment: MainAxisAlignment.center, children: [

@@ -722,7 +722,7 @@ class _PlacedetailsCopyWidgetState extends State<PlacedetailsCopyWidget> {
                                                   (_model.myMapEvent
                                                           ?.jsonBody ??
                                                       ''),
-                                                ).toString(),
+                                                ),
                                                 country:
                                                     _model.textController5.text,
                                               );

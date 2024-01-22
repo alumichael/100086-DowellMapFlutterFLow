@@ -17,3 +17,7 @@ export 'getkeyaction.dart' show getkeyaction;
 export 'get_group_loc_ids.dart' show getGroupLocIds;
 export 'get_group_locs_names.dart' show getGroupLocsNames;
 export 'get_group_locs_coord.dart' show getGroupLocsCoord;
+export 'q_r_code_scanner.dart' show qRCodeScanner;
+export 'format_link.dart' show formatLink;
+export 'payloadg.dart' show payloadg;
+export 'get_final_redirected_url.dart' show getFinalRedirectedUrl;

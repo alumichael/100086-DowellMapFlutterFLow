@@ -352,6 +352,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // LoginComponent
   {
+    '4qtf9lbz': {
+      'en': 'Login as guest',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
     '7hps9v61': {
       'en': 'Home',
       'de': '',
@@ -856,6 +862,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Agregar conexión',
       'fr': 'Ajouter une connexion',
     },
+    'ux1xlg8y': {
+      'en': 'Scan QRCode',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
     's7bromby': {
       'en': 'Settings',
       'de': 'Einstellungen',
@@ -873,6 +885,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'Um',
       'es': 'Acerca de',
       'fr': 'À propos',
+    },
+    'opr5mowk': {
+      'en': 'Generate QR Code',
+      'de': '',
+      'es': '',
+      'fr': '',
     },
     'r3p5dnq7': {
       'en': 'You are not Logged in',
@@ -923,28 +941,28 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Distance\nEntre',
     },
     '7i1t896a': {
-      'en': '0',
+      'en': 'From',
       'de': '0',
       'es': '0',
       'fr': '0',
     },
-    '8trror0k': {
-      'en': '0',
-      'de': '0',
-      'es': '0',
-      'fr': '0',
+    '0ckxd2o7': {
+      'en': 'e.g 0',
+      'de': '',
+      'es': '',
+      'fr': '',
     },
     'aphmltz6': {
-      'en': '2000',
+      'en': 'To',
       'de': '2000',
       'es': '2000',
       'fr': '2000',
     },
-    'gtvva87o': {
-      'en': '2000',
-      'de': '2000',
-      'es': '2000',
-      'fr': '2000',
+    'v6s1i2tm': {
+      'en': 'e.g 2000',
+      'de': '',
+      'es': '',
+      'fr': '',
     },
     'cvep8u39': {
       'en': 'M',
@@ -953,16 +971,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'M',
     },
     'rp439f9l': {
-      'en': 'Search here',
+      'en': 'categories',
       'de': 'Suche hier',
       'es': 'Busca aquí',
       'fr': 'Cherche ici',
     },
-    '680541h4': {
-      'en': 'school',
-      'de': 'Schule',
-      'es': 'escuela',
-      'fr': 'école',
+    'sgyz8ovg': {
+      'en': 'e.g school',
+      'de': '',
+      'es': '',
+      'fr': '',
     },
     'xww5jydn': {
       'en': 'Login',
@@ -975,6 +993,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'Gruppe',
       'es': 'Grupo',
       'fr': 'Groupe',
+    },
+    'mhegrjuy': {
+      'en': 'Enable Tracking',
+      'de': '',
+      'es': '',
+      'fr': '',
     },
     'in74qj5s': {
       'en': 'Home',
@@ -1238,6 +1262,183 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     'a6ly8b9q': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // TrackingPage
+  {
+    'i5c3uzhy': {
+      'en': 'View Profile',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'hutdkots': {
+      'en': 'Add Group',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '9qgenc7y': {
+      'en': 'Settings',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'cyybixiw': {
+      'en': 'Support',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'gzkea7cu': {
+      'en': 'About',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    't9l8yawx': {
+      'en': 'You are not Logged in',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'ija85391': {
+      'en': 'Click here to Log in',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'a0cciddc': {
+      'en': 'Logout',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'wi4wfiyx': {
+      'en': 'Enter Square Length',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'jzzqd041': {
+      'en': '',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'q1hocl90': {
+      'en': '0',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'olkrtytj': {
+      'en': 'Enable Tracking',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '70yerk45': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // search
+  {
+    'zl0eur9a': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // QrScanner
+  {
+    'zalsry9j': {
+      'en': 'Cancel',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    's6x3gfbw': {
+      'en': 'Scanning QR Code',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'u9h9ekge': {
+      'en': 'Please hold the camera at the QR Code',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'mrkct4e8': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // TrackingDetailsForm
+  {
+    'z1yhlp39': {
+      'en': 'Full Name',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'g9bqj2wy': {
+      'en': 'Email',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'o2rtfxjc': {
+      'en': 'Company/School Name',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'w5gqe11r': {
+      'en': 'Country',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'beavcmg1': {
+      'en': 'Continue',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'yhpdz1ji': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // Create_Qr_Code
+  {
+    '3rolpja5': {
+      'en': 'Generate',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'tzp8vi12': {
+      'en': 'Generate Qrcode',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'ip697n26': {
       'en': 'Home',
       'de': '',
       'es': '',
@@ -1778,6 +1979,28 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // TrackPermissionDialog
+  {
+    'qxa66xnf': {
+      'en':
+          'I permit DoWell UX Living Lab to track and record my GPS location from device or phone inside the exhibition venue to display tracking data in reports to public without showing my identity',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '6iudrq6u': {
+      'en': 'Cancel',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'z5xypcdk': {
+      'en': 'Accept',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
   // Miscellaneous
   {
     'bwnsa3x4': {
@@ -1860,6 +2083,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     'udisf572': {
+      'en': '',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'xwpl3z34': {
+      'en': '',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '09t9t4va': {
+      'en': '',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'ekfp8qzs': {
       'en': '',
       'de': '',
       'es': '',

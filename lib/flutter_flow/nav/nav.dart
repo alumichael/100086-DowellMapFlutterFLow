@@ -180,6 +180,31 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => NewplacedetailsWidget(
                 currentCord: params.getParam('currentCord', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'TrackingPage',
+              path: 'trackingPage',
+              builder: (context, params) => TrackingPageWidget(),
+            ),
+            FFRoute(
+              name: 'search',
+              path: 'search',
+              builder: (context, params) => SearchWidget(),
+            ),
+            FFRoute(
+              name: 'QrScanner',
+              path: 'qrScanner',
+              builder: (context, params) => QrScannerWidget(),
+            ),
+            FFRoute(
+              name: 'TrackingDetailsForm',
+              path: 'trackingDetailsForm',
+              builder: (context, params) => TrackingDetailsFormWidget(),
+            ),
+            FFRoute(
+              name: 'Create_Qr_Code',
+              path: 'create_qr_code',
+              builder: (context, params) => CreateQrCodeWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

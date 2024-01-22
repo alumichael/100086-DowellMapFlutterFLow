@@ -167,3 +167,70 @@ List<dynamic>? newCustomFunction2(List<dynamic>? dataBox) {
   }
   return dataValue;
 }
+
+List<dynamic> payloadgen(
+  List<String> usernames,
+  String clientadminid,
+) {
+  List<Map<String, String>> links = [];
+
+  for (int i = 0; i < usernames.length; i++) {
+    String link = "http://livinglab.com/${usernames[i]}/$clientadminid";
+    links.add({"link": link});
+  }
+
+  List<Map<String, String>> linksWithStringKeysAndValues = links.map((link) {
+    return {
+      "link": '${link['link']}',
+    };
+  }).toList();
+
+  return linksWithStringKeysAndValues;
+}
+
+List<String>? refineQrLinks(
+  String? clientadminid,
+  List<dynamic>? portfolio,
+) {
+  if (clientadminid == null || portfolio == null || portfolio.isEmpty) {
+    // Return null if any of the required parameters is null or usernames list is empty
+    return null;
+  }
+
+  List<String> usernames = [];
+
+  for (int i = 0; i < portfolio.length; i++) {
+    Map<String, dynamic> portfo = portfolio[i];
+
+    // Check conditions for extracting usernames
+    if (portfo['member_type'] == 'public' &&
+        portfo['product'] == 'Living Lab Maps') {
+      List<String>? portfolioUsernames = portfo['username']?.cast<String>();
+      if (portfolioUsernames != null) {
+        usernames.addAll(portfolioUsernames);
+      }
+    }
+  }
+
+  List<String> payload = [
+    "qrcode_type: Link",
+    "quantity: ${usernames.length}",
+    "company_id: $clientadminid",
+    "links: [",
+  ];
+
+  for (int i = 0; i < usernames.length; i++) {
+    String username = usernames[i];
+    payload.add("  {");
+    payload.add("    link: http://livinglab.com/$username/$clientadminid");
+    payload.add("  },");
+  }
+
+  // Remove the trailing comma from the last link entry
+  payload[payload.length - 1] = payload.last.replaceAll(",", "");
+
+  payload.add("]");
+  payload.add("document_name: Living Lab Maps");
+
+  return payload;
+}

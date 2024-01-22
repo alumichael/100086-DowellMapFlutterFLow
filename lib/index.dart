@@ -22,3 +22,9 @@ export '/new_home_page_copy2/new_home_page_copy2_widget.dart'
     show NewHomePageCopy2Widget;
 export '/newplacedetails/newplacedetails_widget.dart'
     show NewplacedetailsWidget;
+export '/tracking_page/tracking_page_widget.dart' show TrackingPageWidget;
+export '/search/search_widget.dart' show SearchWidget;
+export '/qr_scanner/qr_scanner_widget.dart' show QrScannerWidget;
+export '/tracking_details_form/tracking_details_form_widget.dart'
+    show TrackingDetailsFormWidget;
+export '/create_qr_code/create_qr_code_widget.dart' show CreateQrCodeWidget;
