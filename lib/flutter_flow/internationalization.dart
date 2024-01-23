@@ -2086,6 +2086,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '',
       'fr': '',
     },
+    'o86fqy4z': {
+      'en': 'Photo Library permission is  required for image placeholder',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
     'uh4554hg': {
       'en': '',
       'de': '',

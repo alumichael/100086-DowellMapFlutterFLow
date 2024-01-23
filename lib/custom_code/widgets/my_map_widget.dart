@@ -884,8 +884,8 @@ class _MyMapWidget extends State<MyMapWidget> {
 
   String getSocketMessage() {
     String userEmail = FFAppState().guestEmail.toString();
-    String companyId = "65a8bb1f2d73765634fdcaf5";
-    String userId = generateRandomString(10);
+    String companyId = FFAppState().guestCompanyId.toString();
+    String userId = FFAppState().guestUserId.toString();
     String lat = currentPosition!.latitude.toString();
     String lng = currentPosition!.longitude.toString();
     String linkId = "";

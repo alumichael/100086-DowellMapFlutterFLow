@@ -44,7 +44,7 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>livinglabmaps.com</string>
+        <string>uxlivinglab.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
         <string>dowelllogin</string>
@@ -74,6 +74,8 @@
     <string>Camera permission is required for barcode scanning</string>
 	<key>NSCameraUsageDescription</key>
     <string>Camera permission is required for barcode scanning</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>Photo Library permission is  required for image placeholder</string>
     <key>UIBackgroundModes</key>
     <array>
         <string>fetch</string>

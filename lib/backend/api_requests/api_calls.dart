@@ -1307,7 +1307,7 @@ class FetchUserCall {
   "coll_name": "user_info",
   "operation": "fetch",
   "filters": {
-    "Email": "${email}"
+    "email": "${email}"
   },
   "limit": 1,
   "offset": 0
@@ -1341,6 +1341,7 @@ class InsertUserCall {
     String? name = '',
     String? email = '',
     String? comapnyName = '',
+    String? userid = '',
   }) async {
     final ffApiRequestBody = '''
 {
@@ -1350,7 +1351,7 @@ class InsertUserCall {
   "operation": "insert",
   "data": {
     "id": "65a8bb1f2d73765634fdcaf5",
-    "user_id": "userid01",
+    "user_id": "${userid}",
     "name": "${name}",
     "email": "${email}",
     "org_name": "${comapnyName}"

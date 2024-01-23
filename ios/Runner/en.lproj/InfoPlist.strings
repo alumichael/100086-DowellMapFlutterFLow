@@ -3,3 +3,4 @@ PermissionGroupNotification = "The Notifications help us communicate with you be
 NSUserNotificationsUsageDescription = "The Notifications help us communicate with you better";
 NSLocationAlwaysAndWhenInUseUsageDescription = "To get nearby places around you, app needs your permission to access your location.";
 NSCameraUsageDescription = "Camera permission is required for barcode scanning";
+NSPhotoLibraryUsageDescription = "Photo Library permission is  required for image placeholder";

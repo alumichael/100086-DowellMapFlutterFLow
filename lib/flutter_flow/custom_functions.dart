@@ -175,7 +175,10 @@ List<dynamic> payloadgen(
   List<Map<String, String>> links = [];
 
   for (int i = 0; i < usernames.length; i++) {
-    String link = "http://livinglab.com/${usernames[i]}/$clientadminid";
+    // https: //livinglab-maps.flutterflow.app/trackingDetailsForm?userid=V8qcIGmHxMKC&wo8rk5spaceid=65a8bb1f2d73765634fdcaf5
+//https://livinglab-maps.flutterflow.app/trackingDetailsForm?userid=shshsh&?workspaceid=dhdhdb
+    String link =
+        "https://livinglab-maps.flutterflow.app/trackingDetailsForm?userid=${usernames[i]}&workspaceid=$clientadminid";
     links.add({"link": link});
   }
 
@@ -233,4 +236,16 @@ List<String>? refineQrLinks(
   payload.add("document_name: Living Lab Maps");
 
   return payload;
+}
+
+String? generateRandomText(int lenghtOFString) {
+  final random = math.Random();
+  const allChars =
+      'AaBbCcDdlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1EeFfGgHhIiJjKkL234567890';
+  // below statement will generate a random string of length using the characters
+  // and length provided to it
+  final randomString = List.generate(
+          lenghtOFString, (index) => allChars[random.nextInt(allChars.length)])
+      .join();
+  return randomString; // return the generated string
 }

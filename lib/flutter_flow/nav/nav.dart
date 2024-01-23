@@ -198,8 +198,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             FFRoute(
               name: 'TrackingDetailsForm',
-              path: 'trackingDetailsForm',
-              builder: (context, params) => TrackingDetailsFormWidget(),
+              path: 'trackingDetailsForm/:userid/:workspaceid',
+              builder: (context, params) => TrackingDetailsFormWidget(
+                userid: params.getParam('userid', ParamType.String),
+                workspaceid: params.getParam('workspaceid', ParamType.String),
+              ),
             ),
             FFRoute(
               name: 'Create_Qr_Code',

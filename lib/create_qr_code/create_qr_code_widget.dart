@@ -200,9 +200,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                 true)) {
                               _model.getPublicUseIdResponse =
                                   await GetPublicLinksCall.call(
-                                orgId: GetUserInfoCall.clientid(
-                                  (_model.getUserInfoResponse?.jsonBody ?? ''),
-                                ),
+                                orgId: '65a8bb1f2d73765634fdcaf5',
                                 product: 'Living Lab Maps',
                               );
                               if ((_model.getPublicUseIdResponse?.succeeded ??
@@ -221,10 +219,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                         .isNotEmpty) {
                                   _model.getQRCodeResponse =
                                       await GenerateQRcodeCall.call(
-                                    cliendId: GetUserInfoCall.clientid(
-                                      (_model.getUserInfoResponse?.jsonBody ??
-                                          ''),
-                                    ),
+                                    cliendId: '65a8bb1f2d73765634fdcaf5',
                                     linksJson: functions.payloadgen(
                                         GetPublicLinksCall.usernameList(
                                           (_model.getPublicUseIdResponse

@@ -146,7 +146,25 @@ final parametersBuilderMap =
   'TrackingPage': ParameterData.none(),
   'search': ParameterData.none(),
   'QrScanner': ParameterData.none(),
-  'TrackingDetailsForm': ParameterData.none(),
+  'TrackingDetailsForm': (data) async {
+    final allParams = {
+      'userid': getParameter<String>(data, 'userid'),
+      'workspaceid': getParameter<String>(data, 'workspaceid'),
+    };
+    return ParameterData(
+      requiredParams: {
+        'userid': serializeParam(
+          allParams['userid'],
+          ParamType.String,
+        ),
+        'workspaceid': serializeParam(
+          allParams['workspaceid'],
+          ParamType.String,
+        ),
+      },
+      allParams: allParams,
+    );
+  },
   'Create_Qr_Code': ParameterData.none(),
   'TrackPermission': ParameterData.none(),
 };

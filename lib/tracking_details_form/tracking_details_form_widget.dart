@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,7 +10,14 @@ import 'tracking_details_form_model.dart';
 export 'tracking_details_form_model.dart';
 
 class TrackingDetailsFormWidget extends StatefulWidget {
-  const TrackingDetailsFormWidget({Key? key}) : super(key: key);
+  const TrackingDetailsFormWidget({
+    Key? key,
+    this.userid,
+    this.workspaceid,
+  }) : super(key: key);
+
+  final String? userid;
+  final String? workspaceid;
 
   @override
   _TrackingDetailsFormWidgetState createState() =>
@@ -292,6 +300,15 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                             FFAppState().guestCountry =
                                 _model.countryTextFieldController.text;
                             FFAppState().allowLocationTracking = true;
+                            FFAppState().guestUserId =
+                                widget.userid != null && widget.userid != ''
+                                    ? widget.userid!
+                                    : functions.generateRandomText(10)!;
+                            FFAppState().guestCompanyId =
+                                widget.workspaceid != null &&
+                                        widget.workspaceid != ''
+                                    ? widget.workspaceid!
+                                    : '65a8bb1f2d73765634fdcaf5';
                           });
                           setState(() {
                             _model.nameTextFieldController?.clear();
