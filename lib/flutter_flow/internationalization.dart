@@ -1445,6 +1445,34 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // TrackPermission
+  {
+    '2gh9o4g9': {
+      'en':
+          'I permit DoWell UX Living Lab to track and record my GPS location from device or phone inside the exhibition venue to display tracking data in reports to public without showing my identity',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'i3i9itay': {
+      'en': 'Cancel',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'p5szsrpz': {
+      'en': 'Accept',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'qqbdc489': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
   // GlobalTopMenuBar
   {
     'pop7fj2v': {
@@ -2042,6 +2070,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'o3dv3kf0': {
       'en':
           'To get nearby places around you, app needs your permission to access your location.',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'mjvb5ikd': {
+      'en': 'Camera permission is required for barcode scanning',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'tc0uelcd': {
+      'en': 'Camera permission is required for barcode scanning',
       'de': '',
       'es': '',
       'fr': '',

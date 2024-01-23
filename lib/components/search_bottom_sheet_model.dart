@@ -10,7 +10,6 @@ import '/flutter_flow/place.dart';
 import 'dart:io';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'search_bottom_sheet_widget.dart' show SearchBottomSheetWidget;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -50,8 +49,6 @@ class SearchBottomSheetModel extends FlutterFlowModel<SearchBottomSheetWidget> {
   ApiCallResponse? evenntID;
   // Stores action output result for [Custom Action - getAddressFromLatLng] action in searchButton widget.
   String? currentAddress;
-  // Stores action output result for [Backend Call - API (Send Log Data)] action in searchButton widget.
-  ApiCallResponse? logResponse;
   // Stores action output result for [Backend Call - API (GetMymap)] action in searchButton widget.
   ApiCallResponse? mymapBackendRefinedResult;
   // Stores action output result for [Custom Action - getLocatCordFromString] action in searchButton widget.

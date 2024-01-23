@@ -13,7 +13,7 @@ import 'package:flutter/services.dart';
 
 Future<String?> qRCodeScanner() async {
   // Add your function code here!
-  String? barcodeScanRes;
+  String barcodeScanRes = "";
   // Platform messages may fail, so we use a try/catch PlatformException.
   try {
     barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(

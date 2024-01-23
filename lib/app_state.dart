@@ -47,6 +47,10 @@ class FFAppState extends ChangeNotifier {
         }
       }
     });
+    _safeInit(() {
+      _allowLocationTracking =
+          prefs.getBool('ff_allowLocationTracking') ?? _allowLocationTracking;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -489,6 +493,37 @@ class FFAppState extends ChangeNotifier {
   dynamic get guestUserDetails => _guestUserDetails;
   set guestUserDetails(dynamic _value) {
     _guestUserDetails = _value;
+  }
+
+  String _guestName = '';
+  String get guestName => _guestName;
+  set guestName(String _value) {
+    _guestName = _value;
+  }
+
+  String _guestEmail = 'email';
+  String get guestEmail => _guestEmail;
+  set guestEmail(String _value) {
+    _guestEmail = _value;
+  }
+
+  String _guestCompanyName = '';
+  String get guestCompanyName => _guestCompanyName;
+  set guestCompanyName(String _value) {
+    _guestCompanyName = _value;
+  }
+
+  String _guestCountry = '';
+  String get guestCountry => _guestCountry;
+  set guestCountry(String _value) {
+    _guestCountry = _value;
+  }
+
+  bool _allowLocationTracking = false;
+  bool get allowLocationTracking => _allowLocationTracking;
+  set allowLocationTracking(bool _value) {
+    _allowLocationTracking = _value;
+    prefs.setBool('ff_allowLocationTracking', _value);
   }
 }
 

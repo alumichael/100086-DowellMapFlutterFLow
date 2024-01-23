@@ -28,3 +28,5 @@ export '/qr_scanner/qr_scanner_widget.dart' show QrScannerWidget;
 export '/tracking_details_form/tracking_details_form_widget.dart'
     show TrackingDetailsFormWidget;
 export '/create_qr_code/create_qr_code_widget.dart' show CreateQrCodeWidget;
+export '/track_permission/track_permission_widget.dart'
+    show TrackPermissionWidget;

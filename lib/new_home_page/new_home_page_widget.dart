@@ -2,7 +2,6 @@ import '/backend/api_requests/api_calls.dart';
 import '/components/add_group_dialog_widget.dart';
 import '/components/group_list_dialog_component_widget.dart';
 import '/components/image_widget.dart';
-import '/components/track_permission_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_language_selector.dart';
 import '/flutter_flow/flutter_flow_place_picker.dart';
@@ -17,7 +16,6 @@ import 'dart:io';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -589,109 +587,72 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Builder(
-                                  builder: (context) => InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      var _shouldSetState = false;
-                                      Navigator.pop(context);
-                                      _model.scannerResult =
-                                          await actions.qRCodeScanner();
-                                      _shouldSetState = true;
-                                      if (_model.scannerResult != null &&
-                                          _model.scannerResult != '') {
-                                        _model.refineUrl =
-                                            await actions.getFinalRedirectedUrl(
-                                          _model.scannerResult!,
-                                        );
-                                        _shouldSetState = true;
-                                        _model.notNeeded =
-                                            await actions.formatLink(
-                                          _model.refineUrl!,
-                                        );
-                                        _shouldSetState = true;
-                                        _model.finalizingLink =
-                                            await FinalizedLinkCall.call(
-                                          linkId: getJsonField(
-                                            FFAppState().guestUserDetails,
-                                            r'''$.link_id''',
-                                          ).toString(),
-                                        );
-                                        _shouldSetState = true;
-                                        if ((_model.finalizingLink?.succeeded ??
-                                            true)) {
-                                          await showDialog(
-                                            barrierDismissible: false,
-                                            context: context,
-                                            builder: (dialogContext) {
-                                              return Dialog(
-                                                insetPadding: EdgeInsets.zero,
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                alignment: AlignmentDirectional(
-                                                        0.0, 0.0)
-                                                    .resolve(Directionality.of(
-                                                        context)),
-                                                child: WebViewAware(
-                                                    child: GestureDetector(
-                                                  onTap: () => _model
-                                                          .unfocusNode
-                                                          .canRequestFocus
-                                                      ? FocusScope.of(context)
-                                                          .requestFocus(_model
-                                                              .unfocusNode)
-                                                      : FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child:
-                                                      TrackPermissionDialogWidget(),
-                                                )),
-                                              );
-                                            },
-                                          ).then((value) => setState(() {}));
-                                        }
-                                        if (_shouldSetState) setState(() {});
-                                        return;
-                                      }
-                                      if (_shouldSetState) setState(() {});
-                                    },
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 10.0, 0.0),
-                                          child: Icon(
-                                            Icons.qr_code_scanner,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 24.0,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'ux1xlg8y' /* Scan QRCode */,
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    _model.scannerResult =
+                                        await actions.qRCodeScanner();
+                                    if (_model.scannerResult != null &&
+                                        _model.scannerResult != '') {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Scan Successful',
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent2,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
                                           ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondary,
                                         ),
-                                      ],
-                                    ),
+                                      );
+
+                                      context.pushNamed('TrackingDetailsForm');
+                                    }
+
+                                    setState(() {});
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 10.0, 0.0),
+                                        child: Icon(
+                                          Icons.qr_code_scanner,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 24.0,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 0.0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'ux1xlg8y' /* Scan QRCode */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent2,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
@@ -784,31 +745,48 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 20.0, 0.0),
-                                  child: Icon(
-                                    Icons.info_outline,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    size: 24.0,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      '97mp010r' /* About */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Poppins',
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    await actions.httpLoader(
+                                      'https://www.qrcodereviews.uxlivinglab.online/api/v3/masterlink/?api_key=2304034444490576366',
+                                    );
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 20.0, 0.0),
+                                        child: Icon(
+                                          Icons.info_outline,
                                           color: FlutterFlowTheme.of(context)
-                                              .accent2,
-                                          fontWeight: FontWeight.normal,
+                                              .secondaryText,
+                                          size: 24.0,
                                         ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 0.0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            '97mp010r' /* About */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent2,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
@@ -2240,57 +2218,6 @@ Between */
                                                                         : _model
                                                                             .placePickerValue
                                                                             .latLng,
-                                                                  );
-                                                                  _model.logResponse =
-                                                                      await SendLogDataCall
-                                                                          .call(
-                                                                    mongoID:
-                                                                        random_data
-                                                                            .randomString(
-                                                                      1,
-                                                                      10,
-                                                                      true,
-                                                                      false,
-                                                                      false,
-                                                                    ),
-                                                                    reqID: random_data
-                                                                        .randomString(
-                                                                      1,
-                                                                      10,
-                                                                      true,
-                                                                      false,
-                                                                      false,
-                                                                    ),
-                                                                    reqType:
-                                                                        'nearby_place',
-                                                                    eventId:
-                                                                        CreateEventCall
-                                                                            .eventID(
-                                                                      (_model.evenntID
-                                                                              ?.jsonBody ??
-                                                                          ''),
-                                                                    ),
-                                                                    dataTimeDone:
-                                                                        dateTimeFormat(
-                                                                      'yMMMd',
-                                                                      getCurrentTimestamp,
-                                                                      locale: FFLocalizations.of(
-                                                                              context)
-                                                                          .languageCode,
-                                                                    ),
-                                                                    userName: random_data
-                                                                        .randomName(
-                                                                            true,
-                                                                            false),
-                                                                    sessionId:
-                                                                        FFAppState()
-                                                                            .sessionId,
-                                                                    locationDone: functions.latlngToString(FFAppState().currentLocation ==
-                                                                            'Current Location'
-                                                                        ? currentUserLocationValue!
-                                                                        : _model
-                                                                            .placePickerValue
-                                                                            .latLng),
                                                                   );
                                                                 } else {
                                                                   ScaffoldMessenger.of(

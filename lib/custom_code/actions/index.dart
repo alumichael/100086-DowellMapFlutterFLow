@@ -21,3 +21,4 @@ export 'q_r_code_scanner.dart' show qRCodeScanner;
 export 'format_link.dart' show formatLink;
 export 'payloadg.dart' show payloadg;
 export 'get_final_redirected_url.dart' show getFinalRedirectedUrl;
+export 'http_loader.dart' show httpLoader;

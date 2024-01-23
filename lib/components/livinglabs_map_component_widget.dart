@@ -12,7 +12,6 @@ import 'dart:io';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -970,51 +969,6 @@ class _LivinglabsMapComponentWidgetState
                                                             : _model
                                                                 .placePickerValue
                                                                 .latLng,
-                                                      );
-                                                      _model.logResponse =
-                                                          await SendLogDataCall
-                                                              .call(
-                                                        mongoID: random_data
-                                                            .randomString(
-                                                          1,
-                                                          10,
-                                                          true,
-                                                          false,
-                                                          false,
-                                                        ),
-                                                        reqID: random_data
-                                                            .randomString(
-                                                          1,
-                                                          10,
-                                                          true,
-                                                          false,
-                                                          false,
-                                                        ),
-                                                        reqType: 'nearby_place',
-                                                        eventId: CreateEventCall
-                                                            .eventID(
-                                                          (_model.evenntID
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        ),
-                                                        dataTimeDone:
-                                                            dateTimeFormat(
-                                                          'yMMMd',
-                                                          getCurrentTimestamp,
-                                                          locale:
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .languageCode,
-                                                        ),
-                                                        userName: random_data
-                                                            .randomName(
-                                                                true, false),
-                                                        sessionId: FFAppState()
-                                                            .sessionId,
-                                                        locationDone: functions
-                                                            .latlngToString(_model
-                                                                .placePickerValue
-                                                                .latLng),
                                                       );
                                                     } else {
                                                       ScaffoldMessenger.of(

@@ -12,7 +12,6 @@ import 'dart:io';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -1151,59 +1150,6 @@ class _HomeScreenVersion1WidgetState extends State<HomeScreenVersion1Widget> {
                                                               ),
                                                             );
                                                           }
-                                                          _model.logResponse =
-                                                              await SendLogDataCall
-                                                                  .call(
-                                                            mongoID:
-                                                                NearbyPlacesDataCall
-                                                                    .insertID(
-                                                              (_model.doWellMap
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            ),
-                                                            reqID:
-                                                                NearbyPlacesDataCall
-                                                                    .insertID(
-                                                              (_model.doWellMap
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            ),
-                                                            reqType:
-                                                                'nearbyplaces',
-                                                            eventId:
-                                                                CreateEventCall
-                                                                    .eventID(
-                                                              (_model.evenntID
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            ),
-                                                            dataTimeDone:
-                                                                dateTimeFormat(
-                                                              'yMMMd',
-                                                              getCurrentTimestamp,
-                                                              locale: FFLocalizations
-                                                                      .of(context)
-                                                                  .languageCode,
-                                                            ),
-                                                            userName:
-                                                                random_data
-                                                                    .randomName(
-                                                                        true,
-                                                                        false),
-                                                            sessionId:
-                                                                LinkBageLoginCall
-                                                                    .sessionID(
-                                                              homeScreenVersion1LinkBageLoginResponse
-                                                                  .jsonBody,
-                                                            ),
-                                                            locationDone: functions
-                                                                .latlngToString(
-                                                                    _model
-                                                                        .placePickerValue
-                                                                        .latLng),
-                                                          );
-                                                          _shouldSetState =
-                                                              true;
                                                           if (_shouldSetState)
                                                             setState(() {});
                                                           return;

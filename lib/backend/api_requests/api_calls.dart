@@ -308,50 +308,17 @@ class NearbyPlacesDataCall {
 }
 
 class SendLogDataCall {
-  static Future<ApiCallResponse> call({
-    String? mongoID = '',
-    String? reqID = '',
-    String? reqType = '',
-    String? eventId = '',
-    String? dataTimeDone = '',
-    String? userName = '',
-    String? sessionId = '',
-    String? locationDone = '',
-  }) async {
-    final ffApiRequestBody = '''
-{
-  "cluster": "dowellmap",
-  "collection": "log",
-  "command": "insert",
-  "database": "dowellmap",
-  "document": "log",
-  "field": {
-    "data_time_done": "${dataTimeDone}",
-    "eventId": "${eventId}",
-    "location_done": "${locationDone}",
-    "req_type": "${reqType}",
-    "session_id": "${sessionId}",
-    "user_name": "${userName}",
-    "mongo_id": "${mongoID}",
-    "req_id": "${reqID}"
-  },
-  "function_ID": "ABCDE",
-  "platform": "bangalore",
-  "team_member_ID": "1155",
-  "update_field": {
-    "order_nos": 1
-  }
-}''';
+  static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'Send Log Data',
-      apiUrl: 'https://uxlivinglab.pythonanywhere.com/',
-      callType: ApiCallType.POST,
+      apiUrl: 'https://www.qrcodereviews.uxlivinglab.online/api/v3/masterlink/',
+      callType: ApiCallType.GET,
       headers: {
         'Access-Control-Allow-Origin': '*',
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
+      params: {
+        'api_key': "2304034444490576366",
+      },
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -1326,6 +1293,135 @@ class GetPublicLinksCall {
           .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
+}
+
+class FetchUserCall {
+  static Future<ApiCallResponse> call({
+    String? apiKey = '0699dbbb-2786-4dfa-a1db-fc12f2210228',
+    String? email = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "api_key": "${apiKey}",
+  "db_name": "dowell_tracking",
+  "coll_name": "user_info",
+  "operation": "fetch",
+  "filters": {
+    "Email": "${email}"
+  },
+  "limit": 1,
+  "offset": 0
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Fetch User',
+      apiUrl: 'https://datacube.uxlivinglab.online/db_api/get_data/',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? data(dynamic response) => getJsonField(
+        response,
+        r'''$.data''',
+        true,
+      ) as List?;
+}
+
+class InsertUserCall {
+  static Future<ApiCallResponse> call({
+    String? apiKey = '0699dbbb-2786-4dfa-a1db-fc12f2210228',
+    String? name = '',
+    String? email = '',
+    String? comapnyName = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "api_key": "${apiKey}",
+  "db_name": "dowell_tracking",
+  "coll_name": "user_info",
+  "operation": "insert",
+  "data": {
+    "id": "65a8bb1f2d73765634fdcaf5",
+    "user_id": "userid01",
+    "name": "${name}",
+    "email": "${email}",
+    "org_name": "${comapnyName}"
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Insert User',
+      apiUrl: 'https://datacube.uxlivinglab.online/db_api/crud/',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class ThreeCall {
+  static Future<ApiCallResponse> call() async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'three',
+      apiUrl: 'www.google.com',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class FourCall {
+  static Future<ApiCallResponse> call() async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'four',
+      apiUrl: 'www.google.com',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class FiveCall {
+  static Future<ApiCallResponse> call() async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'five',
+      apiUrl: 'www.google.com',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
 }
 
 class ApiPagingParams {

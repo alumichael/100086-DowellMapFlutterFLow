@@ -281,8 +281,26 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                       child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          setState(() {
+                            FFAppState().guestName =
+                                _model.nameTextFieldController.text;
+                            FFAppState().guestEmail =
+                                _model.emailTextFieldController.text;
+                            FFAppState().guestCompanyName =
+                                _model.companyNameextFieldController.text;
+                            FFAppState().guestCountry =
+                                _model.countryTextFieldController.text;
+                            FFAppState().allowLocationTracking = true;
+                          });
+                          setState(() {
+                            _model.nameTextFieldController?.clear();
+                            _model.emailTextFieldController?.clear();
+                            _model.companyNameextFieldController?.clear();
+                            _model.countryTextFieldController?.clear();
+                          });
+
+                          context.pushNamed('TrackPermission');
                         },
                         text: FFLocalizations.of(context).getText(
                           'beavcmg1' /* Continue */,

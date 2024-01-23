@@ -30,6 +30,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart' as loca;
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class MyMapWidget extends StatefulWidget {
   const MyMapWidget({
@@ -87,6 +88,7 @@ class _MyMapWidget extends State<MyMapWidget> {
   GoogleMapController? _controller;
   StreamSubscription<loca.LocationData>? locationSubscription;
   Position? position;
+  IO.Socket? socket;
   late GoogleMapPolyline? googleMapPolyline;
   loca.Location location = loca.Location();
   Position? currentPosition;
@@ -134,13 +136,20 @@ class _MyMapWidget extends State<MyMapWidget> {
   void initState() {
     googleMapPolyline = new GoogleMapPolyline(apiKey: googleMapsApiKey);
     getCurrentLocation();
-    trackMe();
+
+    if (FFAppState().allowLocationTracking == true &&
+        FFAppState().isAuthUser == false) {
+      activateSocket();
+    }
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
+    trackMe();
+
     debugPrint(
         ":::from the marker room:: ${FFAppState().groupList} :: radius2 :: ${widget.radius2} :: zoomValue :: $zoomValue");
     bool isOriginZero =
@@ -268,6 +277,11 @@ class _MyMapWidget extends State<MyMapWidget> {
   ///
   ///
   trackMe() {
+    if (FFAppState().allowLocationTracking == true &&
+        FFAppState().isAuthUser == false) {
+      addSocketMessage();
+    }
+
     print("from the tracking end::::: 0");
     locationSubscription =
         location.onLocationChanged.listen((loca.LocationData locationData) {
@@ -283,6 +297,7 @@ class _MyMapWidget extends State<MyMapWidget> {
             speed: 100,
             speedAccuracy: 10);
         print("from the tracking end::::: 2:::: $currentPosition");
+
         if (FFAppState().enableTracking) {
           print(
               "from the tracking end::::: 20:::: ${FFAppState().enableTracking}");
@@ -864,6 +879,74 @@ class _MyMapWidget extends State<MyMapWidget> {
               );
             });
       }
+    }
+  }
+
+  String getSocketMessage() {
+    String userEmail = FFAppState().guestEmail.toString();
+    String companyId = "65a8bb1f2d73765634fdcaf5";
+    String userId = generateRandomString(10);
+    String lat = currentPosition!.latitude.toString();
+    String lng = currentPosition!.longitude.toString();
+    String linkId = "";
+
+    Map<String, dynamic> jsonObject = {
+      "user_email": userEmail,
+      "company_id": companyId,
+      "user_id": userId,
+      "lat": lat,
+      "lng": lng,
+      "link_id": linkId,
+    };
+
+    String jsonString = jsonEncode(jsonObject);
+    print("JsonString::: $jsonString");
+
+    return jsonString;
+  }
+
+  void activateSocket() async {
+    socket = IO.io("http://216.219.86.171:3001/", <String, dynamic>{
+      'transports': ['websocket'],
+      'autoConnect': true,
+    });
+
+    // Connect to the server
+    socket?.connect();
+  }
+
+  void addSocketMessage() {
+    print("Websocket Event sent successfully::::: 0");
+    if (socket != null) {
+      // String userEmail = FFAppState().guestEmail;
+      // String companyId = "65a8bb1f2d73765634fdcaf5";
+      // String userId = generateRandomString(10);
+      // String lat = currentPosition!.latitude.toString();
+      // String lng = currentPosition!.longitude.toString();
+      // String linkId = "";
+
+      // Map<String, dynamic> jsonObject = {
+      //   "user_email": userEmail,
+      //   "company_id": companyId,
+      //   "user_id": userId,
+      //   "lat": lat,
+      //   "lng": lng,
+      //   "link_id": linkId
+      // };
+
+      // String jsonString = jsonEncode(jsonObject);
+
+      print("jsonString::::: $getSocketMessage()");
+
+      try {
+        print("Websocket Event sent successfully::::: 33");
+        socket?.emit('sendMessage', getSocketMessage());
+        //socket?.emit('sendMessage', "my json body");
+      } catch (e) {
+        print("Error:: $e");
+      }
+
+      print("Websocket Event sent successfully::::: 12");
     }
   }
 

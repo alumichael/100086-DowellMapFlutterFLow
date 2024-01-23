@@ -113,7 +113,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                             GenerateQRcodeCall.imageUrl(
                               (_model.getQRCodeResponse?.jsonBody ?? ''),
                             ),
-                            'http://dowellfileuploader.uxlivinglab.online/qrCodes/qrcode_1705654186.jpg',
+                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/tutorial-i81rmd/assets/humbs3vqaj93/Logo_500*500.png',
                           ),
                           width: 300.0,
                           height: 300.0,
@@ -207,49 +207,79 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                               );
                               if ((_model.getPublicUseIdResponse?.succeeded ??
                                   true)) {
-                                _model.getQRCodeResponse =
-                                    await GenerateQRcodeCall.call(
-                                  cliendId: GetUserInfoCall.clientid(
-                                    (_model.getUserInfoResponse?.jsonBody ??
-                                        ''),
-                                  ),
-                                  linksJson: functions.payloadgen(
-                                      GetPublicLinksCall.usernameList(
-                                        (_model.getPublicUseIdResponse
-                                                ?.jsonBody ??
-                                            ''),
-                                      )!
-                                          .toList(),
-                                      GetUserInfoCall.clientid(
-                                        (_model.getUserInfoResponse?.jsonBody ??
-                                            ''),
-                                      )!),
-                                );
-                                if ((_model.getQRCodeResponse?.succeeded ??
-                                    true)) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'QR generated successfully!',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                        ),
-                                      ),
-                                      duration: Duration(milliseconds: 4000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondary,
+                                if (GetPublicLinksCall.usernameList(
+                                          (_model.getPublicUseIdResponse
+                                                  ?.jsonBody ??
+                                              ''),
+                                        ) !=
+                                        null &&
+                                    (GetPublicLinksCall.usernameList(
+                                      (_model.getPublicUseIdResponse
+                                              ?.jsonBody ??
+                                          ''),
+                                    ))!
+                                        .isNotEmpty) {
+                                  _model.getQRCodeResponse =
+                                      await GenerateQRcodeCall.call(
+                                    cliendId: GetUserInfoCall.clientid(
+                                      (_model.getUserInfoResponse?.jsonBody ??
+                                          ''),
                                     ),
+                                    linksJson: functions.payloadgen(
+                                        GetPublicLinksCall.usernameList(
+                                          (_model.getPublicUseIdResponse
+                                                  ?.jsonBody ??
+                                              ''),
+                                        )!
+                                            .toList(),
+                                        GetUserInfoCall.clientid(
+                                          (_model.getUserInfoResponse
+                                                  ?.jsonBody ??
+                                              ''),
+                                        )!),
                                   );
+                                  if ((_model.getQRCodeResponse?.succeeded ??
+                                      true)) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'QR generated successfully!',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondary,
+                                      ),
+                                    );
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Unable to get generate QR code.',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                      ),
+                                    );
+                                  }
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'Unable to get generate QR code.',
+                                        'No public link created',
                                         style: TextStyle(
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
+                                              .primaryBackground,
                                         ),
                                       ),
                                       duration: Duration(milliseconds: 4000),

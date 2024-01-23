@@ -12,7 +12,6 @@ import 'dart:io';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'home_screen_version2_copy_widget.dart'
     show HomeScreenVersion2CopyWidget;
 import 'package:easy_debounce/easy_debounce.dart';
@@ -64,8 +63,6 @@ class HomeScreenVersion2CopyModel
   ApiCallResponse? evenntID;
   // Stores action output result for [Custom Action - getAddressFromLatLng] action in IconButton widget.
   String? currentAddress;
-  // Stores action output result for [Backend Call - API (Send Log Data)] action in IconButton widget.
-  ApiCallResponse? logResponse;
   // Stores action output result for [Backend Call - API (GetMymap)] action in IconButton widget.
   ApiCallResponse? mymapBackendRefinedResult;
   // Stores action output result for [Custom Action - getLocatCordFromString] action in IconButton widget.

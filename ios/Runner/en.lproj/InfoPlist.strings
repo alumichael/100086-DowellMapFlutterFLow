@@ -2,3 +2,4 @@ NSLocationWhenInUseUsageDescription = "To get nearby places around you, app need
 PermissionGroupNotification = "The Notifications help us communicate with you better";
 NSUserNotificationsUsageDescription = "The Notifications help us communicate with you better";
 NSLocationAlwaysAndWhenInUseUsageDescription = "To get nearby places around you, app needs your permission to access your location.";
+NSCameraUsageDescription = "Camera permission is required for barcode scanning";

@@ -148,6 +148,7 @@ final parametersBuilderMap =
   'QrScanner': ParameterData.none(),
   'TrackingDetailsForm': ParameterData.none(),
   'Create_Qr_Code': ParameterData.none(),
+  'TrackPermission': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

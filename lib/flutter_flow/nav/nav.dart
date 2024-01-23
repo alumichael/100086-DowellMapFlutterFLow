@@ -205,6 +205,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Create_Qr_Code',
               path: 'create_qr_code',
               builder: (context, params) => CreateQrCodeWidget(),
+            ),
+            FFRoute(
+              name: 'TrackPermission',
+              path: 'trackPermission',
+              builder: (context, params) => TrackPermissionWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
