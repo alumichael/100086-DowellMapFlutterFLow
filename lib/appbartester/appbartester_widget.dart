@@ -10,10 +10,10 @@ import 'appbartester_model.dart';
 export 'appbartester_model.dart';
 
 class AppbartesterWidget extends StatefulWidget {
-  const AppbartesterWidget({Key? key}) : super(key: key);
+  const AppbartesterWidget({super.key});
 
   @override
-  _AppbartesterWidgetState createState() => _AppbartesterWidgetState();
+  State<AppbartesterWidget> createState() => _AppbartesterWidgetState();
 }
 
 class _AppbartesterWidgetState extends State<AppbartesterWidget> {

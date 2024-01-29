@@ -17,14 +17,14 @@ export 'newplacedetails_model.dart';
 
 class NewplacedetailsWidget extends StatefulWidget {
   const NewplacedetailsWidget({
-    Key? key,
+    super.key,
     this.currentCord,
-  }) : super(key: key);
+  });
 
   final String? currentCord;
 
   @override
-  _NewplacedetailsWidgetState createState() => _NewplacedetailsWidgetState();
+  State<NewplacedetailsWidget> createState() => _NewplacedetailsWidgetState();
 }
 
 class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
@@ -253,6 +253,7 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                                     context: context,
                                     builder: (dialogContext) {
                                       return Dialog(
+                                        elevation: 0,
                                         insetPadding: EdgeInsets.zero,
                                         backgroundColor: Colors.transparent,
                                         alignment:
@@ -260,16 +261,17 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                                                 .resolve(
                                                     Directionality.of(context)),
                                         child: WebViewAware(
-                                            child: GestureDetector(
-                                          onTap: () => _model
-                                                  .unfocusNode.canRequestFocus
-                                              ? FocusScope.of(context)
-                                                  .requestFocus(
-                                                      _model.unfocusNode)
-                                              : FocusScope.of(context)
-                                                  .unfocus(),
-                                          child: AddGroupDialogWidget(),
-                                        )),
+                                          child: GestureDetector(
+                                            onTap: () => _model
+                                                    .unfocusNode.canRequestFocus
+                                                ? FocusScope.of(context)
+                                                    .requestFocus(
+                                                        _model.unfocusNode)
+                                                : FocusScope.of(context)
+                                                    .unfocus(),
+                                            child: AddGroupDialogWidget(),
+                                          ),
+                                        ),
                                       );
                                     },
                                   ).then((value) => setState(() {}));

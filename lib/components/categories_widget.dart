@@ -11,10 +11,10 @@ import 'categories_model.dart';
 export 'categories_model.dart';
 
 class CategoriesWidget extends StatefulWidget {
-  const CategoriesWidget({Key? key}) : super(key: key);
+  const CategoriesWidget({super.key});
 
   @override
-  _CategoriesWidgetState createState() => _CategoriesWidgetState();
+  State<CategoriesWidget> createState() => _CategoriesWidgetState();
 }
 
 class _CategoriesWidgetState extends State<CategoriesWidget> {

@@ -12,18 +12,18 @@ export 'placedetails_copy_model.dart';
 
 class PlacedetailsCopyWidget extends StatefulWidget {
   const PlacedetailsCopyWidget({
-    Key? key,
+    super.key,
     this.ipAddress,
     this.sessionID,
     this.currentCord,
-  }) : super(key: key);
+  });
 
   final String? ipAddress;
   final String? sessionID;
   final String? currentCord;
 
   @override
-  _PlacedetailsCopyWidgetState createState() => _PlacedetailsCopyWidgetState();
+  State<PlacedetailsCopyWidget> createState() => _PlacedetailsCopyWidgetState();
 }
 
 class _PlacedetailsCopyWidgetState extends State<PlacedetailsCopyWidget> {

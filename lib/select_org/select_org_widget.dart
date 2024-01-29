@@ -11,10 +11,10 @@ import 'select_org_model.dart';
 export 'select_org_model.dart';
 
 class SelectOrgWidget extends StatefulWidget {
-  const SelectOrgWidget({Key? key}) : super(key: key);
+  const SelectOrgWidget({super.key});
 
   @override
-  _SelectOrgWidgetState createState() => _SelectOrgWidgetState();
+  State<SelectOrgWidget> createState() => _SelectOrgWidgetState();
 }
 
 class _SelectOrgWidgetState extends State<SelectOrgWidget> {

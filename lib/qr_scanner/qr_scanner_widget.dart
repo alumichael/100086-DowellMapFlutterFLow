@@ -12,10 +12,10 @@ import 'qr_scanner_model.dart';
 export 'qr_scanner_model.dart';
 
 class QrScannerWidget extends StatefulWidget {
-  const QrScannerWidget({Key? key}) : super(key: key);
+  const QrScannerWidget({super.key});
 
   @override
-  _QrScannerWidgetState createState() => _QrScannerWidgetState();
+  State<QrScannerWidget> createState() => _QrScannerWidgetState();
 }
 
 class _QrScannerWidgetState extends State<QrScannerWidget> {

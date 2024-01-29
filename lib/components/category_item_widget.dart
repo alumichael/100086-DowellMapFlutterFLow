@@ -9,18 +9,18 @@ export 'category_item_model.dart';
 
 class CategoryItemWidget extends StatefulWidget {
   const CategoryItemWidget({
-    Key? key,
+    super.key,
     this.icon,
     this.categoryTitle,
     this.selectCategoryIcon,
-  }) : super(key: key);
+  });
 
   final Widget? icon;
   final String? categoryTitle;
   final Widget? selectCategoryIcon;
 
   @override
-  _CategoryItemWidgetState createState() => _CategoryItemWidgetState();
+  State<CategoryItemWidget> createState() => _CategoryItemWidgetState();
 }
 
 class _CategoryItemWidgetState extends State<CategoryItemWidget> {

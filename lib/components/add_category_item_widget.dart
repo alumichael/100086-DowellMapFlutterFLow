@@ -8,10 +8,10 @@ import 'add_category_item_model.dart';
 export 'add_category_item_model.dart';
 
 class AddCategoryItemWidget extends StatefulWidget {
-  const AddCategoryItemWidget({Key? key}) : super(key: key);
+  const AddCategoryItemWidget({super.key});
 
   @override
-  _AddCategoryItemWidgetState createState() => _AddCategoryItemWidgetState();
+  State<AddCategoryItemWidget> createState() => _AddCategoryItemWidgetState();
 }
 
 class _AddCategoryItemWidgetState extends State<AddCategoryItemWidget> {

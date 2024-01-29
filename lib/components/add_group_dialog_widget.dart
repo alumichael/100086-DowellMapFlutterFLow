@@ -11,10 +11,10 @@ import 'add_group_dialog_model.dart';
 export 'add_group_dialog_model.dart';
 
 class AddGroupDialogWidget extends StatefulWidget {
-  const AddGroupDialogWidget({Key? key}) : super(key: key);
+  const AddGroupDialogWidget({super.key});
 
   @override
-  _AddGroupDialogWidgetState createState() => _AddGroupDialogWidgetState();
+  State<AddGroupDialogWidget> createState() => _AddGroupDialogWidgetState();
 }
 
 class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
@@ -296,17 +296,19 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                               context: context,
                               builder: (alertDialogContext) {
                                 return WebViewAware(
-                                    child: AlertDialog(
-                                  title: Text('invalid request '),
-                                  content: Text('Please enter the group name.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('Ok'),
-                                    ),
-                                  ],
-                                ));
+                                  child: AlertDialog(
+                                    title: Text('invalid request '),
+                                    content:
+                                        Text('Please enter the group name.'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  ),
+                                );
                               },
                             );
                             Navigator.pop(context);

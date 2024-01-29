@@ -12,10 +12,10 @@ import 'placedetails2_model.dart';
 export 'placedetails2_model.dart';
 
 class Placedetails2Widget extends StatefulWidget {
-  const Placedetails2Widget({Key? key}) : super(key: key);
+  const Placedetails2Widget({super.key});
 
   @override
-  _Placedetails2WidgetState createState() => _Placedetails2WidgetState();
+  State<Placedetails2Widget> createState() => _Placedetails2WidgetState();
 }
 
 class _Placedetails2WidgetState extends State<Placedetails2Widget> {

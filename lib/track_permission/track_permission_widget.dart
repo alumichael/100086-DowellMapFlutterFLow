@@ -10,10 +10,10 @@ import 'track_permission_model.dart';
 export 'track_permission_model.dart';
 
 class TrackPermissionWidget extends StatefulWidget {
-  const TrackPermissionWidget({Key? key}) : super(key: key);
+  const TrackPermissionWidget({super.key});
 
   @override
-  _TrackPermissionWidgetState createState() => _TrackPermissionWidgetState();
+  State<TrackPermissionWidget> createState() => _TrackPermissionWidgetState();
 }
 
 class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
@@ -145,6 +145,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                         email: FFAppState().guestEmail,
                                         comapnyName:
                                             FFAppState().guestCompanyName,
+                                        userid: FFAppState().guestUserId,
                                       );
                                       if ((_model.insertionResult?.succeeded ??
                                           true)) {

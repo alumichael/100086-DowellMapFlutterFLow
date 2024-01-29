@@ -9,10 +9,10 @@ import 'loading_box_model.dart';
 export 'loading_box_model.dart';
 
 class LoadingBoxWidget extends StatefulWidget {
-  const LoadingBoxWidget({Key? key}) : super(key: key);
+  const LoadingBoxWidget({super.key});
 
   @override
-  _LoadingBoxWidgetState createState() => _LoadingBoxWidgetState();
+  State<LoadingBoxWidget> createState() => _LoadingBoxWidgetState();
 }
 
 class _LoadingBoxWidgetState extends State<LoadingBoxWidget> {

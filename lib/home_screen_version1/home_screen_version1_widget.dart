@@ -21,10 +21,10 @@ import 'home_screen_version1_model.dart';
 export 'home_screen_version1_model.dart';
 
 class HomeScreenVersion1Widget extends StatefulWidget {
-  const HomeScreenVersion1Widget({Key? key}) : super(key: key);
+  const HomeScreenVersion1Widget({super.key});
 
   @override
-  _HomeScreenVersion1WidgetState createState() =>
+  State<HomeScreenVersion1Widget> createState() =>
       _HomeScreenVersion1WidgetState();
 }
 

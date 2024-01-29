@@ -9,10 +9,10 @@ import 'global_top_menu_bar_model.dart';
 export 'global_top_menu_bar_model.dart';
 
 class GlobalTopMenuBarWidget extends StatefulWidget {
-  const GlobalTopMenuBarWidget({Key? key}) : super(key: key);
+  const GlobalTopMenuBarWidget({super.key});
 
   @override
-  _GlobalTopMenuBarWidgetState createState() => _GlobalTopMenuBarWidgetState();
+  State<GlobalTopMenuBarWidget> createState() => _GlobalTopMenuBarWidgetState();
 }
 
 class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {

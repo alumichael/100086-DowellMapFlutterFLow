@@ -11,16 +11,16 @@ export 'tracking_details_form_model.dart';
 
 class TrackingDetailsFormWidget extends StatefulWidget {
   const TrackingDetailsFormWidget({
-    Key? key,
-    this.userid,
-    this.workspaceid,
-  }) : super(key: key);
+    super.key,
+    required this.userid,
+    required this.workspaceid,
+  });
 
   final String? userid;
   final String? workspaceid;
 
   @override
-  _TrackingDetailsFormWidgetState createState() =>
+  State<TrackingDetailsFormWidget> createState() =>
       _TrackingDetailsFormWidgetState();
 }
 

@@ -21,10 +21,10 @@ import 'livinglabs_map_component_model.dart';
 export 'livinglabs_map_component_model.dart';
 
 class LivinglabsMapComponentWidget extends StatefulWidget {
-  const LivinglabsMapComponentWidget({Key? key}) : super(key: key);
+  const LivinglabsMapComponentWidget({super.key});
 
   @override
-  _LivinglabsMapComponentWidgetState createState() =>
+  State<LivinglabsMapComponentWidget> createState() =>
       _LivinglabsMapComponentWidgetState();
 }
 

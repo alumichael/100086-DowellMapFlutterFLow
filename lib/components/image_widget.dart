@@ -9,10 +9,10 @@ import 'image_model.dart';
 export 'image_model.dart';
 
 class ImageWidget extends StatefulWidget {
-  const ImageWidget({Key? key}) : super(key: key);
+  const ImageWidget({super.key});
 
   @override
-  _ImageWidgetState createState() => _ImageWidgetState();
+  State<ImageWidget> createState() => _ImageWidgetState();
 }
 
 class _ImageWidgetState extends State<ImageWidget> {

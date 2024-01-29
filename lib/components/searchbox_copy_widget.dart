@@ -11,10 +11,10 @@ import 'searchbox_copy_model.dart';
 export 'searchbox_copy_model.dart';
 
 class SearchboxCopyWidget extends StatefulWidget {
-  const SearchboxCopyWidget({Key? key}) : super(key: key);
+  const SearchboxCopyWidget({super.key});
 
   @override
-  _SearchboxCopyWidgetState createState() => _SearchboxCopyWidgetState();
+  State<SearchboxCopyWidget> createState() => _SearchboxCopyWidgetState();
 }
 
 class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {

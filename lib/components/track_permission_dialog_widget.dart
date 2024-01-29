@@ -10,10 +10,10 @@ import 'track_permission_dialog_model.dart';
 export 'track_permission_dialog_model.dart';
 
 class TrackPermissionDialogWidget extends StatefulWidget {
-  const TrackPermissionDialogWidget({Key? key}) : super(key: key);
+  const TrackPermissionDialogWidget({super.key});
 
   @override
-  _TrackPermissionDialogWidgetState createState() =>
+  State<TrackPermissionDialogWidget> createState() =>
       _TrackPermissionDialogWidgetState();
 }
 

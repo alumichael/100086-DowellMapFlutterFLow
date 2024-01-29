@@ -19,10 +19,10 @@ import 'maps_model.dart';
 export 'maps_model.dart';
 
 class MapsWidget extends StatefulWidget {
-  const MapsWidget({Key? key}) : super(key: key);
+  const MapsWidget({super.key});
 
   @override
-  _MapsWidgetState createState() => _MapsWidgetState();
+  State<MapsWidget> createState() => _MapsWidgetState();
 }
 
 class _MapsWidgetState extends State<MapsWidget> {

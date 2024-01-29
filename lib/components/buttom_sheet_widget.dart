@@ -20,10 +20,10 @@ import 'buttom_sheet_model.dart';
 export 'buttom_sheet_model.dart';
 
 class ButtomSheetWidget extends StatefulWidget {
-  const ButtomSheetWidget({Key? key}) : super(key: key);
+  const ButtomSheetWidget({super.key});
 
   @override
-  _ButtomSheetWidgetState createState() => _ButtomSheetWidgetState();
+  State<ButtomSheetWidget> createState() => _ButtomSheetWidgetState();
 }
 
 class _ButtomSheetWidgetState extends State<ButtomSheetWidget> {

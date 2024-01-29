@@ -12,10 +12,10 @@ import 'specifiedlocation_model.dart';
 export 'specifiedlocation_model.dart';
 
 class SpecifiedlocationWidget extends StatefulWidget {
-  const SpecifiedlocationWidget({Key? key}) : super(key: key);
+  const SpecifiedlocationWidget({super.key});
 
   @override
-  _SpecifiedlocationWidgetState createState() =>
+  State<SpecifiedlocationWidget> createState() =>
       _SpecifiedlocationWidgetState();
 }
 

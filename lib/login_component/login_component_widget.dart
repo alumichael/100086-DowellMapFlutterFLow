@@ -12,10 +12,10 @@ import 'login_component_model.dart';
 export 'login_component_model.dart';
 
 class LoginComponentWidget extends StatefulWidget {
-  const LoginComponentWidget({Key? key}) : super(key: key);
+  const LoginComponentWidget({super.key});
 
   @override
-  _LoginComponentWidgetState createState() => _LoginComponentWidgetState();
+  State<LoginComponentWidget> createState() => _LoginComponentWidgetState();
 }
 
 class _LoginComponentWidgetState extends State<LoginComponentWidget> {

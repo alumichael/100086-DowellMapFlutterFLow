@@ -23,10 +23,10 @@ import 'home_screen_version2_copy_model.dart';
 export 'home_screen_version2_copy_model.dart';
 
 class HomeScreenVersion2CopyWidget extends StatefulWidget {
-  const HomeScreenVersion2CopyWidget({Key? key}) : super(key: key);
+  const HomeScreenVersion2CopyWidget({super.key});
 
   @override
-  _HomeScreenVersion2CopyWidgetState createState() =>
+  State<HomeScreenVersion2CopyWidget> createState() =>
       _HomeScreenVersion2CopyWidgetState();
 }
 
@@ -60,21 +60,24 @@ class _HomeScreenVersion2CopyWidgetState
               context: context,
               builder: (alertDialogContext) {
                 return WebViewAware(
-                    child: AlertDialog(
-                  title: Text('Location Service'),
-                  content: Text(
-                      'To continue, please turn on  your location using Google  location service.'),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(alertDialogContext, false),
-                      child: Text('Cancel'),
-                    ),
-                    TextButton(
-                      onPressed: () => Navigator.pop(alertDialogContext, true),
-                      child: Text('Turn on'),
-                    ),
-                  ],
-                ));
+                  child: AlertDialog(
+                    title: Text('Location Service'),
+                    content: Text(
+                        'To continue, please turn on  your location using Google  location service.'),
+                    actions: [
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pop(alertDialogContext, false),
+                        child: Text('Cancel'),
+                      ),
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pop(alertDialogContext, true),
+                        child: Text('Turn on'),
+                      ),
+                    ],
+                  ),
+                );
               },
             ) ??
             false;

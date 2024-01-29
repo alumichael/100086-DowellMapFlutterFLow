@@ -9,10 +9,10 @@ import 'search_model.dart';
 export 'search_model.dart';
 
 class SearchWidget extends StatefulWidget {
-  const SearchWidget({Key? key}) : super(key: key);
+  const SearchWidget({super.key});
 
   @override
-  _SearchWidgetState createState() => _SearchWidgetState();
+  State<SearchWidget> createState() => _SearchWidgetState();
 }
 
 class _SearchWidgetState extends State<SearchWidget> {

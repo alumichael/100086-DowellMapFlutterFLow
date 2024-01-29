@@ -23,10 +23,10 @@ import 'home_screen_version2_model.dart';
 export 'home_screen_version2_model.dart';
 
 class HomeScreenVersion2Widget extends StatefulWidget {
-  const HomeScreenVersion2Widget({Key? key}) : super(key: key);
+  const HomeScreenVersion2Widget({super.key});
 
   @override
-  _HomeScreenVersion2WidgetState createState() =>
+  State<HomeScreenVersion2Widget> createState() =>
       _HomeScreenVersion2WidgetState();
 }
 
@@ -61,21 +61,24 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
               context: context,
               builder: (alertDialogContext) {
                 return WebViewAware(
-                    child: AlertDialog(
-                  title: Text('Location Service'),
-                  content: Text(
-                      'To continue, please turn on  your location using Google  location service.'),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(alertDialogContext, false),
-                      child: Text('Cancel'),
-                    ),
-                    TextButton(
-                      onPressed: () => Navigator.pop(alertDialogContext, true),
-                      child: Text('Turn on'),
-                    ),
-                  ],
-                ));
+                  child: AlertDialog(
+                    title: Text('Location Service'),
+                    content: Text(
+                        'To continue, please turn on  your location using Google  location service.'),
+                    actions: [
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pop(alertDialogContext, false),
+                        child: Text('Cancel'),
+                      ),
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pop(alertDialogContext, true),
+                        child: Text('Turn on'),
+                      ),
+                    ],
+                  ),
+                );
               },
             ) ??
             false;
@@ -212,228 +215,234 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            drawer: WebViewAware(
-                child: Drawer(
+            drawer: Drawer(
               elevation: 16.0,
-              child: Container(
-                width: 100.0,
-                height: 100.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).primary,
-                ),
-                child: ListView(
-                  padding: EdgeInsets.zero,
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    Container(
-                      width: 100.0,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+              child: WebViewAware(
+                child: Container(
+                  width: 100.0,
+                  height: 100.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).primary,
+                  ),
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      Container(
+                        width: 100.0,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(-1.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 10.0, 16.0, 10.0),
+                                child: Container(
+                                  width: 55.0,
+                                  height: 55.0,
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Image.network(
+                                    getJsonField(
+                                      FFAppState().response,
+                                      r'''$.userinfo.profile_img''',
+                                    ).toString(),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Flexible(
+                              child: Align(
+                                alignment: AlignmentDirectional(-1.0, 0.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 0.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(-1.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 0.0, 8.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                valueOrDefault<String>(
+                                                  getJsonField(
+                                                    FFAppState().response,
+                                                    r'''$.userinfo.first_name''',
+                                                  )?.toString(),
+                                                  'First Name',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                              Text(
+                                                valueOrDefault<String>(
+                                                  getJsonField(
+                                                    FFAppState().response,
+                                                    r'''$.userinfo.last_name''',
+                                                  )?.toString(),
+                                                  'Last Name',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    -1.0, 0.0),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 1.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    getJsonField(
+                                                      FFAppState().response,
+                                                      r'''$.userinfo.email''',
+                                                    ).toString(),
+                                                    textAlign: TextAlign.start,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Row(
+                      Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
                             alignment: AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 10.0, 16.0, 10.0),
-                              child: Container(
-                                width: 55.0,
-                                height: 55.0,
-                                clipBehavior: Clip.antiAlias,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Image.network(
-                                  getJsonField(
-                                    FFAppState().response,
-                                    r'''$.userinfo.profile_img''',
-                                  ).toString(),
-                                  fit: BoxFit.cover,
-                                ),
+                                  0.0, 6.0, 0.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      'bqtxna94' /* Payment Status :  */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                  ),
+                                  Flexible(
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 8.0, 0.0),
+                                      child: Text(
+                                        valueOrDefault<String>(
+                                          getJsonField(
+                                            FFAppState().response,
+                                            r'''$.userinfo.payment_status''',
+                                          )?.toString(),
+                                          'Status',
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                ].addToStart(SizedBox(width: 16.0)),
                               ),
                             ),
                           ),
-                          Flexible(
-                            child: Align(
-                              alignment: AlignmentDirectional(-1.0, 0.0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 0.0, 0.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(-1.0, 0.0),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 0.0, 8.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              valueOrDefault<String>(
-                                                getJsonField(
-                                                  FFAppState().response,
-                                                  r'''$.userinfo.first_name''',
-                                                )?.toString(),
-                                                'First Name',
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                            Text(
-                                              valueOrDefault<String>(
-                                                getJsonField(
-                                                  FFAppState().response,
-                                                  r'''$.userinfo.last_name''',
-                                                )?.toString(),
-                                                'Last Name',
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  -1.0, 0.0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 1.0, 0.0, 0.0),
-                                                child: Text(
-                                                  getJsonField(
-                                                    FFAppState().response,
-                                                    r'''$.userinfo.email''',
-                                                  ).toString(),
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
+                          Align(
+                            alignment: AlignmentDirectional(-1.0, 0.0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 6.0, 0.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      '5otvpbn4' /* Balance Credit :  */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
                                         ),
+                                  ),
+                                  Flexible(
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 8.0, 0.0),
+                                      child: Text(
+                                        valueOrDefault<String>(
+                                          getJsonField(
+                                            FFAppState().response,
+                                            r'''$.userinfo.payment_status''',
+                                          )?.toString(),
+                                          'Status',
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ].addToStart(SizedBox(width: 16.0)),
                               ),
                             ),
                           ),
                         ],
                       ),
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(-1.0, 0.0),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 6.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    'bqtxna94' /* Payment Status :  */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                ),
-                                Flexible(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 8.0, 0.0),
-                                    child: Text(
-                                      valueOrDefault<String>(
-                                        getJsonField(
-                                          FFAppState().response,
-                                          r'''$.userinfo.payment_status''',
-                                        )?.toString(),
-                                        'Status',
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                    ),
-                                  ),
-                                ),
-                              ].addToStart(SizedBox(width: 16.0)),
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(-1.0, 0.0),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 6.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    '5otvpbn4' /* Balance Credit :  */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                ),
-                                Flexible(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 8.0, 0.0),
-                                    child: Text(
-                                      valueOrDefault<String>(
-                                        getJsonField(
-                                          FFAppState().response,
-                                          r'''$.userinfo.payment_status''',
-                                        )?.toString(),
-                                        'Status',
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                    ),
-                                  ),
-                                ),
-                              ].addToStart(SizedBox(width: 16.0)),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            )),
+            ),
             appBar: AppBar(
               backgroundColor: FlutterFlowTheme.of(context).primary,
               automaticallyImplyLeading: true,
@@ -587,26 +596,27 @@ class _HomeScreenVersion2WidgetState extends State<HomeScreenVersion2Widget> {
                                           context: context,
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
-                                                child: AlertDialog(
-                                              title: Text('Log Out'),
-                                              content: Text('Are you sure?'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          false),
-                                                  child: Text('Cancel'),
-                                                ),
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          true),
-                                                  child: Text('Confirm'),
-                                                ),
-                                              ],
-                                            ));
+                                              child: AlertDialog(
+                                                title: Text('Log Out'),
+                                                content: Text('Are you sure?'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext,
+                                                            false),
+                                                    child: Text('Cancel'),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext,
+                                                            true),
+                                                    child: Text('Confirm'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
                                           },
                                         ) ??
                                         false;

@@ -13,10 +13,10 @@ import 'group_list_dialog_component_model.dart';
 export 'group_list_dialog_component_model.dart';
 
 class GroupListDialogComponentWidget extends StatefulWidget {
-  const GroupListDialogComponentWidget({Key? key}) : super(key: key);
+  const GroupListDialogComponentWidget({super.key});
 
   @override
-  _GroupListDialogComponentWidgetState createState() =>
+  State<GroupListDialogComponentWidget> createState() =>
       _GroupListDialogComponentWidgetState();
 }
 

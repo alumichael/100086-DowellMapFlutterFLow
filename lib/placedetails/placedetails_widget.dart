@@ -15,18 +15,18 @@ export 'placedetails_model.dart';
 
 class PlacedetailsWidget extends StatefulWidget {
   const PlacedetailsWidget({
-    Key? key,
+    super.key,
     this.ipAddress,
     this.sessionID,
     this.currentCord,
-  }) : super(key: key);
+  });
 
   final String? ipAddress;
   final String? sessionID;
   final String? currentCord;
 
   @override
-  _PlacedetailsWidgetState createState() => _PlacedetailsWidgetState();
+  State<PlacedetailsWidget> createState() => _PlacedetailsWidgetState();
 }
 
 class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {

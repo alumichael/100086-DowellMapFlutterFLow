@@ -906,7 +906,8 @@ class _MyMapWidget extends State<MyMapWidget> {
   }
 
   void activateSocket() async {
-    socket = IO.io("http://216.219.86.171:3001/", <String, dynamic>{
+    socket =
+        IO.io("https://tracking.uxlivinglab.online/socket", <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': true,
     });

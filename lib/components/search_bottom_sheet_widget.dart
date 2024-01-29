@@ -20,10 +20,10 @@ import 'search_bottom_sheet_model.dart';
 export 'search_bottom_sheet_model.dart';
 
 class SearchBottomSheetWidget extends StatefulWidget {
-  const SearchBottomSheetWidget({Key? key}) : super(key: key);
+  const SearchBottomSheetWidget({super.key});
 
   @override
-  _SearchBottomSheetWidgetState createState() =>
+  State<SearchBottomSheetWidget> createState() =>
       _SearchBottomSheetWidgetState();
 }
 

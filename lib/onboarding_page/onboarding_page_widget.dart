@@ -16,10 +16,10 @@ import 'onboarding_page_model.dart';
 export 'onboarding_page_model.dart';
 
 class OnboardingPageWidget extends StatefulWidget {
-  const OnboardingPageWidget({Key? key}) : super(key: key);
+  const OnboardingPageWidget({super.key});
 
   @override
-  _OnboardingPageWidgetState createState() => _OnboardingPageWidgetState();
+  State<OnboardingPageWidget> createState() => _OnboardingPageWidgetState();
 }
 
 class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
@@ -40,21 +40,24 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
               context: context,
               builder: (alertDialogContext) {
                 return WebViewAware(
-                    child: AlertDialog(
-                  title: Text('Location Service'),
-                  content: Text(
-                      'To continue, please turn on  your location using Google  location service.'),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(alertDialogContext, false),
-                      child: Text('Cancel'),
-                    ),
-                    TextButton(
-                      onPressed: () => Navigator.pop(alertDialogContext, true),
-                      child: Text('Turn on'),
-                    ),
-                  ],
-                ));
+                  child: AlertDialog(
+                    title: Text('Location Service'),
+                    content: Text(
+                        'To continue, please turn on  your location using Google  location service.'),
+                    actions: [
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pop(alertDialogContext, false),
+                        child: Text('Cancel'),
+                      ),
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pop(alertDialogContext, true),
+                        child: Text('Turn on'),
+                      ),
+                    ],
+                  ),
+                );
               },
             ) ??
             false;
