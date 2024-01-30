@@ -88,7 +88,7 @@ class _MyMapWidget extends State<MyMapWidget> {
   GoogleMapController? _controller;
   StreamSubscription<loca.LocationData>? locationSubscription;
   Position? position;
-  IO.Socket? socket;
+  late IO.Socket socket;
   late GoogleMapPolyline? googleMapPolyline;
   loca.Location location = loca.Location();
   Position? currentPosition;
@@ -277,15 +277,16 @@ class _MyMapWidget extends State<MyMapWidget> {
   ///
   ///
   trackMe() {
-    if (FFAppState().allowLocationTracking == true &&
-        FFAppState().isAuthUser == false) {
-      addSocketMessage();
-    }
+    // if (FFAppState().allowLocationTracking == true &&
+    //     FFAppState().isAuthUser == false) {
+    //   addSocketMessage();
+    // }
 
-    print("from the tracking end::::: 0");
+    print("tracking started::::: ");
     locationSubscription =
         location.onLocationChanged.listen((loca.LocationData locationData) {
-      print("from the tracking end::::1: $locationData");
+      print("tracking coord ::::: $locationData");
+
       setState(() {
         currentPosition = Position(
             latitude: locationData.latitude!,
@@ -296,11 +297,10 @@ class _MyMapWidget extends State<MyMapWidget> {
             heading: 0,
             speed: 100,
             speedAccuracy: 10);
-        print("from the tracking end::::: 2:::: $currentPosition");
 
         if (FFAppState().enableTracking) {
-          print(
-              "from the tracking end::::: 20:::: ${FFAppState().enableTracking}");
+          // print(
+          //     "from the tracking end::::: 20:::: ${FFAppState().enableTracking}");
           _controller?.animateCamera(
             CameraUpdate.newLatLng(
               latlng.LatLng(locationData.latitude!, locationData.longitude!),
@@ -308,27 +308,28 @@ class _MyMapWidget extends State<MyMapWidget> {
           );
           //This is for updating the polyline while the user is changing position
           if (destinationCoords != null) {
-            print(
-                "from the tracking end::::: 21:::: ${FFAppState().enableTracking}");
+            // print(
+            //     "from the tracking end::::: 21:::: ${FFAppState().enableTracking}");
             _computeTrackingPath(
               latlng.LatLng(locationData.latitude!, locationData.longitude!),
               destinationCoords!,
             );
           }
-          print(
-              "from the tracking end::::: 22:::: ${FFAppState().enableTracking}");
-          print("from the tracking end::::: 3 ::: $destinationCoords");
+          // print(
+          //     "from the tracking end::::: 22:::: ${FFAppState().enableTracking}");
+          // print("from the tracking end::::: 3 ::: $destinationCoords");
         } else {
-          print(
-              "from the tracking end::::: 23:::: ${FFAppState().enableTracking}");
+          // print(
+          //     "from the tracking end::::: 23:::: ${FFAppState().enableTracking}");
           for (latlng.Polyline? line in polyline) {
-            print(
-                "from the tracking end::::: 24:::: ${FFAppState().enableTracking}");
+            // print(
+            //     "from the tracking end::::: 24:::: ${FFAppState().enableTracking}");
             polyline.removeWhere((m) => m.polylineId == 'tracking');
             // polyline.removeWhere((key, value) => key == line?.polylineId);
           }
         }
       });
+      addSocketMessage();
     });
   }
 
@@ -350,8 +351,8 @@ class _MyMapWidget extends State<MyMapWidget> {
     setState(() async {
       double meters = 800;
       double coef = meters / 111320.0;
-      double originLat = origin!.latitude;
-      double originLong = origin!.longitude;
+      double originLat = origin.latitude;
+      double originLong = origin.longitude;
 
       // debugPrint(
       //     ":::: The origin lat and long is :::::: $originLat  :::::: $originLong >>>><<<<");
@@ -411,8 +412,8 @@ class _MyMapWidget extends State<MyMapWidget> {
       List<String>? googleLocsId) async {
     setState(() async {
       if (groupLocList != null) {
-        debugPrint("$groupLocList.length");
-        debugPrint("This is run groupLoc");
+        // debugPrint("$groupLocList.length");
+        // debugPrint("This is run groupLoc");
         CameraPosition nepPos = CameraPosition(
             target: latlng.LatLng(
                 groupLocList[0].latitude, groupLocList[0].longitude),
@@ -638,31 +639,31 @@ class _MyMapWidget extends State<MyMapWidget> {
       List<LatLng>? groupLocList,
       List<String>? groupLocAddress,
       List<String>? googleLocsId) {
-    debugPrint(
-        "from the getmarkers section checking the given address:: $dbAddress::::> googleAddress::: $googeAddress::::locationInf0::>>>$locationInfo::::placeIds::::$PlaceIds");
+    // debugPrint(
+    //     "from the getmarkers section checking the given address:: $dbAddress::::> googleAddress::: $googeAddress::::locationInf0::>>>$locationInfo::::placeIds::::$PlaceIds");
 
-    debugPrint(
-        "from the getmarkers section checking the clearmarker value:::0:: $clearmap :::");
+    // debugPrint(
+    //     "from the getmarkers section checking the clearmarker value:::0:: $clearmap :::");
     if (clearmap) {
       setState(() {
         polyline.clear();
       });
-      debugPrint(
-          "from the getmarkers section checking the clearmarker value:::1:: $clearmap :::");
+      // debugPrint(
+      //     "from the getmarkers section checking the clearmarker value:::1:: $clearmap :::");
       if (markers.length >= 1) {
-        debugPrint(
-            "from the getmarkers section checking the clearmarker value:::2:: $clearmap :::");
+        // debugPrint(
+        //     "from the getmarkers section checking the clearmarker value:::2:: $clearmap :::");
         removeMarker();
       }
       if (FFAppState().isAuthUser == true) {
         _getDraggableMarkers(origin, clearmap, context);
       }
     } else {
-      debugPrint(
-          "from the getmarkers section checking the clearmarker value:::3:: ${markers.length} :::");
+      // debugPrint(
+      //     "from the getmarkers section checking the clearmarker value:::3:: ${markers.length} :::");
       if (markers.length > 1) {
-        debugPrint(
-            "from the getmarkers section checking the clearmarker value:::4:: $clearmap :::");
+        // debugPrint(
+        //     "from the getmarkers section checking the clearmarker value:::4:: $clearmap :::");
 
         setState(() {});
       }
@@ -678,8 +679,8 @@ class _MyMapWidget extends State<MyMapWidget> {
         debugPrint("Location Info is null");
       }
       if (locationInfo != null) {
-        debugPrint("$locationInfo.length");
-        debugPrint("This is run");
+        // debugPrint("$locationInfo.length");
+        // debugPrint("This is run");
         for (var i = 0; i < locationInfo.length; i++) {
           markers.add(Marker(
               markerId: MarkerId(PlaceIds!.elementAt(i)),
@@ -723,7 +724,7 @@ class _MyMapWidget extends State<MyMapWidget> {
               }));
         }
         debugPrint("Db Markers $markers");
-        debugPrint("Db Markers ${markers.length}");
+        // debugPrint("Db Markers ${markers.length}");
       }
     }
     setState(() {});
@@ -828,8 +829,8 @@ class _MyMapWidget extends State<MyMapWidget> {
                   ///
                 } else {
                   // debugPrint("::::: from the distance room element row:::5");
-                  print(
-                      'Failed to get distance and time. Status code: ${distanceTimeResponse.statusCode}');
+                  // print(
+                  //     'Failed to get distance and time. Status code: ${distanceTimeResponse.statusCode}');
                 }
 
                 // if (jsonResponse['status'] == 'OK') {
@@ -882,7 +883,7 @@ class _MyMapWidget extends State<MyMapWidget> {
     }
   }
 
-  String getSocketMessage() {
+  Map<String, dynamic> getMySocketMessage() {
     String userEmail = FFAppState().guestEmail.toString();
     String companyId = FFAppState().guestCompanyId.toString();
     String userId = FFAppState().guestUserId.toString();
@@ -899,55 +900,53 @@ class _MyMapWidget extends State<MyMapWidget> {
       "link_id": linkId,
     };
 
-    String jsonString = jsonEncode(jsonObject);
-    print("JsonString::: $jsonString");
+    // String jsonString = jsonEncode(jsonObject);
 
-    return jsonString;
+    return jsonObject;
   }
 
   void activateSocket() async {
-    socket =
-        IO.io("https://tracking.uxlivinglab.online/socket", <String, dynamic>{
-      'transports': ['websocket'],
-      'autoConnect': true,
-    });
+    try {
+      socket =
+          IO.io("https://tracking.uxlivinglab.online/socket", <String, dynamic>{
+        'transports': ['websocket'],
+        'autoConnect': true,
+      });
 
-    // Connect to the server
-    socket?.connect();
+      // Connect to the server
+      // socket?.connect(); //.connect() should not be called if autoConnect: true
+
+      socket.on('error', (error) {
+        print('My Socket Error: $error');
+      });
+
+      socket.onDisconnect(
+          (data) => print('socket disconnected : msgData:: $data'));
+    } catch (e) {
+      print('Caught Error: $e');
+    }
   }
 
   void addSocketMessage() {
-    print("Websocket Event sent successfully::::: 0");
+    print("::::::: the add to socket is called");
     if (socket != null) {
-      // String userEmail = FFAppState().guestEmail;
-      // String companyId = "65a8bb1f2d73765634fdcaf5";
-      // String userId = generateRandomString(10);
-      // String lat = currentPosition!.latitude.toString();
-      // String lng = currentPosition!.longitude.toString();
-      // String linkId = "";
-
-      // Map<String, dynamic> jsonObject = {
-      //   "user_email": userEmail,
-      //   "company_id": companyId,
-      //   "user_id": userId,
-      //   "lat": lat,
-      //   "lng": lng,
-      //   "link_id": linkId
-      // };
-
-      // String jsonString = jsonEncode(jsonObject);
-
-      print("jsonString::::: $getSocketMessage()");
-
+      print(":::: it enter the if statement of true");
       try {
-        print("Websocket Event sent successfully::::: 33");
-        socket?.emit('sendMessage', getSocketMessage());
-        //socket?.emit('sendMessage', "my json body");
+        // socket.onConnect((_) {
+        //   print('socket connected succesful.');
+        Map<String, dynamic> body = getMySocketMessage();
+        //   print('JsonBody::: $body');
+
+        // });
+        socket.emit("message", body);
+        // socket.on('message', (data) {
+        //   print('Received message: $data');
+        // });
       } catch (e) {
         print("Error:: $e");
       }
-
-      print("Websocket Event sent successfully::::: 12");
+    } else {
+      print(":::: THE SOCKET IS NULL :::::::");
     }
   }
 
