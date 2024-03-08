@@ -11,4 +11,4 @@ PRODUCT_NAME = LivinglabMaps
 PRODUCT_BUNDLE_IDENTIFIER = com.dowell.dowellmaps
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2022 LivinglabMaps. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2024 LivinglabMaps. All rights reserved.

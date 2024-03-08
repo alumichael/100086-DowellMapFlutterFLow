@@ -8,7 +8,6 @@ import '/flutter_flow/form_field_controller.dart';
 import 'placedetails_widget.dart' show PlacedetailsWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -66,8 +65,10 @@ class PlacedetailsModel extends FlutterFlowModel<PlacedetailsWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     addressEdtFocusNode?.dispose();

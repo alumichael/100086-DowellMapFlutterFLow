@@ -111,15 +111,6 @@ class ParameterData {
 
 final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
-  'maps': ParameterData.none(),
-  'placedetailsCopy': (data) async => ParameterData(
-        allParams: {
-          'ipAddress': getParameter<String>(data, 'ipAddress'),
-          'sessionID': getParameter<String>(data, 'sessionID'),
-          'currentCord': getParameter<String>(data, 'currentCord'),
-        },
-      ),
-  'HomeScreenVersion1': ParameterData.none(),
   'OnboardingPage': ParameterData.none(),
   'LoginComponent': ParameterData.none(),
   'placedetails': (data) async => ParameterData(
@@ -130,14 +121,9 @@ final parametersBuilderMap =
         },
       ),
   'Signup': ParameterData.none(),
-  'appbartester': ParameterData.none(),
-  'HomeScreenVersion2Copy': ParameterData.none(),
   'SelectOrg': ParameterData.none(),
-  'NewHomePageCopy': ParameterData.none(),
-  'HomeScreenVersion2': ParameterData.none(),
   'NewHomePage': ParameterData.none(),
   'Userdetails': ParameterData.none(),
-  'NewHomePageCopy2': ParameterData.none(),
   'newplacedetails': (data) async => ParameterData(
         allParams: {
           'currentCord': getParameter<String>(data, 'currentCord'),
@@ -167,6 +153,23 @@ final parametersBuilderMap =
   },
   'Create_Qr_Code': ParameterData.none(),
   'TrackPermission': ParameterData.none(),
+  'Teams': ParameterData.none(),
+  'TeamMembers': (data) async => ParameterData(
+        allParams: {
+          'teamName': getParameter<String>(data, 'teamName'),
+        },
+      ),
+  'MembersScreen': ParameterData.none(),
+  'MembersDetailScreen': (data) async => ParameterData(
+        allParams: {
+          'teamName': getParameter<String>(data, 'teamName'),
+        },
+      ),
+  'MembersSelectionScreen': (data) async => ParameterData(
+        allParams: {
+          'teamName': getParameter<String>(data, 'teamName'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

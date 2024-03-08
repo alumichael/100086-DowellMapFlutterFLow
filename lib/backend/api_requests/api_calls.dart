@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 import '../cloud_functions/cloud_functions.dart';
+import '../schema/structs/index.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
@@ -1154,11 +1155,22 @@ class GetUserInfoCall {
         r'''$.selected_product.userportfoli''',
         true,
       ) as List?;
+  static String? teammembernames(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.members.team_member[:].first_name''',
+      ));
+  static List? teammember(dynamic response) => getJsonField(
+        response,
+        r'''$.members.team_member''',
+        true,
+      ) as List?;
 }
 
 class FinalizedLinkCall {
   static Future<ApiCallResponse> call({
     String? linkId = '',
+    String? product = '',
   }) async {
     final ffApiRequestBody = '''
 {
@@ -1167,7 +1179,7 @@ class FinalizedLinkCall {
     return ApiManager.instance.makeApiCall(
       callName: 'FinalizedLink',
       apiUrl:
-          'https://www.qrcodereviews.uxlivinglab.online/api/v3/masterlink/?link_id=${linkId}',
+          'https://www.qrcodereviews.uxlivinglab.online/api/v3/masterlink/?link_id=${linkId}&product=${product}',
       callType: ApiCallType.PUT,
       headers: {},
       params: {},
@@ -1186,6 +1198,7 @@ class GenerateQRcodeCall {
   static Future<ApiCallResponse> call({
     dynamic? linksJson,
     String? cliendId = '',
+    String? product = '',
   }) async {
     final links = _serializeJson(linksJson, true);
     final ffApiRequestBody = '''
@@ -1198,7 +1211,8 @@ class GenerateQRcodeCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Generate QRcode',
-      apiUrl: 'https://www.qrcodereviews.uxlivinglab.online/api/v3/qr-code/',
+      apiUrl:
+          'https://www.qrcodereviews.uxlivinglab.online/api/v3/qr-code/?product=${product}',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -1365,6 +1379,330 @@ class InsertUserCall {
       params: {},
       body: ffApiRequestBody,
       bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class CreateTeamCall {
+  static Future<ApiCallResponse> call({
+    String? username = '',
+    String? owner = '',
+    String? clientAdminId = '',
+    String? teamName = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "username": "${username}",
+  "owner": "${owner}",
+  "client_admin_id": "${clientAdminId}",
+  "team_name": "${teamName}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Create Team',
+      apiUrl: 'https://100093.pythonanywhere.com/api/create_team_data/',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetTeamsByUsernameCall {
+  static Future<ApiCallResponse> call({
+    String? username = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "username": "${username}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetTeamsByUsername',
+      apiUrl:
+          'https://100093.pythonanywhere.com/api/get_team_names_by_username/',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List<String>? teamList(dynamic response) => (getJsonField(
+        response,
+        r'''$.teams''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+}
+
+class AddMemberToTeamCall {
+  static Future<ApiCallResponse> call({
+    String? username = '',
+    String? teamName = '',
+    dynamic? membersJson,
+    String? type = '',
+  }) async {
+    final members = _serializeJson(membersJson, true);
+    final ffApiRequestBody = '''
+{
+  "username": "${username}",
+  "team_name": "${teamName}",
+  "members": ${members},
+  "type": "team_members"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Add Member to Team',
+      apiUrl: 'https://100093.pythonanywhere.com/api/add_member_to_team/',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetMemberByTeamNameCall {
+  static Future<ApiCallResponse> call({
+    String? username = '',
+    String? teamName = '',
+    String? memberType = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "username": "${username}",
+  "team_name": "${teamName}",
+  "member_type": "${memberType}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetMemberByTeamName',
+      apiUrl: 'https://100093.pythonanywhere.com/api/get_member_names_by_team/',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? memberObject(dynamic response) => getJsonField(
+        response,
+        r'''$.members''',
+        true,
+      ) as List?;
+  static List<String>? memebersName(dynamic response) => (getJsonField(
+        response,
+        r'''$.members[:].member_name''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static String? error(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.error''',
+      ));
+}
+
+class FindTeamByOrgIdCall {
+  static Future<ApiCallResponse> call({
+    String? clientAdminId = '',
+    String? memberEmail = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "client_admin_id": "${clientAdminId}",
+  "member_email": "${memberEmail}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'FindTeamByOrgId',
+      apiUrl:
+          'http://100093.pythonanywhere.com/api/find_teams_by_member_email/',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static String? teamName(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.teams[:].team_name''',
+      ));
+  static List? responseBody(dynamic response) => getJsonField(
+        response,
+        r'''$.teams''',
+        true,
+      ) as List?;
+}
+
+class SendEmailToSingleUserCall {
+  static Future<ApiCallResponse> call({
+    String? toname = '',
+    String? toemail = '',
+    String? subject = '',
+    String? emailContent = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "toname": "${toname}",
+  "toemail": "${toemail}",
+  "subject": "${subject}",
+  "email_content": "${emailContent}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'sendEmailToSingleUser',
+      apiUrl: 'https://100085.pythonanywhere.com/api/email/',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class SendBulkEmailCall {
+  static Future<ApiCallResponse> call({
+    dynamic? toEmailListJson,
+    String? fromname = '',
+    String? fromemail = '',
+    String? subject = '',
+    String? emailContent = '',
+  }) async {
+    final toEmailList = _serializeJson(toEmailListJson, true);
+    final ffApiRequestBody = '''
+{
+  "to_email_list": ${toEmailList},
+  "fromname": "${fromname}",
+  "fromemail": "${fromemail}",
+  "subject": "${subject}",
+  "email_content": "${emailContent}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'SendBulkEmail',
+      apiUrl: 'https://100085.pythonanywhere.com/api/dowell_bulk_email/',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class DeleteTeamMemberCall {
+  static Future<ApiCallResponse> call({
+    String? username = '',
+    String? teamName = '',
+    String? memberEmail = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "username": "${username}",
+  "team_name": "${teamName}",
+  "member_email": "${memberEmail}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'deleteTeamMember',
+      apiUrl: 'https://100093.pythonanywhere.com/api/remove_member_from_team/',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class SaveTrackingDetailsCall {
+  static Future<ApiCallResponse> call({
+    String? apiKey = '',
+    dynamic? jsonBodyJson,
+  }) async {
+    final jsonBody = _serializeJson(jsonBodyJson, true);
+    final ffApiRequestBody = '''
+{
+  "payload": ${jsonBody}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'saveTrackingDetails',
+      apiUrl:
+          'http://100086.pythonanywhere.com/create-current-loc/?api_key=${apiKey}',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class TwoCall {
+  static Future<ApiCallResponse> call() async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'two',
+      apiUrl: 'www.google.com',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,

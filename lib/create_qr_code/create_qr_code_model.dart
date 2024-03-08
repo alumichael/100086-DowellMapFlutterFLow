@@ -23,8 +23,10 @@ class CreateQrCodeModel extends FlutterFlowModel<CreateQrCodeWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {
     unfocusNode.dispose();
   }

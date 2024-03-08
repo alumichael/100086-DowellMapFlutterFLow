@@ -2,6 +2,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/components/add_group_dialog_widget.dart';
 import '/components/group_list_dialog_component_widget.dart';
 import '/components/image_widget.dart';
+import '/components/team_selector_form_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_language_selector.dart';
 import '/flutter_flow/flutter_flow_place_picker.dart';
@@ -21,7 +22,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,12 +42,16 @@ class NewHomePageModel extends FlutterFlowModel<NewHomePageWidget> {
   ApiCallResponse? serviceApiKey;
   // Stores action output result for [Backend Call - API (Get Location by User)] action in NewHomePage widget.
   ApiCallResponse? getLocationByUserResponse;
+  // Stores action output result for [Custom Action - getUserMemberType] action in NewHomePage widget.
+  String? userMemberType;
   // Stores action output result for [Backend Call - API (Get User API Key)] action in Text widget.
   ApiCallResponse? serviceApiKeyCopy;
   // Stores action output result for [Custom Action - qRCodeScanner] action in Row widget.
-  String? scannerResult;
+  dynamic? scannerResult;
   // Stores action output result for [Backend Call - API (Delete Loc)] action in MyMapWidget widget.
   ApiCallResponse? apiResulti6o;
+  // Stores action output result for [Backend Call - API (saveTrackingDetails)] action in MyMapWidget widget.
+  ApiCallResponse? populatingDataInfo;
   // State field(s) for PlacePicker widget.
   var placePickerValue = FFPlace();
   // State field(s) for RadioButton widget.
@@ -91,8 +95,10 @@ class NewHomePageModel extends FlutterFlowModel<NewHomePageWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     textFieldFocusNode1?.dispose();

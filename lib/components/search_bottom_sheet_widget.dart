@@ -12,7 +12,6 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -497,7 +496,7 @@ Between */
                               await getCurrentUserLocation(
                                   defaultLocation: LatLng(0.0, 0.0));
                           setState(() {
-                            FFAppState().clearmap = false;
+                            FFAppState().clearmap = true;
                           });
                           await actions.hideSoftKeyboard();
                           _model.nearbyPlaceResponse =
@@ -515,7 +514,7 @@ Between */
                               } else if (isiOS) {
                                 return FFAppState().iosAPIKey;
                               } else {
-                                return FFAppState().webMapApiKey;
+                                return FFAppState().webGoogleApiKey;
                               }
                             }(),
                           );

@@ -107,183 +107,6 @@ Locale createLocale(String language) => language.contains('_')
     : Locale(language);
 
 final kTranslationsMap = <Map<String, Map<String, String>>>[
-  // maps
-  {
-    'ewi5pxl1': {
-      'en': 'DoWell Maps',
-      'de': 'DoWell Maps',
-      'es': 'DoWell Maps',
-      'fr': 'DoWell Maps',
-    },
-    'ktsb4915': {
-      'en': 'Select Location',
-      'de': 'Ort auswählen',
-      'es': 'Seleccionar ubicación',
-      'fr': 'Sélectionnez l\'emplacement',
-    },
-    '4as6ways': {
-      'en': 'Home',
-      'de': 'Heim',
-      'es': 'Casa',
-      'fr': 'Domicile',
-    },
-  },
-  // placedetailsCopy
-  {
-    'qp1ib2nn': {
-      'en': 'Place Name (required)',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '20n0kxp2': {
-      'en': 'Address (required)',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'qf34ina9': {
-      'en': 'Hours',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '1z5n363l': {
-      'en': 'Hours',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'jajxe7t0': {
-      'en': 'Contact',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '1xyrtomk': {
-      'en': 'Phone Number',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '38j4tofv': {
-      'en': 'Submit',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'l3bwqo3g': {
-      'en': 'Country',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'gzwlgz41': {
-      'en': 'Located within',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '36ozdfor': {
-      'en': 'Select Category (required)',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'e3hu61kg': {
-      'en': 'Select',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'ta4w4ece': {
-      'en': 'Add a place',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'tixxzchr': {
-      'en': 'Home',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-  },
-  // HomeScreenVersion1
-  {
-    'o0fh54ty': {
-      'en': 'DoWell Maps',
-      'de': 'DoWell Maps',
-      'es': 'DoWell Maps',
-      'fr': 'DoWell Maps',
-    },
-    '53diz7lu': {
-      'en': 'Select Location',
-      'de': 'Ort auswählen',
-      'es': 'Seleccionar ubicación',
-      'fr': 'Sélectionnez l\'emplacement',
-    },
-    'pal0e3p8': {
-      'en': 'Current  Location',
-      'de': 'Aktueller Standort',
-      'es': 'Ubicación actual',
-      'fr': 'Localisation actuelle',
-    },
-    'xqute3hf': {
-      'en': 'Select  Location',
-      'de': 'Angegebener Ort',
-      'es': 'Ubicación especificada',
-      'fr': 'Emplacement spécifié',
-    },
-    'k9zleaja': {
-      'en': 'Distance Between(m)',
-      'de': 'Abstand zwischen',
-      'es': 'Distancia entre',
-      'fr': 'Distance entre',
-    },
-    '7b5qp2fr': {
-      'en': 'From Distance',
-      'de': 'Aus der Ferne',
-      'es': 'Desde la distancia',
-      'fr': 'À distance',
-    },
-    '7l37sekx': {
-      'en': '0',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '1s42a42a': {
-      'en': 'To Distance',
-      'de': 'Sich distanzieren',
-      'es': 'a la distancia',
-      'fr': 'À distance',
-    },
-    '4kjdjttk': {
-      'en': '0',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'vpp9tzbc': {
-      'en': 'Search  eg School, Park',
-      'de': 'Stadt suchen',
-      'es': 'Buscar ciudad',
-      'fr': 'Rechercher une ville',
-    },
-    '5x34ca9g': {
-      'en': 'school',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '6ijffmvv': {
-      'en': 'Home',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-  },
   // OnboardingPage
   {
     'i07fnl1g': {
@@ -521,102 +344,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
-  // appbartester
-  {
-    'icvec9c1': {
-      'en': 'Home',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-  },
-  // HomeScreenVersion2Copy
-  {
-    'xux1qyiz': {
-      'en': 'DoWell Maps',
-      'de': 'DoWell Maps',
-      'es': 'DoWell Maps',
-      'fr': 'DoWell Maps',
-    },
-    '46vnb5wv': {
-      'en': 'Log in',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'f6g5z04w': {
-      'en': 'Search Location',
-      'de': 'Ort auswählen',
-      'es': 'Seleccionar ubicación',
-      'fr': 'Sélectionnez l\'emplacement',
-    },
-    '8k1nkrkp': {
-      'en': 'Current Location',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'tmezntb8': {
-      'en': 'Current Location',
-      'de': 'Aktueller Standort',
-      'es': 'Ubicación actual',
-      'fr': 'Localisation actuelle',
-    },
-    'q7jbzx15': {
-      'en': 'Select Location',
-      'de': 'Angegebener Ort',
-      'es': 'Ubicación especificada',
-      'fr': 'Emplacement spécifié',
-    },
-    'qs58vf6e': {
-      'en': 'Distance Between',
-      'de': 'Abstand zwischen',
-      'es': 'Distancia entre',
-      'fr': 'Distance entre',
-    },
-    'njxsjz8o': {
-      'en': 'From Distance',
-      'de': 'Aus der Ferne',
-      'es': 'Desde la distancia',
-      'fr': 'À distance',
-    },
-    '0533qs5s': {
-      'en': '0',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '17yzinbh': {
-      'en': 'To Distance',
-      'de': 'Sich distanzieren',
-      'es': 'a la distancia',
-      'fr': 'À distance',
-    },
-    'z2mgwp4s': {
-      'en': '2000',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'e3srnczy': {
-      'en': 'Search  e.g School, Park',
-      'de': 'Stadt suchen',
-      'es': 'Buscar ciudad',
-      'fr': 'Rechercher une ville',
-    },
-    'hnwf52n5': {
-      'en': 'school',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'oz3uvlrl': {
-      'en': 'Home',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-  },
   // SelectOrg
   {
     'wqoufdot': {
@@ -650,204 +377,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
-  // NewHomePageCopy
-  {
-    'ii28kcab': {
-      'en': 'View Profile',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '55x27oln': {
-      'en': 'English',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'zsif69p2': {
-      'en': 'French',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '77ojrjcn': {
-      'en': 'Dutch',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'u9knlb9c': {
-      'en': 'Spanish',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'rldtkxxv': {
-      'en': 'Please select...',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '6vimewet': {
-      'en': 'Search for an item...',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '902hfkre': {
-      'en': 'Settings',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'wsnexbn8': {
-      'en': 'Support',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '1d3r81ju': {
-      'en': 'About',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'gs51qqcv': {
-      'en': 'You are not Logged in',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'dgiqyfi5': {
-      'en': 'Click here to Log in',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'tfewvq5c': {
-      'en': 'Logout',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '5umnblxq': {
-      'en': 'Login',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '9b9bwebh': {
-      'en': 'Home',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-  },
-  // HomeScreenVersion2
-  {
-    'chsdy7fd': {
-      'en': 'DoWell Maps',
-      'de': 'DoWell Maps',
-      'es': 'DoWell Maps',
-      'fr': 'DoWell Maps',
-    },
-    'vevr35hm': {
-      'en': 'Log in',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '0a0dhqsr': {
-      'en': 'Log out',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'ftuuk568': {
-      'en': 'Search Location',
-      'de': 'Ort auswählen',
-      'es': 'Seleccionar ubicación',
-      'fr': 'Sélectionnez l\'emplacement',
-    },
-    'nafsnd4d': {
-      'en': 'Current Location',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '3m4cjybt': {
-      'en': 'Current Location',
-      'de': 'Aktueller Standort',
-      'es': 'Ubicación actual',
-      'fr': 'Localisation actuelle',
-    },
-    'uwez65ii': {
-      'en': 'Select Location',
-      'de': 'Angegebener Ort',
-      'es': 'Ubicación especificada',
-      'fr': 'Emplacement spécifié',
-    },
-    'xqq2741e': {
-      'en': 'Distance Between',
-      'de': 'Abstand zwischen',
-      'es': 'Distancia entre',
-      'fr': 'Distance entre',
-    },
-    'glhs1dmh': {
-      'en': 'From Distance',
-      'de': 'Aus der Ferne',
-      'es': 'Desde la distancia',
-      'fr': 'À distance',
-    },
-    '43vzrbt9': {
-      'en': '0',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'xi26lxat': {
-      'en': 'To Distance',
-      'de': 'Sich distanzieren',
-      'es': 'a la distancia',
-      'fr': 'À distance',
-    },
-    '8md5rse0': {
-      'en': '2000',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'pinl7bvf': {
-      'en': 'Search  e.g School, Park',
-      'de': 'Stadt suchen',
-      'es': 'Buscar ciudad',
-      'fr': 'Rechercher une ville',
-    },
-    '5kaubrwe': {
-      'en': 'school',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'bqtxna94': {
-      'en': 'Payment Status : ',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '5otvpbn4': {
-      'en': 'Balance Credit : ',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'g9icpwdl': {
-      'en': 'Home',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-  },
   // NewHomePage
   {
     'odsts4lf': {
@@ -861,6 +390,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'Verbindung hinzufügen',
       'es': 'Agregar conexión',
       'fr': 'Ajouter une connexion',
+    },
+    'ugzuwa0k': {
+      'en': 'My Team',
+      'de': '',
+      'es': '',
+      'fr': '',
     },
     'ux1xlg8y': {
       'en': 'Scan QRCode',
@@ -1032,99 +567,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'Heim',
       'es': 'Hogar',
       'fr': 'Maison',
-    },
-  },
-  // NewHomePageCopy2
-  {
-    'liu5epeo': {
-      'en': 'View Profile',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'ao5whf88': {
-      'en': 'English',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'fr9ink8j': {
-      'en': 'French',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '4f75p0ev': {
-      'en': 'Dutch',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'tqym2gol': {
-      'en': 'Spanish',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '7af9nh9x': {
-      'en': 'Please select...',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'eezwq3u7': {
-      'en': 'Search for an item...',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'ddzvzx5i': {
-      'en': 'Settings',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '179rcz6y': {
-      'en': 'Support',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'u8v2sigb': {
-      'en': 'About',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    't42ifqgx': {
-      'en': 'You are not Logged in',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '6vi0t0cp': {
-      'en': 'Click here to Log in',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'rm2o6dek': {
-      'en': 'Logout',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'dgn2plob': {
-      'en': 'Login',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'wv622zuz': {
-      'en': 'Home',
-      'de': '',
-      'es': '',
-      'fr': '',
     },
   },
   // newplacedetails
@@ -1473,6 +915,159 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // Teams
+  {
+    'ut7yfo59': {
+      'en': 'Teams',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'jzt6v7pk': {
+      'en': 'Add Team ',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '9hn1lrk7': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // TeamMembers
+  {
+    'k13sb5ww': {
+      'en': 'No team member added to this team yet',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'x5l53ukx': {
+      'en': 'Add Member',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'lugc5qdu': {
+      'en': 'Public Members',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'krd5m24u': {
+      'en': 'No public member added to this team yet',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'xgf28m3b': {
+      'en': 'Add Member',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'v42vev5f': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // MembersScreen
+  {
+    '7bykkzkk': {
+      'en': 'Internal members ',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '63yjc3jq': {
+      'en': 'View All',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'dvat0t3j': {
+      'en': 'no added members yet',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'bkhw7qlg': {
+      'en': 'Login Team Members ',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'yy7ifi5z': {
+      'en': 'View All',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '02jjdou7': {
+      'en': 'no available team member',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '275ohnws': {
+      'en': 'Login Guest Members ',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'd4qcqomy': {
+      'en': 'View All',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'v9mh06fw': {
+      'en': 'no available guest member',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'wrb8kcnh': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // MembersDetailScreen
+  {
+    'xs5qg95g': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // MembersSelectionScreen
+  {
+    'p596s6yi': {
+      'en': 'Select all',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '3x6z5njd': {
+      'en': 'Add Selected',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '5zqxvy2a': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
   // GlobalTopMenuBar
   {
     'pop7fj2v': {
@@ -1648,87 +1243,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'n4h0tw7w': {
       'en': 'Add',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-  },
-  // livinglabsMapComponent
-  {
-    'qatezv9r': {
-      'en': 'DoWell Maps',
-      'de': 'DoWell Maps',
-      'es': 'DoWell Maps',
-      'fr': 'DoWell Maps',
-    },
-    '4oyml2yr': {
-      'en': 'Log in',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'gssaq0cs': {
-      'en': 'Search Location',
-      'de': 'Ort auswählen',
-      'es': 'Seleccionar ubicación',
-      'fr': 'Sélectionnez l\'emplacement',
-    },
-    'b3jxxgia': {
-      'en': 'Current Location',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '2dnncjyy': {
-      'en': 'Current Location',
-      'de': 'Aktueller Standort',
-      'es': 'Ubicación actual',
-      'fr': 'Localisation actuelle',
-    },
-    'n9jvf286': {
-      'en': 'Select Location',
-      'de': 'Angegebener Ort',
-      'es': 'Ubicación especificada',
-      'fr': 'Emplacement spécifié',
-    },
-    'vbqp4sqr': {
-      'en': 'Distance Between',
-      'de': 'Abstand zwischen',
-      'es': 'Distancia entre',
-      'fr': 'Distance entre',
-    },
-    '9huplfsf': {
-      'en': 'From Distance',
-      'de': 'Aus der Ferne',
-      'es': 'Desde la distancia',
-      'fr': 'À distance',
-    },
-    '2hg7pv7u': {
-      'en': '0',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '5f3f33gi': {
-      'en': 'To Distance',
-      'de': 'Sich distanzieren',
-      'es': 'a la distancia',
-      'fr': 'À distance',
-    },
-    'fu7m9ho4': {
-      'en': '2000',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '4knzax39': {
-      'en': 'Search  e.g School, Park',
-      'de': 'Stadt suchen',
-      'es': 'Buscar ciudad',
-      'fr': 'Rechercher une ville',
-    },
-    'p855uqzc': {
-      'en': 'school',
       'de': '',
       'es': '',
       'fr': '',
@@ -2029,6 +1543,309 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // newteam
+  {
+    'bhz9fcg5': {
+      'en': 'New Team',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'rzdflud2': {
+      'en': 'Enter Team Name',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '58wvanjp': {
+      'en': 'Submit',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // adduser
+  {
+    'x4qv79fj': {
+      'en': 'Add User to Team',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'kgk9sezz': {
+      'en': 'Yes',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'svieqcu1': {
+      'en': 'No',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // NewMembersDialog
+  {
+    'snn05pk3': {
+      'en': 'New Member',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'ctdmscok': {
+      'en': 'Enter Member Name',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'ge33veo2': {
+      'en': 'Active',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '7pov0zhu': {
+      'en': 'Inactive',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '0q403f4s': {
+      'en': 'Member status',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'v13pv5lt': {
+      'en': 'Search for an item...',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    's49x51nv': {
+      'en': 'Submit',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // TeamSelectorFormDialog
+  {
+    'qddovdqm': {
+      'en': 'Tracking  Form registration',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'hueqkoo6': {
+      'en': 'Username',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'fui4c037': {
+      'en': 'Enter your username',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'gnufuc7n': {
+      'en': 'Fullname',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'zpy7stfy': {
+      'en': 'Enter your full name',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'yk88xltb': {
+      'en': 'Email',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'dan4hcra': {
+      'en': 'Enter your email address',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'goe59pd4': {
+      'en': 'Company name',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'i8bif7d6': {
+      'en': 'Enter your company name',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'qvy7ojz6': {
+      'en': 'Country',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'd751o99y': {
+      'en': 'Enter your country',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'fmhbcdii': {
+      'en': 'Option 1',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '7ictapmq': {
+      'en': 'Select Orgainsation',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'c5ltjnmc': {
+      'en': 'Search for an item...',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'dyx9mlif': {
+      'en': 'Teams',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '1mq44czr': {
+      'en': 'Option 1',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'j770ya70': {
+      'en': 'Select Team',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'k868j7wn': {
+      'en': 'Search for an item...',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'vlilbut8': {
+      'en': 'No team attached to this team',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '0hoa9wow': {
+      'en': 'Continue',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // MemberMainOptions
+  {
+    'nvyratzz': {
+      'en': 'Add member',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'rliacw6m': {
+      'en': 'Move members',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // MemberSubOptions
+  {
+    '3afckevs': {
+      'en': 'Delete',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '2gnst597': {
+      'en': 'Add To Internal',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // AddMemberDialog
+  {
+    'ukfpisah': {
+      'en': 'From Team members',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'vt4ajvw6': {
+      'en': 'Team Members',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'oqn57nuj': {
+      'en': 'From Guest  members',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'jp6ghp6y': {
+      'en': 'Guest Members',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // DeleteMemberDialog
+  {
+    'ao10rmfe': {
+      'en': 'Are you sure?\nPlease note operation can not be reverse',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'rtehx8bq': {
+      'en': 'Cancel',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'd733q8qk': {
+      'en': 'Accept',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // AddMemberConfirmDialog
+  {
+    'h0v5zbdo': {
+      'en': 'Cancel',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'rvpm0mcq': {
+      'en': 'Accept',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
   // Miscellaneous
   {
     'bwnsa3x4': {
@@ -2147,6 +1964,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     'ekfp8qzs': {
+      'en': '',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'x89xvv8z': {
       'en': '',
       'de': '',
       'es': '',

@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -92,25 +93,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : NewHomePageWidget(),
           routes: [
             FFRoute(
-              name: 'maps',
-              path: 'maps',
-              builder: (context, params) => MapsWidget(),
-            ),
-            FFRoute(
-              name: 'placedetailsCopy',
-              path: 'placedetailsCopy',
-              builder: (context, params) => PlacedetailsCopyWidget(
-                ipAddress: params.getParam('ipAddress', ParamType.String),
-                sessionID: params.getParam('sessionID', ParamType.String),
-                currentCord: params.getParam('currentCord', ParamType.String),
-              ),
-            ),
-            FFRoute(
-              name: 'HomeScreenVersion1',
-              path: 'homeScreenVersion1',
-              builder: (context, params) => HomeScreenVersion1Widget(),
-            ),
-            FFRoute(
               name: 'OnboardingPage',
               path: 'onboardingPage',
               builder: (context, params) => OnboardingPageWidget(),
@@ -135,29 +117,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SignupWidget(),
             ),
             FFRoute(
-              name: 'appbartester',
-              path: 'appbartester',
-              builder: (context, params) => AppbartesterWidget(),
-            ),
-            FFRoute(
-              name: 'HomeScreenVersion2Copy',
-              path: 'homeScreenVersion2Copy',
-              builder: (context, params) => HomeScreenVersion2CopyWidget(),
-            ),
-            FFRoute(
               name: 'SelectOrg',
               path: 'selectOrg',
               builder: (context, params) => SelectOrgWidget(),
-            ),
-            FFRoute(
-              name: 'NewHomePageCopy',
-              path: 'newHomePageCopy',
-              builder: (context, params) => NewHomePageCopyWidget(),
-            ),
-            FFRoute(
-              name: 'HomeScreenVersion2',
-              path: 'homeScreenVersion2',
-              builder: (context, params) => HomeScreenVersion2Widget(),
             ),
             FFRoute(
               name: 'NewHomePage',
@@ -168,11 +130,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Userdetails',
               path: 'userdetails',
               builder: (context, params) => UserdetailsWidget(),
-            ),
-            FFRoute(
-              name: 'NewHomePageCopy2',
-              path: 'newHomePageCopy2',
-              builder: (context, params) => NewHomePageCopy2Widget(),
             ),
             FFRoute(
               name: 'newplacedetails',
@@ -213,6 +170,41 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'TrackPermission',
               path: 'trackPermission',
               builder: (context, params) => TrackPermissionWidget(),
+            ),
+            FFRoute(
+              name: 'Teams',
+              path: 'teams',
+              builder: (context, params) => TeamsWidget(),
+            ),
+            FFRoute(
+              name: 'TeamMembers',
+              path: 'teamMembers',
+              builder: (context, params) => TeamMembersWidget(
+                teamName: params.getParam('teamName', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'MembersScreen',
+              path: 'membersScreen',
+              builder: (context, params) => MembersScreenWidget(),
+            ),
+            FFRoute(
+              name: 'MembersDetailScreen',
+              path: 'membersDetailScreen',
+              builder: (context, params) => MembersDetailScreenWidget(
+                teamName: params.getParam('teamName', ParamType.String),
+                members:
+                    params.getParam<dynamic>('members', ParamType.JSON, true),
+              ),
+            ),
+            FFRoute(
+              name: 'MembersSelectionScreen',
+              path: 'membersSelectionScreen',
+              builder: (context, params) => MembersSelectionScreenWidget(
+                teamName: params.getParam('teamName', ParamType.String),
+                members:
+                    params.getParam<dynamic>('members', ParamType.JSON, true),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -386,6 +378,7 @@ class FFRoute {
           return null;
         },
         pageBuilder: (context, state) {
+          fixStatusBarOniOS16AndBelow(context);
           final ffParams = FFParameters(state, asyncParams);
           final page = ffParams.hasFutures
               ? FutureBuilder(

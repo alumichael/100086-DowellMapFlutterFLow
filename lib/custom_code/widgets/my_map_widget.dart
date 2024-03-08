@@ -1,5 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom widgets
@@ -31,32 +32,34 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart' as loca;
 import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:fluttertoast/fluttertoast.dart';
 
 class MyMapWidget extends StatefulWidget {
-  const MyMapWidget({
-    Key? key,
-    this.width,
-    this.height,
-    this.origin,
-    required this.radius1,
-    required this.radius2,
-    this.query,
-    this.result,
-    this.groupLocList,
-    this.groupLocAddress,
-    this.googleLocsId,
-    this.address,
-    required this.clearmap,
-    required this.iOSGoogleMapsApiKey,
-    required this.androidGoogleMapsApiKey,
-    required this.webGoogleMapsApiKey,
-    this.dbResult,
-    this.dbAddress,
-    this.PlaceIds,
-    required this.navigateTo,
-    required this.deleteAction,
-    required this.updateAction,
-  }) : super(key: key);
+  const MyMapWidget(
+      {Key? key,
+      this.width,
+      this.height,
+      this.origin,
+      required this.radius1,
+      required this.radius2,
+      this.query,
+      this.result,
+      this.groupLocList,
+      this.groupLocAddress,
+      this.googleLocsId,
+      this.address,
+      required this.clearmap,
+      required this.iOSGoogleMapsApiKey,
+      required this.androidGoogleMapsApiKey,
+      required this.webGoogleMapsApiKey,
+      this.dbResult,
+      this.dbAddress,
+      this.PlaceIds,
+      required this.navigateTo,
+      required this.deleteAction,
+      required this.updateAction,
+      required this.teamTrackingAction})
+      : super(key: key);
 
   final double? width;
   final double? height;
@@ -79,6 +82,8 @@ class MyMapWidget extends StatefulWidget {
   final Future<dynamic> Function() navigateTo;
   final Future<dynamic> Function() deleteAction;
   final Future<dynamic> Function() updateAction;
+
+  final Future<dynamic> Function() teamTrackingAction;
 
   @override
   _MyMapWidget createState() => _MyMapWidget();
@@ -119,6 +124,9 @@ class _MyMapWidget extends State<MyMapWidget> {
     }
   }
 
+  late Timer? timer;
+  late Timer? dataLogTimer;
+
   final List<latlng.Polyline> polyline = [];
   List<latlng.LatLng>? routeCoords = [];
   String generateRandomString(int lengthOfString) {
@@ -126,7 +134,7 @@ class _MyMapWidget extends State<MyMapWidget> {
     const allChars =
         'AaBbCcDdlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1EeFfGgHhIiJjKkL234567890';
     // below statement will generate a random string of length using the characters
-    // and length provided to it
+    // and length provided to it.
     final randomString = List.generate(lengthOfString,
         (index) => allChars[random.nextInt(allChars.length)]).join();
     return randomString; // return the generated string
@@ -136,22 +144,60 @@ class _MyMapWidget extends State<MyMapWidget> {
   void initState() {
     googleMapPolyline = new GoogleMapPolyline(apiKey: googleMapsApiKey);
     getCurrentLocation();
-
-    if (FFAppState().allowLocationTracking == true &&
-        FFAppState().isAuthUser == false) {
-      activateSocket();
-    }
-
     super.initState();
   }
 
   @override
+  dispose() {
+    timer?.cancel();
+    dataLogTimer?.cancel();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    if (FFAppState().timerStarted == false) {
+      if (FFAppState().allowLocationTracking == true) {
+        activateSocket();
+      }
+      if (FFAppState().allowLocationTracking == true &&
+          FFAppState().isAuthUser == false &&
+          FFAppState().publicScannedValue.isNotEmpty) {
+        print("::: are inside the socket adding flow1:::");
+        timer = Timer.periodic(Duration(seconds: 2), (timer) {
+          addSocketMessage();
+        });
+        dataLogTimer = Timer.periodic(Duration(minutes: 5), (timer) {
+          print("::: are inside the socket adding flow3:::");
+          widget.teamTrackingAction();
+        });
+        FFAppState().update(() {
+          FFAppState().timerStarted = true;
+        });
+      }
+
+      if (FFAppState().allowLocationTracking == true &&
+          FFAppState().isAuthUser == true &&
+          FFAppState().isOwner == false) {
+        print("::: are inside the socket adding flow2:::");
+        timer = Timer.periodic(Duration(seconds: 2), (timer) {
+          addSocketMessage();
+        });
+        dataLogTimer = Timer.periodic(Duration(minutes: 1), (timer) {
+          print("::: are inside the socket adding flow3:::");
+          widget.teamTrackingAction();
+        });
+
+        FFAppState().update(() {
+          FFAppState().timerStarted = true;
+        });
+      }
+    }
     context.watch<FFAppState>();
     trackMe();
 
     debugPrint(
-        ":::from the marker room:: ${FFAppState().groupList} :: radius2 :: ${widget.radius2} :: zoomValue :: $zoomValue");
+        ":::from the marker room:: ${FFAppState().groupList} :: radius2 ::${widget.radius2} :: zoomValue :: $zoomValue");
     bool isOriginZero =
         (widget.origin!.latitude == 0 && widget.origin!.longitude == 0);
 
@@ -264,6 +310,27 @@ class _MyMapWidget extends State<MyMapWidget> {
     ]);
   }
 
+  // updateDataLog() async {
+  //   // make an api request for data log
+  //   try {
+  //     final url = Uri.parse(
+  //         "https://100086.pythonanywhere.com/create-current-loc/?api_key=${FFAppState().apiKey}");
+  //     final res =
+  //         await http.post(url, body: {"payload": FFAppState().trackingData});
+  //     if (res.statusCode == 200 || res.statusCode == 201) {
+  //       print("::: are inside the socket adding flow4:::");
+  //       print("::::: the track stored data sent successfully::: ${res.body}");
+  //       FFAppState().trackingData = [];
+  //     }
+  //     print(
+  //         "::: are inside the socket adding flow5::: payload:: ${FFAppState().trackingData}");
+  //   } catch (e) {
+  //     print("::: are inside the socket adding flow6:::");
+  //     print(
+  //         "::: unable to send data ::: error::: $e ::: payload:::${FFAppState().trackingData}");
+  //   }
+  // }
+
   ///
   ///
   ///
@@ -277,15 +344,10 @@ class _MyMapWidget extends State<MyMapWidget> {
   ///
   ///
   trackMe() {
-    // if (FFAppState().allowLocationTracking == true &&
-    //     FFAppState().isAuthUser == false) {
-    //   addSocketMessage();
-    // }
-
-    print("tracking started::::: ");
+    // print("tracking started::::: ");
     locationSubscription =
         location.onLocationChanged.listen((loca.LocationData locationData) {
-      print("tracking coord ::::: $locationData");
+      // print("tracking coord ::::: $locationData");
 
       setState(() {
         currentPosition = Position(
@@ -296,6 +358,8 @@ class _MyMapWidget extends State<MyMapWidget> {
             altitude: 0,
             heading: 0,
             speed: 100,
+            altitudeAccuracy: 90,
+            headingAccuracy: 90,
             speedAccuracy: 10);
 
         if (FFAppState().enableTracking) {
@@ -329,7 +393,6 @@ class _MyMapWidget extends State<MyMapWidget> {
           }
         }
       });
-      addSocketMessage();
     });
   }
 
@@ -883,26 +946,73 @@ class _MyMapWidget extends State<MyMapWidget> {
     }
   }
 
-  Map<String, dynamic> getMySocketMessage() {
-    String userEmail = FFAppState().guestEmail.toString();
-    String companyId = FFAppState().guestCompanyId.toString();
-    String userId = FFAppState().guestUserId.toString();
-    String lat = currentPosition!.latitude.toString();
-    String lng = currentPosition!.longitude.toString();
-    String linkId = "";
+  dynamic getMySocketMessage() {
+    dynamic userEmail = FFAppState().guestEmail ?? "";
+    dynamic companyId = FFAppState().guestCompanyId ?? "";
+    dynamic userId = FFAppState().guestUserId ?? "";
+    dynamic lat = currentPosition?.latitude ?? "";
+    dynamic lng = currentPosition?.longitude ?? "";
+    dynamic linkId = FFAppState().linkId ?? "";
+    dynamic teamName = FFAppState().trackingTeam ?? "";
 
-    Map<String, dynamic> jsonObject = {
-      "user_email": userEmail,
-      "company_id": companyId,
-      "user_id": userId,
-      "lat": lat,
-      "lng": lng,
-      "link_id": linkId,
-    };
+    Map<String, dynamic> jsonObject;
 
-    // String jsonString = jsonEncode(jsonObject);
+// {
+//   "username": "",
+//   "workspace_id": "",
+//   "doc_type": "",
+//   "lat": 0,
+//   "lon": 0,
+//   "timestamp": 0,
+//   "team_status": true,
+//   "team_list": [""],
+//   "linkId": ""
+// }
+
+    if (FFAppState().isAuthUser == true) {
+      print("::::it is from auth1 :: ${FFAppState().guestGenInfo}");
+      jsonObject = {
+        "username": "${FFAppState().guestGenInfo.name}",
+        "workspace_id": "${FFAppState().guestGenInfo.companyId}",
+        "user_id": "${FFAppState().guestGenInfo.userId}",
+        "doc_type": "slave",
+        "lat": "${lat}",
+        "lon": "${lng}",
+        "timestamp": DateTime.now().toString(),
+        "team_status": true,
+        "team_list": FFAppState().guestGenInfo.orgByIdTeams,
+      };
+    } else {
+      print("::::it is from not auth");
+      jsonObject = {
+        "username": "${userEmail}",
+        "workspace_id": "${companyId}",
+        "doc_type": "slave",
+        "lat": "${lat}",
+        "lon": "${lng}",
+        "user_id": "${userId}",
+        "timestamp": DateTime.now().toString(),
+        "team_status": false,
+        "linkId": "${linkId}"
+      };
+    }
 
     return jsonObject;
+  }
+
+  void showToast({
+    required String message,
+    bool? isError,
+    bool fromTop = false,
+  }) {
+    Fluttertoast.showToast(
+        msg: message,
+        toastLength: Toast.LENGTH_LONG,
+        gravity: fromTop ? ToastGravity.TOP : ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: isError ?? false ? Colors.red : Colors.green.shade300,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 
   void activateSocket() async {
@@ -918,10 +1028,16 @@ class _MyMapWidget extends State<MyMapWidget> {
 
       socket.on('error', (error) {
         print('My Socket Error: $error');
+        showToast(message: "My Socket Error", isError: true);
       });
 
-      socket.onDisconnect(
-          (data) => print('socket disconnected : msgData:: $data'));
+      socket.onDisconnect((data) {
+        print('socket disconnected : msgData:: $data');
+        showToast(message: "Tracking disconnected", isError: true);
+      });
+      socket.onConnect((data) {
+        // showToast(message: "Tracking connected");
+      });
     } catch (e) {
       print('Caught Error: $e');
     }
@@ -932,16 +1048,14 @@ class _MyMapWidget extends State<MyMapWidget> {
     if (socket != null) {
       print(":::: it enter the if statement of true");
       try {
-        // socket.onConnect((_) {
-        //   print('socket connected succesful.');
-        Map<String, dynamic> body = getMySocketMessage();
-        //   print('JsonBody::: $body');
+        dynamic body = getMySocketMessage();
+        print("::::: added data :: $body");
 
-        // });
-        socket.emit("message", body);
-        // socket.on('message', (data) {
-        //   print('Received message: $data');
-        // });
+        FFAppState().trackingData.add(body);
+
+        socket.emit("message", json.encode(body));
+
+        print("::::: new saved log ::: ${FFAppState().trackingData}");
       } catch (e) {
         print("Error:: $e");
       }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import 'backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
@@ -57,6 +58,54 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _guestCompanyId = prefs.getString('ff_guestCompanyId') ?? _guestCompanyId;
     });
+    _safeInit(() {
+      _isFirstLaunchAfterInstall =
+          prefs.getBool('ff_isFirstLaunchAfterInstall') ??
+              _isFirstLaunchAfterInstall;
+    });
+    _safeInit(() {
+      _trackingData = prefs.getStringList('ff_trackingData')?.map((x) {
+            try {
+              return jsonDecode(x);
+            } catch (e) {
+              print("Can't decode persisted json. Error: $e.");
+              return {};
+            }
+          }).toList() ??
+          _trackingData;
+    });
+    _safeInit(() {
+      if (prefs.containsKey('ff_guestGenInfo')) {
+        try {
+          final serializedData = prefs.getString('ff_guestGenInfo') ?? '{}';
+          _guestGenInfo =
+              GuestInfoStruct.fromSerializableMap(jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
+    _safeInit(() {
+      _myMapOrgs = prefs.getStringList('ff_myMapOrgs')?.map((x) {
+            try {
+              return jsonDecode(x);
+            } catch (e) {
+              print("Can't decode persisted json. Error: $e.");
+              return {};
+            }
+          }).toList() ??
+          _myMapOrgs;
+    });
+    _safeInit(() {
+      _orgByIdTeams = prefs.getStringList('ff_orgByIdTeams') ?? _orgByIdTeams;
+    });
+    _safeInit(() {
+      _publicScannedValue =
+          prefs.getString('ff_publicScannedValue') ?? _publicScannedValue;
+    });
+    _safeInit(() {
+      _isOwner = prefs.getBool('ff_isOwner') ?? _isOwner;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -72,10 +121,10 @@ class FFAppState extends ChangeNotifier {
     _currentLocation = _value;
   }
 
-  bool _clearmap = false;
-  bool get clearmap => _clearmap;
-  set clearmap(bool _value) {
-    _clearmap = _value;
+  String _iosAPIKey = 'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk';
+  String get iosAPIKey => _iosAPIKey;
+  set iosAPIKey(String _value) {
+    _iosAPIKey = _value;
   }
 
   String _usernametype = 'User Name';
@@ -84,34 +133,16 @@ class FFAppState extends ChangeNotifier {
     _usernametype = _value;
   }
 
-  String _iosAPIKey = 'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk';
-  String get iosAPIKey => _iosAPIKey;
-  set iosAPIKey(String _value) {
-    _iosAPIKey = _value;
-  }
-
-  String _androidKey = 'AIzaSyA_i4bbFV0iKxU_nUI7L3p0--r6UR89du4';
-  String get androidKey => _androidKey;
-  set androidKey(String _value) {
-    _androidKey = _value;
-  }
-
-  String _webMapApiKey = 'AIzaSyAsH8omDk8y0lSGLTW9YtZiiQ2MkmsF-uQ';
-  String get webMapApiKey => _webMapApiKey;
-  set webMapApiKey(String _value) {
-    _webMapApiKey = _value;
-  }
-
   String _myIpAddress = '';
   String get myIpAddress => _myIpAddress;
   set myIpAddress(String _value) {
     _myIpAddress = _value;
   }
 
-  bool _isMarkerTapped = false;
-  bool get isMarkerTapped => _isMarkerTapped;
-  set isMarkerTapped(bool _value) {
-    _isMarkerTapped = _value;
+  String _androidKey = 'AIzaSyA_i4bbFV0iKxU_nUI7L3p0--r6UR89du4';
+  String get androidKey => _androidKey;
+  set androidKey(String _value) {
+    _androidKey = _value;
   }
 
   String _selectedLocation = '';
@@ -159,10 +190,10 @@ class FFAppState extends ChangeNotifier {
     _categoriesState.insert(_index, _value);
   }
 
-  String _selectedCategory = '';
-  String get selectedCategory => _selectedCategory;
-  set selectedCategory(String _value) {
-    _selectedCategory = _value;
+  bool _isMarkerTapped = false;
+  bool get isMarkerTapped => _isMarkerTapped;
+  set isMarkerTapped(bool _value) {
+    _isMarkerTapped = _value;
   }
 
   String _newCategoryTyped = '';
@@ -545,16 +576,429 @@ class FFAppState extends ChangeNotifier {
     _guestCompanyId = _value;
     prefs.setString('ff_guestCompanyId', _value);
   }
-}
 
-LatLng? _latLngFromString(String? val) {
-  if (val == null) {
-    return null;
+  dynamic _userMembers;
+  dynamic get userMembers => _userMembers;
+  set userMembers(dynamic _value) {
+    _userMembers = _value;
   }
-  final split = val.split(',');
-  final lat = double.parse(split.first);
-  final lng = double.parse(split.last);
-  return LatLng(lat, lng);
+
+  List<String> _teamList = [];
+  List<String> get teamList => _teamList;
+  set teamList(List<String> _value) {
+    _teamList = _value;
+  }
+
+  void addToTeamList(String _value) {
+    _teamList.add(_value);
+  }
+
+  void removeFromTeamList(String _value) {
+    _teamList.remove(_value);
+  }
+
+  void removeAtIndexFromTeamList(int _index) {
+    _teamList.removeAt(_index);
+  }
+
+  void updateTeamListAtIndex(
+    int _index,
+    String Function(String) updateFn,
+  ) {
+    _teamList[_index] = updateFn(_teamList[_index]);
+  }
+
+  void insertAtIndexInTeamList(int _index, String _value) {
+    _teamList.insert(_index, _value);
+  }
+
+  TeamModelStruct _activeTeam = TeamModelStruct();
+  TeamModelStruct get activeTeam => _activeTeam;
+  set activeTeam(TeamModelStruct _value) {
+    _activeTeam = _value;
+  }
+
+  void updateActiveTeamStruct(Function(TeamModelStruct) updateFn) {
+    updateFn(_activeTeam);
+  }
+
+  List<MemberModelStruct> _currentMemberList = [];
+  List<MemberModelStruct> get currentMemberList => _currentMemberList;
+  set currentMemberList(List<MemberModelStruct> _value) {
+    _currentMemberList = _value;
+  }
+
+  void addToCurrentMemberList(MemberModelStruct _value) {
+    _currentMemberList.add(_value);
+  }
+
+  void removeFromCurrentMemberList(MemberModelStruct _value) {
+    _currentMemberList.remove(_value);
+  }
+
+  void removeAtIndexFromCurrentMemberList(int _index) {
+    _currentMemberList.removeAt(_index);
+  }
+
+  void updateCurrentMemberListAtIndex(
+    int _index,
+    MemberModelStruct Function(MemberModelStruct) updateFn,
+  ) {
+    _currentMemberList[_index] = updateFn(_currentMemberList[_index]);
+  }
+
+  void insertAtIndexInCurrentMemberList(int _index, MemberModelStruct _value) {
+    _currentMemberList.insert(_index, _value);
+  }
+
+  bool _isFirstLaunchAfterInstall = true;
+  bool get isFirstLaunchAfterInstall => _isFirstLaunchAfterInstall;
+  set isFirstLaunchAfterInstall(bool _value) {
+    _isFirstLaunchAfterInstall = _value;
+    prefs.setBool('ff_isFirstLaunchAfterInstall', _value);
+  }
+
+  String _linkId = '';
+  String get linkId => _linkId;
+  set linkId(String _value) {
+    _linkId = _value;
+  }
+
+  String _qrlink = '';
+  String get qrlink => _qrlink;
+  set qrlink(String _value) {
+    _qrlink = _value;
+  }
+
+  bool _isQrFinalized = false;
+  bool get isQrFinalized => _isQrFinalized;
+  set isQrFinalized(bool _value) {
+    _isQrFinalized = _value;
+  }
+
+  List<dynamic> _trackingData = [];
+  List<dynamic> get trackingData => _trackingData;
+  set trackingData(List<dynamic> _value) {
+    _trackingData = _value;
+    prefs.setStringList(
+        'ff_trackingData', _value.map((x) => jsonEncode(x)).toList());
+  }
+
+  void addToTrackingData(dynamic _value) {
+    _trackingData.add(_value);
+    prefs.setStringList(
+        'ff_trackingData', _trackingData.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeFromTrackingData(dynamic _value) {
+    _trackingData.remove(_value);
+    prefs.setStringList(
+        'ff_trackingData', _trackingData.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeAtIndexFromTrackingData(int _index) {
+    _trackingData.removeAt(_index);
+    prefs.setStringList(
+        'ff_trackingData', _trackingData.map((x) => jsonEncode(x)).toList());
+  }
+
+  void updateTrackingDataAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _trackingData[_index] = updateFn(_trackingData[_index]);
+    prefs.setStringList(
+        'ff_trackingData', _trackingData.map((x) => jsonEncode(x)).toList());
+  }
+
+  void insertAtIndexInTrackingData(int _index, dynamic _value) {
+    _trackingData.insert(_index, _value);
+    prefs.setStringList(
+        'ff_trackingData', _trackingData.map((x) => jsonEncode(x)).toList());
+  }
+
+  List<dynamic> _teamMembers = [];
+  List<dynamic> get teamMembers => _teamMembers;
+  set teamMembers(List<dynamic> _value) {
+    _teamMembers = _value;
+  }
+
+  void addToTeamMembers(dynamic _value) {
+    _teamMembers.add(_value);
+  }
+
+  void removeFromTeamMembers(dynamic _value) {
+    _teamMembers.remove(_value);
+  }
+
+  void removeAtIndexFromTeamMembers(int _index) {
+    _teamMembers.removeAt(_index);
+  }
+
+  void updateTeamMembersAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _teamMembers[_index] = updateFn(_teamMembers[_index]);
+  }
+
+  void insertAtIndexInTeamMembers(int _index, dynamic _value) {
+    _teamMembers.insert(_index, _value);
+  }
+
+  List<dynamic> _guestMembers = [];
+  List<dynamic> get guestMembers => _guestMembers;
+  set guestMembers(List<dynamic> _value) {
+    _guestMembers = _value;
+  }
+
+  void addToGuestMembers(dynamic _value) {
+    _guestMembers.add(_value);
+  }
+
+  void removeFromGuestMembers(dynamic _value) {
+    _guestMembers.remove(_value);
+  }
+
+  void removeAtIndexFromGuestMembers(int _index) {
+    _guestMembers.removeAt(_index);
+  }
+
+  void updateGuestMembersAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _guestMembers[_index] = updateFn(_guestMembers[_index]);
+  }
+
+  void insertAtIndexInGuestMembers(int _index, dynamic _value) {
+    _guestMembers.insert(_index, _value);
+  }
+
+  List<String> _selectedMembers = [];
+  List<String> get selectedMembers => _selectedMembers;
+  set selectedMembers(List<String> _value) {
+    _selectedMembers = _value;
+  }
+
+  void addToSelectedMembers(String _value) {
+    _selectedMembers.add(_value);
+  }
+
+  void removeFromSelectedMembers(String _value) {
+    _selectedMembers.remove(_value);
+  }
+
+  void removeAtIndexFromSelectedMembers(int _index) {
+    _selectedMembers.removeAt(_index);
+  }
+
+  void updateSelectedMembersAtIndex(
+    int _index,
+    String Function(String) updateFn,
+  ) {
+    _selectedMembers[_index] = updateFn(_selectedMembers[_index]);
+  }
+
+  void insertAtIndexInSelectedMembers(int _index, String _value) {
+    _selectedMembers.insert(_index, _value);
+  }
+
+  String _trackingTeam = '';
+  String get trackingTeam => _trackingTeam;
+  set trackingTeam(String _value) {
+    _trackingTeam = _value;
+  }
+
+  List<bool> _selectmode = [];
+  List<bool> get selectmode => _selectmode;
+  set selectmode(List<bool> _value) {
+    _selectmode = _value;
+  }
+
+  void addToSelectmode(bool _value) {
+    _selectmode.add(_value);
+  }
+
+  void removeFromSelectmode(bool _value) {
+    _selectmode.remove(_value);
+  }
+
+  void removeAtIndexFromSelectmode(int _index) {
+    _selectmode.removeAt(_index);
+  }
+
+  void updateSelectmodeAtIndex(
+    int _index,
+    bool Function(bool) updateFn,
+  ) {
+    _selectmode[_index] = updateFn(_selectmode[_index]);
+  }
+
+  void insertAtIndexInSelectmode(int _index, bool _value) {
+    _selectmode.insert(_index, _value);
+  }
+
+  String _activeTeamName = '';
+  String get activeTeamName => _activeTeamName;
+  set activeTeamName(String _value) {
+    _activeTeamName = _value;
+  }
+
+  bool _deletingFromMain = false;
+  bool get deletingFromMain => _deletingFromMain;
+  set deletingFromMain(bool _value) {
+    _deletingFromMain = _value;
+  }
+
+  List<String> _myMapOrgNames = [];
+  List<String> get myMapOrgNames => _myMapOrgNames;
+  set myMapOrgNames(List<String> _value) {
+    _myMapOrgNames = _value;
+  }
+
+  void addToMyMapOrgNames(String _value) {
+    _myMapOrgNames.add(_value);
+  }
+
+  void removeFromMyMapOrgNames(String _value) {
+    _myMapOrgNames.remove(_value);
+  }
+
+  void removeAtIndexFromMyMapOrgNames(int _index) {
+    _myMapOrgNames.removeAt(_index);
+  }
+
+  void updateMyMapOrgNamesAtIndex(
+    int _index,
+    String Function(String) updateFn,
+  ) {
+    _myMapOrgNames[_index] = updateFn(_myMapOrgNames[_index]);
+  }
+
+  void insertAtIndexInMyMapOrgNames(int _index, String _value) {
+    _myMapOrgNames.insert(_index, _value);
+  }
+
+  bool _timerStarted = false;
+  bool get timerStarted => _timerStarted;
+  set timerStarted(bool _value) {
+    _timerStarted = _value;
+  }
+
+  GuestInfoStruct _guestGenInfo = GuestInfoStruct();
+  GuestInfoStruct get guestGenInfo => _guestGenInfo;
+  set guestGenInfo(GuestInfoStruct _value) {
+    _guestGenInfo = _value;
+    prefs.setString('ff_guestGenInfo', _value.serialize());
+  }
+
+  void updateGuestGenInfoStruct(Function(GuestInfoStruct) updateFn) {
+    updateFn(_guestGenInfo);
+    prefs.setString('ff_guestGenInfo', _guestGenInfo.serialize());
+  }
+
+  List<dynamic> _myMapOrgs = [];
+  List<dynamic> get myMapOrgs => _myMapOrgs;
+  set myMapOrgs(List<dynamic> _value) {
+    _myMapOrgs = _value;
+    prefs.setStringList(
+        'ff_myMapOrgs', _value.map((x) => jsonEncode(x)).toList());
+  }
+
+  void addToMyMapOrgs(dynamic _value) {
+    _myMapOrgs.add(_value);
+    prefs.setStringList(
+        'ff_myMapOrgs', _myMapOrgs.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeFromMyMapOrgs(dynamic _value) {
+    _myMapOrgs.remove(_value);
+    prefs.setStringList(
+        'ff_myMapOrgs', _myMapOrgs.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeAtIndexFromMyMapOrgs(int _index) {
+    _myMapOrgs.removeAt(_index);
+    prefs.setStringList(
+        'ff_myMapOrgs', _myMapOrgs.map((x) => jsonEncode(x)).toList());
+  }
+
+  void updateMyMapOrgsAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _myMapOrgs[_index] = updateFn(_myMapOrgs[_index]);
+    prefs.setStringList(
+        'ff_myMapOrgs', _myMapOrgs.map((x) => jsonEncode(x)).toList());
+  }
+
+  void insertAtIndexInMyMapOrgs(int _index, dynamic _value) {
+    _myMapOrgs.insert(_index, _value);
+    prefs.setStringList(
+        'ff_myMapOrgs', _myMapOrgs.map((x) => jsonEncode(x)).toList());
+  }
+
+  List<String> _orgByIdTeams = [];
+  List<String> get orgByIdTeams => _orgByIdTeams;
+  set orgByIdTeams(List<String> _value) {
+    _orgByIdTeams = _value;
+    prefs.setStringList('ff_orgByIdTeams', _value);
+  }
+
+  void addToOrgByIdTeams(String _value) {
+    _orgByIdTeams.add(_value);
+    prefs.setStringList('ff_orgByIdTeams', _orgByIdTeams);
+  }
+
+  void removeFromOrgByIdTeams(String _value) {
+    _orgByIdTeams.remove(_value);
+    prefs.setStringList('ff_orgByIdTeams', _orgByIdTeams);
+  }
+
+  void removeAtIndexFromOrgByIdTeams(int _index) {
+    _orgByIdTeams.removeAt(_index);
+    prefs.setStringList('ff_orgByIdTeams', _orgByIdTeams);
+  }
+
+  void updateOrgByIdTeamsAtIndex(
+    int _index,
+    String Function(String) updateFn,
+  ) {
+    _orgByIdTeams[_index] = updateFn(_orgByIdTeams[_index]);
+    prefs.setStringList('ff_orgByIdTeams', _orgByIdTeams);
+  }
+
+  void insertAtIndexInOrgByIdTeams(int _index, String _value) {
+    _orgByIdTeams.insert(_index, _value);
+    prefs.setStringList('ff_orgByIdTeams', _orgByIdTeams);
+  }
+
+  bool _clearmap = false;
+  bool get clearmap => _clearmap;
+  set clearmap(bool _value) {
+    _clearmap = _value;
+  }
+
+  String _webGoogleApiKey = 'AIzaSyAsH8omDk8y0lSGLTW9YtZiiQ2MkmsF-uQ';
+  String get webGoogleApiKey => _webGoogleApiKey;
+  set webGoogleApiKey(String _value) {
+    _webGoogleApiKey = _value;
+  }
+
+  String _publicScannedValue = '';
+  String get publicScannedValue => _publicScannedValue;
+  set publicScannedValue(String _value) {
+    _publicScannedValue = _value;
+    prefs.setString('ff_publicScannedValue', _value);
+  }
+
+  bool _isOwner = false;
+  bool get isOwner => _isOwner;
+  set isOwner(bool _value) {
+    _isOwner = _value;
+    prefs.setBool('ff_isOwner', _value);
+  }
 }
 
 void _safeInit(Function() initializeField) {

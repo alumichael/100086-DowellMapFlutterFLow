@@ -40,15 +40,6 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -200,7 +191,9 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                 true)) {
                               _model.getPublicUseIdResponse =
                                   await GetPublicLinksCall.call(
-                                orgId: '65a8bb1f2d73765634fdcaf5',
+                                orgId: GetUserInfoCall.clientid(
+                                  (_model.getUserInfoResponse?.jsonBody ?? ''),
+                                ),
                                 product: 'Living Lab Maps',
                               );
                               if ((_model.getPublicUseIdResponse?.succeeded ??
@@ -219,7 +212,10 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                         .isNotEmpty) {
                                   _model.getQRCodeResponse =
                                       await GenerateQRcodeCall.call(
-                                    cliendId: '65a8bb1f2d73765634fdcaf5',
+                                    cliendId: GetUserInfoCall.clientid(
+                                      (_model.getUserInfoResponse?.jsonBody ??
+                                          ''),
+                                    ),
                                     linksJson: functions.payloadgen(
                                         GetPublicLinksCall.usernameList(
                                           (_model.getPublicUseIdResponse

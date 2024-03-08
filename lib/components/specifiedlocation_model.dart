@@ -6,7 +6,6 @@ import '/flutter_flow/place.dart';
 import 'dart:io';
 import 'specifiedlocation_widget.dart' show SpecifiedlocationWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -18,8 +17,10 @@ class SpecifiedlocationModel extends FlutterFlowModel<SpecifiedlocationWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {}
 
   /// Action blocks are added here.

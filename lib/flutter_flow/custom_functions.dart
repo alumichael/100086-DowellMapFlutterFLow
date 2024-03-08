@@ -10,6 +10,7 @@ import 'place.dart';
 import 'uploaded_file.dart';
 import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '/backend/schema/structs/index.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
 LatLng? newCustomFunction(
@@ -248,4 +249,65 @@ String? generateRandomText(int lenghtOFString) {
           lenghtOFString, (index) => allChars[random.nextInt(allChars.length)])
       .join();
   return randomString; // return the generated string
+}
+
+String? formatQrLink(
+  bool isUserId,
+  String link,
+) {
+  //http://livinglab.com/5ZcAKMlStSYu/6385c0ec8eca0fb652c944ff
+
+  List<String> formatedLink = link.split("/");
+  if (isUserId) {
+    return formatedLink[formatedLink.length - 2];
+  } else {
+    return formatedLink.last;
+  }
+}
+
+List<dynamic> changeToList(dynamic memberInfo) {
+  return [memberInfo];
+}
+
+String getOrgId(
+  String orgName,
+  List<dynamic> orgs,
+) {
+  print(":::: the org List in : ::: $orgs");
+  print(":::: the org Name : ::: $orgName");
+  String retValue = "";
+  for (dynamic dataInfo in orgs) {
+    print(":::: the orgName in : ::: ${dataInfo['org_name']}");
+    print(":::: the orgGivenName : ::: $orgName");
+    print(":::: the org id :::: ${dataInfo['org_id']}");
+    if (dataInfo["org_name"] == orgName) {
+      print(":::: the org id2 :::: ${dataInfo['org_id']}");
+      retValue = "${dataInfo['org_id']}";
+    }
+  }
+  return retValue;
+}
+
+String formatTeamInviteMailBody(
+  String? recipientName,
+  String? teamName,
+) {
+  String htmlBody =
+      " Hi $recipientName, I hope this email finds you well. I am thrilled to inform you that you have been added to $teamName team. ";
+
+  return htmlBody;
+}
+
+String getCompanyId(
+  String orgName,
+  List<dynamic> jsonData,
+) {
+  for (dynamic orgInfo in jsonData) {
+    print("::::: orgInfo List ::::: $orgInfo");
+    print("::::: orgName ::::: $orgName");
+    if (orgInfo["org_name"] == orgName) {
+      return orgInfo["org_id"];
+    }
+  }
+  return "";
 }

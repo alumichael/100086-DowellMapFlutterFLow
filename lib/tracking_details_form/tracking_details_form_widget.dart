@@ -1,9 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'tracking_details_form_model.dart';
@@ -58,17 +56,6 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -299,16 +286,8 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                                 _model.companyNameextFieldController.text;
                             FFAppState().guestCountry =
                                 _model.countryTextFieldController.text;
-                            FFAppState().allowLocationTracking = true;
-                            FFAppState().guestUserId =
-                                widget.userid != null && widget.userid != ''
-                                    ? widget.userid!
-                                    : functions.generateRandomText(10)!;
-                            FFAppState().guestCompanyId =
-                                widget.workspaceid != null &&
-                                        widget.workspaceid != ''
-                                    ? widget.workspaceid!
-                                    : '65a8bb1f2d73765634fdcaf5';
+                            FFAppState().guestUserId = widget.userid!;
+                            FFAppState().guestCompanyId = widget.workspaceid!;
                           });
                           setState(() {
                             _model.nameTextFieldController?.clear();

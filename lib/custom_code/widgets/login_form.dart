@@ -1,5 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom widgets
@@ -340,7 +341,7 @@ class _LoginFormState extends State<LoginForm> {
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
-                    primary: Color(0xFF187B2B),
+                    backgroundColor: Color(0xFF187B2B),
                   ),
                   child: isLoading == true
                       ? SizedBox(
@@ -574,7 +575,7 @@ class _LoginFormState extends State<LoginForm> {
                                 },
                                 style: ElevatedButton.styleFrom(
                                   foregroundColor: Colors.white,
-                                  primary: Color(0xFF187B2B),
+                                  backgroundColor: Color(0xFF187B2B),
                                 ),
                                 child: isLoading == true
                                     ? SizedBox(
