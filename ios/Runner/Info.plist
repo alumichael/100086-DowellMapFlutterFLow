@@ -103,8 +103,7 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 
-	<key>GOOGLE_MAPS_API_KEY</key>
-    	<string>AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk</string>
+	GMSServices.provideAPIKey("AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk")
 
 </dict>
 </plist>
