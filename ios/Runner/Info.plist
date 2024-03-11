@@ -103,7 +103,7 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 
-	GMSServices.provideAPIKey("AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk")
+	
 
 </dict>
 </plist>
