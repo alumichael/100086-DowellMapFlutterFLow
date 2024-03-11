@@ -24,11 +24,11 @@ Future<dynamic> qRCodeScanner() async {
         '#ff6666', 'Cancel', true, ScanMode.QR);
     // barcodeScanResult(barcodeScanRes);
     print("::::: the qrCode scanner is ::::: $scanResultString");
-    barcodeScanRes = jsonDecode(
-        scanResultString.replaceAll("\'", "\"").replaceAll("Fa", "fa"));
+    barcodeScanRes =
+        scanResultString.replaceAll("\'", "\"").replaceAll("Fa", "fa");
   } on PlatformException {
     scanResultString = 'Failed to get platform version.';
   }
 
-  return barcodeScanRes;
+  return jsonDecode(barcodeScanRes);
 }
