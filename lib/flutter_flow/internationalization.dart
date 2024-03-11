@@ -978,7 +978,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // MembersScreen
   {
     '7bykkzkk': {
-      'en': 'Internal members ',
+      'en': 'Team members ',
       'de': '',
       'es': '',
       'fr': '',
@@ -991,42 +991,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'dvat0t3j': {
       'en': 'no added members yet',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'bkhw7qlg': {
-      'en': 'Login Team Members ',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'yy7ifi5z': {
-      'en': 'View All',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '02jjdou7': {
-      'en': 'no available team member',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    '275ohnws': {
-      'en': 'Login Guest Members ',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'd4qcqomy': {
-      'en': 'View All',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'v9mh06fw': {
-      'en': 'no available guest member',
       'de': '',
       'es': '',
       'fr': '',
@@ -1062,6 +1026,57 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     '5zqxvy2a': {
+      'en': 'Home',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // AddMemberScreen
+  {
+    'v1upotj1': {
+      'en': 'Login Team Members ',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'fgldpxor': {
+      'en': 'View All',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'ae0safec': {
+      'en': 'no available team member',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'tbo40n6q': {
+      'en': 'Login Guest Members ',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    '3zd4bddn': {
+      'en': 'View All',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'wxo7h4s0': {
+      'en': 'no available guest member',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'wvrloj1z': {
+      'en': 'Add Member',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'b2q58ryj': {
       'en': 'Home',
       'de': '',
       'es': '',
@@ -1634,66 +1649,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'qddovdqm': {
       'en': 'Tracking  Form registration',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'hueqkoo6': {
-      'en': 'Username',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'fui4c037': {
-      'en': 'Enter your username',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'gnufuc7n': {
-      'en': 'Fullname',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'zpy7stfy': {
-      'en': 'Enter your full name',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'yk88xltb': {
-      'en': 'Email',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'dan4hcra': {
-      'en': 'Enter your email address',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'goe59pd4': {
-      'en': 'Company name',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'i8bif7d6': {
-      'en': 'Enter your company name',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'qvy7ojz6': {
-      'en': 'Country',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
-    'd751o99y': {
-      'en': 'Enter your country',
       'de': '',
       'es': '',
       'fr': '',

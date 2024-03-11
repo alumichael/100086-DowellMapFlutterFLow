@@ -170,6 +170,7 @@ final parametersBuilderMap =
           'teamName': getParameter<String>(data, 'teamName'),
         },
       ),
+  'AddMemberScreen': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

@@ -205,6 +205,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 members:
                     params.getParam<dynamic>('members', ParamType.JSON, true),
               ),
+            ),
+            FFRoute(
+              name: 'AddMemberScreen',
+              path: 'addMemberScreen',
+              builder: (context, params) => AddMemberScreenWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

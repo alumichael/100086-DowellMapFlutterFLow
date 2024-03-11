@@ -23,3 +23,5 @@ export '/members_detail_screen/members_detail_screen_widget.dart'
     show MembersDetailScreenWidget;
 export '/members_selection_screen/members_selection_screen_widget.dart'
     show MembersSelectionScreenWidget;
+export '/add_member_screen/add_member_screen_widget.dart'
+    show AddMemberScreenWidget;

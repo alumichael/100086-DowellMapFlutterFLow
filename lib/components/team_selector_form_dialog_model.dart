@@ -16,28 +16,6 @@ class TeamSelectorFormDialogModel
     extends FlutterFlowModel<TeamSelectorFormDialogWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for userNameTextField widget.
-  FocusNode? userNameTextFieldFocusNode;
-  TextEditingController? userNameTextFieldController;
-  String? Function(BuildContext, String?)? userNameTextFieldControllerValidator;
-  // State field(s) for fullNameTextField widget.
-  FocusNode? fullNameTextFieldFocusNode;
-  TextEditingController? fullNameTextFieldController;
-  String? Function(BuildContext, String?)? fullNameTextFieldControllerValidator;
-  // State field(s) for emailTextField widget.
-  FocusNode? emailTextFieldFocusNode;
-  TextEditingController? emailTextFieldController;
-  String? Function(BuildContext, String?)? emailTextFieldControllerValidator;
-  // State field(s) for companyNameTextField widget.
-  FocusNode? companyNameTextFieldFocusNode;
-  TextEditingController? companyNameTextFieldController;
-  String? Function(BuildContext, String?)?
-      companyNameTextFieldControllerValidator;
-  // State field(s) for countryNameTextField widget.
-  FocusNode? countryNameTextFieldFocusNode;
-  TextEditingController? countryNameTextFieldController;
-  String? Function(BuildContext, String?)?
-      countryNameTextFieldControllerValidator;
   // State field(s) for DropDown widget.
   String? dropDownValue1;
   FormFieldController<String>? dropDownValueController1;
@@ -53,22 +31,7 @@ class TeamSelectorFormDialogModel
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    userNameTextFieldFocusNode?.dispose();
-    userNameTextFieldController?.dispose();
-
-    fullNameTextFieldFocusNode?.dispose();
-    fullNameTextFieldController?.dispose();
-
-    emailTextFieldFocusNode?.dispose();
-    emailTextFieldController?.dispose();
-
-    companyNameTextFieldFocusNode?.dispose();
-    companyNameTextFieldController?.dispose();
-
-    countryNameTextFieldFocusNode?.dispose();
-    countryNameTextFieldController?.dispose();
-  }
+  void dispose() {}
 
   /// Action blocks are added here.
 

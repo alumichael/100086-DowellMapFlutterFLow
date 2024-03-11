@@ -35,21 +35,6 @@ class _TeamSelectorFormDialogWidgetState
     super.initState();
     _model = createModel(context, () => TeamSelectorFormDialogModel());
 
-    _model.userNameTextFieldController ??= TextEditingController();
-    _model.userNameTextFieldFocusNode ??= FocusNode();
-
-    _model.fullNameTextFieldController ??= TextEditingController();
-    _model.fullNameTextFieldFocusNode ??= FocusNode();
-
-    _model.emailTextFieldController ??= TextEditingController();
-    _model.emailTextFieldFocusNode ??= FocusNode();
-
-    _model.companyNameTextFieldController ??= TextEditingController();
-    _model.companyNameTextFieldFocusNode ??= FocusNode();
-
-    _model.countryNameTextFieldController ??= TextEditingController();
-    _model.countryNameTextFieldFocusNode ??= FocusNode();
-
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -94,351 +79,6 @@ class _TeamSelectorFormDialogWidgetState
                             fontWeight: FontWeight.bold,
                           ),
                     ),
-                  ),
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Align(
-                      alignment: AlignmentDirectional(-1.0, 0.0),
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            'hueqkoo6' /* Username */,
-                          ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
-                        ),
-                      ),
-                    ),
-                    TextFormField(
-                      controller: _model.userNameTextFieldController,
-                      focusNode: _model.userNameTextFieldFocusNode,
-                      autofocus: true,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                        hintText: FFLocalizations.of(context).getText(
-                          'fui4c037' /* Enter your username */,
-                        ),
-                        hintStyle:
-                            FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Poppins',
-                                  color: FlutterFlowTheme.of(context).accent2,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).accent2,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                      validator: _model.userNameTextFieldControllerValidator
-                          .asValidator(context),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 4.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'gnufuc7n' /* Fullname */,
-                            ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ),
-                      ),
-                      TextFormField(
-                        controller: _model.fullNameTextFieldController,
-                        focusNode: _model.fullNameTextFieldFocusNode,
-                        autofocus: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                          hintText: FFLocalizations.of(context).getText(
-                            'zpy7stfy' /* Enter your full name */,
-                          ),
-                          hintStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context).accent2,
-                                  ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).accent2,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                        validator: _model.fullNameTextFieldControllerValidator
-                            .asValidator(context),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 4.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'yk88xltb' /* Email */,
-                            ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ),
-                      ),
-                      TextFormField(
-                        controller: _model.emailTextFieldController,
-                        focusNode: _model.emailTextFieldFocusNode,
-                        autofocus: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                          hintText: FFLocalizations.of(context).getText(
-                            'dan4hcra' /* Enter your email address */,
-                          ),
-                          hintStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context).accent2,
-                                  ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).accent2,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                        validator: _model.emailTextFieldControllerValidator
-                            .asValidator(context),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 4.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'goe59pd4' /* Company name */,
-                            ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ),
-                      ),
-                      TextFormField(
-                        controller: _model.companyNameTextFieldController,
-                        focusNode: _model.companyNameTextFieldFocusNode,
-                        autofocus: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                          hintText: FFLocalizations.of(context).getText(
-                            'i8bif7d6' /* Enter your company name */,
-                          ),
-                          hintStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context).accent2,
-                                  ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).accent2,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                        validator: _model
-                            .companyNameTextFieldControllerValidator
-                            .asValidator(context),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 4.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'qvy7ojz6' /* Country */,
-                            ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ),
-                      ),
-                      TextFormField(
-                        controller: _model.countryNameTextFieldController,
-                        focusNode: _model.countryNameTextFieldFocusNode,
-                        autofocus: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                          hintText: FFLocalizations.of(context).getText(
-                            'd751o99y' /* Enter your country */,
-                          ),
-                          hintStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context).accent2,
-                                  ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).accent2,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                        validator: _model
-                            .countryNameTextFieldControllerValidator
-                            .asValidator(context),
-                      ),
-                    ],
                   ),
                 ),
                 Padding(
@@ -595,34 +235,28 @@ class _TeamSelectorFormDialogWidgetState
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                   child: FFButtonWidget(
-                    onPressed: ((_model.userNameTextFieldController.text ==
-                                    null ||
-                                _model.userNameTextFieldController.text ==
-                                    '') ||
-                            (_model.fullNameTextFieldController.text == null ||
-                                _model.fullNameTextFieldController.text ==
-                                    '') ||
-                            (_model.emailTextFieldController.text == null ||
-                                _model.emailTextFieldController.text == '') ||
-                            (_model.companyNameTextFieldController.text ==
-                                    null ||
-                                _model.companyNameTextFieldController.text ==
-                                    '') ||
-                            (_model.countryNameTextFieldController.text ==
-                                    null ||
-                                _model.countryNameTextFieldController.text ==
-                                    ''))
+                    onPressed: (_model.dropDownValue1 == null ||
+                            _model.dropDownValue1 == '')
                         ? null
                         : () async {
                             setState(() {
-                              FFAppState().guestName =
-                                  _model.fullNameTextFieldController.text;
-                              FFAppState().guestEmail =
-                                  _model.emailTextFieldController.text;
+                              FFAppState().guestName = '${getJsonField(
+                                FFAppState().response,
+                                r'''$.userinfo.first_name''',
+                              ).toString()} ${getJsonField(
+                                FFAppState().response,
+                                r'''$.userinfo.last_name''',
+                              ).toString()}';
+                              FFAppState().guestEmail = getJsonField(
+                                FFAppState().response,
+                                r'''$.userinfo.email''',
+                              ).toString();
                               FFAppState().guestCompanyName =
-                                  _model.companyNameTextFieldController.text;
-                              FFAppState().guestCountry =
-                                  _model.countryNameTextFieldController.text;
+                                  _model.dropDownValue1!;
+                              FFAppState().guestCountry = getJsonField(
+                                FFAppState().response,
+                                r'''$.userinfo.country''',
+                              ).toString();
                               FFAppState().guestUserId = getJsonField(
                                 FFAppState().response,
                                 r'''$.userinfo.userID''',
@@ -633,26 +267,29 @@ class _TeamSelectorFormDialogWidgetState
                                       ? 'No team'
                                       : _model.dropDownValue2!;
                               FFAppState().guestGenInfo = GuestInfoStruct(
-                                name: _model.userNameTextFieldController.text,
-                                email: _model.emailTextFieldController.text,
+                                name: '${getJsonField(
+                                  FFAppState().response,
+                                  r'''$.userinfo.first_name''',
+                                ).toString()} ${getJsonField(
+                                  FFAppState().response,
+                                  r'''$.userinfo.last_name''',
+                                ).toString()}',
+                                email: getJsonField(
+                                  FFAppState().response,
+                                  r'''$.userinfo.email''',
+                                ).toString(),
                                 userId: getJsonField(
                                   FFAppState().response,
                                   r'''$.userinfo.userID''',
                                 ).toString(),
-                                country:
-                                    _model.countryNameTextFieldController.text,
-                                companyName:
-                                    _model.countryNameTextFieldController.text,
+                                country: getJsonField(
+                                  FFAppState().response,
+                                  r'''$.userinfo.country''',
+                                ).toString(),
+                                companyName: _model.dropDownValue1,
                                 companyId: FFAppState().guestCompanyId,
                                 orgByIdTeams: FFAppState().orgByIdTeams,
                               );
-                            });
-                            setState(() {
-                              _model.userNameTextFieldController?.clear();
-                              _model.fullNameTextFieldController?.clear();
-                              _model.emailTextFieldController?.clear();
-                              _model.companyNameTextFieldController?.clear();
-                              _model.countryNameTextFieldController?.clear();
                             });
                             Navigator.pop(context);
 

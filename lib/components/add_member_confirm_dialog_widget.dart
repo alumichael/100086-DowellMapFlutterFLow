@@ -159,6 +159,9 @@ class _AddMemberConfirmDialogWidgetState
                             await actions.transformToInternalTeamItem(
                               widget.itemInfo!,
                             );
+
+                            context.goNamed('MembersScreen');
+
                             _model.singleMailresponse =
                                 await SendEmailToSingleUserCall.call(
                               toname: '${getJsonField(
@@ -182,7 +185,6 @@ class _AddMemberConfirmDialogWidgetState
                             );
                             if ((_model.singleMailresponse?.succeeded ??
                                 true)) {
-                              context.goNamed('MembersScreen');
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -198,8 +200,6 @@ class _AddMemberConfirmDialogWidgetState
                                       FlutterFlowTheme.of(context).primaryText,
                                 ),
                               );
-
-                              context.goNamed('MembersScreen');
                             }
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
