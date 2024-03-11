@@ -999,6 +999,35 @@ class FFAppState extends ChangeNotifier {
     _isOwner = _value;
     prefs.setBool('ff_isOwner', _value);
   }
+
+  List<dynamic> _emptyList = [];
+  List<dynamic> get emptyList => _emptyList;
+  set emptyList(List<dynamic> _value) {
+    _emptyList = _value;
+  }
+
+  void addToEmptyList(dynamic _value) {
+    _emptyList.add(_value);
+  }
+
+  void removeFromEmptyList(dynamic _value) {
+    _emptyList.remove(_value);
+  }
+
+  void removeAtIndexFromEmptyList(int _index) {
+    _emptyList.removeAt(_index);
+  }
+
+  void updateEmptyListAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _emptyList[_index] = updateFn(_emptyList[_index]);
+  }
+
+  void insertAtIndexInEmptyList(int _index, dynamic _value) {
+    _emptyList.insert(_index, _value);
+  }
 }
 
 void _safeInit(Function() initializeField) {
