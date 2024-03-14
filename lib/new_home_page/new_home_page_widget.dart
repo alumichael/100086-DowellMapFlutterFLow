@@ -545,7 +545,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                 ),
                               ),
                             ),
-                            if (FFAppState().isAuthUser)
+                            if (FFAppState().isOwner)
                               Builder(
                                 builder: (context) => Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -647,7 +647,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                   ),
                                 ),
                               ),
-                            if (FFAppState().isAuthUser)
+                            if (FFAppState().isOwner == true)
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 25.0, 0.0),
@@ -697,7 +697,8 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                   ),
                                 ),
                               ),
-                            if (!FFAppState().isAuthUser)
+                            if (!FFAppState().isAuthUser &&
+                                !FFAppState().isOwner)
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
@@ -955,7 +956,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                   ],
                                 ),
                               ),
-                            if (FFAppState().isAuthUser)
+                            if (FFAppState().isOwner == true)
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 0.0),
@@ -1257,8 +1258,9 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                 'School',
                               ),
                               clearmap: FFAppState().clearmap,
-                              iOSGoogleMapsApiKey: FFAppState().iosAPIKey,
-                              androidGoogleMapsApiKey: FFAppState().androidKey,
+                              iOSGoogleMapsApiKey: FFAppState().iosGoogleMapKey,
+                              androidGoogleMapsApiKey:
+                                  FFAppState().androidGoogleMapKey,
                               webGoogleMapsApiKey: FFAppState().webGoogleApiKey,
                               origin:
                                   _model.radioButtonValue == 'Current Location'
@@ -2242,10 +2244,10 @@ Between */
                                                               key: () {
                                                                 if (isAndroid) {
                                                                   return FFAppState()
-                                                                      .androidKey;
+                                                                      .androidGoogleMapKey;
                                                                 } else if (isiOS) {
                                                                   return FFAppState()
-                                                                      .iosAPIKey;
+                                                                      .iosGoogleMapKey;
                                                                 } else {
                                                                   return FFAppState()
                                                                       .webGoogleApiKey;

@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.1.6+34
+version: 1.1.7+35
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -79,7 +79,7 @@ dependencies:
   google_sign_in_ios: 5.6.4
   google_sign_in_platform_interface: 2.4.2
   google_sign_in_web: 0.12.1
-  http: ^0.13.5
+  http: ^0.13.4
   intl: 0.18.1
   json_path: 0.6.2
   loading_indicator: ^3.1.1
@@ -111,10 +111,10 @@ dependencies:
   sqflite: 2.2.6
   stream_transform: 2.1.0
   timeago: 3.2.2
-  url_launcher: 6.1.10
-  url_launcher_android: 6.0.27
-  url_launcher_ios: 6.1.4
-  url_launcher_platform_interface: 2.1.2
+  url_launcher: 6.2.5
+  url_launcher_android: 6.3.0
+  url_launcher_ios: 6.2.5
+  url_launcher_platform_interface: 2.3.2
   uuid: ^4.0.0
   webview_flutter: 4.4.4
   webview_flutter_android: 3.13.2

@@ -228,6 +228,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                                   ?.jsonBody ??
                                               ''),
                                         )!),
+                                    product: 'maps',
                                   );
                                   if ((_model.getQRCodeResponse?.succeeded ??
                                       true)) {

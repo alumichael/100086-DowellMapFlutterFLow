@@ -163,13 +163,11 @@ class _MyMapWidget extends State<MyMapWidget> {
       if (FFAppState().allowLocationTracking == true &&
           FFAppState().isAuthUser == false &&
           FFAppState().publicScannedValue.isNotEmpty) {
-        print("::: are inside the socket adding flow1:::");
         timer = Timer.periodic(Duration(seconds: 2), (timer) {
           addSocketMessage();
         });
         dataLogTimer = Timer.periodic(Duration(minutes: 5), (timer) {
-          print("::: are inside the socket adding flow3:::");
-          widget.teamTrackingAction();
+          // widget.teamTrackingAction();
         });
         FFAppState().update(() {
           FFAppState().timerStarted = true;
@@ -179,13 +177,11 @@ class _MyMapWidget extends State<MyMapWidget> {
       if (FFAppState().allowLocationTracking == true &&
           FFAppState().isAuthUser == true &&
           FFAppState().isOwner == false) {
-        print("::: are inside the socket adding flow2:::");
         timer = Timer.periodic(Duration(seconds: 2), (timer) {
           addSocketMessage();
         });
         dataLogTimer = Timer.periodic(Duration(minutes: 1), (timer) {
-          print("::: are inside the socket adding flow3:::");
-          widget.teamTrackingAction();
+          // widget.teamTrackingAction();
         });
 
         FFAppState().update(() {
@@ -970,7 +966,6 @@ class _MyMapWidget extends State<MyMapWidget> {
 // }
 
     if (FFAppState().isAuthUser == true) {
-      print("::::it is from auth1 :: ${FFAppState().guestGenInfo}");
       jsonObject = {
         "username": "${FFAppState().guestGenInfo.name}",
         "workspace_id": "${FFAppState().guestGenInfo.companyId}",
@@ -983,7 +978,6 @@ class _MyMapWidget extends State<MyMapWidget> {
         "team_list": FFAppState().guestGenInfo.orgByIdTeams,
       };
     } else {
-      print("::::it is from not auth");
       jsonObject = {
         "username": "${userEmail}",
         "workspace_id": "${companyId}",
@@ -1049,13 +1043,12 @@ class _MyMapWidget extends State<MyMapWidget> {
       print(":::: it enter the if statement of true");
       try {
         dynamic body = getMySocketMessage();
-        print("::::: added data :: $body");
 
         FFAppState().trackingData.add(body);
 
         socket.emit("message", json.encode(body));
 
-        print("::::: new saved log ::: ${FFAppState().trackingData}");
+        // print("::::: new saved log ::: ${FFAppState().trackingData}");
       } catch (e) {
         print("Error:: $e");
       }

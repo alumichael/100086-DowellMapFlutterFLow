@@ -509,9 +509,9 @@ Between */
                             radius: int.tryParse(_model.textController2.text),
                             key: () {
                               if (isAndroid) {
-                                return FFAppState().androidKey;
+                                return FFAppState().androidGoogleMapKey;
                               } else if (isiOS) {
-                                return FFAppState().iosAPIKey;
+                                return FFAppState().iosGoogleMapKey;
                               } else {
                                 return FFAppState().webGoogleApiKey;
                               }

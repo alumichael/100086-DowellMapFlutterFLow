@@ -121,12 +121,6 @@ class FFAppState extends ChangeNotifier {
     _currentLocation = _value;
   }
 
-  String _iosAPIKey = 'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk';
-  String get iosAPIKey => _iosAPIKey;
-  set iosAPIKey(String _value) {
-    _iosAPIKey = _value;
-  }
-
   String _usernametype = 'User Name';
   String get usernametype => _usernametype;
   set usernametype(String _value) {
@@ -137,12 +131,6 @@ class FFAppState extends ChangeNotifier {
   String get myIpAddress => _myIpAddress;
   set myIpAddress(String _value) {
     _myIpAddress = _value;
-  }
-
-  String _androidKey = 'AIzaSyA_i4bbFV0iKxU_nUI7L3p0--r6UR89du4';
-  String get androidKey => _androidKey;
-  set androidKey(String _value) {
-    _androidKey = _value;
   }
 
   String _selectedLocation = '';
@@ -1027,6 +1015,18 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInEmptyList(int _index, dynamic _value) {
     _emptyList.insert(_index, _value);
+  }
+
+  String _androidGoogleMapKey = 'AIzaSyA_i4bbFV0iKxU_nUI7L3p0--r6UR89du4';
+  String get androidGoogleMapKey => _androidGoogleMapKey;
+  set androidGoogleMapKey(String _value) {
+    _androidGoogleMapKey = _value;
+  }
+
+  String _iosGoogleMapKey = 'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk';
+  String get iosGoogleMapKey => _iosGoogleMapKey;
+  set iosGoogleMapKey(String _value) {
+    _iosGoogleMapKey = _value;
   }
 }
 
