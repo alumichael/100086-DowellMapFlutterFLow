@@ -189,6 +189,13 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                                     .primaryText,
                                           ),
                                         );
+                                        setState(() {
+                                          FFAppState().allowLocationTracking =
+                                              true;
+                                          FFAppState()
+                                                  .isFirstLaunchAfterInstall =
+                                              false;
+                                        });
                                       }
                                     } else {
                                       ScaffoldMessenger.of(context)

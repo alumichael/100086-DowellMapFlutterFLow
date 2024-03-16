@@ -167,7 +167,7 @@ class _MyMapWidget extends State<MyMapWidget> {
           addSocketMessage();
         });
         dataLogTimer = Timer.periodic(Duration(minutes: 5), (timer) {
-          // widget.teamTrackingAction();
+          widget.teamTrackingAction();
         });
         FFAppState().update(() {
           FFAppState().timerStarted = true;
@@ -181,7 +181,7 @@ class _MyMapWidget extends State<MyMapWidget> {
           addSocketMessage();
         });
         dataLogTimer = Timer.periodic(Duration(minutes: 1), (timer) {
-          // widget.teamTrackingAction();
+          widget.teamTrackingAction();
         });
 
         FFAppState().update(() {

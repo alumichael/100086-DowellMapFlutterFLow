@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/add_group_dialog_widget.dart';
 import '/components/group_list_dialog_component_widget.dart';
 import '/components/image_widget.dart';

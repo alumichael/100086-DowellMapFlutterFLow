@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/add_group_dialog_widget.dart';
 import '/components/group_list_dialog_component_widget.dart';
 import '/components/image_widget.dart';
@@ -198,6 +199,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
         _model.userMemberType = await actions.getUserMemberType();
         if (_model.userMemberType != 'not a member') {
           if (_model.userMemberType != 'owner') {
+            FFAppState().isOwner = false;
             await showDialog(
               context: context,
               builder: (dialogContext) {
@@ -545,7 +547,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                 ),
                               ),
                             ),
-                            if (FFAppState().isOwner)
+                            if (FFAppState().isAuthUser)
                               Builder(
                                 builder: (context) => Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -647,7 +649,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                   ),
                                 ),
                               ),
-                            if (FFAppState().isOwner == true)
+                            if (FFAppState().isOwner)
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 25.0, 0.0),
@@ -697,8 +699,8 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                   ),
                                 ),
                               ),
-                            if (!FFAppState().isAuthUser &&
-                                !FFAppState().isOwner)
+                            if ((FFAppState().isAuthUser == false) &&
+                                (FFAppState().isOwner == false))
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
@@ -956,7 +958,8 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                   ],
                                 ),
                               ),
-                            if (FFAppState().isOwner == true)
+                            if ((FFAppState().isOwner == true) &&
+                                FFAppState().isAuthUser)
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 0.0),
@@ -1176,6 +1179,10 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                         FFAppState().response = null;
                                         FFAppState().username = '';
                                         FFAppState().publicScannedValue = '';
+                                        FFAppState().isOwner = false;
+                                        FFAppState().guestGenInfo =
+                                            GuestInfoStruct();
+                                        FFAppState().clearmap = true;
                                       });
                                     } else {
                                       Navigator.pop(context);
