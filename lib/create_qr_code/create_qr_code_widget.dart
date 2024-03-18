@@ -112,130 +112,50 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Flexible(
-                            flex: 1,
-                            child: Text(
-                              valueOrDefault<String>(
-                                GenerateQRcodeCall.imageUrl(
-                                  (_model.getQRCodeResponse?.jsonBody ?? ''),
-                                ),
-                                '- QR LInk -',
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16.0,
-                                  ),
-                            ),
-                          ),
-                          if ((_model.getQRCodeResponse?.succeeded ?? true))
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 0.0, 0.0, 0.0),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  await Clipboard.setData(ClipboardData(
-                                      text: GenerateQRcodeCall.imageUrl(
-                                    (_model.getQRCodeResponse?.jsonBody ?? ''),
-                                  )!));
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Qr image link copied !',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                        ),
-                                      ),
-                                      duration: Duration(milliseconds: 4000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondary,
-                                    ),
-                                  );
-                                },
-                                child: Icon(
-                                  Icons.content_copy,
-                                  color: FlutterFlowTheme.of(context).info,
-                                  size: 24.0,
-                                ),
-                              ),
-                            ),
-                        ],
-                      ),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
+                    Flexible(
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 80.0, 16.0, 0.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            _model.getUserInfoResponse =
-                                await GetUserInfoCall.call(
-                              sessionId: FFAppState().sessionId,
-                            );
-                            if ((_model.getUserInfoResponse?.succeeded ??
-                                true)) {
-                              _model.getPublicUseIdResponse =
-                                  await GetPublicLinksCall.call(
-                                orgId: GetUserInfoCall.clientid(
-                                  (_model.getUserInfoResponse?.jsonBody ?? ''),
+                            24.0, 16.0, 24.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Flexible(
+                              flex: 1,
+                              child: Text(
+                                valueOrDefault<String>(
+                                  GenerateQRcodeCall.imageUrl(
+                                    (_model.getQRCodeResponse?.jsonBody ?? ''),
+                                  ),
+                                  'QR LInk ',
                                 ),
-                                product: 'Living Lab Maps',
-                              );
-                              if ((_model.getPublicUseIdResponse?.succeeded ??
-                                  true)) {
-                                if (GetPublicLinksCall.usernameList(
-                                          (_model.getPublicUseIdResponse
-                                                  ?.jsonBody ??
-                                              ''),
-                                        ) !=
-                                        null &&
-                                    (GetPublicLinksCall.usernameList(
-                                      (_model.getPublicUseIdResponse
-                                              ?.jsonBody ??
-                                          ''),
-                                    ))!
-                                        .isNotEmpty) {
-                                  _model.getQRCodeResponse =
-                                      await GenerateQRcodeCall.call(
-                                    cliendId: GetUserInfoCall.clientid(
-                                      (_model.getUserInfoResponse?.jsonBody ??
-                                          ''),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 16.0,
                                     ),
-                                    linksJson: functions.payloadgen(
-                                        GetPublicLinksCall.usernameList(
-                                          (_model.getPublicUseIdResponse
-                                                  ?.jsonBody ??
-                                              ''),
-                                        )!
-                                            .toList(),
-                                        GetUserInfoCall.clientid(
-                                          (_model.getUserInfoResponse
-                                                  ?.jsonBody ??
-                                              ''),
-                                        )!),
-                                    product: 'maps',
-                                  );
-                                  if ((_model.getQRCodeResponse?.succeeded ??
-                                      true)) {
+                              ),
+                            ),
+                            if ((_model.getQRCodeResponse?.succeeded ?? true))
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    8.0, 0.0, 0.0, 0.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    await Clipboard.setData(ClipboardData(
+                                        text: GenerateQRcodeCall.imageUrl(
+                                      (_model.getQRCodeResponse?.jsonBody ??
+                                          ''),
+                                    )!));
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          'QR generated successfully!',
+                                          'Qr image link copied !',
                                           style: TextStyle(
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
@@ -247,14 +167,181 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                                 .secondary,
                                       ),
                                     );
+                                  },
+                                  child: Icon(
+                                    Icons.content_copy,
+                                    color: FlutterFlowTheme.of(context).info,
+                                    size: 24.0,
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 1.0),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 80.0, 16.0, 0.0),
+                        child: FFButtonWidget(
+                          onPressed: (valueOrDefault<String>(
+                                        GenerateQRcodeCall.imageUrl(
+                                          (_model.getQRCodeResponse?.jsonBody ??
+                                              ''),
+                                        ),
+                                        'QR LInk ',
+                                      ) !=
+                                      null &&
+                                  valueOrDefault<String>(
+                                        GenerateQRcodeCall.imageUrl(
+                                          (_model.getQRCodeResponse?.jsonBody ??
+                                              ''),
+                                        ),
+                                        'QR LInk ',
+                                      ) !=
+                                      '')
+                              ? null
+                              : () async {
+                                  _model.getUserInfoResponse =
+                                      await GetUserInfoCall.call(
+                                    sessionId: FFAppState().sessionId,
+                                  );
+                                  if ((_model.getUserInfoResponse?.succeeded ??
+                                      true)) {
+                                    _model.getPublicUseIdResponse =
+                                        await GetPublicLinksCall.call(
+                                      orgId: GetUserInfoCall.clientid(
+                                        (_model.getUserInfoResponse?.jsonBody ??
+                                            ''),
+                                      ),
+                                      product: 'Living Lab Maps',
+                                    );
+                                    if ((_model.getPublicUseIdResponse
+                                            ?.succeeded ??
+                                        true)) {
+                                      if (GetPublicLinksCall.usernameList(
+                                                (_model.getPublicUseIdResponse
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              ) !=
+                                              null &&
+                                          (GetPublicLinksCall.usernameList(
+                                            (_model.getPublicUseIdResponse
+                                                    ?.jsonBody ??
+                                                ''),
+                                          ))!
+                                              .isNotEmpty) {
+                                        _model.getQRCodeResponse =
+                                            await GenerateQRcodeCall.call(
+                                          cliendId: GetUserInfoCall.clientid(
+                                            (_model.getUserInfoResponse
+                                                    ?.jsonBody ??
+                                                ''),
+                                          ),
+                                          linksJson: functions.payloadgen(
+                                              GetPublicLinksCall.usernameList(
+                                                (_model.getPublicUseIdResponse
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )!
+                                                  .toList(),
+                                              GetUserInfoCall.clientid(
+                                                (_model.getUserInfoResponse
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )!),
+                                          product: 'maps',
+                                        );
+                                        if ((_model
+                                                .getQRCodeResponse?.succeeded ??
+                                            true)) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'QR generated successfully!',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Unable to get generate QR code.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                          );
+                                        }
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'No public link created',
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryText,
+                                          ),
+                                        );
+                                      }
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Unable to get public users.',
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBackground,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                        ),
+                                      );
+                                    }
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          'Unable to get generate QR code.',
+                                          'Unable to get user information.',
                                           style: TextStyle(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
+                                                .primaryBackground,
                                           ),
                                         ),
                                         duration: Duration(milliseconds: 4000),
@@ -264,59 +351,9 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                       ),
                                     );
                                   }
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'No public link created',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                        ),
-                                      ),
-                                      duration: Duration(milliseconds: 4000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                    ),
-                                  );
-                                }
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Unable to get public users.',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                      ),
-                                    ),
-                                    duration: Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                  ),
-                                );
-                              }
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Unable to get user information.',
-                                    style: TextStyle(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                    ),
-                                  ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                              );
-                            }
 
-                            setState(() {});
-                          },
+                                  setState(() {});
+                                },
                           text: FFLocalizations.of(context).getText(
                             '3rolpja5' /* Generate */,
                           ),
