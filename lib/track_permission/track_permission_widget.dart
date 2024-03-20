@@ -314,6 +314,10 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                                     .primaryText,
                                           ),
                                         );
+                                        setState(() {
+                                          FFAppState().allowLocationTracking =
+                                              true;
+                                        });
                                       }
                                     } else {
                                       ScaffoldMessenger.of(context)

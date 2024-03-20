@@ -1180,6 +1180,8 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                         FFAppState().guestGenInfo =
                                             GuestInfoStruct();
                                         FFAppState().clearmap = true;
+                                        FFAppState().allowLocationTracking =
+                                            false;
                                       });
                                     } else {
                                       Navigator.pop(context);

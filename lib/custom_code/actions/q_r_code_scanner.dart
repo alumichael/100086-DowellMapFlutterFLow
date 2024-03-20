@@ -36,6 +36,8 @@ Future qRCodeScanner() async {
     //Saving the data into the appState
     FFAppState().update(() {
       FFAppState().linkId = jsonResponse["response"]["link_id"];
+      FFAppState().publicScannedValue =
+          userIdSession.last.replaceFirst("workspaceid=", "");
       FFAppState().guestCompanyId =
           userIdSession.last.replaceFirst("workspaceid=", "");
       FFAppState().guestUserId =
