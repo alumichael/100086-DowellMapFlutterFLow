@@ -1232,15 +1232,9 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                           setState(() =>
                                               _model.checkboxValue = newValue!);
                                           if (newValue!) {
-                                            setState(() {
-                                              FFAppState().enableTracking =
-                                                  true;
-                                            });
+                                            setState(() {});
                                           } else {
-                                            setState(() {
-                                              FFAppState().enableTracking =
-                                                  false;
-                                            });
+                                            setState(() {});
                                           }
                                         },
                                         activeColor:

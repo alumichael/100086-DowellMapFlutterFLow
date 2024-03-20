@@ -90,8 +90,6 @@ class NewHomePageModel extends FlutterFlowModel<NewHomePageWidget> {
   List<LatLng>? dblocationCord;
   // Stores action output result for [Custom Action - getDbPlaceName] action in searchButton widget.
   List<String>? dbPlacename;
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue;
 
   /// Initialization and disposal methods.
 

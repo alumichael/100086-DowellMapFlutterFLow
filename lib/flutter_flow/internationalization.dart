@@ -529,12 +529,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Grupo',
       'fr': 'Groupe',
     },
-    'mhegrjuy': {
-      'en': 'Enable Tracking',
-      'de': '',
-      'es': '',
-      'fr': '',
-    },
     'in74qj5s': {
       'en': 'Home',
       'de': 'Heim',

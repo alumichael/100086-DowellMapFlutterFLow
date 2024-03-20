@@ -455,12 +455,6 @@ class FFAppState extends ChangeNotifier {
     _isGettingDroupLocations = _value;
   }
 
-  bool _enableTracking = true;
-  bool get enableTracking => _enableTracking;
-  set enableTracking(bool _value) {
-    _enableTracking = _value;
-  }
-
   bool _showTrackingToggler = false;
   bool get showTrackingToggler => _showTrackingToggler;
   set showTrackingToggler(bool _value) {

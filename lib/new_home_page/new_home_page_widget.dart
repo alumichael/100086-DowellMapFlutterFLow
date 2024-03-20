@@ -1990,9 +1990,6 @@ Between */
                                                                     .showTrackingToggler =
                                                                 false;
                                                             FFAppState()
-                                                                    .enableTracking =
-                                                                false;
-                                                            FFAppState()
                                                                     .clearmap =
                                                                 true;
                                                           });
@@ -2934,125 +2931,6 @@ Between */
                             ),
                           ),
                         ),
-                        if (true == false)
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                21.0, 140.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                if (FFAppState().showTrackingToggler)
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Theme(
-                                        data: ThemeData(
-                                          checkboxTheme: CheckboxThemeData(
-                                            visualDensity:
-                                                VisualDensity.compact,
-                                            materialTapTargetSize:
-                                                MaterialTapTargetSize
-                                                    .shrinkWrap,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(4.0),
-                                            ),
-                                          ),
-                                          unselectedWidgetColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryText,
-                                        ),
-                                        child: Checkbox(
-                                          value: _model.checkboxValue ??= false,
-                                          onChanged: (newValue) async {
-                                            setState(() => _model
-                                                .checkboxValue = newValue!);
-                                            if (newValue!) {
-                                              setState(() {
-                                                FFAppState().enableTracking =
-                                                    true;
-                                              });
-                                            } else {
-                                              setState(() {
-                                                FFAppState().enableTracking =
-                                                    false;
-                                              });
-                                            }
-                                          },
-                                          activeColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .success,
-                                          checkColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .white,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 0.0, 0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'mhegrjuy' /* Enable Tracking */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                if (FFAppState().isDestinationSelected &&
-                                    FFAppState().showTrackingToggler)
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5.0, 0.0, 0.0, 0.0),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        setState(() {
-                                          FFAppState().showTrackingToggler =
-                                              false;
-                                        });
-                                      },
-                                      child: Icon(
-                                        Icons.keyboard_double_arrow_left,
-                                        color: FlutterFlowTheme.of(context)
-                                            .accent1,
-                                        size: 24.0,
-                                      ),
-                                    ),
-                                  ),
-                                if (FFAppState().isDestinationSelected &&
-                                    !FFAppState().showTrackingToggler)
-                                  InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      setState(() {
-                                        FFAppState().showTrackingToggler = true;
-                                      });
-                                    },
-                                    child: Icon(
-                                      Icons.arrow_forward_ios_outlined,
-                                      color:
-                                          FlutterFlowTheme.of(context).accent1,
-                                      size: 20.0,
-                                    ),
-                                  ),
-                              ],
-                            ),
-                          ),
                       ],
                     ),
                   ),

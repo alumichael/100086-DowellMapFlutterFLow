@@ -164,19 +164,26 @@ class _MyMapWidget extends State<MyMapWidget> {
   Widget build(BuildContext context) {
     //from socket
     if (FFAppState().timerStarted == false) {
+      print(":::::::::: Tracking state 1");
       if (FFAppState().allowLocationTracking == true) {
+        print(":::::::::: Tracking state 2");
         try {
+          print(":::::::::: Tracking state 3");
           activateSocket();
         } on PlatformException catch (err) {
+          print(":::::::::: Tracking state 4");
           setState(() {
             showToast(message: err.code, isError: true);
           });
         }
       }
+      print(":::::::::: Tracking state 5");
       if (FFAppState().allowLocationTracking == true &&
           FFAppState().isAuthUser == false &&
           FFAppState().publicScannedValue.isNotEmpty) {
+        print(":::::::::: Tracking state 6");
         try {
+          print(":::::::::: Tracking state 7");
           timer = Timer.periodic(Duration(seconds: 2), (timer) {
             addSocketMessage();
           });
@@ -186,33 +193,50 @@ class _MyMapWidget extends State<MyMapWidget> {
           FFAppState().update(() {
             FFAppState().timerStarted = true;
           });
+          print(":::::::::: Tracking state 8");
         } on PlatformException catch (err) {
+          print(":::::::::: Tracking state 9");
           setState(() {
             showToast(message: err.code, isError: true);
           });
         }
       }
-
+      print(":::::::::: Tracking state 10");
       if (FFAppState().allowLocationTracking == true &&
           FFAppState().isAuthUser == true &&
           FFAppState().isOwner == false) {
+        print(":::::::::: Tracking state 11");
         try {
+          print(":::::::::: Tracking state 12");
           timer = Timer.periodic(Duration(seconds: 2), (timer) {
+            print(":::::::::: Tracking state 13");
             addSocketMessage();
           });
           dataLogTimer = Timer.periodic(Duration(minutes: 5), (timer) {
+            print(":::::::::: Tracking state 14");
             widget.teamTrackingAction();
           });
-
+          print(":::::::::: Tracking state 15");
           FFAppState().update(() {
             FFAppState().timerStarted = true;
           });
+          print(":::::::::: Tracking state 16");
         } on PlatformException catch (err) {
+          print(":::::::::: Tracking state 17");
           setState(() {
             showToast(message: err.code, isError: true);
           });
         }
       }
+      print(":::::::::: Tracking state 18");
+    } else if (FFAppState().allowLocationTracking == false) {
+      print(":::::::::: Tracking state 19");
+      timer?.cancel();
+      dataLogTimer?.cancel();
+      FFAppState().update(() {
+        FFAppState().timerStarted = false;
+      });
+      print(":::::::::: Tracking state 20");
     }
     context.watch<FFAppState>();
     trackMe(); //from socket
