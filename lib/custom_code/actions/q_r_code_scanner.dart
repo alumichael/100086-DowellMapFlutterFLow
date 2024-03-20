@@ -29,18 +29,18 @@ Future qRCodeScanner() async {
 
     //Formating data now
     dynamic jsonResponse = jsonDecode(barcodeScanRes);
-    String link = jsonResponse["link"];
+    String link = jsonResponse["response"]["link"];
     List<String> splitedLink = link.split("?");
     List<String> userIdSession = splitedLink.last.split("&");
 
     //Saving the data into the appState
     FFAppState().update(() {
-      FFAppState().linkId = jsonResponse["link_id"];
+      FFAppState().linkId = jsonResponse["response"]["link_id"];
       FFAppState().guestCompanyId =
           userIdSession.last.replaceFirst("workspaceid=", "");
       FFAppState().guestUserId =
           userIdSession.first.replaceFirst("userid=", "");
-      FFAppState().isQrFinalized = jsonResponse["is_finalized"];
+      FFAppState().isQrFinalized = jsonResponse["response"]["is_finalized"];
     });
   } on PlatformException {
     scanResultString = 'Failed to get platform version.';
