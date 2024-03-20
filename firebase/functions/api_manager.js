@@ -1,5 +1,5 @@
 const axios = require("axios").default;
-const qs = require('qs');
+const qs = require("qs");
 
 async function _nearbyPlaceCall(context, ffVariables) {
   var query = ffVariables["query"];
@@ -8,8 +8,8 @@ async function _nearbyPlaceCall(context, ffVariables) {
   var key = ffVariables["key"];
 
   var url = `https://maps.googleapis.com/maps/api/place/textsearch/json`;
-  var headers = {"Access-Control-Allow-Origin": `*`,};
-  var params = {'query': query,'location': location,'radius': radius,'key': key,};
+  var headers = { "Access-Control-Allow-Origin": `*` };
+  var params = { query: query, location: location, radius: radius, key: key };
   var ffApiRequestBody = undefined;
 
   return makeApiRequest({
@@ -28,7 +28,7 @@ async function _directionCall(context, ffVariables) {
   var key = ffVariables["key"];
 
   var url = `https://maps.googleapis.com/maps/api/place/directions/json`;
-  var headers = {"Access-Control-Allow-Origin": `*`,};
+  var headers = { "Access-Control-Allow-Origin": `*` };
   var params = {};
   var ffApiRequestBody = undefined;
 
@@ -41,10 +41,8 @@ async function _directionCall(context, ffVariables) {
   });
 }
 async function _directionDetailsCall(context, ffVariables) {
-
-
   var url = `https://maps.googleapis.com/maps/api/place/details/json`;
-  var headers = {"Access-Control-Allow-Origin": `*`,};
+  var headers = { "Access-Control-Allow-Origin": `*` };
   var params = {};
   var ffApiRequestBody = undefined;
 
@@ -65,7 +63,7 @@ async function _createEventCall(context, ffVariables) {
   var location = ffVariables["location"];
 
   var url = `https://uxlivinglab.pythonanywhere.com/create_event`;
-  var headers = {"Access-Control-Allow-Origin": `*`,};
+  var headers = { "Access-Control-Allow-Origin": `*` };
   var params = {};
   var ffApiRequestBody = `
 {
@@ -98,11 +96,15 @@ async function _createEventCall(context, ffVariables) {
     url,
     headers,
     params,
-    body: createBody({ headers, params, body: ffApiRequestBody, bodyType: "JSON" }),
+    body: createBody({
+      headers,
+      params,
+      body: ffApiRequestBody,
+      bodyType: "JSON",
+    }),
     returnBody: true,
   });
 }
-
 
 /// Helper functions to route to the appropriate API Call.
 
@@ -111,10 +113,10 @@ async function makeApiCall(context, data) {
   var variables = data["variables"] || {};
 
   const callMap = {
-    "NearbyPlaceCall": _nearbyPlaceCall,
-    "DirectionCall": _directionCall,
-    "DirectionDetailsCall": _directionDetailsCall,
-    "CreateEventCall": _createEventCall,
+    NearbyPlaceCall: _nearbyPlaceCall,
+    DirectionCall: _directionCall,
+    DirectionDetailsCall: _directionDetailsCall,
+    CreateEventCall: _createEventCall,
   };
 
   if (!(callName in callMap)) {
