@@ -14,7 +14,7 @@ import 'dart:convert';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter/services.dart';
 
-Future<dynamic> qRCodeScanner() async {
+Future qRCodeScanner() async {
   // Add your function code here!
   dynamic barcodeScanRes;
   dynamic scanResultString;
@@ -26,9 +26,23 @@ Future<dynamic> qRCodeScanner() async {
     print("::::: the qrCode scanner is ::::: $scanResultString");
     barcodeScanRes =
         scanResultString.replaceAll("\'", "\"").replaceAll("Fa", "fa");
+
+    //Formating data now
+    dynamic jsonResponse = jsonDecode(barcodeScanRes);
+    String link = jsonResponse["link"];
+    List<String> splitedLink = link.split("?");
+    List<String> userIdSession = splitedLink.last.split("&");
+
+    //Saving the data into the appState
+    FFAppState().update(() {
+      FFAppState().linkId = jsonResponse["link_id"];
+      FFAppState().guestCompanyId =
+          userIdSession.last.replaceFirst("workspaceid=", "");
+      FFAppState().guestUserId =
+          userIdSession.first.replaceFirst("userid=", "");
+      FFAppState().isQrFinalized = jsonResponse["is_finalized"];
+    });
   } on PlatformException {
     scanResultString = 'Failed to get platform version.';
   }
-
-  return jsonDecode(barcodeScanRes);
 }

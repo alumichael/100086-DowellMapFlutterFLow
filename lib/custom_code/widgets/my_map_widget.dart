@@ -31,7 +31,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart' as loca;
-// import 'package:socket_io_client/socket_io_client.dart' as IO; //from socket
+import 'package:socket_io_client/socket_io_client.dart' as IO; //from socket
 import 'package:fluttertoast/fluttertoast.dart';
 
 class MyMapWidget extends StatefulWidget {
@@ -93,9 +93,11 @@ class _MyMapWidget extends State<MyMapWidget> {
   GoogleMapController? _controller;
   StreamSubscription<loca.LocationData>? locationSubscription;
   Position? position;
-  // late IO.Socket socket; //from socket
+  late IO.Socket socket; //from socket
   late GoogleMapPolyline? googleMapPolyline;
+
   loca.Location location = loca.Location();
+
   Position? currentPosition;
   latlng.LatLng? destinationCoords;
   double zoomValue = 13;
@@ -124,8 +126,8 @@ class _MyMapWidget extends State<MyMapWidget> {
     }
   }
 
-  // late Timer? timer; //from socket
-  // late Timer? dataLogTimer;
+  late Timer? timer; //from socket
+  late Timer? dataLogTimer;
 
   final List<latlng.Polyline> polyline = [];
   List<latlng.LatLng>? routeCoords = [];
@@ -149,49 +151,71 @@ class _MyMapWidget extends State<MyMapWidget> {
 
   @override
   dispose() {
-    // timer?.cancel();
-    // dataLogTimer?.cancel(); //from socket
+    locationSubscription?.cancel();
+    setState(() {
+      locationSubscription = null;
+    });
+    timer?.cancel();
+    dataLogTimer?.cancel(); //from socket
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     //from socket
-    // if (FFAppState().timerStarted == false) {
-    //   if (FFAppState().allowLocationTracking == true) {
-    //     activateSocket();
-    //   }
-    //   if (FFAppState().allowLocationTracking == true &&
-    //       FFAppState().isAuthUser == false &&
-    //       FFAppState().publicScannedValue.isNotEmpty) {
-    //     timer = Timer.periodic(Duration(seconds: 2), (timer) {
-    //       addSocketMessage();
-    //     });
-    //     dataLogTimer = Timer.periodic(Duration(minutes: 5), (timer) {
-    //       widget.teamTrackingAction();
-    //     });
-    //     FFAppState().update(() {
-    //       FFAppState().timerStarted = true;
-    //     });
-    //   }
+    if (FFAppState().timerStarted == false) {
+      if (FFAppState().allowLocationTracking == true) {
+        try {
+          activateSocket();
+        } on PlatformException catch (err) {
+          setState(() {
+            showToast(message: err.code, isError: true);
+          });
+        }
+      }
+      if (FFAppState().allowLocationTracking == true &&
+          FFAppState().isAuthUser == false &&
+          FFAppState().publicScannedValue.isNotEmpty) {
+        try {
+          timer = Timer.periodic(Duration(seconds: 2), (timer) {
+            addSocketMessage();
+          });
+          dataLogTimer = Timer.periodic(Duration(minutes: 5), (timer) {
+            widget.teamTrackingAction();
+          });
+          FFAppState().update(() {
+            FFAppState().timerStarted = true;
+          });
+        } on PlatformException catch (err) {
+          setState(() {
+            showToast(message: err.code, isError: true);
+          });
+        }
+      }
 
-    //   if (FFAppState().allowLocationTracking == true &&
-    //       FFAppState().isAuthUser == true &&
-    //       FFAppState().isOwner == false) {
-    //     timer = Timer.periodic(Duration(seconds: 2), (timer) {
-    //       addSocketMessage();
-    //     });
-    //     dataLogTimer = Timer.periodic(Duration(minutes: 1), (timer) {
-    //       widget.teamTrackingAction();
-    //     });
+      if (FFAppState().allowLocationTracking == true &&
+          FFAppState().isAuthUser == true &&
+          FFAppState().isOwner == false) {
+        try {
+          timer = Timer.periodic(Duration(seconds: 2), (timer) {
+            addSocketMessage();
+          });
+          dataLogTimer = Timer.periodic(Duration(minutes: 5), (timer) {
+            widget.teamTrackingAction();
+          });
 
-    //     FFAppState().update(() {
-    //       FFAppState().timerStarted = true;
-    //     });
-    //   }
-    // }
+          FFAppState().update(() {
+            FFAppState().timerStarted = true;
+          });
+        } on PlatformException catch (err) {
+          setState(() {
+            showToast(message: err.code, isError: true);
+          });
+        }
+      }
+    }
     context.watch<FFAppState>();
-    // trackMe(); //from socket
+    trackMe(); //from socket
 
     debugPrint(
         ":::from the marker room:: ${FFAppState().groupList} :: radius2 ::${widget.radius2} :: zoomValue :: $zoomValue");
@@ -321,55 +345,63 @@ class _MyMapWidget extends State<MyMapWidget> {
   ///
   trackMe() {
     // print("tracking started::::: ");
-    locationSubscription =
-        location.onLocationChanged.listen((loca.LocationData locationData) {
-      // print("tracking coord ::::: $locationData");
 
-      currentPosition = Position(
-          latitude: locationData.latitude!,
-          longitude: locationData.longitude!,
-          timestamp: DateTime.now(),
-          accuracy: 60,
-          altitude: 0,
-          heading: 0,
-          speed: 100,
-          altitudeAccuracy: 90,
-          headingAccuracy: 90,
-          speedAccuracy: 10);
+    try {
+      locationSubscription =
+          location.onLocationChanged.listen((loca.LocationData locationData) {
+        // print("tracking coord ::::: $locationData");
 
-      if (FFAppState().enableTracking) {
-        setState(() {
-          // print(
-          //     "from the tracking end::::: 20:::: ${FFAppState().enableTracking}");
-          _controller?.animateCamera(
-            CameraUpdate.newLatLng(
-              latlng.LatLng(locationData.latitude!, locationData.longitude!),
-            ),
-          );
-          //This is for updating the polyline while the user is changing position
-          if (destinationCoords != null) {
-            // print(
-            //     "from the tracking end::::: 21:::: ${FFAppState().enableTracking}");
-            _computeTrackingPath(
-              latlng.LatLng(locationData.latitude!, locationData.longitude!),
-              destinationCoords!,
-            );
-          }
-          // print(
-          //     "from the tracking end::::: 22:::: ${FFAppState().enableTracking}");
-          // print("from the tracking end::::: 3 ::: $destinationCoords");
-        });
-      } else {
-        // print(
-        //     "from the tracking end::::: 23:::: ${FFAppState().enableTracking}");
-        for (latlng.Polyline? line in polyline) {
-          // print(
-          //     "from the tracking end::::: 24:::: ${FFAppState().enableTracking}");
-          polyline.removeWhere((m) => m.polylineId == 'tracking');
-          // polyline.removeWhere((key, value) => key == line?.polylineId);
-        }
-      }
-    });
+        currentPosition = Position(
+            latitude: locationData.latitude!,
+            longitude: locationData.longitude!,
+            accuracy: locationData.accuracy ?? 0,
+            altitude: locationData.altitude ?? 0,
+            heading: locationData.heading ?? 0,
+            timestamp:
+                DateTime.fromMillisecondsSinceEpoch(locationData.time!.toInt()),
+            speed: locationData.speed ?? 100,
+            altitudeAccuracy: 0,
+            headingAccuracy: locationData.headingAccuracy ?? 90,
+            speedAccuracy: 0);
+
+        // if (FFAppState().enableTracking) {
+        //   // setState(() {
+        //   // print(
+        //   //     "from the tracking end::::: 20:::: ${FFAppState().enableTracking}");
+        //   _controller?.animateCamera(
+        //     CameraUpdate.newLatLng(
+        //       latlng.LatLng(locationData.latitude!, locationData.longitude!),
+        //     ),
+        //   );
+        //   //This is for updating the polyline while the user is changing position
+        //   if (destinationCoords != null) {
+        //     print(
+        //         "from the tracking end::::: 21:::: ${FFAppState().enableTracking}");
+        //     _computeTrackingPath(
+        //       latlng.LatLng(locationData.latitude!, locationData.longitude!),
+        //       destinationCoords!,
+        //     );
+        //   }
+        //   // print(
+        //   //     "from the tracking end::::: 22:::: ${FFAppState().enableTracking}");
+        //   // print("from the tracking end::::: 3 ::: $destinationCoords");
+        //   // });
+        // } else {
+        //   // print(
+        //   //     "from the tracking end::::: 23:::: ${FFAppState().enableTracking}");
+        //   for (latlng.Polyline? line in polyline) {
+        //     // print(
+        //     //     "from the tracking end::::: 24:::: ${FFAppState().enableTracking}");
+        //     polyline.removeWhere((m) => m.polylineId == 'tracking');
+        //     // polyline.removeWhere((key, value) => key == line?.polylineId);
+        //   }
+        // }
+      });
+    } on PlatformException catch (err) {
+      setState(() {
+        showToast(message: err.code, isError: true);
+      });
+    }
   }
 
   ///
@@ -406,7 +438,6 @@ class _MyMapWidget extends State<MyMapWidget> {
           draggable: true,
           markerId: MarkerId(generateRandomString(10)),
           position: latlng.LatLng(new_lat, new_long), //position of marker
-          infoWindow: InfoWindow(title: "Add Location"),
           icon:
               BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
           onDragEnd: ((newPosition) {
@@ -923,45 +954,45 @@ class _MyMapWidget extends State<MyMapWidget> {
   }
 
 //from socket
-  // dynamic getMySocketMessage() {
-  //   dynamic userEmail = FFAppState().guestEmail ?? "";
-  //   dynamic companyId = FFAppState().guestCompanyId ?? "";
-  //   dynamic userId = FFAppState().guestUserId ?? "";
-  //   dynamic lat = currentPosition?.latitude ?? "";
-  //   dynamic lng = currentPosition?.longitude ?? "";
-  //   dynamic linkId = FFAppState().linkId ?? "";
-  //   dynamic teamName = FFAppState().trackingTeam ?? "";
+  dynamic getMySocketMessage() {
+    dynamic userEmail = FFAppState().guestEmail ?? "";
+    dynamic companyId = FFAppState().guestCompanyId ?? "";
+    dynamic userId = FFAppState().guestUserId ?? "";
+    dynamic lat = currentPosition?.latitude ?? "";
+    dynamic lng = currentPosition?.longitude ?? "";
+    dynamic linkId = FFAppState().linkId ?? "";
+    dynamic teamName = FFAppState().trackingTeam ?? "";
 
-  //   Map<String, dynamic> jsonObject;
+    Map<String, dynamic> jsonObject;
 
-  //   if (FFAppState().isAuthUser == true) {
-  //     jsonObject = {
-  //       "username": "${FFAppState().guestGenInfo.name}",
-  //       "workspace_id": "${FFAppState().guestGenInfo.companyId}",
-  //       "user_id": "${FFAppState().guestGenInfo.userId}",
-  //       "doc_type": "slave",
-  //       "lat": "${lat}",
-  //       "lon": "${lng}",
-  //       "timestamp": DateTime.now().toString(),
-  //       "team_status": true,
-  //       "team_list": FFAppState().guestGenInfo.orgByIdTeams,
-  //     };
-  //   } else {
-  //     jsonObject = {
-  //       "username": "${userEmail}",
-  //       "workspace_id": "${companyId}",
-  //       "doc_type": "slave",
-  //       "lat": "${lat}",
-  //       "lon": "${lng}",
-  //       "user_id": "${userId}",
-  //       "timestamp": DateTime.now().toString(),
-  //       "team_status": false,
-  //       "linkId": "${linkId}"
-  //     };
-  //   }
+    if (FFAppState().isAuthUser == true) {
+      jsonObject = {
+        "username": "${FFAppState().guestGenInfo.name}",
+        "workspace_id": "${FFAppState().guestGenInfo.companyId}",
+        "user_id": "${FFAppState().guestGenInfo.userId}",
+        "doc_type": "slave",
+        "lat": "${lat}",
+        "lon": "${lng}",
+        "timestamp": DateTime.now().toString(),
+        "team_status": true,
+        "team_list": FFAppState().guestGenInfo.orgByIdTeams,
+      };
+    } else {
+      jsonObject = {
+        "username": "${userEmail}",
+        "workspace_id": "${companyId}",
+        "doc_type": "slave",
+        "lat": "${lat}",
+        "lon": "${lng}",
+        "user_id": "${userId}",
+        "timestamp": DateTime.now().toString(),
+        "team_status": false,
+        "linkId": "${linkId}"
+      };
+    }
 
-  //   return jsonObject;
-  // }
+    return jsonObject;
+  }
 
   void showToast({
     required String message,
@@ -979,54 +1010,54 @@ class _MyMapWidget extends State<MyMapWidget> {
   }
 
 //from socket
-  // void activateSocket() async {
-  //   try {
-  //     socket =
-  //         IO.io("https://tracking.uxlivinglab.online/socket", <String, dynamic>{
-  //       'transports': ['websocket'],
-  //       'autoConnect': true,
-  //     });
+  void activateSocket() async {
+    try {
+      socket =
+          IO.io("https://tracking.uxlivinglab.online/socket", <String, dynamic>{
+        'transports': ['websocket'],
+        'autoConnect': true,
+      });
 
-  //     // Connect to the server
-  //     // socket?.connect(); //.connect() should not be called if autoConnect: true
+      // Connect to the server
+      // socket?.connect(); //.connect() should not be called if autoConnect: true
 
-  //     socket.on('error', (error) {
-  //       print('My Socket Error: $error');
-  //       showToast(message: "My Socket Error", isError: true);
-  //     });
+      socket.on('error', (error) {
+        print('My Socket Error: $error');
+        showToast(message: "My Socket Error", isError: true);
+      });
 
-  //     socket.onDisconnect((data) {
-  //       print('socket disconnected : msgData:: $data');
-  //       showToast(message: "Tracking disconnected", isError: true);
-  //     });
-  //     socket.onConnect((data) {
-  //       // showToast(message: "Tracking connected");
-  //     });
-  //   } catch (e) {
-  //     print('Caught Error: $e');
-  //   }
-  // }
+      socket.onDisconnect((data) {
+        print('socket disconnected : msgData:: $data');
+        showToast(message: "Tracking disconnected", isError: true);
+      });
+      socket.onConnect((data) {
+        // showToast(message: "Tracking connected");
+      });
+    } catch (e) {
+      print('Caught Error: $e');
+    }
+  }
 
 //from socket
-  // void addSocketMessage() {
-  //   print("::::::: the add to socket is called");
-  //   if (socket != null) {
-  //     print(":::: it enter the if statement of true");
-  //     try {
-  //       dynamic body = getMySocketMessage();
+  void addSocketMessage() {
+    print("::::::: the add to socket is called");
+    if (socket != null) {
+      print(":::: it enter the if statement of true");
+      try {
+        dynamic body = getMySocketMessage();
 
-  //       FFAppState().trackingData.add(body);
+        FFAppState().trackingData.add(body);
 
-  //       socket.emit("message", json.encode(body));
+        socket.emit("message", json.encode(body));
 
-  //       // print("::::: new saved log ::: ${FFAppState().trackingData}");
-  //     } catch (e) {
-  //       print("Error:: $e");
-  //     }
-  //   } else {
-  //     print(":::: THE SOCKET IS NULL :::::::");
-  //   }
-  // }
+        // print("::::: new saved log ::: ${FFAppState().trackingData}");
+      } catch (e) {
+        print("Error:: $e");
+      }
+    } else {
+      print(":::: THE SOCKET IS NULL :::::::");
+    }
+  }
 
   ///
   ///LOGIC TO GET THE SHORTEST DISTANCE

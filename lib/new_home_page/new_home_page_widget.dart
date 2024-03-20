@@ -52,6 +52,9 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (RootPageContext.isInactiveRootPage(context)) {
+        return;
+      }
       currentUserLocationValue =
           await getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0));
       if (FFAppState().sessionId != 'null') {
@@ -100,11 +103,27 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
         await actions.gotoSettings();
       }
       _model.myIPAddress = await IpifyCall.call();
-      setState(() {
-        FFAppState().myIpAddress = IpifyCall.deviceIP(
-          (_model.myIPAddress?.jsonBody ?? ''),
-        ).toString();
-      });
+      if ((_model.myIPAddress?.succeeded ?? true)) {
+        setState(() {
+          FFAppState().myIpAddress = IpifyCall.deviceIP(
+            (_model.myIPAddress?.jsonBody ?? ''),
+          ).toString();
+        });
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Unable to get device IP address',
+              style: TextStyle(
+                color: FlutterFlowTheme.of(context).primaryText,
+              ),
+            ),
+            duration: Duration(milliseconds: 4000),
+            backgroundColor: FlutterFlowTheme.of(context).secondary,
+          ),
+        );
+      }
+
       if (FFAppState().isAuthUser == false) {
         _model.apiResultzlp = await LinkBageLoginCall.call(
           time: dateTimeFormat(
@@ -125,6 +144,19 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
             FFAppState().apiKey = '4f0bd662-8456-4b2e-afa6-293d4135facf';
             FFAppState().credit = '0';
           });
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'Public login failed',
+                style: TextStyle(
+                  color: FlutterFlowTheme.of(context).primaryText,
+                ),
+              ),
+              duration: Duration(milliseconds: 4000),
+              backgroundColor: FlutterFlowTheme.of(context).secondary,
+            ),
+          );
         }
       } else {
         _model.serviceApiKey = await GetUserAPIKeyCall.call(
@@ -160,38 +192,54 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
           );
         }
 
-        _model.getLocationByUserResponse = await GetLocationByUserCall.call(
+        _model.getLocationByUserResponse2 = await GetLocationByUserCall.call(
           apiKey: FFAppState().apiKey,
           username: FFAppState().username,
           docType: 'master',
         );
-        setState(() {
-          FFAppState().noMoreCredit = (_model
-                      .getLocationByUserResponse?.bodyText ??
-                  '') ==
-              '\"You have less credits. If you want to buy more credits click the \'Buy Credits\' button\"';
-        });
-        setState(() {
-          FFAppState().isProfiledUser = GetLocationByUserCall.data(
-                    (_model.getLocationByUserResponse?.jsonBody ?? ''),
-                  )?.length ==
-                  0
-              ? false
-              : true;
-          FFAppState().groupList = GetLocationByUserCall.groupList(
-            (_model.getLocationByUserResponse?.jsonBody ?? ''),
-          )!
-              .map((e) => e.toString())
-              .toList()
-              .toList()
-              .cast<String>();
-        });
-        setState(() {
-          FFAppState().MyMapResponseData = getJsonField(
-            (_model.getLocationByUserResponse?.jsonBody ?? ''),
-            r'''$.data''',
+        if ((_model.getLocationByUserResponse2?.succeeded ?? true)) {
+          setState(() {
+            FFAppState().noMoreCredit = (_model
+                        .getLocationByUserResponse2?.bodyText ??
+                    '') ==
+                '\"You have less credits. If you want to buy more credits click the \'Buy Credits\' button\"';
+          });
+          setState(() {
+            FFAppState().isProfiledUser = GetLocationByUserCall.data(
+                      (_model.getLocationByUserResponse2?.jsonBody ?? ''),
+                    )?.length ==
+                    0
+                ? false
+                : true;
+            FFAppState().groupList = GetLocationByUserCall.groupList(
+              (_model.getLocationByUserResponse2?.jsonBody ?? ''),
+            )!
+                .map((e) => e.toString())
+                .toList()
+                .toList()
+                .cast<String>();
+          });
+          setState(() {
+            FFAppState().MyMapResponseData = getJsonField(
+              (_model.getLocationByUserResponse2?.jsonBody ?? ''),
+              r'''$.data''',
+            );
+          });
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'Unable to get created group ',
+                style: TextStyle(
+                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  fontSize: 13.0,
+                ),
+              ),
+              duration: Duration(milliseconds: 5000),
+              backgroundColor: FlutterFlowTheme.of(context).alternate,
+            ),
           );
-        });
+        }
       }
 
       if ((FFAppState().isAuthUser == true) &&
@@ -233,6 +281,33 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
             SnackBar(
               content: Text(
                 'you don\'t have a portfolio set up in Living Lap Maps',
+                style: TextStyle(
+                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  fontSize: 13.0,
+                ),
+              ),
+              duration: Duration(milliseconds: 5000),
+              backgroundColor: FlutterFlowTheme.of(context).alternate,
+            ),
+          );
+        }
+      } else {
+        _model.userMemberType2 = await actions.getUserMemberType();
+        if (_model.userMemberType2 != 'not a member') {
+          if (_model.userMemberType2 != 'owner') {
+            FFAppState().isOwner = false;
+          } else {
+            setState(() {
+              FFAppState().isOwner = true;
+            });
+          }
+
+          return;
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'You don\'t have a portfolio set up in Living Lap Maps',
                 style: TextStyle(
                   color: FlutterFlowTheme.of(context).primaryBackground,
                   fontSize: 13.0,
@@ -710,66 +785,36 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    _model.scannerResult =
-                                        await actions.qRCodeScanner();
-                                    if (_model.scannerResult != null) {
-                                      setState(() {
-                                        FFAppState().linkId = getJsonField(
-                                          _model.scannerResult,
-                                          r'''$.response.link_id''',
-                                        ).toString();
-                                        FFAppState().qrlink = getJsonField(
-                                          _model.scannerResult,
-                                          r'''$.response.link''',
-                                        ).toString();
-                                        FFAppState().isQrFinalized =
-                                            getJsonField(
-                                          _model.scannerResult,
-                                          r'''$.response.is_finalized''',
-                                        );
-                                        FFAppState().publicScannedValue =
-                                            getJsonField(
-                                          _model.scannerResult,
-                                          r'''$.response.link_id''',
-                                        ).toString();
-                                      });
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Scan Successful',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
+                                    await actions.qRCodeScanner();
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Scan Successful',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
                                           ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
                                         ),
-                                      );
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondary,
+                                      ),
+                                    );
 
-                                      context.pushNamed(
-                                        'TrackingDetailsForm',
-                                        pathParameters: {
-                                          'userid': serializeParam(
-                                            functions.formatQrLink(
-                                                true, FFAppState().qrlink),
-                                            ParamType.String,
-                                          ),
-                                          'workspaceid': serializeParam(
-                                            functions.formatQrLink(
-                                                false, FFAppState().qrlink),
-                                            ParamType.String,
-                                          ),
-                                        }.withoutNulls,
-                                      );
-                                    }
-
-                                    setState(() {});
+                                    context.pushNamed(
+                                      'TrackingDetailsForm',
+                                      pathParameters: {
+                                        'userid': serializeParam(
+                                          FFAppState().guestUserId,
+                                          ParamType.String,
+                                        ),
+                                        'workspaceid': serializeParam(
+                                          FFAppState().guestCompanyId,
+                                          ParamType.String,
+                                        ),
+                                      }.withoutNulls,
+                                    );
                                   },
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,

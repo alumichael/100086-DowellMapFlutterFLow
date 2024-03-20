@@ -314,8 +314,13 @@ String getCompanyId(
 
 dynamic newCustomFunction3(String data) {
 // {'response': {'api_key': '13397947563437658606', 'link_id': '13397948937827193326', 'document_name': 'Living Lab Maps', 'link': 'http://livinglab.com/5ZcAKMlStSYu/6385c0ec8eca0fb652c944ff', 'is_opened': False, 'is_finalized': False}}
-  dynamic barcodeScanRes =
-      json.decode(data.replaceAll("\'", "\"").replaceAll("Fa", "fa"));
+  String barcodeScanRes = data.replaceAll("\'", "\"").replaceAll("Fa", "fa");
 
-  return barcodeScanRes['response']['is_finalized'];
+  //Formating data now
+  dynamic jsonResponse = jsonDecode(barcodeScanRes);
+  String link = jsonResponse["link"];
+  List<String> splitedLink = link.split("?");
+  List<String> userIdSession = splitedLink.last.split("&");
+
+  return "link is:: $userIdSession";
 }

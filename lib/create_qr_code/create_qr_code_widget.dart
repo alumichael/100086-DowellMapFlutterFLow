@@ -185,163 +185,79 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 80.0, 16.0, 0.0),
                         child: FFButtonWidget(
-                          onPressed: (valueOrDefault<String>(
-                                        GenerateQRcodeCall.imageUrl(
-                                          (_model.getQRCodeResponse?.jsonBody ??
+                          onPressed: () async {
+                            _model.getUserInfoResponse =
+                                await GetUserInfoCall.call(
+                              sessionId: FFAppState().sessionId,
+                            );
+                            if ((_model.getUserInfoResponse?.succeeded ??
+                                true)) {
+                              _model.getPublicUseIdResponse =
+                                  await GetPublicLinksCall.call(
+                                orgId: GetUserInfoCall.clientid(
+                                  (_model.getUserInfoResponse?.jsonBody ?? ''),
+                                ),
+                                product: 'Living Lab Maps',
+                              );
+                              if ((_model.getPublicUseIdResponse?.succeeded ??
+                                  true)) {
+                                if (GetPublicLinksCall.usernameList(
+                                          (_model.getPublicUseIdResponse
+                                                  ?.jsonBody ??
                                               ''),
-                                        ),
-                                        'QR LInk ',
-                                      ) !=
-                                      null &&
-                                  valueOrDefault<String>(
-                                        GenerateQRcodeCall.imageUrl(
-                                          (_model.getQRCodeResponse?.jsonBody ??
+                                        ) !=
+                                        null &&
+                                    (GetPublicLinksCall.usernameList(
+                                      (_model.getPublicUseIdResponse
+                                              ?.jsonBody ??
+                                          ''),
+                                    ))!
+                                        .isNotEmpty) {
+                                  _model.getQRCodeResponse =
+                                      await GenerateQRcodeCall.call(
+                                    cliendId: GetUserInfoCall.clientid(
+                                      (_model.getUserInfoResponse?.jsonBody ??
+                                          ''),
+                                    ),
+                                    linksJson: functions.payloadgen(
+                                        GetPublicLinksCall.usernameList(
+                                          (_model.getPublicUseIdResponse
+                                                  ?.jsonBody ??
                                               ''),
-                                        ),
-                                        'QR LInk ',
-                                      ) !=
-                                      '')
-                              ? null
-                              : () async {
-                                  _model.getUserInfoResponse =
-                                      await GetUserInfoCall.call(
-                                    sessionId: FFAppState().sessionId,
+                                        )!
+                                            .toList(),
+                                        GetUserInfoCall.clientid(
+                                          (_model.getUserInfoResponse
+                                                  ?.jsonBody ??
+                                              ''),
+                                        )!),
+                                    product: 'maps',
                                   );
-                                  if ((_model.getUserInfoResponse?.succeeded ??
+                                  if ((_model.getQRCodeResponse?.succeeded ??
                                       true)) {
-                                    _model.getPublicUseIdResponse =
-                                        await GetPublicLinksCall.call(
-                                      orgId: GetUserInfoCall.clientid(
-                                        (_model.getUserInfoResponse?.jsonBody ??
-                                            ''),
-                                      ),
-                                      product: 'Living Lab Maps',
-                                    );
-                                    if ((_model.getPublicUseIdResponse
-                                            ?.succeeded ??
-                                        true)) {
-                                      if (GetPublicLinksCall.usernameList(
-                                                (_model.getPublicUseIdResponse
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              ) !=
-                                              null &&
-                                          (GetPublicLinksCall.usernameList(
-                                            (_model.getPublicUseIdResponse
-                                                    ?.jsonBody ??
-                                                ''),
-                                          ))!
-                                              .isNotEmpty) {
-                                        _model.getQRCodeResponse =
-                                            await GenerateQRcodeCall.call(
-                                          cliendId: GetUserInfoCall.clientid(
-                                            (_model.getUserInfoResponse
-                                                    ?.jsonBody ??
-                                                ''),
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'QR generated successfully!',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
                                           ),
-                                          linksJson: functions.payloadgen(
-                                              GetPublicLinksCall.usernameList(
-                                                (_model.getPublicUseIdResponse
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              )!
-                                                  .toList(),
-                                              GetUserInfoCall.clientid(
-                                                (_model.getUserInfoResponse
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              )!),
-                                          product: 'maps',
-                                        );
-                                        if ((_model
-                                                .getQRCodeResponse?.succeeded ??
-                                            true)) {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'QR generated successfully!',
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                              ),
-                                              duration:
-                                                  Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                            ),
-                                          );
-                                        } else {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Unable to get generate QR code.',
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                ),
-                                              ),
-                                              duration:
-                                                  Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          );
-                                        }
-                                      } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'No public link created',
-                                              style: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                              ),
-                                            ),
-                                            duration:
-                                                Duration(milliseconds: 4000),
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryText,
-                                          ),
-                                        );
-                                      }
-                                    } else {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Unable to get public users.',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
                                         ),
-                                      );
-                                    }
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondary,
+                                      ),
+                                    );
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          'Unable to get user information.',
+                                          'Unable to get generate QR code.',
                                           style: TextStyle(
                                             color: FlutterFlowTheme.of(context)
-                                                .primaryBackground,
+                                                .secondaryBackground,
                                           ),
                                         ),
                                         duration: Duration(milliseconds: 4000),
@@ -351,9 +267,59 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                       ),
                                     );
                                   }
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'No public link created',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                    ),
+                                  );
+                                }
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Unable to get public users.',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                  ),
+                                );
+                              }
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Unable to get user information.',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                    ),
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              );
+                            }
 
-                                  setState(() {});
-                                },
+                            setState(() {});
+                          },
                           text: FFLocalizations.of(context).getText(
                             '3rolpja5' /* Generate */,
                           ),

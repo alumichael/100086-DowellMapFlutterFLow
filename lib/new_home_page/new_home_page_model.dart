@@ -42,13 +42,13 @@ class NewHomePageModel extends FlutterFlowModel<NewHomePageWidget> {
   // Stores action output result for [Backend Call - API (Get User API Key)] action in NewHomePage widget.
   ApiCallResponse? serviceApiKey;
   // Stores action output result for [Backend Call - API (Get Location by User)] action in NewHomePage widget.
-  ApiCallResponse? getLocationByUserResponse;
+  ApiCallResponse? getLocationByUserResponse2;
   // Stores action output result for [Custom Action - getUserMemberType] action in NewHomePage widget.
   String? userMemberType;
+  // Stores action output result for [Custom Action - getUserMemberType] action in NewHomePage widget.
+  String? userMemberType2;
   // Stores action output result for [Backend Call - API (Get User API Key)] action in Text widget.
   ApiCallResponse? serviceApiKeyCopy;
-  // Stores action output result for [Custom Action - qRCodeScanner] action in Row widget.
-  dynamic? scannerResult;
   // Stores action output result for [Backend Call - API (Delete Loc)] action in MyMapWidget widget.
   ApiCallResponse? apiResulti6o;
   // Stores action output result for [Backend Call - API (saveTrackingDetails)] action in MyMapWidget widget.
