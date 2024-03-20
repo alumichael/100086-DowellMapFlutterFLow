@@ -191,55 +191,6 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
             ),
           );
         }
-
-        _model.getLocationByUserResponse2 = await GetLocationByUserCall.call(
-          apiKey: FFAppState().apiKey,
-          username: FFAppState().username,
-          docType: 'master',
-        );
-        if ((_model.getLocationByUserResponse2?.succeeded ?? true)) {
-          setState(() {
-            FFAppState().noMoreCredit = (_model
-                        .getLocationByUserResponse2?.bodyText ??
-                    '') ==
-                '\"You have less credits. If you want to buy more credits click the \'Buy Credits\' button\"';
-          });
-          setState(() {
-            FFAppState().isProfiledUser = GetLocationByUserCall.data(
-                      (_model.getLocationByUserResponse2?.jsonBody ?? ''),
-                    )?.length ==
-                    0
-                ? false
-                : true;
-            FFAppState().groupList = GetLocationByUserCall.groupList(
-              (_model.getLocationByUserResponse2?.jsonBody ?? ''),
-            )!
-                .map((e) => e.toString())
-                .toList()
-                .toList()
-                .cast<String>();
-          });
-          setState(() {
-            FFAppState().MyMapResponseData = getJsonField(
-              (_model.getLocationByUserResponse2?.jsonBody ?? ''),
-              r'''$.data''',
-            );
-          });
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                'Unable to get created group ',
-                style: TextStyle(
-                  color: FlutterFlowTheme.of(context).primaryBackground,
-                  fontSize: 13.0,
-                ),
-              ),
-              duration: Duration(milliseconds: 5000),
-              backgroundColor: FlutterFlowTheme.of(context).alternate,
-            ),
-          );
-        }
       }
 
       if ((FFAppState().isAuthUser == true) &&
