@@ -49,6 +49,9 @@ class FFAppState extends ChangeNotifier {
       }
     });
     _safeInit(() {
+      _guestEmail = prefs.getString('ff_guestEmail') ?? _guestEmail;
+    });
+    _safeInit(() {
       _allowLocationTracking =
           prefs.getBool('ff_allowLocationTracking') ?? _allowLocationTracking;
     });
@@ -62,6 +65,9 @@ class FFAppState extends ChangeNotifier {
       _isFirstLaunchAfterInstall =
           prefs.getBool('ff_isFirstLaunchAfterInstall') ??
               _isFirstLaunchAfterInstall;
+    });
+    _safeInit(() {
+      _linkId = prefs.getString('ff_linkId') ?? _linkId;
     });
     _safeInit(() {
       _trackingData = prefs.getStringList('ff_trackingData')?.map((x) {
@@ -524,6 +530,7 @@ class FFAppState extends ChangeNotifier {
   String get guestEmail => _guestEmail;
   set guestEmail(String _value) {
     _guestEmail = _value;
+    prefs.setString('ff_guestEmail', _value);
   }
 
   String _guestCompanyName = '';
@@ -644,6 +651,7 @@ class FFAppState extends ChangeNotifier {
   String get linkId => _linkId;
   set linkId(String _value) {
     _linkId = _value;
+    prefs.setString('ff_linkId', _value);
   }
 
   String _qrlink = '';

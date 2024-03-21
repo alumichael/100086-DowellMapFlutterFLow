@@ -30,6 +30,8 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:geolocator_apple/geolocator_apple.dart';
+import 'package:geolocator_android/geolocator_android.dart';
 // import 'package:location/location.dart' as loca;
 import 'package:socket_io_client/socket_io_client.dart' as IO; //from socket
 import 'package:fluttertoast/fluttertoast.dart';
@@ -143,6 +145,8 @@ class _MyMapWidget extends State<MyMapWidget> {
     return randomString; // return the generated string
   }
 
+  late LocationSettings locationSettings;
+
   @override
   void initState() {
     googleMapPolyline = new GoogleMapPolyline(apiKey: googleMapsApiKey);
@@ -163,7 +167,9 @@ class _MyMapWidget extends State<MyMapWidget> {
 
   @override
   Widget build(BuildContext context) {
-    //from socket
+    context.watch<FFAppState>();
+    trackMe(); //from socket
+
     if (FFAppState().timerStarted == false) {
       print(":::::::::: Tracking state 1");
       if (FFAppState().allowLocationTracking == true) {
@@ -185,9 +191,16 @@ class _MyMapWidget extends State<MyMapWidget> {
         print(":::::::::: Tracking state 6");
         try {
           print(":::::::::: Tracking state 7");
-          timer = Timer.periodic(Duration(seconds: 2), (timer) {
-            addSocketMessage();
+          positionStream =
+              Geolocator.getPositionStream(locationSettings: locationSettings)
+                  .listen((Position? position) {
+            print(position == null
+                ? 'Unknown'
+                : '${position.latitude.toString()}, ${position.longitude.toString()}');
+            currentPosition = position;
+            addSocketMessage(position);
           });
+
           dataLogTimer = Timer.periodic(Duration(minutes: 5), (timer) {
             widget.teamTrackingAction();
           });
@@ -209,10 +222,16 @@ class _MyMapWidget extends State<MyMapWidget> {
         print(":::::::::: Tracking state 11");
         try {
           print(":::::::::: Tracking state 12");
-          timer = Timer.periodic(Duration(seconds: 2), (timer) {
-            print(":::::::::: Tracking state 13");
-            addSocketMessage();
+          positionStream =
+              Geolocator.getPositionStream(locationSettings: locationSettings)
+                  .listen((Position? position) {
+            print(position == null
+                ? 'Unknown'
+                : '${position.latitude.toString()}, ${position.longitude.toString()}');
+            currentPosition = position;
+            addSocketMessage(position);
           });
+
           dataLogTimer = Timer.periodic(Duration(minutes: 5), (timer) {
             print(":::::::::: Tracking state 14");
             widget.teamTrackingAction();
@@ -239,8 +258,6 @@ class _MyMapWidget extends State<MyMapWidget> {
       });
       print(":::::::::: Tracking state 20");
     }
-    context.watch<FFAppState>();
-    trackMe(); //from socket
 
     debugPrint(
         ":::from the marker room:: ${FFAppState().groupList} :: radius2 ::${widget.radius2} :: zoomValue :: $zoomValue");
@@ -372,18 +389,36 @@ class _MyMapWidget extends State<MyMapWidget> {
     // print("tracking started::::: ");
 
     try {
-      final LocationSettings locationSettings = LocationSettings(
+      if (defaultTargetPlatform == TargetPlatform.android) {
+        locationSettings = AndroidSettings(
           accuracy: LocationAccuracy.high,
-          distanceFilter: 100,
-          timeLimit: Duration(seconds: 5));
-      positionStream =
-          Geolocator.getPositionStream(locationSettings: locationSettings)
-              .listen((Position? position) {
-        print(position == null
-            ? 'Unknown'
-            : '${position.latitude.toString()}, ${position.longitude.toString()}');
-        currentPosition = position;
-      });
+          distanceFilter: 10,
+          forceLocationManager: true,
+          intervalDuration: const Duration(seconds: 5),
+          //(Optional) Set foreground notification config to keep the app alive
+          //when going to the background
+          /* foregroundNotificationConfig: const ForegroundNotificationConfig(
+              notificationText:
+                  "Example app will continue to receive your location even when you aren't using it",
+              notificationTitle: "Running in Background",
+              enableWakeLock: true,
+            ) */
+        );
+      } else if (defaultTargetPlatform == TargetPlatform.iOS) {
+        locationSettings = AppleSettings(
+          accuracy: LocationAccuracy.high,
+          activityType: ActivityType.fitness,
+          distanceFilter: 10,
+          pauseLocationUpdatesAutomatically: true,
+          // Only set to true if our app will be started up in the background.
+          showBackgroundLocationIndicator: false,
+        );
+      } else {
+        locationSettings = LocationSettings(
+          accuracy: LocationAccuracy.high,
+          distanceFilter: 10,
+        );
+      }
 
       // locationSubscription =
       //     location.onLocationChanged.listen((loca.LocationData locationData) {
@@ -992,12 +1027,14 @@ class _MyMapWidget extends State<MyMapWidget> {
   }
 
 //from socket
-  dynamic getMySocketMessage() {
+  dynamic getMySocketMessage(Position? mPosition) {
     dynamic userEmail = FFAppState().guestEmail ?? "";
     dynamic companyId = FFAppState().guestCompanyId ?? "";
     dynamic userId = FFAppState().guestUserId ?? "";
-    dynamic lat = currentPosition?.latitude ?? "";
-    dynamic lng = currentPosition?.longitude ?? "";
+
+    dynamic lat = mPosition?.latitude ?? "";
+    dynamic lng = mPosition?.longitude ?? "";
+
     dynamic linkId = FFAppState().linkId ?? "";
     dynamic teamName = FFAppState().trackingTeam ?? "";
 
@@ -1077,12 +1114,12 @@ class _MyMapWidget extends State<MyMapWidget> {
   }
 
 //from socket
-  void addSocketMessage() {
+  void addSocketMessage(Position? currentPosition) {
     print("::::::: the add to socket is called");
     if (socket != null) {
       print(":::: it enter the if statement of true");
       try {
-        dynamic body = getMySocketMessage();
+        dynamic body = getMySocketMessage(currentPosition);
 
         FFAppState().trackingData.add(body);
 
