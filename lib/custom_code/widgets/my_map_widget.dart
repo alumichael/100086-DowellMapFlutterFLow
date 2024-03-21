@@ -30,7 +30,7 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:location/location.dart' as loca;
+// import 'package:location/location.dart' as loca;
 import 'package:socket_io_client/socket_io_client.dart' as IO; //from socket
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -91,12 +91,13 @@ class MyMapWidget extends StatefulWidget {
 
 class _MyMapWidget extends State<MyMapWidget> {
   GoogleMapController? _controller;
-  StreamSubscription<loca.LocationData>? locationSubscription;
+  // StreamSubscription<loca.LocationData>? locationSubscription;
+  StreamSubscription<Position>? positionStream;
   Position? position;
   late IO.Socket socket; //from socket
   late GoogleMapPolyline? googleMapPolyline;
 
-  loca.Location location = loca.Location();
+  // loca.Location location = loca.Location();
 
   Position? currentPosition;
   latlng.LatLng? destinationCoords;
@@ -151,9 +152,9 @@ class _MyMapWidget extends State<MyMapWidget> {
 
   @override
   dispose() {
-    locationSubscription?.cancel();
+    positionStream?.cancel();
     setState(() {
-      locationSubscription = null;
+      positionStream = null;
     });
     timer?.cancel();
     dataLogTimer?.cancel(); //from socket
@@ -371,56 +372,69 @@ class _MyMapWidget extends State<MyMapWidget> {
     // print("tracking started::::: ");
 
     try {
-      locationSubscription =
-          location.onLocationChanged.listen((loca.LocationData locationData) {
-        // print("tracking coord ::::: $locationData");
-
-        currentPosition = Position(
-            latitude: locationData.latitude!,
-            longitude: locationData.longitude!,
-            accuracy: locationData.accuracy ?? 0,
-            altitude: locationData.altitude ?? 0,
-            heading: locationData.heading ?? 0,
-            timestamp:
-                DateTime.fromMillisecondsSinceEpoch(locationData.time!.toInt()),
-            speed: locationData.speed ?? 100,
-            altitudeAccuracy: 0,
-            headingAccuracy: locationData.headingAccuracy ?? 90,
-            speedAccuracy: 0);
-
-        // if (FFAppState().enableTracking) {
-        //   // setState(() {
-        //   // print(
-        //   //     "from the tracking end::::: 20:::: ${FFAppState().enableTracking}");
-        //   _controller?.animateCamera(
-        //     CameraUpdate.newLatLng(
-        //       latlng.LatLng(locationData.latitude!, locationData.longitude!),
-        //     ),
-        //   );
-        //   //This is for updating the polyline while the user is changing position
-        //   if (destinationCoords != null) {
-        //     print(
-        //         "from the tracking end::::: 21:::: ${FFAppState().enableTracking}");
-        //     _computeTrackingPath(
-        //       latlng.LatLng(locationData.latitude!, locationData.longitude!),
-        //       destinationCoords!,
-        //     );
-        //   }
-        //   // print(
-        //   //     "from the tracking end::::: 22:::: ${FFAppState().enableTracking}");
-        //   // print("from the tracking end::::: 3 ::: $destinationCoords");
-        //   // });
-        // } else {
-        //   // print(
-        //   //     "from the tracking end::::: 23:::: ${FFAppState().enableTracking}");
-        //   for (latlng.Polyline? line in polyline) {
-        //     // print(
-        //     //     "from the tracking end::::: 24:::: ${FFAppState().enableTracking}");
-        //     polyline.removeWhere((m) => m.polylineId == 'tracking');
-        //     // polyline.removeWhere((key, value) => key == line?.polylineId);
-        //   }
-        // }
+      final LocationSettings locationSettings = LocationSettings(
+          accuracy: LocationAccuracy.high,
+          distanceFilter: 100,
+          timeLimit: Duration(seconds: 5));
+      positionStream =
+          Geolocator.getPositionStream(locationSettings: locationSettings)
+              .listen((Position? position) {
+        print(position == null
+            ? 'Unknown'
+            : '${position.latitude.toString()}, ${position.longitude.toString()}');
+        currentPosition = position;
       });
+
+      // locationSubscription =
+      //     location.onLocationChanged.listen((loca.LocationData locationData) {
+      //   // print("tracking coord ::::: $locationData");
+
+      //   currentPosition = Position(
+      //       latitude: locationData.latitude!,
+      //       longitude: locationData.longitude!,
+      //       accuracy: locationData.accuracy ?? 0,
+      //       altitude: locationData.altitude ?? 0,
+      //       heading: locationData.heading ?? 0,
+      //       timestamp:
+      //           DateTime.fromMillisecondsSinceEpoch(locationData.time!.toInt()),
+      //       speed: locationData.speed ?? 100,
+      //       altitudeAccuracy: 0,
+      //       headingAccuracy: locationData.headingAccuracy ?? 90,
+      //       speedAccuracy: 0);
+      ///
+      // if (FFAppState().enableTracking) {
+      //   // setState(() {
+      //   // print(
+      //   //     "from the tracking end::::: 20:::: ${FFAppState().enableTracking}");
+      //   _controller?.animateCamera(
+      //     CameraUpdate.newLatLng(
+      //       latlng.LatLng(locationData.latitude!, locationData.longitude!),
+      //     ),
+      //   );
+      //   //This is for updating the polyline while the user is changing position
+      //   if (destinationCoords != null) {
+      //     print(
+      //         "from the tracking end::::: 21:::: ${FFAppState().enableTracking}");
+      //     _computeTrackingPath(
+      //       latlng.LatLng(locationData.latitude!, locationData.longitude!),
+      //       destinationCoords!,
+      //     );
+      //   }
+      //   // print(
+      //   //     "from the tracking end::::: 22:::: ${FFAppState().enableTracking}");
+      //   // print("from the tracking end::::: 3 ::: $destinationCoords");
+      //   // });
+      // } else {
+      //   // print(
+      //   //     "from the tracking end::::: 23:::: ${FFAppState().enableTracking}");
+      //   for (latlng.Polyline? line in polyline) {
+      //     // print(
+      //     //     "from the tracking end::::: 24:::: ${FFAppState().enableTracking}");
+      //     polyline.removeWhere((m) => m.polylineId == 'tracking');
+      //     // polyline.removeWhere((key, value) => key == line?.polylineId);
+      //   }
+      // }
+      // });
     } on PlatformException catch (err) {
       setState(() {
         showToast(message: err.code, isError: true);

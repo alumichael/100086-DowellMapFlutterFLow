@@ -1182,6 +1182,8 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                         FFAppState().clearmap = true;
                                         FFAppState().allowLocationTracking =
                                             false;
+                                        FFAppState().isFirstLaunchAfterInstall =
+                                            true;
                                       });
                                     } else {
                                       Navigator.pop(context);
