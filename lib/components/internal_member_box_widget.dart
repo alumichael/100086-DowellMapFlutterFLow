@@ -4,8 +4,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/backend/schema/structs/index.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'internal_member_box_model.dart';
 export 'internal_member_box_model.dart';
@@ -53,7 +51,7 @@ class _InternalMemberBoxWidgetState extends State<InternalMemberBoxWidget> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,7 +62,7 @@ class _InternalMemberBoxWidgetState extends State<InternalMemberBoxWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,9 +108,9 @@ class _InternalMemberBoxWidgetState extends State<InternalMemberBoxWidget> {
                           context: context,
                           isGlobal: false,
                           avoidOverflow: true,
-                          targetAnchor: AlignmentDirectional(1.0, 1.0)
+                          targetAnchor: const AlignmentDirectional(1.0, 1.0)
                               .resolve(Directionality.of(context)),
-                          followerAnchor: AlignmentDirectional(-1.0, -1.0)
+                          followerAnchor: const AlignmentDirectional(-1.0, -1.0)
                               .resolve(Directionality.of(context)),
                           builder: (dialogContext) {
                             return Material(
@@ -151,9 +149,9 @@ class _InternalMemberBoxWidgetState extends State<InternalMemberBoxWidget> {
                       context: context,
                       isGlobal: false,
                       avoidOverflow: true,
-                      targetAnchor: AlignmentDirectional(1.0, 1.0)
+                      targetAnchor: const AlignmentDirectional(1.0, 1.0)
                           .resolve(Directionality.of(context)),
-                      followerAnchor: AlignmentDirectional(-1.0, -1.0)
+                      followerAnchor: const AlignmentDirectional(-1.0, -1.0)
                           .resolve(Directionality.of(context)),
                       builder: (dialogContext) {
                         return Material(

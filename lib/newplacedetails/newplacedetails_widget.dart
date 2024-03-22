@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'newplacedetails_model.dart';
@@ -131,7 +130,7 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -150,7 +149,7 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -163,14 +162,14 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
               color: FlutterFlowTheme.of(context).secondaryBackground,
             ),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -212,7 +211,7 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                             borderColor: FlutterFlowTheme.of(context).primary,
                             borderWidth: 1.0,
                             borderRadius: 10.0,
-                            margin: EdgeInsetsDirectional.fromSTEB(
+                            margin: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 4.0, 16.0, 4.0),
                             hidesUnderline: true,
                             isSearchable: false,
@@ -227,11 +226,11 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                             ),
                             child: Builder(
                               builder: (context) => FlutterFlowIconButton(
-                                borderColor: Color(0x00005734),
+                                borderColor: const Color(0x00005734),
                                 borderRadius: 20.0,
                                 borderWidth: 1.0,
                                 buttonSize: 40.0,
-                                fillColor: Color(0x00616161),
+                                fillColor: const Color(0x00616161),
                                 icon: Icon(
                                   Icons.add,
                                   color: FlutterFlowTheme.of(context)
@@ -247,7 +246,7 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                                         insetPadding: EdgeInsets.zero,
                                         backgroundColor: Colors.transparent,
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0)
+                                            const AlignmentDirectional(0.0, 0.0)
                                                 .resolve(
                                                     Directionality.of(context)),
                                         child: WebViewAware(
@@ -259,7 +258,7 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                                                         _model.unfocusNode)
                                                 : FocusScope.of(context)
                                                     .unfocus(),
-                                            child: AddGroupDialogWidget(),
+                                            child: const AddGroupDialogWidget(),
                                           ),
                                         ),
                                       );
@@ -273,11 +272,11 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.56, -0.92),
+                      alignment: const AlignmentDirectional(0.56, -0.92),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                        child: Container(
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                        child: SizedBox(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           child: TextFormField(
                             controller: _model.placeNameEdtController,
@@ -341,11 +340,11 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(-0.14, -0.83),
+                      alignment: const AlignmentDirectional(-0.14, -0.83),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                        child: Container(
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                        child: SizedBox(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           child: TextFormField(
                             controller: _model.addressEdtController,
@@ -409,10 +408,10 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(-0.17, -0.75),
+                      alignment: const AlignmentDirectional(-0.17, -0.75),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                         child: FlutterFlowDropDown<String>(
                           controller: _model.categoryDropdownValueController ??=
                               FormFieldController<String>(
@@ -472,7 +471,7 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                           borderColor: FlutterFlowTheme.of(context).primary,
                           borderWidth: 1.0,
                           borderRadius: 10.0,
-                          margin: EdgeInsetsDirectional.fromSTEB(
+                          margin: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 4.0, 12.0, 4.0),
                           hidesUnderline: true,
                           isSearchable: false,
@@ -481,11 +480,11 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(-0.42, -0.66),
+                      alignment: const AlignmentDirectional(-0.42, -0.66),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                        child: Container(
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                        child: SizedBox(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           child: TextFormField(
                             controller: _model.selectedLocationEdtController,
@@ -550,11 +549,11 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(-0.28, -0.58),
+                      alignment: const AlignmentDirectional(-0.28, -0.58),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                        child: Container(
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                        child: SizedBox(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           child: TextFormField(
                             controller: _model.openHoursEdtController,
@@ -616,11 +615,11 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(-0.56, -0.49),
+                      alignment: const AlignmentDirectional(-0.56, -0.49),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                        child: Container(
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                        child: SizedBox(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           child: TextFormField(
                             controller: _model.phonrNumEdtController,
@@ -682,11 +681,11 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(-0.42, -0.41),
+                      alignment: const AlignmentDirectional(-0.42, -0.41),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                        child: Container(
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                        child: SizedBox(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           child: TextFormField(
                             controller: _model.countryEdtController,
@@ -752,11 +751,11 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(-0.28, -0.33),
+                      alignment: const AlignmentDirectional(-0.28, -0.33),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                        child: Container(
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                        child: SizedBox(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           child: TextFormField(
                             controller: _model.websiteEdtController,
@@ -822,10 +821,10 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.89, -0.17),
+                      alignment: const AlignmentDirectional(0.89, -0.17),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             if (FFAppState().toEditJson == null) {
@@ -859,7 +858,7 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                                             .primaryText,
                                       ),
                                     ),
-                                    duration: Duration(milliseconds: 6150),
+                                    duration: const Duration(milliseconds: 6150),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context).white,
                                   ),
@@ -883,7 +882,7 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                                             .primaryText,
                                       ),
                                     ),
-                                    duration: Duration(milliseconds: 4000),
+                                    duration: const Duration(milliseconds: 4000),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context).white,
                                   ),
@@ -922,7 +921,7 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                                             .primaryText,
                                       ),
                                     ),
-                                    duration: Duration(milliseconds: 6150),
+                                    duration: const Duration(milliseconds: 6150),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context).white,
                                   ),
@@ -937,7 +936,7 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                                             .primaryText,
                                       ),
                                     ),
-                                    duration: Duration(milliseconds: 4000),
+                                    duration: const Duration(milliseconds: 4000),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context).white,
                                   ),
@@ -958,9 +957,9 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                           options: FFButtonOptions(
                             width: 130.0,
                             height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -969,7 +968,7 @@ class _NewplacedetailsWidgetState extends State<NewplacedetailsWidget> {
                                   fontFamily: 'Poppins',
                                   color: Colors.white,
                                 ),
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

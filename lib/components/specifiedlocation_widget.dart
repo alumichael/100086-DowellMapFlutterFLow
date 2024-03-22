@@ -2,11 +2,7 @@ import '/flutter_flow/flutter_flow_place_picker.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/place.dart';
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'specifiedlocation_model.dart';
 export 'specifiedlocation_model.dart';
 
@@ -61,7 +57,7 @@ class _SpecifiedlocationWidgetState extends State<SpecifiedlocationWidget> {
               defaultText: FFLocalizations.of(context).getText(
                 'bwki9q32' /* Select Location */,
               ),
-              icon: Icon(
+              icon: const Icon(
                 Icons.place,
                 color: Colors.white,
                 size: 16.0,
@@ -74,7 +70,7 @@ class _SpecifiedlocationWidgetState extends State<SpecifiedlocationWidget> {
                       fontFamily: 'Poppins',
                       color: Colors.white,
                     ),
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: Colors.transparent,
                   width: 1.0,
                 ),

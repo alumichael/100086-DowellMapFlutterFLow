@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'add_member_dialog_model.dart';
 export 'add_member_dialog_model.dart';
@@ -47,14 +46,14 @@ class _AddMemberDialogWidgetState extends State<AddMemberDialogWidget> {
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Padding(
-        padding: EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(12.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (FFAppState().teamMembers.length > 0)
+            if (FFAppState().teamMembers.isNotEmpty)
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -80,7 +79,7 @@ class _AddMemberDialogWidgetState extends State<AddMemberDialogWidget> {
                         ),
                       }.withoutNulls,
                       extra: <String, dynamic>{
-                        kTransitionInfoKey: TransitionInfo(
+                        kTransitionInfoKey: const TransitionInfo(
                           hasTransition: true,
                           transitionType: PageTransitionType.bottomToTop,
                           duration: Duration(milliseconds: 340),
@@ -89,7 +88,7 @@ class _AddMemberDialogWidgetState extends State<AddMemberDialogWidget> {
                     );
                   },
                   child: Container(
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'ukfpisah' /* From Team members */,
@@ -99,7 +98,7 @@ class _AddMemberDialogWidgetState extends State<AddMemberDialogWidget> {
                   ),
                 ),
               ),
-            if (FFAppState().guestMembers.length > 0)
+            if (FFAppState().guestMembers.isNotEmpty)
               InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -125,7 +124,7 @@ class _AddMemberDialogWidgetState extends State<AddMemberDialogWidget> {
                       ),
                     }.withoutNulls,
                     extra: <String, dynamic>{
-                      kTransitionInfoKey: TransitionInfo(
+                      kTransitionInfoKey: const TransitionInfo(
                         hasTransition: true,
                         transitionType: PageTransitionType.rightToLeft,
                         duration: Duration(milliseconds: 340),
@@ -134,7 +133,7 @@ class _AddMemberDialogWidgetState extends State<AddMemberDialogWidget> {
                   );
                 },
                 child: Container(
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'oqn57nuj' /* From Guest  members */,

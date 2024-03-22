@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'member_selection_box_model.dart';
 export 'member_selection_box_model.dart';
@@ -52,7 +51,7 @@ class _MemberSelectionBoxWidgetState extends State<MemberSelectionBoxWidget> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -111,7 +110,7 @@ class _MemberSelectionBoxWidgetState extends State<MemberSelectionBoxWidget> {
                   ),
                 ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -147,7 +146,7 @@ class _MemberSelectionBoxWidgetState extends State<MemberSelectionBoxWidget> {
             ],
           ),
         ),
-        Divider(
+        const Divider(
           height: 0.0,
           thickness: 1.0,
           color: Color(0x5A616161),

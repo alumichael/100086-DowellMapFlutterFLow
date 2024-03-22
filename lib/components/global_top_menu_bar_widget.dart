@@ -2,8 +2,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'global_top_menu_bar_model.dart';
 export 'global_top_menu_bar_model.dart';
 
@@ -43,12 +41,12 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
     return Container(
       width: MediaQuery.sizeOf(context).width * 1.0,
       height: 50.0,
-      decoration: BoxDecoration(),
-      alignment: AlignmentDirectional(1.0, 0.0),
+      decoration: const BoxDecoration(),
+      alignment: const AlignmentDirectional(1.0, 0.0),
       child: Align(
-        alignment: AlignmentDirectional(0.0, 0.0),
+        alignment: const AlignmentDirectional(0.0, 0.0),
         child: Padding(
-          padding: EdgeInsets.all(3.0),
+          padding: const EdgeInsets.all(3.0),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -56,13 +54,13 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
               Container(
                 width: MediaQuery.sizeOf(context).width * 0.12,
                 height: 50.0,
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: FlutterFlowIconButton(
                   borderColor: Colors.transparent,
                   borderRadius: 30.0,
                   borderWidth: 1.0,
                   buttonSize: 60.0,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.home_outlined,
                     color: Color(0xFF999898),
                     size: 27.0,
@@ -75,13 +73,13 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
               Container(
                 width: MediaQuery.sizeOf(context).width * 0.12,
                 height: 50.0,
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: FlutterFlowIconButton(
                   borderColor: Colors.transparent,
                   borderRadius: 30.0,
                   borderWidth: 1.0,
                   buttonSize: 60.0,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.login,
                     color: Color(0xFF999898),
                     size: 25.0,
@@ -96,18 +94,18 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
                 height: 20.0,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Color(0xFFAEADAD),
+                    color: const Color(0xFFAEADAD),
                   ),
                 ),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'pop7fj2v' /* 6 */,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Poppins',
-                          color: Color(0xFFAEADAD),
+                          color: const Color(0xFFAEADAD),
                           fontSize: 12.0,
                           fontWeight: FontWeight.normal,
                           fontStyle: FontStyle.italic,
@@ -118,12 +116,12 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
               Container(
                 width: 50.0,
                 height: 50.0,
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'qa12q3rw' /* Learning Mode */,
@@ -144,13 +142,13 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
               Container(
                 width: MediaQuery.sizeOf(context).width * 0.12,
                 height: 50.0,
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: FlutterFlowIconButton(
                   borderColor: Colors.transparent,
                   borderRadius: 30.0,
                   borderWidth: 1.0,
                   buttonSize: 60.0,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.security,
                     color: Color(0xFF999898),
                     size: 22.0,
@@ -163,13 +161,13 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
               Container(
                 width: MediaQuery.sizeOf(context).width * 0.12,
                 height: 50.0,
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: FlutterFlowIconButton(
                   borderColor: Colors.transparent,
                   borderRadius: 30.0,
                   borderWidth: 1.0,
                   buttonSize: 60.0,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.settings,
                     color: Color(0xFF999898),
                     size: 24.0,
@@ -182,7 +180,7 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
               Container(
                 width: 40.0,
                 height: 25.0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.rectangle,
                 ),
                 child: Image.asset(
@@ -195,14 +193,14 @@ class _GlobalTopMenuBarWidgetState extends State<GlobalTopMenuBarWidget> {
               Container(
                 width: MediaQuery.sizeOf(context).width * 0.01,
                 height: 50.0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.rectangle,
                 ),
               ),
               Container(
                 width: 45.0,
                 height: 25.0,
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Image.asset(
                   'assets/images/Logo_high_quality_(1).png',
                   width: 100.0,

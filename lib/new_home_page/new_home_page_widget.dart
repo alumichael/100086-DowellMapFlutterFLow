@@ -12,9 +12,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/flutter_flow/place.dart';
 import 'dart:async';
-import 'dart:io';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -25,7 +23,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'new_home_page_model.dart';
@@ -57,7 +54,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
         return;
       }
       currentUserLocationValue =
-          await getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0));
+          await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
       if (FFAppState().sessionId != 'null') {
         setState(() {
           FFAppState().isAuthUser = true;
@@ -81,19 +78,19 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
               builder: (alertDialogContext) {
                 return WebViewAware(
                   child: AlertDialog(
-                    title: Text('Location Service'),
-                    content: Text(
+                    title: const Text('Location Service'),
+                    content: const Text(
                         'To continue, please turn on  your location using Google  location service.'),
                     actions: [
                       TextButton(
                         onPressed: () =>
                             Navigator.pop(alertDialogContext, false),
-                        child: Text('Cancel'),
+                        child: const Text('Cancel'),
                       ),
                       TextButton(
                         onPressed: () =>
                             Navigator.pop(alertDialogContext, true),
-                        child: Text('Turn on'),
+                        child: const Text('Turn on'),
                       ),
                     ],
                   ),
@@ -119,7 +116,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                 color: FlutterFlowTheme.of(context).primaryText,
               ),
             ),
-            duration: Duration(milliseconds: 4000),
+            duration: const Duration(milliseconds: 4000),
             backgroundColor: FlutterFlowTheme.of(context).secondary,
           ),
         );
@@ -154,7 +151,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                   color: FlutterFlowTheme.of(context).primaryText,
                 ),
               ),
-              duration: Duration(milliseconds: 4000),
+              duration: const Duration(milliseconds: 4000),
               backgroundColor: FlutterFlowTheme.of(context).secondary,
             ),
           );
@@ -187,7 +184,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                   color: FlutterFlowTheme.of(context).primaryText,
                 ),
               ),
-              duration: Duration(milliseconds: 4000),
+              duration: const Duration(milliseconds: 4000),
               backgroundColor: FlutterFlowTheme.of(context).secondary,
             ),
           );
@@ -207,7 +204,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                   elevation: 0,
                   insetPadding: EdgeInsets.zero,
                   backgroundColor: Colors.transparent,
-                  alignment: AlignmentDirectional(0.0, 0.0)
+                  alignment: const AlignmentDirectional(0.0, 0.0)
                       .resolve(Directionality.of(context)),
                   child: WebViewAware(
                     child: GestureDetector(
@@ -215,7 +212,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                           ? FocusScope.of(context)
                               .requestFocus(_model.unfocusNode)
                           : FocusScope.of(context).unfocus(),
-                      child: TeamSelectorFormDialogWidget(),
+                      child: const TeamSelectorFormDialogWidget(),
                     ),
                   ),
                 );
@@ -238,7 +235,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                   fontSize: 13.0,
                 ),
               ),
-              duration: Duration(milliseconds: 5000),
+              duration: const Duration(milliseconds: 5000),
               backgroundColor: FlutterFlowTheme.of(context).alternate,
             ),
           );
@@ -265,7 +262,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                   fontSize: 13.0,
                 ),
               ),
-              duration: Duration(milliseconds: 5000),
+              duration: const Duration(milliseconds: 5000),
               backgroundColor: FlutterFlowTheme.of(context).alternate,
             ),
           );
@@ -273,7 +270,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
       }
     });
 
-    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
+    getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
     if (!isWeb) {
       _keyboardVisibilitySubscription =
@@ -345,7 +342,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                     height: 165.0,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(16.0),
                         bottomRight: Radius.circular(16.0),
                         topLeft: Radius.circular(0.0),
@@ -354,14 +351,14 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                     ),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 50.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 50.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Builder(
                             builder: (context) => Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   22.0, 0.0, 9.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
@@ -377,7 +374,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                         insetPadding: EdgeInsets.zero,
                                         backgroundColor: Colors.transparent,
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0)
+                                            const AlignmentDirectional(0.0, 0.0)
                                                 .resolve(
                                                     Directionality.of(context)),
                                         child: WebViewAware(
@@ -389,7 +386,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                         _model.unfocusNode)
                                                 : FocusScope.of(context)
                                                     .unfocus(),
-                                            child: ImageWidget(),
+                                            child: const ImageWidget(),
                                           ),
                                         ),
                                       );
@@ -516,7 +513,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                     child: Container(
                       width: double.infinity,
                       height: 460.0,
@@ -525,15 +522,15 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             22.0, 32.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(-1.0, 0.0),
+                              alignment: const AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 30.0, 0.0),
                                 child: Container(
                                   width:
@@ -554,7 +551,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                         FlutterFlowTheme.of(context).accent2,
                                     dropdownColor: FlutterFlowTheme.of(context)
                                         .primaryBackground,
-                                    dropdownIconColor: Color(0x001C5F92),
+                                    dropdownIconColor: const Color(0x001C5F92),
                                     borderRadius: 8.0,
                                     textStyle: TextStyle(
                                       color: FlutterFlowTheme.of(context)
@@ -577,7 +574,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                             if (kDebugMode)
                               Builder(
                                 builder: (context) => Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 25.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -599,7 +596,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                               ),
                                             ),
                                             duration:
-                                                Duration(milliseconds: 5000),
+                                                const Duration(milliseconds: 5000),
                                             backgroundColor:
                                                 FlutterFlowTheme.of(context)
                                                     .background,
@@ -616,7 +613,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                               backgroundColor:
                                                   Colors.transparent,
                                               alignment:
-                                                  AlignmentDirectional(0.0, 0.0)
+                                                  const AlignmentDirectional(0.0, 0.0)
                                                       .resolve(
                                                           Directionality.of(
                                                               context)),
@@ -630,7 +627,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                               .unfocusNode)
                                                       : FocusScope.of(context)
                                                           .unfocus(),
-                                                  child: AddGroupDialogWidget(),
+                                                  child: const AddGroupDialogWidget(),
                                                 ),
                                               ),
                                             );
@@ -643,7 +640,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 10.0, 0.0),
                                           child: Icon(
                                             Icons.post_add,
@@ -654,7 +651,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
@@ -678,7 +675,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                               ),
                             if (FFAppState().isOwner)
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 25.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -695,7 +692,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 10.0, 0.0),
                                         child: Icon(
                                           Icons.post_add,
@@ -705,7 +702,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
@@ -729,7 +726,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                             if ((FFAppState().isAuthUser == false) &&
                                 (FFAppState().isOwner == false))
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -747,7 +744,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                 .primaryText,
                                           ),
                                         ),
-                                        duration: Duration(milliseconds: 4000),
+                                        duration: const Duration(milliseconds: 4000),
                                         backgroundColor:
                                             FlutterFlowTheme.of(context)
                                                 .secondary,
@@ -772,7 +769,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 10.0, 0.0),
                                         child: Icon(
                                           Icons.qr_code_scanner,
@@ -782,7 +779,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
@@ -804,7 +801,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                 ),
                               ),
                             if (!FFAppState().isAuthUser)
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 25.0, 16.0),
                                 child: Row(
@@ -816,13 +813,13 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                 ? MediaQuery.viewInsetsOf(context).bottom > 0
                                 : _isKeyboardVisible)
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 32.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 20.0, 0.0),
                                       child: FaIcon(
                                         FontAwesomeIcons.slidersH,
@@ -832,7 +829,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
@@ -856,13 +853,13 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                 ? MediaQuery.viewInsetsOf(context).bottom > 0
                                 : _isKeyboardVisible)
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 32.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 20.0, 0.0),
                                       child: Icon(
                                         Icons.contact_support_outlined,
@@ -872,7 +869,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
@@ -896,7 +893,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                 ? MediaQuery.viewInsetsOf(context).bottom > 0
                                 : _isKeyboardVisible)
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 32.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -916,7 +913,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 20.0, 0.0),
                                             child: Icon(
                                               Icons.info_outline,
@@ -928,7 +925,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
@@ -958,7 +955,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                             if ((FFAppState().isOwner == true) &&
                                 FFAppState().isAuthUser)
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -983,10 +980,10 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                       if (FFAppState().isAuthUser == true)
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(-1.0, 0.0),
+                                              const AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
@@ -1022,7 +1019,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                     height: 170.0,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(0.0),
                         bottomRight: Radius.circular(0.0),
                         topLeft: Radius.circular(16.0),
@@ -1033,7 +1030,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -1041,13 +1038,13 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                             children: [
                               if (FFAppState().isAuthUser == false)
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       22.0, 0.0, 9.0, 0.0),
                                   child: Container(
                                     width: 238.0,
                                     height: 71.0,
                                     decoration: BoxDecoration(
-                                      color: Color(0x37005734),
+                                      color: const Color(0x37005734),
                                       borderRadius: BorderRadius.circular(8.0),
                                       shape: BoxShape.rectangle,
                                       border: Border.all(
@@ -1056,7 +1053,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 0.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -1065,7 +1062,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 16.0, 0.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
@@ -1085,7 +1082,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 10.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
@@ -1127,7 +1124,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                         ),
                         if (FFAppState().isAuthUser)
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 22.0, 16.0, 0.0, 32.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -1144,23 +1141,23 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                               builder: (alertDialogContext) {
                                                 return WebViewAware(
                                                   child: AlertDialog(
-                                                    title: Text('Log Out'),
+                                                    title: const Text('Log Out'),
                                                     content:
-                                                        Text('Are you sure?'),
+                                                        const Text('Are you sure?'),
                                                     actions: [
                                                       TextButton(
                                                         onPressed: () =>
                                                             Navigator.pop(
                                                                 alertDialogContext,
                                                                 false),
-                                                        child: Text('Cancel'),
+                                                        child: const Text('Cancel'),
                                                       ),
                                                       TextButton(
                                                         onPressed: () =>
                                                             Navigator.pop(
                                                                 alertDialogContext,
                                                                 true),
-                                                        child: Text('Confirm'),
+                                                        child: const Text('Confirm'),
                                                       ),
                                                     ],
                                                   ),
@@ -1195,7 +1192,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 20.0, 0.0),
                                         child: Icon(
                                           Icons.logout,
@@ -1205,7 +1202,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
@@ -1241,13 +1238,13 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Flexible(
-                  child: Container(
+                  child: SizedBox(
                     height: MediaQuery.sizeOf(context).height * 1.0,
                     child: Stack(
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: Container(
+                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          child: SizedBox(
                             width: double.infinity,
                             height: MediaQuery.sizeOf(context).height * 1.0,
                             child: custom_widgets.MyMapWidget(
@@ -1296,7 +1293,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                     ),
                                   }.withoutNulls,
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: TransitionInfo(
+                                    kTransitionInfoKey: const TransitionInfo(
                                       hasTransition: true,
                                       transitionType:
                                           PageTransitionType.rightToLeft,
@@ -1323,7 +1320,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                               .primaryText,
                                         ),
                                       ),
-                                      duration: Duration(milliseconds: 4000),
+                                      duration: const Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context)
                                               .secondary,
@@ -1339,7 +1336,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                               .primaryText,
                                         ),
                                       ),
-                                      duration: Duration(milliseconds: 4000),
+                                      duration: const Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context)
                                               .secondary,
@@ -1359,7 +1356,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                     ),
                                   }.withoutNulls,
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: TransitionInfo(
+                                    kTransitionInfoKey: const TransitionInfo(
                                       hasTransition: true,
                                       transitionType:
                                           PageTransitionType.bottomToTop,
@@ -1386,18 +1383,18 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, 1.0),
+                          alignment: const AlignmentDirectional(0.0, 1.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               if (FFAppState().showBottomSheet)
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 1.0),
+                                  alignment: const AlignmentDirectional(0.0, 1.0),
                                   child: Material(
                                     color: Colors.transparent,
                                     elevation: 5.0,
-                                    shape: RoundedRectangleBorder(
+                                    shape: const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
@@ -1406,13 +1403,13 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                       ),
                                     ),
                                     child: AnimatedContainer(
-                                      duration: Duration(milliseconds: 310),
+                                      duration: const Duration(milliseconds: 310),
                                       curve: Curves.easeInOut,
                                       width: double.infinity,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(0.0),
                                           bottomRight: Radius.circular(0.0),
                                           topLeft: Radius.circular(20.0),
@@ -1421,10 +1418,10 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                       ),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 1.0),
+                                            const AlignmentDirectional(0.0, 1.0),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 30.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
@@ -1434,7 +1431,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 8.0, 0.0, 8.0),
                                                 child: InkWell(
@@ -1474,7 +1471,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
                                                 child: Row(
@@ -1489,7 +1486,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                       Expanded(
                                                         child: Align(
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   0.05, -1.0),
                                                           child:
                                                               FlutterFlowPlacePicker(
@@ -1511,7 +1508,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                                     .getText(
                                                               'fz3xrc4g' /* Search Location */,
                                                             ),
-                                                            icon: Icon(
+                                                            icon: const Icon(
                                                               Icons.place,
                                                               color:
                                                                   Colors.white,
@@ -1538,7 +1535,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                                             2.0,
                                                                       ),
                                                               borderSide:
-                                                                  BorderSide(
+                                                                  const BorderSide(
                                                                 color: Colors
                                                                     .transparent,
                                                                 width: 0.0,
@@ -1601,7 +1598,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                               FontWeight.normal,
                                                         ),
                                                     textPadding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 4.0, 0.0),
                                                     buttonPosition:
@@ -1609,9 +1606,9 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                             .left,
                                                     direction: Axis.horizontal,
                                                     radioButtonColor:
-                                                        Color(0xFF015534),
+                                                        const Color(0xFF015534),
                                                     inactiveRadioButtonColor:
-                                                        Color(0x8A000000),
+                                                        const Color(0x8A000000),
                                                     toggleable: false,
                                                     horizontalAlignment:
                                                         WrapAlignment.start,
@@ -1622,10 +1619,10 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                 ],
                                               ),
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(25.0, 16.0,
                                                           25.0, 16.0),
                                                   child: Row(
@@ -1661,13 +1658,13 @@ Between */
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       8.0,
                                                                       0.0,
                                                                       4.0,
                                                                       0.0),
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width: 88.0,
                                                             child:
                                                                 TextFormField(
@@ -1714,7 +1711,7 @@ Between */
                                                                 enabledBorder:
                                                                     OutlineInputBorder(
                                                                   borderSide:
-                                                                      BorderSide(
+                                                                      const BorderSide(
                                                                     color: Color(
                                                                         0x4C005734),
                                                                     width: 2.0,
@@ -1800,13 +1797,13 @@ Between */
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       4.0,
                                                                       0.0,
                                                                       8.0,
                                                                       0.0),
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width: 88.0,
                                                             child:
                                                                 TextFormField(
@@ -1853,7 +1850,7 @@ Between */
                                                                 enabledBorder:
                                                                     OutlineInputBorder(
                                                                   borderSide:
-                                                                      BorderSide(
+                                                                      const BorderSide(
                                                                     color: Color(
                                                                         0x4C005734),
                                                                     width: 2.0,
@@ -1950,7 +1947,7 @@ Between */
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         25.0, 0.0, 25.0, 0.0),
                                                 child: Row(
@@ -1959,7 +1956,7 @@ Between */
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -2016,7 +2013,7 @@ Between */
                                                     Flexible(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -2037,13 +2034,13 @@ Between */
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         14.0,
                                                                         0.0,
                                                                         14.0,
                                                                         0.0),
-                                                            child: Container(
+                                                            child: SizedBox(
                                                               width: 88.0,
                                                               child:
                                                                   TextFormField(
@@ -2055,7 +2052,7 @@ Between */
                                                                     EasyDebounce
                                                                         .debounce(
                                                                   '_model.searchController',
-                                                                  Duration(
+                                                                  const Duration(
                                                                       milliseconds:
                                                                           2000),
                                                                   () => setState(
@@ -2090,7 +2087,7 @@ Between */
                                                                   enabledBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
-                                                                        BorderSide(
+                                                                        const BorderSide(
                                                                       color: Color(
                                                                           0x4C005734),
                                                                       width:
@@ -2153,7 +2150,7 @@ Between */
                                                                             setState(() {});
                                                                           },
                                                                           child:
-                                                                              Icon(
+                                                                              const Icon(
                                                                             Icons.clear,
                                                                             size:
                                                                                 20.0,
@@ -2176,7 +2173,7 @@ Between */
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -2206,13 +2203,10 @@ Between */
                                                           currentUserLocationValue =
                                                               await getCurrentUserLocation(
                                                                   defaultLocation:
-                                                                      LatLng(
+                                                                      const LatLng(
                                                                           0.0,
                                                                           0.0));
                                                           if (_model.searchController
-                                                                      .text !=
-                                                                  null &&
-                                                              _model.searchController
                                                                       .text !=
                                                                   '') {
                                                             setState(() {
@@ -2268,8 +2262,7 @@ Between */
                                                                     (_model.nearbyPlaceResponse
                                                                             ?.jsonBody ??
                                                                         ''),
-                                                                  )?.length !=
-                                                                  0) {
+                                                                  ).isNotEmpty) {
                                                                 _model.searchServiceResponse =
                                                                     await ProcessProductRequestCall
                                                                         .call(
@@ -2466,7 +2459,7 @@ Between */
                                                                           ),
                                                                         ),
                                                                         duration:
-                                                                            Duration(milliseconds: 4000),
+                                                                            const Duration(milliseconds: 4000),
                                                                         backgroundColor:
                                                                             FlutterFlowTheme.of(context).primaryText,
                                                                       ),
@@ -2490,7 +2483,7 @@ Between */
                                                                               FlutterFlowTheme.of(context).primaryText,
                                                                         ),
                                                                       ),
-                                                                      duration: Duration(
+                                                                      duration: const Duration(
                                                                           milliseconds:
                                                                               4000),
                                                                       backgroundColor:
@@ -2518,7 +2511,7 @@ Between */
                                                                             .primaryBackground,
                                                                       ),
                                                                     ),
-                                                                    duration: Duration(
+                                                                    duration: const Duration(
                                                                         milliseconds:
                                                                             4000),
                                                                     backgroundColor:
@@ -2579,8 +2572,7 @@ Between */
                                                                     (_model.mymapBackendRefinedResult
                                                                             ?.jsonBody ??
                                                                         ''),
-                                                                  )?.length !=
-                                                                  0) {
+                                                                  ).isNotEmpty) {
                                                                 _model.getLocationServiceResponse =
                                                                     await ProcessProductRequestCall
                                                                         .call(
@@ -2647,7 +2639,7 @@ Between */
                                                                               FlutterFlowTheme.of(context).secondaryBackground,
                                                                         ),
                                                                       ),
-                                                                      duration: Duration(
+                                                                      duration: const Duration(
                                                                           milliseconds:
                                                                               4000),
                                                                       backgroundColor:
@@ -2674,7 +2666,7 @@ Between */
                                                                         14.0,
                                                                   ),
                                                                 ),
-                                                                duration: Duration(
+                                                                duration: const Duration(
                                                                     milliseconds:
                                                                         4000),
                                                                 backgroundColor:
@@ -2703,9 +2695,9 @@ Between */
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, -1.0),
+                          alignment: const AlignmentDirectional(0.0, -1.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 21.0, 50.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -2762,7 +2754,7 @@ Between */
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(60.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(60.0),
@@ -2783,7 +2775,7 @@ Between */
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsets.all(10.0),
+                                              padding: const EdgeInsets.all(10.0),
                                               child: FaIcon(
                                                 FontAwesomeIcons.userSlash,
                                                 color:
@@ -2793,7 +2785,7 @@ Between */
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 4.0, 0.0),
                                               child: Text(
                                                 FFLocalizations.of(context)
@@ -2817,7 +2809,7 @@ Between */
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(60.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(60.0),
@@ -2845,7 +2837,7 @@ Between */
                                                     fontSize: 14.0,
                                                   ),
                                                 ),
-                                                duration: Duration(
+                                                duration: const Duration(
                                                     milliseconds: 4000),
                                                 backgroundColor:
                                                     FlutterFlowTheme.of(context)
@@ -2862,7 +2854,7 @@ Between */
                                                   backgroundColor:
                                                       Colors.transparent,
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                               0.0, 0.0)
                                                           .resolve(
                                                               Directionality.of(
@@ -2879,14 +2871,14 @@ Between */
                                                           : FocusScope.of(
                                                                   context)
                                                               .unfocus(),
-                                                      child: Container(
+                                                      child: SizedBox(
                                                         width:
                                                             MediaQuery.sizeOf(
                                                                         context)
                                                                     .width *
                                                                 0.8,
                                                         child:
-                                                            GroupListDialogComponentWidget(),
+                                                            const GroupListDialogComponentWidget(),
                                                       ),
                                                     ),
                                                   ),
@@ -2901,7 +2893,7 @@ Between */
                                               MainAxisAlignment.start,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsets.all(10.0),
+                                              padding: const EdgeInsets.all(10.0),
                                               child: Icon(
                                                 Icons.domain_add_rounded,
                                                 color:
@@ -2911,7 +2903,7 @@ Between */
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 4.0, 0.0),
                                               child: Text(
                                                 FFLocalizations.of(context)

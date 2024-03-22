@@ -1,5 +1,4 @@
 import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/newteam_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -8,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'teams_model.dart';
@@ -45,7 +43,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
             ),
-            duration: Duration(milliseconds: 4000),
+            duration: const Duration(milliseconds: 4000),
             backgroundColor: FlutterFlowTheme.of(context).primaryText,
           ),
         );
@@ -65,7 +63,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
             ),
-            duration: Duration(milliseconds: 4000),
+            duration: const Duration(milliseconds: 4000),
             backgroundColor: FlutterFlowTheme.of(context).primaryText,
           ),
         );
@@ -101,7 +99,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -120,7 +118,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: true,
           elevation: 0.0,
         ),
@@ -131,7 +129,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                   child: Builder(
                     builder: (context) {
                       final teamBuilding = FFAppState().teamList.toList();
@@ -193,12 +191,12 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                       .secondaryBackground,
                                   borderRadius: BorderRadius.circular(8.0),
                                   border: Border.all(
-                                    color: Color(0xFF005734),
+                                    color: const Color(0xFF005734),
                                     width: 2.0,
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 8.0, 12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -210,7 +208,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge,
                                       ),
-                                      Icon(
+                                      const Icon(
                                         Icons.chevron_right_rounded,
                                         color: Color(0xFF7C8791),
                                         size: 24.0,
@@ -221,19 +219,19 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                               ),
                             );
                           })
-                              .divide(SizedBox(height: 8.0))
-                              .addToStart(SizedBox(height: 24.0)),
+                              .divide(const SizedBox(height: 8.0))
+                              .addToStart(const SizedBox(height: 24.0)),
                         ),
                       );
                     },
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(1.0, -1.0),
+                  alignment: const AlignmentDirectional(1.0, -1.0),
                   child: Builder(
                     builder: (context) => Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 16.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 16.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           await showDialog(
@@ -243,7 +241,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                 elevation: 0,
                                 insetPadding: EdgeInsets.zero,
                                 backgroundColor: Colors.transparent,
-                                alignment: AlignmentDirectional(0.0, 0.0)
+                                alignment: const AlignmentDirectional(0.0, 0.0)
                                     .resolve(Directionality.of(context)),
                                 child: WebViewAware(
                                   child: GestureDetector(
@@ -252,11 +250,11 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                         ? FocusScope.of(context)
                                             .requestFocus(_model.unfocusNode)
                                         : FocusScope.of(context).unfocus(),
-                                    child: Container(
+                                    child: SizedBox(
                                       height:
                                           MediaQuery.sizeOf(context).height *
                                               0.2,
-                                      child: NewteamWidget(),
+                                      child: const NewteamWidget(),
                                     ),
                                   ),
                                 ),
@@ -269,17 +267,17 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: Color(0xFF005734),
+                          color: const Color(0xFF005734),
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Poppins',
                                     color: Colors.white,
                                   ),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Color(0xFFF9F9F9),
                             width: 1.0,
                           ),

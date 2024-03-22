@@ -1,23 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/backend/push_notifications/push_notifications_handler.dart'
     show PushNotificationsHandler;
 import '/index.dart';
-import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -83,8 +74,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => RootPageContext.wrap(
         appStateNotifier.loggedIn
-            ? LoginComponentWidget()
-            : NewHomePageWidget(),
+            ? const LoginComponentWidget()
+            : const NewHomePageWidget(),
         errorRoute: state.location,
       ),
       routes: [
@@ -93,19 +84,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/',
           builder: (context, _) => RootPageContext.wrap(
             appStateNotifier.loggedIn
-                ? LoginComponentWidget()
-                : NewHomePageWidget(),
+                ? const LoginComponentWidget()
+                : const NewHomePageWidget(),
           ),
           routes: [
             FFRoute(
               name: 'OnboardingPage',
               path: 'onboardingPage',
-              builder: (context, params) => OnboardingPageWidget(),
+              builder: (context, params) => const OnboardingPageWidget(),
             ),
             FFRoute(
               name: 'LoginComponent',
               path: 'LoginComponent',
-              builder: (context, params) => LoginComponentWidget(),
+              builder: (context, params) => const LoginComponentWidget(),
             ),
             FFRoute(
               name: 'placedetails',
@@ -119,22 +110,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Signup',
               path: 'signup',
-              builder: (context, params) => SignupWidget(),
+              builder: (context, params) => const SignupWidget(),
             ),
             FFRoute(
               name: 'SelectOrg',
               path: 'selectOrg',
-              builder: (context, params) => SelectOrgWidget(),
+              builder: (context, params) => const SelectOrgWidget(),
             ),
             FFRoute(
               name: 'NewHomePage',
               path: 'newHomePage',
-              builder: (context, params) => NewHomePageWidget(),
+              builder: (context, params) => const NewHomePageWidget(),
             ),
             FFRoute(
               name: 'Userdetails',
               path: 'userdetails',
-              builder: (context, params) => UserdetailsWidget(),
+              builder: (context, params) => const UserdetailsWidget(),
             ),
             FFRoute(
               name: 'newplacedetails',
@@ -146,17 +137,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'TrackingPage',
               path: 'trackingPage',
-              builder: (context, params) => TrackingPageWidget(),
+              builder: (context, params) => const TrackingPageWidget(),
             ),
             FFRoute(
               name: 'search',
               path: 'search',
-              builder: (context, params) => SearchWidget(),
+              builder: (context, params) => const SearchWidget(),
             ),
             FFRoute(
               name: 'QrScanner',
               path: 'qrScanner',
-              builder: (context, params) => QrScannerWidget(),
+              builder: (context, params) => const QrScannerWidget(),
             ),
             FFRoute(
               name: 'TrackingDetailsForm',
@@ -169,17 +160,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Create_Qr_Code',
               path: 'create_qr_code',
-              builder: (context, params) => CreateQrCodeWidget(),
+              builder: (context, params) => const CreateQrCodeWidget(),
             ),
             FFRoute(
               name: 'TrackPermission',
               path: 'trackPermission',
-              builder: (context, params) => TrackPermissionWidget(),
+              builder: (context, params) => const TrackPermissionWidget(),
             ),
             FFRoute(
               name: 'Teams',
               path: 'teams',
-              builder: (context, params) => TeamsWidget(),
+              builder: (context, params) => const TeamsWidget(),
             ),
             FFRoute(
               name: 'TeamMembers',
@@ -191,7 +182,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'MembersScreen',
               path: 'membersScreen',
-              builder: (context, params) => MembersScreenWidget(),
+              builder: (context, params) => const MembersScreenWidget(),
             ),
             FFRoute(
               name: 'MembersDetailScreen',
@@ -214,7 +205,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'AddMemberScreen',
               path: 'addMemberScreen',
-              builder: (context, params) => AddMemberScreenWidget(),
+              builder: (context, params) => const AddMemberScreenWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -449,7 +440,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

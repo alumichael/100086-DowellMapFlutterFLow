@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'dart:typed_data';
 import '../cloud_functions/cloud_functions.dart';
-import '../schema/structs/index.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
@@ -23,14 +21,14 @@ class LinkBageLoginCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "Username": "${username}",
-  "OS": "${os}",
-  "Device": "${device}",
-  "Browser": "${browser}",
-  "Location": "${location}",
-  "Time": "${time}",
-  "Connection": "${connection}",
-  "IP": "${ip}"
+  "Username": "$username",
+  "OS": "$os",
+  "Device": "$device",
+  "Browser": "$browser",
+  "Location": "$location",
+  "Time": "$time",
+  "Connection": "$connection",
+  "IP": "$ip"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'link bage login ',
@@ -62,9 +60,9 @@ class CreateRoomForDigitalQCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "user_name": "${username}",
-  "qrid": "${qrid}",
-  "product": "${product}"
+  "user_name": "$username",
+  "qrid": "$qrid",
+  "product": "$product"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'create room for digitalQ',
@@ -246,10 +244,10 @@ class NearbyPlacesDataCall {
     bool? isError,
     String? error = '',
     String? dateTimeDone = '',
-    dynamic? latLongJson,
+    dynamic latLongJson,
     List<String>? addressList,
     String? data = '',
-    dynamic? responseJson,
+    dynamic responseJson,
   }) async {
     final address = _serializeList(addressList);
     final latLong = _serializeJson(latLongJson);
@@ -264,16 +262,16 @@ class NearbyPlacesDataCall {
   "function_ID": "ABCDE",
   "command": "insert",
   "field": {
-    "eventId": "${eventId}",
-    "start_address": "${startAddress}",
-    "start_lat_lon": "${startLocation}",
+    "eventId": "$eventId",
+    "start_address": "$startAddress",
+    "start_lat_lon": "$startLocation",
     "url": "None",
-    "query_text": "${queryText}",
-    "radius_distance_from": "${radiusDistanceFrom}",
-    "radius_distance_to": "${radiusDistanceTo}",
-    "is_error": ${isError},
-    "error": "${error}",
-    "data_time_done": "${dateTimeDone}"
+    "query_text": "$queryText",
+    "radius_distance_from": "$radiusDistanceFrom",
+    "radius_distance_to": "$radiusDistanceTo",
+    "is_error": $isError,
+    "error": "$error",
+    "data_time_done": "$dateTimeDone"
   },
   "update_field": {
     "order_nos": 1
@@ -376,18 +374,18 @@ class MymapCall {
   "function_ID": "ABCDE",
   "command": "insert",
   "field": {
-    "place_name": "${placeName}",
-    "category": "${category}",
-    "address": "${address}",
-    "country": "${country}",
-    "location_coord": "${locationCord}",
-    "day_hours": "${dayHours}",
-    "phone": "${phone}",
-    "website": "${website}",
-    "hours": "${hours}",
-    "type_of_data": "${typeOfData}",
-    "eventId": "${eventId}",
-    "is_test_data": ${isTestData}
+    "place_name": "$placeName",
+    "category": "$category",
+    "address": "$address",
+    "country": "$country",
+    "location_coord": "$locationCord",
+    "day_hours": "$dayHours",
+    "phone": "$phone",
+    "website": "$website",
+    "hours": "$hours",
+    "type_of_data": "$typeOfData",
+    "eventId": "$eventId",
+    "is_test_data": $isTestData
   },
   "update_field": {
     "order_nos": 21
@@ -434,13 +432,13 @@ class GetMymapCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "radius1": ${radius1},
-  "radius2": ${radius2},
-  "center_lat": ${centerLat},
-  "center_lon": ${centerLon},
-  "query_string": "${query}",
+  "radius1": $radius1,
+  "radius2": $radius2,
+  "center_lat": $centerLat,
+  "center_lon": $centerLon,
+  "query_string": "$query",
   "data_type": "registered",
-  "api_key": "${apiKey}"
+  "api_key": "$apiKey"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'GetMymap',
@@ -589,14 +587,14 @@ class ProcessProductRequestCall {
     final ffApiRequestBody = '''
 {
   "sub_service_ids": [
-    "${subServiceIds}"
+    "$subServiceIds"
   ],
-  "service_id": "${serviceId}"
+  "service_id": "$serviceId"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Process Product Request',
       apiUrl:
-          'https://100105.pythonanywhere.com/api/v3/process-services/?type=product_service&api_key=${apiKey}',
+          'https://100105.pythonanywhere.com/api/v3/process-services/?type=product_service&api_key=$apiKey',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -629,14 +627,14 @@ class GetLocationByUserCall {
     final ffApiRequestBody = '''
 {
   "filters": {
-    "username": "${username}",
-    "doc_type": "${docType}"
+    "username": "$username",
+    "doc_type": "$docType"
   }
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Get Location by User',
       apiUrl:
-          'https://100086.pythonanywhere.com/accounts/get-locs/?api_key=${apiKey}',
+          'https://100086.pythonanywhere.com/accounts/get-locs/?api_key=$apiKey',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -673,12 +671,12 @@ class CreateProfileCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "username": "${username}"
+  "username": "$username"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Create Profile',
       apiUrl:
-          'https://100086.pythonanywhere.com/accounts/create-profile/?api_key=${apiKey}',
+          'https://100086.pythonanywhere.com/accounts/create-profile/?api_key=$apiKey',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -706,13 +704,13 @@ class CreateLocationGroupCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "username": "${username}",
-  "group_name": "${groupName}"
+  "username": "$username",
+  "group_name": "$groupName"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Create Location Group',
       apiUrl:
-          'https://100086.pythonanywhere.com/accounts/create-loc-group/?api_key=${apiKey}',
+          'https://100086.pythonanywhere.com/accounts/create-loc-group/?api_key=$apiKey',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -748,28 +746,28 @@ class CreateLocationCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "username": "${username}",
-  "group_name": "${groupName}",
+  "username": "$username",
+  "group_name": "$groupName",
   "loc_detail": {
-    "place_name": "${placeName}",
-    "category": "${placeCategory}",
-    "address": "${placeAddress}",
-    "country": "${country}",
-    "location_coord": "${locationCord}",
-    "day_hours": "${dayHours}",
-    "phone": "${phoneNumber}",
-    "website": "${website}",
-    "hours": "${hours}",
-    "type_of_data": "${typeOfData}",
-    "is_test_data": ${isTestData},
-    "make_public": ${makePublic},
-    "is_deleted": ${isDeleted}
+    "place_name": "$placeName",
+    "category": "$placeCategory",
+    "address": "$placeAddress",
+    "country": "$country",
+    "location_coord": "$locationCord",
+    "day_hours": "$dayHours",
+    "phone": "$phoneNumber",
+    "website": "$website",
+    "hours": "$hours",
+    "type_of_data": "$typeOfData",
+    "is_test_data": $isTestData,
+    "make_public": $makePublic,
+    "is_deleted": $isDeleted
   }
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Create Location',
       apiUrl:
-          'https://100086.pythonanywhere.com/accounts/create-location/?api_key=${apiKey}',
+          'https://100086.pythonanywhere.com/accounts/create-location/?api_key=$apiKey',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -793,14 +791,14 @@ class UpdateGroupLocationCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "username": "${username}",
-  "old_group_name": "${oldGroupName}",
-  "new_group_name": "${newGroupName}"
+  "username": "$username",
+  "old_group_name": "$oldGroupName",
+  "new_group_name": "$newGroupName"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Update Group Location',
       apiUrl:
-          'https://100086.pythonanywhere.com/accounts/update-loc-group/?api_key=${apiKey}',
+          'https://100086.pythonanywhere.com/accounts/update-loc-group/?api_key=$apiKey',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -836,28 +834,28 @@ class UpdateLocationCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "loc_id": "${locationId}",
+  "loc_id": "$locationId",
   "new_loc_detail": {
-    "place_name": "${placeName}",
-    "category": "${category}",
-    "address": "${address}",
-    "country": "${country}",
-    "location_coord": "${locationCoordinate}",
-    "day_hours": "${dayHours}",
-    "phone": "${phoneNumber}",
-    "website": "${website}",
-    "hours": ${hours},
-    "type_of_data": "${typeOfData}",
-    "eventId": "${eventId}",
-    "is_test_data": ${isTestData},
-    "make_public": ${makePublic},
-    "is_deleted": ${isDeleted}
+    "place_name": "$placeName",
+    "category": "$category",
+    "address": "$address",
+    "country": "$country",
+    "location_coord": "$locationCoordinate",
+    "day_hours": "$dayHours",
+    "phone": "$phoneNumber",
+    "website": "$website",
+    "hours": $hours,
+    "type_of_data": "$typeOfData",
+    "eventId": "$eventId",
+    "is_test_data": $isTestData,
+    "make_public": $makePublic,
+    "is_deleted": $isDeleted
   }
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Update Location',
       apiUrl:
-          'https://100086.pythonanywhere.com/accounts/update-location/?api_key=${apiKey}',
+          'https://100086.pythonanywhere.com/accounts/update-location/?api_key=$apiKey',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -879,12 +877,12 @@ class DeleteUserLocsCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "username": "${username}"
+  "username": "$username"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Delete User Locs',
       apiUrl:
-          'https://100086.pythonanywhere.com/accounts/delete-user-loc/?api_key=${apiKey}',
+          'https://100086.pythonanywhere.com/accounts/delete-user-loc/?api_key=$apiKey',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -907,13 +905,13 @@ class DeleteLocationGroupCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "username": "${username}",
-  "group_name": "${groupName}"
+  "username": "$username",
+  "group_name": "$groupName"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Delete Location Group',
       apiUrl:
-          'https://100086.pythonanywhere.com/accounts/delete-loc-group/?api_key=${apiKey}',
+          'https://100086.pythonanywhere.com/accounts/delete-loc-group/?api_key=$apiKey',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -936,7 +934,7 @@ class DeleteLocCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Delete Loc',
       apiUrl:
-          'https://100086.pythonanywhere.com/accounts/delete-loc/?api_key=${apiKey}',
+          'https://100086.pythonanywhere.com/accounts/delete-loc/?api_key=$apiKey',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -959,14 +957,14 @@ class GetLocationByGroupNameCall {
     final ffApiRequestBody = '''
 {
   "filters": {
-    "username": "${username}",
-    "group_name": "${groupName}"
+    "username": "$username",
+    "group_name": "$groupName"
   }
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Get Location by group name',
       apiUrl:
-          'https://100086.pythonanywhere.com/accounts/get-locs/?api_key=${apiKey}',
+          'https://100086.pythonanywhere.com/accounts/get-locs/?api_key=$apiKey',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -1074,7 +1072,7 @@ class GuestLoginCall {
     String? location = '',
     String? time = '',
   }) async {
-    final ffApiRequestBody = '''
+    const ffApiRequestBody = '''
 {
     "Username":"User_test(2)",
     "OS":"linux",
@@ -1109,7 +1107,7 @@ class GetQrCodeByIdCall {
     return ApiManager.instance.makeApiCall(
       callName: ' GetQrCodeById',
       apiUrl:
-          'https://www.qrcodereviews.uxlivinglab.online/api/v1/update-qr-code/${id}/',
+          'https://www.qrcodereviews.uxlivinglab.online/api/v1/update-qr-code/$id/',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -1128,7 +1126,7 @@ class GetUserInfoCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "session_id": "${sessionId}"
+  "session_id": "$sessionId"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'getUserInfo',
@@ -1172,14 +1170,14 @@ class FinalizedLinkCall {
     String? linkId = '',
     String? product = '',
   }) async {
-    final ffApiRequestBody = '''
+    const ffApiRequestBody = '''
 {
   "is_finalized": true
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'FinalizedLink',
       apiUrl:
-          'https://www.qrcodereviews.uxlivinglab.online/api/v3/masterlink/?link_id=${linkId}&product=${product}',
+          'https://www.qrcodereviews.uxlivinglab.online/api/v3/masterlink/?link_id=$linkId&product=$product',
       callType: ApiCallType.PUT,
       headers: {},
       params: {},
@@ -1196,7 +1194,7 @@ class FinalizedLinkCall {
 
 class GenerateQRcodeCall {
   static Future<ApiCallResponse> call({
-    dynamic? linksJson,
+    dynamic linksJson,
     String? cliendId = '',
     String? product = '',
   }) async {
@@ -1205,14 +1203,14 @@ class GenerateQRcodeCall {
 {
   "qrcode_type": "Link",
   "quantity": 1,
-  "company_id": "${cliendId}",
-  "links": ${links},
+  "company_id": "$cliendId",
+  "links": $links,
   "document_name": "Living Lab Maps"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Generate QRcode',
       apiUrl:
-          'https://www.qrcodereviews.uxlivinglab.online/api/v3/qr-code/?product=${product}',
+          'https://www.qrcodereviews.uxlivinglab.online/api/v3/qr-code/?product=$product',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -1248,12 +1246,12 @@ class UpdateGuestTrackingCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "user_email": "${email}",
-  "company_id": "${companyId}",
-  "user_id": "${userId}",
-  "lat": ${lat},
-  "lng": ${lng},
-  "link_id": "${linkId}"
+  "user_email": "$email",
+  "company_id": "$companyId",
+  "user_id": "$userId",
+  "lat": $lat,
+  "lng": $lng,
+  "link_id": "$linkId"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'updateGuestTracking',
@@ -1279,8 +1277,8 @@ class GetPublicLinksCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "org_id": "${orgId}",
-  "product": "${product}"
+  "org_id": "$orgId",
+  "product": "$product"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Get Public Links',
@@ -1316,12 +1314,12 @@ class FetchUserCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "api_key": "${apiKey}",
+  "api_key": "$apiKey",
   "db_name": "dowell_tracking",
   "coll_name": "user_info",
   "operation": "fetch",
   "filters": {
-    "email": "${email}"
+    "email": "$email"
   },
   "limit": 1,
   "offset": 0
@@ -1359,16 +1357,16 @@ class InsertUserCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "api_key": "${apiKey}",
+  "api_key": "$apiKey",
   "db_name": "dowell_tracking",
   "coll_name": "user_info",
   "operation": "insert",
   "data": {
     "id": "65a8bb1f2d73765634fdcaf5",
-    "user_id": "${userid}",
-    "name": "${name}",
-    "email": "${email}",
-    "org_name": "${comapnyName}"
+    "user_id": "$userid",
+    "name": "$name",
+    "email": "$email",
+    "org_name": "$comapnyName"
   }
 }''';
     return ApiManager.instance.makeApiCall(
@@ -1397,10 +1395,10 @@ class CreateTeamCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "username": "${username}",
-  "owner": "${owner}",
-  "client_admin_id": "${clientAdminId}",
-  "team_name": "${teamName}"
+  "username": "$username",
+  "owner": "$owner",
+  "client_admin_id": "$clientAdminId",
+  "team_name": "$teamName"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Create Team',
@@ -1425,7 +1423,7 @@ class GetTeamsByUsernameCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "username": "${username}"
+  "username": "$username"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'GetTeamsByUsername',
@@ -1459,15 +1457,15 @@ class AddMemberToTeamCall {
   static Future<ApiCallResponse> call({
     String? username = '',
     String? teamName = '',
-    dynamic? membersJson,
+    dynamic membersJson,
     String? type = '',
   }) async {
     final members = _serializeJson(membersJson, true);
     final ffApiRequestBody = '''
 {
-  "username": "${username}",
-  "team_name": "${teamName}",
-  "members": ${members},
+  "username": "$username",
+  "team_name": "$teamName",
+  "members": $members,
   "type": "team_members"
 }''';
     return ApiManager.instance.makeApiCall(
@@ -1495,9 +1493,9 @@ class GetMemberByTeamNameCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "username": "${username}",
-  "team_name": "${teamName}",
-  "member_type": "${memberType}"
+  "username": "$username",
+  "team_name": "$teamName",
+  "member_type": "$memberType"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'GetMemberByTeamName',
@@ -1542,8 +1540,8 @@ class FindTeamByOrgIdCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "client_admin_id": "${clientAdminId}",
-  "member_email": "${memberEmail}"
+  "client_admin_id": "$clientAdminId",
+  "member_email": "$memberEmail"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'FindTeamByOrgId',
@@ -1582,10 +1580,10 @@ class SendEmailToSingleUserCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "toname": "${toname}",
-  "toemail": "${toemail}",
-  "subject": "${subject}",
-  "email_content": "${emailContent}"
+  "toname": "$toname",
+  "toemail": "$toemail",
+  "subject": "$subject",
+  "email_content": "$emailContent"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'sendEmailToSingleUser',
@@ -1606,7 +1604,7 @@ class SendEmailToSingleUserCall {
 
 class SendBulkEmailCall {
   static Future<ApiCallResponse> call({
-    dynamic? toEmailListJson,
+    dynamic toEmailListJson,
     String? fromname = '',
     String? fromemail = '',
     String? subject = '',
@@ -1615,11 +1613,11 @@ class SendBulkEmailCall {
     final toEmailList = _serializeJson(toEmailListJson, true);
     final ffApiRequestBody = '''
 {
-  "to_email_list": ${toEmailList},
-  "fromname": "${fromname}",
-  "fromemail": "${fromemail}",
-  "subject": "${subject}",
-  "email_content": "${emailContent}"
+  "to_email_list": $toEmailList,
+  "fromname": "$fromname",
+  "fromemail": "$fromemail",
+  "subject": "$subject",
+  "email_content": "$emailContent"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'SendBulkEmail',
@@ -1646,9 +1644,9 @@ class DeleteTeamMemberCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "username": "${username}",
-  "team_name": "${teamName}",
-  "member_email": "${memberEmail}"
+  "username": "$username",
+  "team_name": "$teamName",
+  "member_email": "$memberEmail"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'deleteTeamMember',
@@ -1670,17 +1668,17 @@ class DeleteTeamMemberCall {
 class SaveTrackingDetailsCall {
   static Future<ApiCallResponse> call({
     String? apiKey = '',
-    dynamic? jsonBodyJson,
+    dynamic jsonBodyJson,
   }) async {
     final jsonBody = _serializeJson(jsonBodyJson, true);
     final ffApiRequestBody = '''
 {
-  "payload": ${jsonBody}
+  "payload": $jsonBody
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'saveTrackingDetails',
       apiUrl:
-          'http://100086.pythonanywhere.com/create-current-loc/?api_key=${apiKey}',
+          'http://100086.pythonanywhere.com/create-current-loc/?api_key=$apiKey',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
