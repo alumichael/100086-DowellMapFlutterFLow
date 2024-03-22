@@ -129,7 +129,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                             (_model.fetchResultAuthUser
                                                     ?.jsonBody ??
                                                 ''),
-                                          ).isEmpty) {
+                                          )?.isEmpty) {
                                         _model.insertionResultAuthUser =
                                             await InsertUserCall.call(
                                           apiKey: FFAppState().apiKey,
@@ -227,7 +227,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                       if (FetchUserCall.data(
                                             (_model.fetchResult?.jsonBody ??
                                                 ''),
-                                          ).isEmpty) {
+                                          )?.isEmpty) {
                                         _model.insertionResult =
                                             await InsertUserCall.call(
                                           apiKey:
