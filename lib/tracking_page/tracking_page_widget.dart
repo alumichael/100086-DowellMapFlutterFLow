@@ -162,7 +162,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
         setState(() {
           FFAppState().isProfiledUser = GetLocationByUserCall.data(
                     (_model.getLocationByUserResponse?.jsonBody ?? ''),
-                  ).isEmpty
+                  )?.isEmpty
               ? false
               : true;
           FFAppState().groupList = GetLocationByUserCall.groupList(
