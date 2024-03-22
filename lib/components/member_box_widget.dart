@@ -2,6 +2,8 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'member_box_model.dart';
 export 'member_box_model.dart';
 
@@ -55,13 +57,13 @@ class _MemberBoxWidgetState extends State<MemberBoxWidget> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Align(
-              alignment: const AlignmentDirectional(0.0, 0.0),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: Text(
                 valueOrDefault<String>(
                   widget.itemInfo?.email,

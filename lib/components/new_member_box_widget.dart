@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'new_member_box_model.dart';
 export 'new_member_box_model.dart';
@@ -51,7 +53,7 @@ class _NewMemberBoxWidgetState extends State<NewMemberBoxWidget> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: EdgeInsets.all(12.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,7 +82,7 @@ class _NewMemberBoxWidgetState extends State<NewMemberBoxWidget> {
                       ),
                       if (widget.isInternal == true)
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               5.0, 0.0, 0.0, 0.0),
                           child: Icon(
                             Icons.circle_rounded,
@@ -126,9 +128,9 @@ class _NewMemberBoxWidgetState extends State<NewMemberBoxWidget> {
                       context: context,
                       isGlobal: false,
                       avoidOverflow: true,
-                      targetAnchor: const AlignmentDirectional(1.0, 1.0)
+                      targetAnchor: AlignmentDirectional(1.0, 1.0)
                           .resolve(Directionality.of(context)),
-                      followerAnchor: const AlignmentDirectional(-1.0, -1.0)
+                      followerAnchor: AlignmentDirectional(-1.0, -1.0)
                           .resolve(Directionality.of(context)),
                       builder: (dialogContext) {
                         return Material(

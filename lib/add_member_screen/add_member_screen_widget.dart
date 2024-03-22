@@ -3,8 +3,10 @@ import '/components/new_member_box_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'add_member_screen_model.dart';
@@ -56,7 +58,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -75,7 +77,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -88,14 +90,14 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
               color: FlutterFlowTheme.of(context).primaryBackground,
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -115,7 +117,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                       fontWeight: FontWeight.bold,
                                     ),
                               ),
-                              if (FFAppState().teamMembers.isNotEmpty)
+                              if (FFAppState().teamMembers.length > 0)
                                 Builder(
                                   builder: (context) => InkWell(
                                     splashColor: Colors.transparent,
@@ -128,11 +130,11 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                         isGlobal: false,
                                         avoidOverflow: true,
                                         targetAnchor:
-                                            const AlignmentDirectional(-1.0, 1.0)
+                                            AlignmentDirectional(-1.0, 1.0)
                                                 .resolve(
                                                     Directionality.of(context)),
                                         followerAnchor:
-                                            const AlignmentDirectional(-1.0, -1.0)
+                                            AlignmentDirectional(-1.0, -1.0)
                                                 .resolve(
                                                     Directionality.of(context)),
                                         builder: (dialogContext) {
@@ -147,7 +149,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                                             _model.unfocusNode)
                                                     : FocusScope.of(context)
                                                         .unfocus(),
-                                                child: const MemberMainOptionsWidget(
+                                                child: MemberMainOptionsWidget(
                                                   isInternal: false,
                                                 ),
                                               ),
@@ -169,14 +171,14 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                           Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              if (FFAppState().teamMembers.isNotEmpty)
+                              if (FFAppState().teamMembers.length > 0)
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
-                                      gradient: const LinearGradient(
+                                      gradient: LinearGradient(
                                         colors: [
                                           Color(0x13005734),
                                           Color(0x0DFFF500)
@@ -216,7 +218,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                           },
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.all(12.0),
+                                          padding: EdgeInsets.all(12.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -272,7 +274,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -298,7 +300,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                     ),
                                   ),
                                 ),
-                              if (FFAppState().teamMembers.isEmpty)
+                              if (FFAppState().teamMembers.length == 0)
                                 Text(
                                   FFLocalizations.of(context).getText(
                                     'ae0safec' /* no available team member */,
@@ -317,7 +319,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -337,7 +339,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                       fontWeight: FontWeight.bold,
                                     ),
                               ),
-                              if (FFAppState().guestMembers.isNotEmpty)
+                              if (FFAppState().guestMembers.length > 0)
                                 Builder(
                                   builder: (context) => InkWell(
                                     splashColor: Colors.transparent,
@@ -350,11 +352,11 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                         isGlobal: false,
                                         avoidOverflow: true,
                                         targetAnchor:
-                                            const AlignmentDirectional(1.0, 1.0)
+                                            AlignmentDirectional(1.0, 1.0)
                                                 .resolve(
                                                     Directionality.of(context)),
                                         followerAnchor:
-                                            const AlignmentDirectional(-1.0, -1.0)
+                                            AlignmentDirectional(-1.0, -1.0)
                                                 .resolve(
                                                     Directionality.of(context)),
                                         builder: (dialogContext) {
@@ -369,7 +371,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                                             _model.unfocusNode)
                                                     : FocusScope.of(context)
                                                         .unfocus(),
-                                                child: const MemberMainOptionsWidget(
+                                                child: MemberMainOptionsWidget(
                                                   isInternal: false,
                                                 ),
                                               ),
@@ -392,12 +394,12 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
-                                    gradient: const LinearGradient(
+                                    gradient: LinearGradient(
                                       colors: [
                                         Color(0x13005734),
                                         Color(0x0DFFF500)
@@ -410,7 +412,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                   ),
                                   child: Visibility(
                                     visible:
-                                        FFAppState().guestMembers.isNotEmpty,
+                                        FFAppState().guestMembers.length > 0,
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
@@ -442,7 +444,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                           },
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.all(12.0),
+                                          padding: EdgeInsets.all(12.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -498,7 +500,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -527,7 +529,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                               ),
                             ],
                           ),
-                          if (FFAppState().guestMembers.isEmpty)
+                          if (FFAppState().guestMembers.length == 0)
                             Text(
                               FFLocalizations.of(context).getText(
                                 'wxo7h4s0' /* no available guest member */,

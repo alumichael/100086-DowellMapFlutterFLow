@@ -1,12 +1,15 @@
+import '/backend/schema/structs/index.dart';
 import '/components/member_box_widget.dart';
 import '/components/new_members_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_checkbox_group.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'team_members_model.dart';
@@ -66,7 +69,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -86,7 +89,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -100,7 +103,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
                     child: Builder(
                       builder: (context) {
                         final userlistBuilder =
@@ -116,20 +119,20 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                   'Keywhi_${userlistBuilderIndex}_of_${userlistBuilder.length}'),
                               itemInfo: userlistBuilderItem,
                             );
-                          }).divide(const SizedBox(height: 16.0)),
+                          }).divide(SizedBox(height: 16.0)),
                         );
                       },
                     ),
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        if (FFAppState().activeTeam.teamMembers.isNotEmpty)
+                        if (FFAppState().activeTeam.teamMembers.length > 0)
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 24.0, 0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
@@ -144,7 +147,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                             ),
                           ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -164,7 +167,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                           elevation: 0,
                                           insetPadding: EdgeInsets.zero,
                                           backgroundColor: Colors.transparent,
-                                          alignment: const AlignmentDirectional(
+                                          alignment: AlignmentDirectional(
                                                   0.0, 0.0)
                                               .resolve(
                                                   Directionality.of(context)),
@@ -177,7 +180,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: const NewMembersDialogWidget(),
+                                              child: NewMembersDialogWidget(),
                                             ),
                                           ),
                                         );
@@ -203,7 +206,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                             ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 0.0, 0.0, 0.0),
                                         child: Icon(
                                           Icons.add,
@@ -225,7 +228,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
                 child: Card(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -234,16 +237,16 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: Align(
-                    alignment: const AlignmentDirectional(-1.0, -1.0),
+                    alignment: AlignmentDirectional(-1.0, -1.0),
                     child: Padding(
-                      padding: const EdgeInsets.all(12.0),
+                      padding: EdgeInsets.all(12.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(-1.0, -1.0),
+                            alignment: AlignmentDirectional(-1.0, -1.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 8.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
@@ -253,7 +256,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                               ),
                             ),
                           ),
-                          if (FFAppState().activeTeam.teamMembers.isNotEmpty)
+                          if (FFAppState().activeTeam.teamMembers.length > 0)
                             Container(
                               width: MediaQuery.sizeOf(context).width * 1.0,
                               height: 100.0,
@@ -261,12 +264,12 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
                                 border: Border.all(
-                                  color: const Color(0xFF005734),
+                                  color: Color(0xFF005734),
                                   width: 2.0,
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     5.0, 0.0, 5.0, 0.0),
                                 child: FlutterFlowCheckboxGroup(
                                   options: FFAppState()
@@ -281,7 +284,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                           FormFieldController<List<String>>(
                                     [],
                                   ),
-                                  activeColor: const Color(0xFF005734),
+                                  activeColor: Color(0xFF005734),
                                   checkColor: FlutterFlowTheme.of(context).info,
                                   checkboxBorderColor:
                                       FlutterFlowTheme.of(context)
@@ -306,9 +309,9 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                 ),
                               ),
                             ),
-                          if (FFAppState().activeTeam.teamMembers.isEmpty)
+                          if (FFAppState().activeTeam.teamMembers.length == 0)
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
@@ -323,7 +326,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                               ),
                             ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 16.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -343,7 +346,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                             elevation: 0,
                                             insetPadding: EdgeInsets.zero,
                                             backgroundColor: Colors.transparent,
-                                            alignment: const AlignmentDirectional(
+                                            alignment: AlignmentDirectional(
                                                     0.0, 0.0)
                                                 .resolve(
                                                     Directionality.of(context)),
@@ -356,7 +359,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                                             _model.unfocusNode)
                                                     : FocusScope.of(context)
                                                         .unfocus(),
-                                                child: const NewMembersDialogWidget(),
+                                                child: NewMembersDialogWidget(),
                                               ),
                                             ),
                                           );
@@ -383,7 +386,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 0.0, 0.0, 0.0),
                                           child: Icon(
                                             Icons.add,

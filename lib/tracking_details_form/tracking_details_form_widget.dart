@@ -2,6 +2,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'tracking_details_form_model.dart';
 export 'tracking_details_form_model.dart';
 
@@ -66,7 +68,7 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
           child: Container(
             width: MediaQuery.sizeOf(context).width * 1.0,
             height: MediaQuery.sizeOf(context).height * 1.0,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(0.0),
                 bottomRight: Radius.circular(0.0),
@@ -75,7 +77,7 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 24.0, 12.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(12.0, 24.0, 12.0, 0.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -126,7 +128,7 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: TextFormField(
                       controller: _model.emailTextFieldController,
                       focusNode: _model.emailTextFieldFocusNode,
@@ -174,7 +176,7 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: TextFormField(
                       controller: _model.companyNameextFieldController,
                       focusNode: _model.companyNameextFieldFocusNode,
@@ -222,7 +224,7 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: TextFormField(
                       controller: _model.countryTextFieldController,
                       focusNode: _model.countryTextFieldFocusNode,
@@ -269,10 +271,10 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                     ),
                   ),
                   Align(
-                    alignment: const AlignmentDirectional(1.0, 0.0),
+                    alignment: AlignmentDirectional(1.0, 0.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           setState(() {
@@ -301,9 +303,9 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -312,7 +314,7 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                                     color: Colors.white,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

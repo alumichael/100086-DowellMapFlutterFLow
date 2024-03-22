@@ -6,6 +6,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'group_list_dialog_component_model.dart';
 export 'group_list_dialog_component_model.dart';
@@ -49,7 +50,7 @@ class _GroupListDialogComponentWidgetState
 
     return Container(
       width: MediaQuery.sizeOf(context).width * 1.0,
-      constraints: const BoxConstraints(
+      constraints: BoxConstraints(
         minHeight: 150.0,
         maxHeight: 200.0,
       ),
@@ -58,20 +59,20 @@ class _GroupListDialogComponentWidgetState
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(8.0, 20.0, 8.0, 5.0),
+        padding: EdgeInsetsDirectional.fromSTEB(8.0, 20.0, 8.0, 5.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Align(
-                    alignment: const AlignmentDirectional(-1.0, -1.0),
+                    alignment: AlignmentDirectional(-1.0, -1.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(1.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(1.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'jnfk1ntq' /* Groups */,
@@ -89,7 +90,7 @@ class _GroupListDialogComponentWidgetState
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
               child: FlutterFlowDropDown<String>(
                 controller: _model.dropDownValueController ??=
                     FormFieldController<String>(null),
@@ -109,7 +110,9 @@ class _GroupListDialogComponentWidgetState
                   if ((_model.getLocationbyGroupResponse?.succeeded ?? true)) {
                     if (GetLocationByGroupNameCall.data(
                           (_model.getLocationbyGroupResponse?.jsonBody ?? ''),
-                        )!.isNotEmpty) {
+                        )!
+                            .length >
+                        0) {
                       FFAppState().update(() {
                         FFAppState().groupAddress =
                             GetLocationByGroupNameCall.locationAddress(
@@ -151,7 +154,7 @@ class _GroupListDialogComponentWidgetState
                               fontSize: 12.0,
                             ),
                           ),
-                          duration: const Duration(milliseconds: 5000),
+                          duration: Duration(milliseconds: 5000),
                           backgroundColor: FlutterFlowTheme.of(context).primary,
                         ),
                       );
@@ -165,7 +168,7 @@ class _GroupListDialogComponentWidgetState
                             color: FlutterFlowTheme.of(context).primaryText,
                           ),
                         ),
-                        duration: const Duration(milliseconds: 4000),
+                        duration: Duration(milliseconds: 4000),
                         backgroundColor: FlutterFlowTheme.of(context).secondary,
                       ),
                     );
@@ -194,16 +197,16 @@ class _GroupListDialogComponentWidgetState
                 borderColor: FlutterFlowTheme.of(context).secondaryText,
                 borderWidth: 1.5,
                 borderRadius: 8.0,
-                margin: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+                margin: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
                 hidesUnderline: true,
                 isSearchable: false,
                 isMultiSelect: false,
               ),
             ),
             if (FFAppState().isGettingDroupLocations)
-              const Padding(
+              Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 10.0),
-                child: SizedBox(
+                child: Container(
                   width: 50.0,
                   height: 50.0,
                   child: custom_widgets.LoadingIndicatorBuilder(

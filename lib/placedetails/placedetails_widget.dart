@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'placedetails_model.dart';
 export 'placedetails_model.dart';
@@ -94,7 +95,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -113,7 +114,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -158,7 +159,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
 
                                         setState(() {});
                                       },
-                                      child: SizedBox(
+                                      child: Container(
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 1.0,
@@ -168,10 +169,10 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                         child: Stack(
                                           children: [
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, -0.75),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Container(
@@ -197,7 +198,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                               .primary,
                                                     ),
                                                   ),
-                                                  child: const Stack(
+                                                  child: Stack(
                                                     alignment:
                                                         AlignmentDirectional(
                                                             0.0, 0.0),
@@ -207,13 +208,13 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -0.14, -0.83),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width:
                                                       MediaQuery.sizeOf(context)
                                                               .width *
@@ -316,13 +317,13 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -0.28, -0.58),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 5.0, 10.0, 0.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width:
                                                       MediaQuery.sizeOf(context)
                                                               .width *
@@ -425,13 +426,13 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -0.56, -0.49),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 5.0, 10.0, 0.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width:
                                                       MediaQuery.sizeOf(context)
                                                               .width *
@@ -534,7 +535,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.89, -0.17),
                                               child: FFButtonWidget(
                                                 onPressed: () async {
@@ -639,7 +640,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                                     .primaryText,
                                                               ),
                                                             ),
-                                                            duration: const Duration(
+                                                            duration: Duration(
                                                                 milliseconds:
                                                                     6150),
                                                             backgroundColor:
@@ -661,7 +662,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                                     .primaryText,
                                                               ),
                                                             ),
-                                                            duration: const Duration(
+                                                            duration: Duration(
                                                                 milliseconds:
                                                                     4000),
                                                             backgroundColor:
@@ -684,7 +685,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                                   .primaryText,
                                                             ),
                                                           ),
-                                                          duration: const Duration(
+                                                          duration: Duration(
                                                               milliseconds:
                                                                   4000),
                                                           backgroundColor:
@@ -712,7 +713,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                                 .secondaryBackground,
                                                           ),
                                                         ),
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 4000),
                                                         backgroundColor:
                                                             FlutterFlowTheme.of(
@@ -732,11 +733,11 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                 options: FFButtonOptions(
                                                   width: 130.0,
                                                   height: 40.0,
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 0.0),
                                                   iconPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
@@ -749,7 +750,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                         fontFamily: 'Poppins',
                                                         color: Colors.white,
                                                       ),
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1.0,
                                                   ),
@@ -760,13 +761,13 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -0.42, -0.41),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 5.0, 10.0, 0.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width:
                                                       MediaQuery.sizeOf(context)
                                                               .width *
@@ -876,13 +877,13 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -0.42, -0.25),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 5.0, 10.0, 0.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width:
                                                       MediaQuery.sizeOf(context)
                                                               .width *
@@ -986,13 +987,13 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.56, -0.92),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width:
                                                       MediaQuery.sizeOf(context)
                                                               .width *
@@ -1095,13 +1096,13 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -0.42, -0.66),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 5.0, 10.0, 0.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width:
                                                       MediaQuery.sizeOf(context)
                                                               .width *
@@ -1204,13 +1205,13 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -0.28, -0.33),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 5.0, 10.0, 0.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width:
                                                       MediaQuery.sizeOf(context)
                                                               .width *
@@ -1320,7 +1321,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -0.13, -0.24),
                                               child:
                                                   FlutterFlowDropDown<String>(
@@ -1328,7 +1329,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                         .selectCollectionDropdownValueController ??=
                                                     FormFieldController<String>(
                                                         null),
-                                                options: const <String>[],
+                                                options: <String>[],
                                                 onChanged: (val) => setState(() =>
                                                     _model.selectCollectionDropdownValue =
                                                         val),
@@ -1360,7 +1361,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                 borderColor: Colors.transparent,
                                                 borderWidth: 0.0,
                                                 borderRadius: 0.0,
-                                                margin: const EdgeInsetsDirectional
+                                                margin: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 4.0, 12.0, 4.0),
                                                 hidesUnderline: true,
@@ -1369,7 +1370,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -0.17, -0.75),
                                               child:
                                                   FlutterFlowDropDown<String>(
@@ -1446,7 +1447,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                 borderColor: Colors.transparent,
                                                 borderWidth: 0.0,
                                                 borderRadius: 0.0,
-                                                margin: const EdgeInsetsDirectional
+                                                margin: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 4.0, 12.0, 4.0),
                                                 hidesUnderline: true,

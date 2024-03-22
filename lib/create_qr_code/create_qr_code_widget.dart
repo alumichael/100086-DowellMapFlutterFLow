@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'create_qr_code_model.dart';
 export 'create_qr_code_model.dart';
@@ -56,7 +57,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -75,7 +76,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -95,7 +96,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image.network(
@@ -113,7 +114,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                     ),
                     Flexible(
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 16.0, 24.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -138,7 +139,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                             ),
                             if ((_model.getQRCodeResponse?.succeeded ?? true))
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -160,7 +161,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                                 .primaryText,
                                           ),
                                         ),
-                                        duration: const Duration(milliseconds: 4000),
+                                        duration: Duration(milliseconds: 4000),
                                         backgroundColor:
                                             FlutterFlowTheme.of(context)
                                                 .secondary,
@@ -179,9 +180,9 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 1.0),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 80.0, 16.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
@@ -243,7 +244,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                                 .primaryText,
                                           ),
                                         ),
-                                        duration: const Duration(milliseconds: 4000),
+                                        duration: Duration(milliseconds: 4000),
                                         backgroundColor:
                                             FlutterFlowTheme.of(context)
                                                 .secondary,
@@ -259,7 +260,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                                 .secondaryBackground,
                                           ),
                                         ),
-                                        duration: const Duration(milliseconds: 4000),
+                                        duration: Duration(milliseconds: 4000),
                                         backgroundColor:
                                             FlutterFlowTheme.of(context)
                                                 .primaryText,
@@ -276,7 +277,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                               .primaryBackground,
                                         ),
                                       ),
-                                      duration: const Duration(milliseconds: 4000),
+                                      duration: Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context)
                                               .primaryText,
@@ -293,7 +294,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                             .primaryBackground,
                                       ),
                                     ),
-                                    duration: const Duration(milliseconds: 4000),
+                                    duration: Duration(milliseconds: 4000),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context)
                                             .primaryText,
@@ -310,7 +311,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                           .primaryBackground,
                                     ),
                                   ),
-                                  duration: const Duration(milliseconds: 4000),
+                                  duration: Duration(milliseconds: 4000),
                                   backgroundColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                 ),
@@ -325,9 +326,9 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                           options: FFButtonOptions(
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             height: 56.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -337,7 +338,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                   color: Colors.white,
                                 ),
                             elevation: 3.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

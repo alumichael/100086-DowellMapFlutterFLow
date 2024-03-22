@@ -6,11 +6,14 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/place.dart';
+import 'dart:io';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'search_bottom_sheet_model.dart';
 export 'search_bottom_sheet_model.dart';
@@ -63,11 +66,11 @@ class _SearchBottomSheetWidgetState extends State<SearchBottomSheetWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
       child: Material(
         color: Colors.transparent,
         elevation: 5.0,
-        shape: const RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
@@ -80,7 +83,7 @@ class _SearchBottomSheetWidgetState extends State<SearchBottomSheetWidget> {
           height: 300.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
-            borderRadius: const BorderRadius.only(
+            borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
               bottomRight: Radius.circular(0.0),
               topLeft: Radius.circular(20.0),
@@ -93,14 +96,14 @@ class _SearchBottomSheetWidgetState extends State<SearchBottomSheetWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Container(
                           width: 50.0,
                           height: 4.0,
@@ -114,7 +117,7 @@ class _SearchBottomSheetWidgetState extends State<SearchBottomSheetWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -124,7 +127,7 @@ class _SearchBottomSheetWidgetState extends State<SearchBottomSheetWidget> {
                       ))
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.05, -1.0),
+                            alignment: AlignmentDirectional(0.05, -1.0),
                             child: FlutterFlowPlacePicker(
                               iOSGoogleMapsApiKey:
                                   'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk',
@@ -138,7 +141,7 @@ class _SearchBottomSheetWidgetState extends State<SearchBottomSheetWidget> {
                               defaultText: FFLocalizations.of(context).getText(
                                 'afj62t78' /* Search Location */,
                               ),
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.place,
                                 color: Colors.white,
                                 size: 16.0,
@@ -154,7 +157,7 @@ class _SearchBottomSheetWidgetState extends State<SearchBottomSheetWidget> {
                                       color: Colors.white,
                                       letterSpacing: 2.0,
                                     ),
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 0.0,
                                 ),
@@ -196,11 +199,11 @@ class _SearchBottomSheetWidgetState extends State<SearchBottomSheetWidget> {
                                 fontWeight: FontWeight.normal,
                               ),
                       textPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                       buttonPosition: RadioButtonPosition.left,
                       direction: Axis.horizontal,
-                      radioButtonColor: const Color(0xFF015534),
-                      inactiveRadioButtonColor: const Color(0x8A000000),
+                      radioButtonColor: Color(0xFF015534),
+                      inactiveRadioButtonColor: Color(0x8A000000),
                       toggleable: false,
                       horizontalAlignment: WrapAlignment.start,
                       verticalAlignment: WrapCrossAlignment.start,
@@ -208,10 +211,10 @@ class _SearchBottomSheetWidgetState extends State<SearchBottomSheetWidget> {
                   ],
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(25.0, 16.0, 25.0, 16.0),
+                        EdgeInsetsDirectional.fromSTEB(25.0, 16.0, 25.0, 16.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -232,9 +235,9 @@ Between */
                         ),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 4.0, 0.0),
-                            child: SizedBox(
+                            child: Container(
                               width: 88.0,
                               child: TextFormField(
                                 controller: _model.textController1,
@@ -256,7 +259,7 @@ Between */
                                   hintStyle:
                                       FlutterFlowTheme.of(context).labelMedium,
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0x4C005734),
                                       width: 2.0,
                                     ),
@@ -302,9 +305,9 @@ Between */
                         ),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 4.0, 0.0, 8.0, 0.0),
-                            child: SizedBox(
+                            child: Container(
                               width: 88.0,
                               child: TextFormField(
                                 controller: _model.textController2,
@@ -326,7 +329,7 @@ Between */
                                   hintStyle:
                                       FlutterFlowTheme.of(context).labelMedium,
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0x4C005734),
                                       width: 2.0,
                                     ),
@@ -380,7 +383,7 @@ Between */
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 25.0, 16.0),
+                      EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 25.0, 16.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -400,16 +403,16 @@ Between */
                       ),
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               14.0, 0.0, 14.0, 0.0),
-                          child: SizedBox(
+                          child: Container(
                             width: 88.0,
                             child: TextFormField(
                               controller: _model.searchController,
                               focusNode: _model.searchFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
                                 '_model.searchController',
-                                const Duration(milliseconds: 2000),
+                                Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
                               autofocus: true,
@@ -428,7 +431,7 @@ Between */
                                 hintStyle:
                                     FlutterFlowTheme.of(context).labelMedium,
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x4C005734),
                                     width: 2.0,
                                   ),
@@ -462,7 +465,7 @@ Between */
                                               _model.searchController?.clear();
                                               setState(() {});
                                             },
-                                            child: const Icon(
+                                            child: Icon(
                                               Icons.clear,
                                               size: 20.0,
                                             ),
@@ -491,7 +494,7 @@ Between */
                         onPressed: () async {
                           currentUserLocationValue =
                               await getCurrentUserLocation(
-                                  defaultLocation: const LatLng(0.0, 0.0));
+                                  defaultLocation: LatLng(0.0, 0.0));
                           setState(() {
                             FFAppState().clearmap = true;
                           });
@@ -520,7 +523,9 @@ Between */
                                     .groupLocsConverter(NearbyPlaceCall.data(
                                       (_model.nearbyPlaceResponse?.jsonBody ??
                                           ''),
-                                    )?.toList()).isNotEmpty) {
+                                    )?.toList())
+                                    ?.length !=
+                                0) {
                               _model.googleResult =
                                   await actions.refineGoogleResult(
                                 getJsonField(
@@ -610,7 +615,7 @@ Between */
                                             .primaryBackground,
                                       ),
                                     ),
-                                    duration: const Duration(milliseconds: 4000),
+                                    duration: Duration(milliseconds: 4000),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context)
                                             .primaryText,
@@ -627,7 +632,7 @@ Between */
                                           .primaryBackground,
                                     ),
                                   ),
-                                  duration: const Duration(milliseconds: 4000),
+                                  duration: Duration(milliseconds: 4000),
                                   backgroundColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                 ),
@@ -643,7 +648,7 @@ Between */
                                         .primaryBackground,
                                   ),
                                 ),
-                                duration: const Duration(milliseconds: 4000),
+                                duration: Duration(milliseconds: 4000),
                                 backgroundColor:
                                     FlutterFlowTheme.of(context).primaryText,
                               ),
@@ -678,7 +683,9 @@ Between */
                                       (_model.mymapBackendRefinedResult
                                               ?.jsonBody ??
                                           ''),
-                                    )?.toList()).isNotEmpty) {
+                                    )?.toList())
+                                    ?.length !=
+                                0) {
                               _model.dblocationCord =
                                   await actions.getLocatCordFromString(
                                 (getJsonField(

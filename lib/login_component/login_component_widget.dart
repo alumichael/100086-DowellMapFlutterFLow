@@ -5,6 +5,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'login_component_model.dart';
 export 'login_component_model.dart';
 
@@ -26,7 +28,7 @@ class _LoginComponentWidgetState extends State<LoginComponentWidget> {
     super.initState();
     _model = createModel(context, () => LoginComponentModel());
 
-    getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
+    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -68,7 +70,7 @@ class _LoginComponentWidgetState extends State<LoginComponentWidget> {
           top: true,
           child: Stack(
             children: [
-              SizedBox(
+              Container(
                 width: MediaQuery.sizeOf(context).width * 1.0,
                 height: MediaQuery.sizeOf(context).height * 1.0,
                 child: custom_widgets.LoginForm(
@@ -86,13 +88,13 @@ class _LoginComponentWidgetState extends State<LoginComponentWidget> {
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       currentUserLocationValue = await getCurrentUserLocation(
-                          defaultLocation: const LatLng(0.0, 0.0));
+                          defaultLocation: LatLng(0.0, 0.0));
                       _model.apiResultj4t = await LinkBageLoginCall.call(
                         username: random_data.randomString(
                           8,
@@ -131,18 +133,18 @@ class _LoginComponentWidgetState extends State<LoginComponentWidget> {
                     options: FFButtonOptions(
                       height: 40.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: const Color(0x00494949),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: Color(0x00494949),
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Poppins',
-                                color: const Color(0xFF363636),
+                                color: Color(0xFF363636),
                                 letterSpacing: 1.0,
                               ),
                       elevation: 0.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),

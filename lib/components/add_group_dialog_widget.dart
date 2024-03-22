@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'add_group_dialog_model.dart';
@@ -47,7 +48,7 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(10.0),
       child: Container(
         width: double.infinity,
         height: 210.0,
@@ -57,20 +58,20 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
             color: FlutterFlowTheme.of(context).primary,
           ),
         ),
-        child: SizedBox(
+        child: Container(
           width: double.infinity,
           height: 220.0,
           child: Stack(
             children: [
               Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 60.0, 8.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 60.0, 8.0, 0.0),
                   child: TextFormField(
                     controller: _model.addgrouptextfieldController,
                     focusNode: _model.addgrouptextfieldFocusNode,
                     autofocus: true,
-                    autofillHints: const [AutofillHints.name],
+                    autofillHints: [AutofillHints.name],
                     obscureText: false,
                     decoration: InputDecoration(
                       labelText: FFLocalizations.of(context).getText(
@@ -117,9 +118,9 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'ant38qi8' /* Type in the new group you will... */,
@@ -133,9 +134,9 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(16.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -149,9 +150,9 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -160,7 +161,7 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                                     color: Colors.white,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -169,7 +170,8 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          if (_model.addgrouptextfieldController.text != '') {
+                          if (_model.addgrouptextfieldController.text != null &&
+                              _model.addgrouptextfieldController.text != '') {
                             if (FFAppState().isProfiledUser) {
                               _model.apiResultfz0 =
                                   await CreateLocationGroupCall.call(
@@ -191,7 +193,7 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                                         fontSize: 12.0,
                                       ),
                                     ),
-                                    duration: const Duration(milliseconds: 4000),
+                                    duration: Duration(milliseconds: 4000),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context)
                                             .primaryText,
@@ -208,7 +210,7 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                                         fontSize: 12.0,
                                       ),
                                     ),
-                                    duration: const Duration(milliseconds: 4000),
+                                    duration: Duration(milliseconds: 4000),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context)
                                             .primaryText,
@@ -243,7 +245,7 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                                           fontSize: 12.0,
                                         ),
                                       ),
-                                      duration: const Duration(milliseconds: 4000),
+                                      duration: Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context)
                                               .primaryText,
@@ -260,7 +262,7 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                                           fontSize: 12.0,
                                         ),
                                       ),
-                                      duration: const Duration(milliseconds: 4000),
+                                      duration: Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context)
                                               .primaryText,
@@ -278,7 +280,7 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                                         fontSize: 12.0,
                                       ),
                                     ),
-                                    duration: const Duration(milliseconds: 4000),
+                                    duration: Duration(milliseconds: 4000),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context)
                                             .primaryText,
@@ -294,14 +296,14 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                               builder: (alertDialogContext) {
                                 return WebViewAware(
                                   child: AlertDialog(
-                                    title: const Text('invalid request '),
+                                    title: Text('invalid request '),
                                     content:
-                                        const Text('Please enter the group name.'),
+                                        Text('Please enter the group name.'),
                                     actions: [
                                       TextButton(
                                         onPressed: () =>
                                             Navigator.pop(alertDialogContext),
-                                        child: const Text('Ok'),
+                                        child: Text('Ok'),
                                       ),
                                     ],
                                   ),
@@ -318,9 +320,9 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -329,7 +331,7 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                                     color: Colors.white,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

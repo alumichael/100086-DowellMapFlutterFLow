@@ -3,6 +3,8 @@ import '/components/delete_member_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'member_sub_options_model.dart';
 export 'member_sub_options_model.dart';
@@ -53,14 +55,14 @@ class _MemberSubOptionsWidgetState extends State<MemberSubOptionsWidget> {
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: EdgeInsets.all(12.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Builder(
               builder: (context) => Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -75,7 +77,7 @@ class _MemberSubOptionsWidgetState extends State<MemberSubOptionsWidget> {
                           elevation: 0,
                           insetPadding: EdgeInsets.zero,
                           backgroundColor: Colors.transparent,
-                          alignment: const AlignmentDirectional(0.0, 0.0)
+                          alignment: AlignmentDirectional(0.0, 0.0)
                               .resolve(Directionality.of(context)),
                           child: WebViewAware(
                             child: DeleteMemberDialogWidget(
@@ -87,7 +89,7 @@ class _MemberSubOptionsWidgetState extends State<MemberSubOptionsWidget> {
                     ).then((value) => setState(() {}));
                   },
                   child: Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         '3afckevs' /* Delete */,
@@ -114,7 +116,7 @@ class _MemberSubOptionsWidgetState extends State<MemberSubOptionsWidget> {
                           elevation: 0,
                           insetPadding: EdgeInsets.zero,
                           backgroundColor: Colors.transparent,
-                          alignment: const AlignmentDirectional(0.0, 0.0)
+                          alignment: AlignmentDirectional(0.0, 0.0)
                               .resolve(Directionality.of(context)),
                           child: WebViewAware(
                             child: AddMemberConfirmDialogWidget(
@@ -126,7 +128,7 @@ class _MemberSubOptionsWidgetState extends State<MemberSubOptionsWidget> {
                     ).then((value) => setState(() {}));
                   },
                   child: Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         '2gnst597' /* Add To Internal */,

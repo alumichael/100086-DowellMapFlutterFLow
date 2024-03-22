@@ -1,6 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'category_item_model.dart';
 export 'category_item_model.dart';
 
@@ -49,7 +51,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
     return Stack(
       children: [
         Align(
-          alignment: const AlignmentDirectional(-0.9, 0.15),
+          alignment: AlignmentDirectional(-0.9, 0.15),
           child: Text(
             widget.categoryTitle!,
             textAlign: TextAlign.start,
@@ -61,7 +63,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
           ),
         ),
         Align(
-          alignment: const AlignmentDirectional(0.92, 0.21),
+          alignment: AlignmentDirectional(0.92, 0.21),
           child: widget.selectCategoryIcon!,
         ),
       ],

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'newteam_model.dart';
 export 'newteam_model.dart';
@@ -52,7 +53,7 @@ class _NewteamWidgetState extends State<NewteamWidget> {
           width: 300.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
-            boxShadow: const [
+            boxShadow: [
               BoxShadow(
                 blurRadius: 4.0,
                 color: Color(0x33000000),
@@ -62,13 +63,13 @@ class _NewteamWidgetState extends State<NewteamWidget> {
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: EdgeInsets.all(12.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'bhz9fcg5' /* New Team */,
@@ -93,14 +94,14 @@ class _NewteamWidgetState extends State<NewteamWidget> {
                     ),
                     hintStyle: FlutterFlowTheme.of(context).labelMedium,
                     enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Color(0xFF005734),
                         width: 2.0,
                       ),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Color(0xFF005734),
                         width: 2.0,
                       ),
@@ -126,13 +127,13 @@ class _NewteamWidgetState extends State<NewteamWidget> {
                       _model.textControllerValidator.asValidator(context),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             _model.createTeamResponse =
@@ -169,7 +170,7 @@ class _NewteamWidgetState extends State<NewteamWidget> {
                                           .secondaryBackground,
                                     ),
                                   ),
-                                  duration: const Duration(milliseconds: 4000),
+                                  duration: Duration(milliseconds: 4000),
                                   backgroundColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                 ),
@@ -184,7 +185,7 @@ class _NewteamWidgetState extends State<NewteamWidget> {
                                           .secondaryBackground,
                                     ),
                                   ),
-                                  duration: const Duration(milliseconds: 4000),
+                                  duration: Duration(milliseconds: 4000),
                                   backgroundColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                 ),
@@ -200,11 +201,11 @@ class _NewteamWidgetState extends State<NewteamWidget> {
                           ),
                           options: FFButtonOptions(
                             height: 40.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: const Color(0xFF005734),
+                            color: Color(0xFF005734),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
@@ -212,7 +213,7 @@ class _NewteamWidgetState extends State<NewteamWidget> {
                                   color: Colors.white,
                                 ),
                             elevation: 3.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

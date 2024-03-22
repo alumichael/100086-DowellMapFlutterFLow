@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'member_main_options_model.dart';
 export 'member_main_options_model.dart';
@@ -54,7 +56,7 @@ class _MemberMainOptionsWidgetState extends State<MemberMainOptionsWidget> {
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: EdgeInsets.all(12.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +64,7 @@ class _MemberMainOptionsWidgetState extends State<MemberMainOptionsWidget> {
             if (widget.isInternal ?? true)
               Builder(
                 builder: (context) => Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -73,12 +75,12 @@ class _MemberMainOptionsWidgetState extends State<MemberMainOptionsWidget> {
                         context: context,
                         isGlobal: false,
                         avoidOverflow: false,
-                        targetAnchor: const AlignmentDirectional(-1.0, 1.0)
+                        targetAnchor: AlignmentDirectional(-1.0, 1.0)
                             .resolve(Directionality.of(context)),
-                        followerAnchor: const AlignmentDirectional(1.0, -1.0)
+                        followerAnchor: AlignmentDirectional(1.0, -1.0)
                             .resolve(Directionality.of(context)),
                         builder: (dialogContext) {
-                          return const Material(
+                          return Material(
                             color: Colors.transparent,
                             child: WebViewAware(
                               child: AddMemberDialogWidget(),
@@ -88,7 +90,7 @@ class _MemberMainOptionsWidgetState extends State<MemberMainOptionsWidget> {
                       ).then((value) => setState(() {}));
                     },
                     child: Container(
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'nvyratzz' /* Add member */,
@@ -101,7 +103,7 @@ class _MemberMainOptionsWidgetState extends State<MemberMainOptionsWidget> {
               ),
             if (widget.isInternal == false)
               Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     'rliacw6m' /* Move members */,

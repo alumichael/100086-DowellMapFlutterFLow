@@ -4,6 +4,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'searchbox_copy_model.dart';
 export 'searchbox_copy_model.dart';
 
@@ -60,7 +62,7 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
         children: [
           Expanded(
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(5.0, 10.0, 5.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(5.0, 10.0, 5.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -91,14 +93,14 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
                             ),
                     buttonPosition: RadioButtonPosition.left,
                     direction: Axis.horizontal,
-                    radioButtonColor: const Color(0xFF015534),
-                    inactiveRadioButtonColor: const Color(0x8A000000),
+                    radioButtonColor: Color(0xFF015534),
+                    inactiveRadioButtonColor: Color(0x8A000000),
                     toggleable: false,
                     horizontalAlignment: WrapAlignment.start,
                     verticalAlignment: WrapCrossAlignment.start,
                   ),
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
                     child: FlutterFlowIconButton(
                       borderColor: Colors.transparent,
                       borderRadius: 5.0,
@@ -120,7 +122,7 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 5.0, 20.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(20.0, 5.0, 20.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -137,7 +139,7 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
                 Expanded(
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                     child: TextFormField(
                       controller: _model.textController1,
                       focusNode: _model.textFieldFocusNode1,
@@ -149,28 +151,28 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
                         ),
                         hintStyle: FlutterFlowTheme.of(context).bodySmall,
                         enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0xFF015534),
                             width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         errorBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         focusedErrorBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
@@ -188,7 +190,7 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                     child: TextFormField(
                       controller: _model.textController2,
                       focusNode: _model.textFieldFocusNode2,
@@ -200,28 +202,28 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
                         ),
                         hintStyle: FlutterFlowTheme.of(context).bodySmall,
                         enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0xFF015534),
                             width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         errorBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         focusedErrorBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
@@ -238,14 +240,14 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
                     child: TextFormField(
                       controller: _model.textController3,
                       focusNode: _model.textFieldFocusNode3,
@@ -257,28 +259,28 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
                         ),
                         hintStyle: FlutterFlowTheme.of(context).bodySmall,
                         enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0xFF015534),
                             width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         errorBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         focusedErrorBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
@@ -299,7 +301,7 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
                   borderRadius: 10.0,
                   borderWidth: 1.0,
                   buttonSize: 35.0,
-                  fillColor: const Color(0xFF015534),
+                  fillColor: Color(0xFF015534),
                   icon: Icon(
                     Icons.search_rounded,
                     color: FlutterFlowTheme.of(context).primaryBtnText,

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'track_permission_model.dart';
 export 'track_permission_model.dart';
@@ -50,7 +51,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
           child: Container(
             width: MediaQuery.sizeOf(context).width * 1.0,
             height: MediaQuery.sizeOf(context).height * 1.0,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -62,7 +63,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(12.0),
+                    padding: EdgeInsets.all(12.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -79,7 +80,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                               ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 16.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -95,9 +96,9 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                 ),
                                 options: FFButtonOptions(
                                   height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).error,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -107,7 +108,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                         color: Colors.white,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -129,7 +130,8 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                             (_model.fetchResultAuthUser
                                                     ?.jsonBody ??
                                                 ''),
-                                          )?.isEmpty) {
+                                          )?.length ==
+                                          0) {
                                         _model.insertionResultAuthUser =
                                             await InsertUserCall.call(
                                           apiKey: FFAppState().apiKey,
@@ -161,7 +163,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                                 ),
                                               ),
                                               duration:
-                                                  const Duration(milliseconds: 4000),
+                                                  Duration(milliseconds: 4000),
                                               backgroundColor:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
@@ -181,7 +183,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                               ),
                                             ),
                                             duration:
-                                                const Duration(milliseconds: 4000),
+                                                Duration(milliseconds: 4000),
                                             backgroundColor:
                                                 FlutterFlowTheme.of(context)
                                                     .primaryText,
@@ -208,7 +210,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                             ),
                                           ),
                                           duration:
-                                              const Duration(milliseconds: 4000),
+                                              Duration(milliseconds: 4000),
                                           backgroundColor:
                                               FlutterFlowTheme.of(context)
                                                   .primaryText,
@@ -227,7 +229,8 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                       if (FetchUserCall.data(
                                             (_model.fetchResult?.jsonBody ??
                                                 ''),
-                                          )?.isEmpty) {
+                                          )?.length ==
+                                          0) {
                                         _model.insertionResult =
                                             await InsertUserCall.call(
                                           apiKey:
@@ -264,7 +267,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                                         .secondaryBackground,
                                                   ),
                                                 ),
-                                                duration: const Duration(
+                                                duration: Duration(
                                                     milliseconds: 4000),
                                                 backgroundColor:
                                                     FlutterFlowTheme.of(context)
@@ -283,7 +286,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                                         .secondaryBackground,
                                                   ),
                                                 ),
-                                                duration: const Duration(
+                                                duration: Duration(
                                                     milliseconds: 4000),
                                                 backgroundColor:
                                                     FlutterFlowTheme.of(context)
@@ -305,7 +308,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                               ),
                                             ),
                                             duration:
-                                                const Duration(milliseconds: 4000),
+                                                Duration(milliseconds: 4000),
                                             backgroundColor:
                                                 FlutterFlowTheme.of(context)
                                                     .primaryText,
@@ -329,7 +332,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                             ),
                                           ),
                                           duration:
-                                              const Duration(milliseconds: 4000),
+                                              Duration(milliseconds: 4000),
                                           backgroundColor:
                                               FlutterFlowTheme.of(context)
                                                   .primaryText,
@@ -347,9 +350,9 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                 ),
                                 options: FFButtonOptions(
                                   height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -359,7 +362,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                         color: Colors.white,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
