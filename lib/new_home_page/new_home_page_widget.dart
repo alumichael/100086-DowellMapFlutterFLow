@@ -2262,7 +2262,7 @@ Between */
                                                                     (_model.nearbyPlaceResponse
                                                                             ?.jsonBody ??
                                                                         ''),
-                                                                  ).isNotEmpty) {
+                                                                  )?.isNotEmpty) {
                                                                 _model.searchServiceResponse =
                                                                     await ProcessProductRequestCall
                                                                         .call(
@@ -2572,7 +2572,7 @@ Between */
                                                                     (_model.mymapBackendRefinedResult
                                                                             ?.jsonBody ??
                                                                         ''),
-                                                                  ).isNotEmpty) {
+                                                                  )?.isNotEmpty) {
                                                                 _model.getLocationServiceResponse =
                                                                     await ProcessProductRequestCall
                                                                         .call(
