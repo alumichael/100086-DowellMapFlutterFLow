@@ -13,6 +13,6 @@ Future initFirebase() async {
             appId: "1:15839972586:web:b863d970bc461731139b93",
             measurementId: "G-XR46HPE6Q4"));
   } else {
-    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+    await Firebase.initializeApp();
   }
 }
