@@ -71,6 +71,7 @@ class _LoadingBoxWidgetState extends State<LoadingBoxWidget> {
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Poppins',
                       color: FlutterFlowTheme.of(context).background,
+                      letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
                     ),
               ),

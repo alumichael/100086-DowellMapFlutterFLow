@@ -104,6 +104,7 @@ class _UserdetailsWidgetState extends State<UserdetailsWidget> {
                                 .override(
                                   fontFamily: 'Roboto',
                                   fontSize: 20.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                         ),
@@ -125,6 +126,7 @@ class _UserdetailsWidgetState extends State<UserdetailsWidget> {
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 16.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                               Text(
@@ -143,6 +145,7 @@ class _UserdetailsWidgetState extends State<UserdetailsWidget> {
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 16.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ],
@@ -164,6 +167,7 @@ class _UserdetailsWidgetState extends State<UserdetailsWidget> {
                                   .override(
                                     fontFamily: 'Poppins',
                                     fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                   ),
                             ),
                             Align(
@@ -181,6 +185,7 @@ class _UserdetailsWidgetState extends State<UserdetailsWidget> {
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 16.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ),
@@ -204,6 +209,7 @@ class _UserdetailsWidgetState extends State<UserdetailsWidget> {
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 16.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                               Padding(
@@ -217,8 +223,12 @@ class _UserdetailsWidgetState extends State<UserdetailsWidget> {
                                     ).toString()),
                                     'status',
                                   ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                               ),
                             ],
@@ -240,6 +250,7 @@ class _UserdetailsWidgetState extends State<UserdetailsWidget> {
                                 .override(
                                   fontFamily: 'Poppins',
                                   fontSize: 16.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                         ),

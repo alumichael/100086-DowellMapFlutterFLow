@@ -81,6 +81,7 @@ class _GroupListDialogComponentWidgetState
                               fontFamily: 'Poppins',
                               color: FlutterFlowTheme.of(context).secondaryText,
                               fontSize: 18.0,
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
                             ),
                       ),
@@ -183,7 +184,10 @@ class _GroupListDialogComponentWidgetState
                 },
                 width: 300.0,
                 height: 50.0,
-                textStyle: FlutterFlowTheme.of(context).bodyMedium,
+                textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Poppins',
+                      letterSpacing: 0.0,
+                    ),
                 hintText: FFLocalizations.of(context).getText(
                   '7wgxe1i5' /* select collection */,
                 ),

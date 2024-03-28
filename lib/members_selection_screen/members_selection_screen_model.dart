@@ -27,8 +27,6 @@ class MembersSelectionScreenModel
   // Stores action output result for [Backend Call - API (SendBulkEmail)] action in Button widget.
   ApiCallResponse? bulkMailresponse;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -36,8 +34,4 @@ class MembersSelectionScreenModel
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

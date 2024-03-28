@@ -83,7 +83,10 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                         FFLocalizations.of(context).getText(
                           'yal01m4s' /* Add a place */,
                         ),
-                        style: FlutterFlowTheme.of(context).titleSmall,
+                        style: FlutterFlowTheme.of(context).titleSmall.override(
+                              fontFamily: 'Poppins',
+                              letterSpacing: 0.0,
+                            ),
                       ),
                     ),
                   ),
@@ -106,6 +109,7 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
                           hintText: FFLocalizations.of(context).getText(
@@ -176,9 +180,15 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                                 .override(
                                   fontFamily: 'Poppins',
                                   color: FlutterFlowTheme.of(context).primary,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                 ),
-                            hintStyle: FlutterFlowTheme.of(context).bodyMedium,
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  letterSpacing: 0.0,
+                                ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: FlutterFlowTheme.of(context).primary,
@@ -212,7 +222,9 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
                                   ),
+                          minLines: null,
                           validator: _model.textController1Validator
                               .asValidator(context),
                         ),
@@ -248,6 +260,7 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                                       fontFamily: 'Poppins',
                                       color:
                                           FlutterFlowTheme.of(context).primary,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
                                     ),
                               ),
@@ -294,6 +307,7 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Poppins',
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
                                     ),
                                 hintText: FFLocalizations.of(context).getText(
@@ -338,9 +352,15 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                                 .override(
                                   fontFamily: 'Poppins',
                                   color: FlutterFlowTheme.of(context).primary,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                 ),
-                            hintStyle: FlutterFlowTheme.of(context).bodyMedium,
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  letterSpacing: 0.0,
+                                ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: FlutterFlowTheme.of(context).primary,
@@ -374,7 +394,9 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
                                     color: Color(0xFF2FD106),
+                                    letterSpacing: 0.0,
                                   ),
+                          minLines: null,
                           validator: _model.textController2Validator
                               .asValidator(context),
                         ),
@@ -401,9 +423,15 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                                 .override(
                                   fontFamily: 'Poppins',
                                   color: FlutterFlowTheme.of(context).primary,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                 ),
-                            hintStyle: FlutterFlowTheme.of(context).bodyMedium,
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  letterSpacing: 0.0,
+                                ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: FlutterFlowTheme.of(context).primary,
@@ -437,7 +465,9 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
                                     color: Color(0xFF2FD106),
+                                    letterSpacing: 0.0,
                                   ),
+                          minLines: null,
                           validator: _model.textController3Validator
                               .asValidator(context),
                         ),
@@ -465,9 +495,15 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                                 .override(
                                   fontFamily: 'Poppins',
                                   color: FlutterFlowTheme.of(context).primary,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                 ),
-                            hintStyle: FlutterFlowTheme.of(context).bodyMedium,
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  letterSpacing: 0.0,
+                                ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: FlutterFlowTheme.of(context).primary,
@@ -501,7 +537,9 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
                                   ),
+                          minLines: null,
                           validator: _model.textController4Validator
                               .asValidator(context),
                         ),
@@ -528,9 +566,15 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                                 .override(
                                   fontFamily: 'Poppins',
                                   color: FlutterFlowTheme.of(context).primary,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                 ),
-                            hintStyle: FlutterFlowTheme.of(context).bodyMedium,
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  letterSpacing: 0.0,
+                                ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: FlutterFlowTheme.of(context).primary,
@@ -564,7 +608,9 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
                                   ),
+                          minLines: null,
                           validator: _model.textController5Validator
                               .asValidator(context),
                         ),
@@ -595,6 +641,7 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Poppins',
                                     color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
                           borderSide: BorderSide(
                             color: Colors.transparent,

@@ -73,6 +73,7 @@ class _SpecifiedlocationWidgetState extends State<SpecifiedlocationWidget> {
                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: 'Poppins',
                       color: Colors.white,
+                      letterSpacing: 0.0,
                     ),
                 borderSide: BorderSide(
                   color: Colors.transparent,

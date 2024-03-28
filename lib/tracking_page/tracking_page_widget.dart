@@ -344,6 +344,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Poppins',
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -362,6 +363,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Poppins',
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
                             ),
@@ -411,6 +413,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                       fontFamily: 'Poppins',
                                       color:
                                           FlutterFlowTheme.of(context).primary,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
                                     ),
                               ),
@@ -565,6 +568,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .accent2,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
                                               ),
                                         ),
@@ -606,6 +610,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                             fontFamily: 'Poppins',
                                             color: FlutterFlowTheme.of(context)
                                                 .accent2,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
                                           ),
                                     ),
@@ -645,6 +650,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                             fontFamily: 'Poppins',
                                             color: FlutterFlowTheme.of(context)
                                                 .accent2,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
                                           ),
                                     ),
@@ -684,6 +690,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                             fontFamily: 'Poppins',
                                             color: FlutterFlowTheme.of(context)
                                                 .accent2,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
                                           ),
                                     ),
@@ -755,6 +762,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                                 .override(
                                                   fontFamily: 'Poppins',
                                                   fontSize: 12.0,
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -787,6 +795,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                                                     context)
                                                                 .accent2,
                                                         fontSize: 12.0,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -881,6 +890,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                           fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
                                               .customColor3,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                         ),
                                   ),
@@ -1085,6 +1095,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                                                 setState(() {});
                                                               },
                                                             ),
+                                                            autofocus: false,
                                                             obscureText: false,
                                                             decoration:
                                                                 InputDecoration(
@@ -1103,6 +1114,8 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                                                             'Poppins',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .accent2,
+                                                                        letterSpacing:
+                                                                            0.0,
                                                                       ),
                                                               hintStyle:
                                                                   FlutterFlowTheme.of(
@@ -1113,6 +1126,8 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                                                             'Poppins',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .background,
+                                                                        letterSpacing:
+                                                                            0.0,
                                                                       ),
                                                               enabledBorder:
                                                                   OutlineInputBorder(
@@ -1172,7 +1187,14 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                            minLines: null,
                                                             keyboardType:
                                                                 const TextInputType
                                                                     .numberWithOptions(
@@ -1258,6 +1280,7 @@ class _TrackingPageWidgetState extends State<TrackingPageWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryText,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),

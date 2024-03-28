@@ -111,9 +111,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'placedetails',
               path: 'placedetails',
               builder: (context, params) => PlacedetailsWidget(
-                ipAddress: params.getParam('ipAddress', ParamType.String),
-                sessionID: params.getParam('sessionID', ParamType.String),
-                currentCord: params.getParam('currentCord', ParamType.String),
+                ipAddress: params.getParam(
+                  'ipAddress',
+                  ParamType.String,
+                ),
+                sessionID: params.getParam(
+                  'sessionID',
+                  ParamType.String,
+                ),
+                currentCord: params.getParam(
+                  'currentCord',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
@@ -140,7 +149,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'newplacedetails',
               path: 'newplacedetails',
               builder: (context, params) => NewplacedetailsWidget(
-                currentCord: params.getParam('currentCord', ParamType.String),
+                currentCord: params.getParam(
+                  'currentCord',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
@@ -162,8 +174,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'TrackingDetailsForm',
               path: 'trackingDetailsForm/:userid/:workspaceid',
               builder: (context, params) => TrackingDetailsFormWidget(
-                userid: params.getParam('userid', ParamType.String),
-                workspaceid: params.getParam('workspaceid', ParamType.String),
+                userid: params.getParam(
+                  'userid',
+                  ParamType.String,
+                ),
+                workspaceid: params.getParam(
+                  'workspaceid',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
@@ -185,7 +203,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'TeamMembers',
               path: 'teamMembers',
               builder: (context, params) => TeamMembersWidget(
-                teamName: params.getParam('teamName', ParamType.String),
+                teamName: params.getParam(
+                  'teamName',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
@@ -197,18 +218,30 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'MembersDetailScreen',
               path: 'membersDetailScreen',
               builder: (context, params) => MembersDetailScreenWidget(
-                teamName: params.getParam('teamName', ParamType.String),
-                members:
-                    params.getParam<dynamic>('members', ParamType.JSON, true),
+                teamName: params.getParam(
+                  'teamName',
+                  ParamType.String,
+                ),
+                members: params.getParam<dynamic>(
+                  'members',
+                  ParamType.JSON,
+                  true,
+                ),
               ),
             ),
             FFRoute(
               name: 'MembersSelectionScreen',
               path: 'membersSelectionScreen',
               builder: (context, params) => MembersSelectionScreenWidget(
-                teamName: params.getParam('teamName', ParamType.String),
-                members:
-                    params.getParam<dynamic>('members', ParamType.JSON, true),
+                teamName: params.getParam(
+                  'teamName',
+                  ParamType.String,
+                ),
+                members: params.getParam<dynamic>(
+                  'members',
+                  ParamType.JSON,
+                  true,
+                ),
               ),
             ),
             FFRoute(
@@ -336,6 +369,7 @@ class FFParameters {
     ParamType type, [
     bool isList = false,
     List<String>? collectionNamePath,
+    StructBuilder<T>? structBuilder,
   ]) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -349,8 +383,13 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList,
-        collectionNamePath: collectionNamePath);
+    return deserializeParam<T>(
+      param,
+      type,
+      isList,
+      collectionNamePath: collectionNamePath,
+      structBuilder: structBuilder,
+    );
   }
 }
 

@@ -22,8 +22,6 @@ class AddGroupDialogModel extends FlutterFlowModel<AddGroupDialogWidget> {
   // Stores action output result for [Backend Call - API (Create Location Group)] action in ButtonAdd widget.
   ApiCallResponse? apiResultsf5;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -32,8 +30,4 @@ class AddGroupDialogModel extends FlutterFlowModel<AddGroupDialogWidget> {
     addgrouptextfieldFocusNode?.dispose();
     addgrouptextfieldController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

@@ -21,15 +21,9 @@ class GroupListDialogComponentModel
   // Stores action output result for [Backend Call - API (Get Location by group name)] action in DropDown widget.
   ApiCallResponse? getLocationbyGroupResponse;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
   @override
   void dispose() {}
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

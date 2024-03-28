@@ -63,8 +63,6 @@ class PlacedetailsModel extends FlutterFlowModel<PlacedetailsWidget> {
   String? categoryDropdownValue;
   FormFieldController<String>? categoryDropdownValueController;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -95,8 +93,4 @@ class PlacedetailsModel extends FlutterFlowModel<PlacedetailsWidget> {
     websiteEdtFocusNode2?.dispose();
     websiteEdtController2?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

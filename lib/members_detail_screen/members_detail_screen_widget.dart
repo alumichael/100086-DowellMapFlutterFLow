@@ -84,6 +84,7 @@ class _MembersDetailScreenWidgetState extends State<MembersDetailScreenWidget> {
                       fontFamily: 'Poppins',
                       color: Colors.white,
                       fontSize: 22.0,
+                      letterSpacing: 0.0,
                     ),
               ),
               FlutterFlowIconButton(

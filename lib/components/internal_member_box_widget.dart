@@ -81,6 +81,7 @@ class _InternalMemberBoxWidgetState extends State<InternalMemberBoxWidget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
                                     fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         Text(
@@ -93,6 +94,7 @@ class _InternalMemberBoxWidgetState extends State<InternalMemberBoxWidget> {
                                     fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context).accent1,
                                     fontSize: 12.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
                         ),

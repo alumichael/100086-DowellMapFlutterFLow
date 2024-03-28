@@ -69,7 +69,10 @@ class _MemberBoxWidgetState extends State<MemberBoxWidget> {
                   widget.itemInfo?.email,
                   'null',
                 ),
-                style: FlutterFlowTheme.of(context).bodyMedium,
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Poppins',
+                      letterSpacing: 0.0,
+                    ),
               ),
             ),
             Container(

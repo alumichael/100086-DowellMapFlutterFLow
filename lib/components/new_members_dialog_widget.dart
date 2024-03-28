@@ -62,7 +62,10 @@ class _NewMembersDialogWidgetState extends State<NewMembersDialogWidget> {
               BoxShadow(
                 blurRadius: 4.0,
                 color: Color(0x33000000),
-                offset: Offset(0.0, 2.0),
+                offset: Offset(
+                  0.0,
+                  2.0,
+                ),
               )
             ],
             borderRadius: BorderRadius.circular(12.0),
@@ -83,6 +86,7 @@ class _NewMembersDialogWidgetState extends State<NewMembersDialogWidget> {
                     style: FlutterFlowTheme.of(context).labelMedium.override(
                           fontFamily: 'Poppins',
                           fontSize: 15.0,
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
                         ),
                   ),
@@ -93,11 +97,19 @@ class _NewMembersDialogWidgetState extends State<NewMembersDialogWidget> {
                   autofocus: true,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                    labelStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              fontFamily: 'Poppins',
+                              letterSpacing: 0.0,
+                            ),
                     hintText: FFLocalizations.of(context).getText(
                       'ctdmscok' /* Enter Member Name */,
                     ),
-                    hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                    hintStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              fontFamily: 'Poppins',
+                              letterSpacing: 0.0,
+                            ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFF005734),
@@ -127,7 +139,11 @@ class _NewMembersDialogWidgetState extends State<NewMembersDialogWidget> {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyMedium,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Poppins',
+                        letterSpacing: 0.0,
+                      ),
+                  minLines: null,
                   validator:
                       _model.textControllerValidator.asValidator(context),
                 ),
@@ -152,6 +168,7 @@ class _NewMembersDialogWidgetState extends State<NewMembersDialogWidget> {
                           fontFamily: 'Poppins',
                           color: FlutterFlowTheme.of(context).accent1,
                           fontSize: 12.0,
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.normal,
                         ),
                     hintText: FFLocalizations.of(context).getText(
@@ -259,6 +276,7 @@ class _NewMembersDialogWidgetState extends State<NewMembersDialogWidget> {
                                 .override(
                                   fontFamily: 'Poppins',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                             elevation: 3.0,
                             borderSide: BorderSide(

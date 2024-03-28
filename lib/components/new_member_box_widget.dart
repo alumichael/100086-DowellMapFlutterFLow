@@ -78,6 +78,7 @@ class _NewMemberBoxWidgetState extends State<NewMemberBoxWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Poppins',
                               fontSize: 16.0,
+                              letterSpacing: 0.0,
                             ),
                       ),
                       if (widget.isInternal == true)
@@ -112,6 +113,7 @@ class _NewMemberBoxWidgetState extends State<NewMemberBoxWidget> {
                           fontFamily: 'Poppins',
                           color: FlutterFlowTheme.of(context).accent1,
                           fontSize: 12.0,
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.normal,
                         ),
                   ),

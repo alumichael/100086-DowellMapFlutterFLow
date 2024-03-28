@@ -75,6 +75,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                   fontFamily: 'Poppins',
                   color: Colors.white,
                   fontSize: 22.0,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: [],
@@ -114,6 +115,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 16.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                     ),
                               ),
@@ -256,21 +258,20 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                                           .getText(
                                                         'fgldpxor' /* View All */,
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                fontSize: 16.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Poppins',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            fontSize: 16.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
                                                     ),
                                                     Padding(
                                                       padding:
@@ -310,6 +311,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                       .override(
                                         fontFamily: 'Poppins',
                                         fontSize: 15.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                             ],
@@ -336,6 +338,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 16.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                     ),
                               ),
@@ -482,21 +485,20 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                                           .getText(
                                                         '3zd4bddn' /* View All */,
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                fontSize: 16.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Poppins',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            fontSize: 16.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
                                                     ),
                                                     Padding(
                                                       padding:
@@ -539,6 +541,7 @@ class _AddMemberScreenWidgetState extends State<AddMemberScreenWidget> {
                                   .override(
                                     fontFamily: 'Poppins',
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                   ),
                             ),
                         ],

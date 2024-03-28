@@ -16,8 +16,6 @@ class QrScannerModel extends FlutterFlowModel<QrScannerWidget> {
   // Stores action output result for [Backend Call - API ( GetQrCodeById)] action in QrCodeScanner widget.
   ApiCallResponse? apiResult85j;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -25,8 +23,4 @@ class QrScannerModel extends FlutterFlowModel<QrScannerWidget> {
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

@@ -95,7 +95,10 @@ class _MemberMainOptionsWidgetState extends State<MemberMainOptionsWidget> {
                         FFLocalizations.of(context).getText(
                           'nvyratzz' /* Add member */,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Poppins',
+                              letterSpacing: 0.0,
+                            ),
                       ),
                     ),
                   ),
@@ -108,7 +111,10 @@ class _MemberMainOptionsWidgetState extends State<MemberMainOptionsWidget> {
                   FFLocalizations.of(context).getText(
                     'rliacw6m' /* Move members */,
                   ),
-                  style: FlutterFlowTheme.of(context).bodyMedium,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Poppins',
+                        letterSpacing: 0.0,
+                      ),
                 ),
               ),
           ],

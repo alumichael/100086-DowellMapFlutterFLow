@@ -17,8 +17,6 @@ class NewteamModel extends FlutterFlowModel<NewteamWidget> {
   // Stores action output result for [Backend Call - API (Create Team)] action in Button widget.
   ApiCallResponse? createTeamResponse;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -27,8 +25,4 @@ class NewteamModel extends FlutterFlowModel<NewteamWidget> {
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

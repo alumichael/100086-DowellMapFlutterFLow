@@ -55,8 +55,6 @@ class SearchBottomSheetModel extends FlutterFlowModel<SearchBottomSheetWidget> {
   // Stores action output result for [Custom Action - getDbPlaceName] action in searchButton widget.
   List<String>? dbPlacename;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -72,9 +70,6 @@ class SearchBottomSheetModel extends FlutterFlowModel<SearchBottomSheetWidget> {
     searchController?.dispose();
   }
 
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
-
+  /// Additional helper methods.
   String? get radioButtonValue => radioButtonValueController?.value;
 }

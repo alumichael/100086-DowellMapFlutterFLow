@@ -74,6 +74,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                   fontFamily: 'Poppins',
                   color: Colors.white,
                   fontSize: 22.0,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: [],
@@ -134,6 +135,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 16.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ),
@@ -336,6 +338,7 @@ class _CreateQrCodeWidgetState extends State<CreateQrCodeWidget> {
                                 .override(
                                   fontFamily: 'Poppins',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                             elevation: 3.0,
                             borderSide: BorderSide(

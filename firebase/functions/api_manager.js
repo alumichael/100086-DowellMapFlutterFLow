@@ -105,6 +105,37 @@ async function _createEventCall(context, ffVariables) {
     returnBody: true,
   });
 }
+async function _generateQRcodeCall(context, ffVariables) {
+  var links = ffVariables["links"];
+  var cliendId = ffVariables["cliendId"];
+  var product = ffVariables["product"];
+
+  var url = `https://www.qrcodereviews.uxlivinglab.online/api/v3/qr-code/?product=${product}`;
+  var headers = { "Access-Control-Allow-Origin": `*` };
+  var params = {};
+  var ffApiRequestBody = `
+{
+  "qrcode_type": "Link",
+  "quantity": 1,
+  "company_id": "${cliendId}",
+  "links": ${links},
+  "document_name": "Living Lab Maps"
+}`;
+
+  return makeApiRequest({
+    method: "post",
+    url,
+    headers,
+    params,
+    body: createBody({
+      headers,
+      params,
+      body: ffApiRequestBody,
+      bodyType: "JSON",
+    }),
+    returnBody: true,
+  });
+}
 
 /// Helper functions to route to the appropriate API Call.
 
@@ -117,6 +148,7 @@ async function makeApiCall(context, data) {
     DirectionCall: _directionCall,
     DirectionDetailsCall: _directionDetailsCall,
     CreateEventCall: _createEventCall,
+    GenerateQRcodeCall: _generateQRcodeCall,
   };
 
   if (!(callName in callMap)) {

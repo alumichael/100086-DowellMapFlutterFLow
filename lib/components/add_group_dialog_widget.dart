@@ -77,11 +77,19 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                       labelText: FFLocalizations.of(context).getText(
                         'wy7twllq' /* Group Name */,
                       ),
-                      labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                      labelStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                fontFamily: 'Poppins',
+                                letterSpacing: 0.0,
+                              ),
                       hintText: FFLocalizations.of(context).getText(
                         'w389jou7' /* Hint:  Employees, or Junior cl... */,
                       ),
-                      hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                      hintStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                fontFamily: 'Poppins',
+                                letterSpacing: 0.0,
+                              ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).primary,
@@ -111,7 +119,11 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Poppins',
+                          letterSpacing: 0.0,
+                        ),
+                    minLines: null,
                     validator: _model.addgrouptextfieldControllerValidator
                         .asValidator(context),
                   ),
@@ -128,6 +140,7 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Poppins',
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.w500,
                         ),
                   ),
@@ -159,6 +172,7 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Poppins',
                                     color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
                           borderSide: BorderSide(
@@ -329,6 +343,7 @@ class _AddGroupDialogWidgetState extends State<AddGroupDialogWidget> {
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Poppins',
                                     color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
                           borderSide: BorderSide(

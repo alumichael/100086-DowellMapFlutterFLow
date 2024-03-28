@@ -39,8 +39,6 @@ class Placedetails2Model extends FlutterFlowModel<Placedetails2Widget> {
   TextEditingController? textController5;
   String? Function(BuildContext, String?)? textController5Validator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -61,8 +59,4 @@ class Placedetails2Model extends FlutterFlowModel<Placedetails2Widget> {
     textFieldFocusNode5?.dispose();
     textController5?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

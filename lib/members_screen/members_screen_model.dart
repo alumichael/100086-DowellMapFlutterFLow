@@ -16,8 +16,6 @@ class MembersScreenModel extends FlutterFlowModel<MembersScreenWidget> {
   // Models for InternalMemberBox dynamic component.
   late FlutterFlowDynamicModels<InternalMemberBoxModel> internalMemberBoxModels;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     internalMemberBoxModels =
@@ -29,8 +27,4 @@ class MembersScreenModel extends FlutterFlowModel<MembersScreenWidget> {
     unfocusNode.dispose();
     internalMemberBoxModels.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

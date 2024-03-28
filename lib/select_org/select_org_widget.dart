@@ -76,7 +76,11 @@ class _SelectOrgWidgetState extends State<SelectOrgWidget> {
                           setState(() => _model.dropDownValue = val),
                       width: 200.0,
                       height: 50.0,
-                      textStyle: FlutterFlowTheme.of(context).bodyMedium,
+                      textStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.override(
+                                fontFamily: 'Poppins',
+                                letterSpacing: 0.0,
+                              ),
                       hintText: FFLocalizations.of(context).getText(
                         '70qesb8w' /* Please select Profile */,
                       ),
@@ -120,6 +124,7 @@ class _SelectOrgWidgetState extends State<SelectOrgWidget> {
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Poppins',
                           color: Colors.white,
+                          letterSpacing: 0.0,
                         ),
                     elevation: 3.0,
                     borderSide: BorderSide(

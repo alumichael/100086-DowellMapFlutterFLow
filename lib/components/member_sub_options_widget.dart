@@ -94,7 +94,10 @@ class _MemberSubOptionsWidgetState extends State<MemberSubOptionsWidget> {
                       FFLocalizations.of(context).getText(
                         '3afckevs' /* Delete */,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Poppins',
+                            letterSpacing: 0.0,
+                          ),
                     ),
                   ),
                 ),
@@ -133,7 +136,10 @@ class _MemberSubOptionsWidgetState extends State<MemberSubOptionsWidget> {
                       FFLocalizations.of(context).getText(
                         '2gnst597' /* Add To Internal */,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Poppins',
+                            letterSpacing: 0.0,
+                          ),
                     ),
                   ),
                 ),

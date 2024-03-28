@@ -26,8 +26,6 @@ class NewMembersDialogModel extends FlutterFlowModel<NewMembersDialogWidget> {
   // Stores action output result for [Backend Call - API (GetTeamsByUsername)] action in Button widget.
   ApiCallResponse? fetchUser;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -36,8 +34,4 @@ class NewMembersDialogModel extends FlutterFlowModel<NewMembersDialogWidget> {
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

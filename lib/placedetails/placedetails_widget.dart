@@ -112,6 +112,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                   fontFamily: 'Poppins',
                   color: Colors.white,
                   fontSize: 22.0,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: [],
@@ -243,6 +244,8 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
@@ -250,7 +253,13 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                       hintStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMedium,
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
@@ -308,7 +317,9 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primary,
+                                                          letterSpacing: 0.0,
                                                         ),
+                                                    minLines: null,
                                                     validator: _model
                                                         .addressEdtControllerValidator
                                                         .asValidator(context),
@@ -352,6 +363,8 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
@@ -359,7 +372,13 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                       hintStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMedium,
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
@@ -417,7 +436,9 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primary,
+                                                          letterSpacing: 0.0,
                                                         ),
+                                                    minLines: null,
                                                     validator: _model
                                                         .openHoursEdtControllerValidator
                                                         .asValidator(context),
@@ -461,6 +482,8 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
@@ -468,7 +491,13 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                       hintStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMedium,
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
@@ -526,7 +555,9 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primary,
+                                                          letterSpacing: 0.0,
                                                         ),
+                                                    minLines: null,
                                                     validator: _model
                                                         .phonrNumEdtControllerValidator
                                                         .asValidator(context),
@@ -749,6 +780,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                       .override(
                                                         fontFamily: 'Poppins',
                                                         color: Colors.white,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                   borderSide: BorderSide(
                                                     color: Colors.transparent,
@@ -796,6 +828,8 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
@@ -807,6 +841,8 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -868,7 +904,9 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primary,
+                                                          letterSpacing: 0.0,
                                                         ),
+                                                    minLines: null,
                                                     validator: _model
                                                         .countryEdtControllerValidator
                                                         .asValidator(context),
@@ -906,6 +944,8 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
@@ -917,6 +957,8 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -978,7 +1020,9 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primary,
+                                                          letterSpacing: 0.0,
                                                         ),
+                                                    minLines: null,
                                                     validator: _model
                                                         .websiteEdtController1Validator
                                                         .asValidator(context),
@@ -1022,6 +1066,8 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
@@ -1029,7 +1075,13 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                       hintStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMedium,
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
@@ -1087,7 +1139,9 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primary,
+                                                          letterSpacing: 0.0,
                                                         ),
+                                                    minLines: null,
                                                     validator: _model
                                                         .placeNameEdtControllerValidator
                                                         .asValidator(context),
@@ -1112,6 +1166,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                         .selectedLocationEdtController,
                                                     focusNode: _model
                                                         .selectedLocationEdtFocusNode,
+                                                    autofocus: false,
                                                     readOnly: true,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
@@ -1131,6 +1186,8 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
@@ -1138,7 +1195,13 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                       hintStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMedium,
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
@@ -1196,7 +1259,9 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primary,
+                                                          letterSpacing: 0.0,
                                                         ),
+                                                    minLines: null,
                                                     validator: _model
                                                         .selectedLocationEdtControllerValidator
                                                         .asValidator(context),
@@ -1240,6 +1305,8 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
@@ -1251,6 +1318,8 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -1312,7 +1381,9 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primary,
+                                                          letterSpacing: 0.0,
                                                         ),
+                                                    minLines: null,
                                                     validator: _model
                                                         .websiteEdtController2Validator
                                                         .asValidator(context),
@@ -1346,6 +1417,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primary,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -1432,6 +1504,7 @@ class _PlacedetailsWidgetState extends State<PlacedetailsWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primary,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),

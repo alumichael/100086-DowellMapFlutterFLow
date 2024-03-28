@@ -51,7 +51,10 @@ class _AdduserWidgetState extends State<AdduserWidget> {
               BoxShadow(
                 blurRadius: 4.0,
                 color: Color(0x33000000),
-                offset: Offset(0.0, 2.0),
+                offset: Offset(
+                  0.0,
+                  2.0,
+                ),
               )
             ],
             borderRadius: BorderRadius.circular(12.0),
@@ -69,7 +72,10 @@ class _AdduserWidgetState extends State<AdduserWidget> {
                       'x4qv79fj' /* Add User to Team */,
                     ),
                     textAlign: TextAlign.start,
-                    style: FlutterFlowTheme.of(context).headlineSmall,
+                    style: FlutterFlowTheme.of(context).headlineSmall.override(
+                          fontFamily: 'Poppins',
+                          letterSpacing: 0.0,
+                        ),
                   ),
                 ),
                 Padding(
@@ -102,6 +108,7 @@ class _AdduserWidgetState extends State<AdduserWidget> {
                                   .override(
                                     fontFamily: 'Poppins',
                                     color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
                               elevation: 3.0,
                               borderSide: BorderSide(
@@ -137,6 +144,7 @@ class _AdduserWidgetState extends State<AdduserWidget> {
                                   .override(
                                     fontFamily: 'Poppins',
                                     color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
                               elevation: 3.0,
                               borderSide: BorderSide(

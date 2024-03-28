@@ -91,8 +91,6 @@ class NewHomePageModel extends FlutterFlowModel<NewHomePageWidget> {
   // Stores action output result for [Custom Action - getDbPlaceName] action in searchButton widget.
   List<String>? dbPlacename;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -109,9 +107,6 @@ class NewHomePageModel extends FlutterFlowModel<NewHomePageWidget> {
     searchController?.dispose();
   }
 
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
-
+  /// Additional helper methods.
   String? get radioButtonValue => radioButtonValueController?.value;
 }

@@ -29,8 +29,6 @@ class TrackingDetailsFormModel
   TextEditingController? countryTextFieldController;
   String? Function(BuildContext, String?)? countryTextFieldControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -49,8 +47,4 @@ class TrackingDetailsFormModel
     countryTextFieldFocusNode?.dispose();
     countryTextFieldController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

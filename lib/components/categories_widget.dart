@@ -69,7 +69,11 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                           FFLocalizations.of(context).getText(
                             '1y6q8j4h' /* Category */,
                           ),
-                          style: FlutterFlowTheme.of(context).titleLarge,
+                          style:
+                              FlutterFlowTheme.of(context).titleLarge.override(
+                                    fontFamily: 'Poppins',
+                                    letterSpacing: 0.0,
+                                  ),
                         ),
                       ),
                       Align(
@@ -85,7 +89,12 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                               hintText: FFLocalizations.of(context).getText(
                                 'x89qaar7' /* Search */,
                               ),
-                              hintStyle: FlutterFlowTheme.of(context).bodySmall,
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    letterSpacing: 0.0,
+                                  ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).primary,
@@ -127,7 +136,13 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  letterSpacing: 0.0,
+                                ),
+                            minLines: null,
                             validator: _model.textControllerValidator
                                 .asValidator(context),
                           ),
@@ -139,7 +154,11 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                           FFLocalizations.of(context).getText(
                             '8gawanoy' /* Popular Categories */,
                           ),
-                          style: FlutterFlowTheme.of(context).titleMedium,
+                          style:
+                              FlutterFlowTheme.of(context).titleMedium.override(
+                                    fontFamily: 'Poppins',
+                                    letterSpacing: 0.0,
+                                  ),
                         ),
                       ),
                       Align(
@@ -187,6 +206,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Poppins',
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                       ),
                                 ),
@@ -233,6 +253,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Poppins',
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                       ),
                                 ),
@@ -279,6 +300,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Poppins',
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                       ),
                                 ),
@@ -325,6 +347,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Poppins',
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                       ),
                                 ),
@@ -371,6 +394,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Poppins',
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                       ),
                                 ),
@@ -417,6 +441,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Poppins',
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                       ),
                                 ),
@@ -463,6 +488,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Poppins',
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                       ),
                                 ),
@@ -509,6 +535,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Poppins',
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                       ),
                                 ),
@@ -548,6 +575,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 .override(
                                   fontFamily: 'Poppins',
                                   color: FlutterFlowTheme.of(context).primary,
+                                  letterSpacing: 0.0,
                                 ),
                             borderSide: BorderSide(
                               color: Colors.transparent,

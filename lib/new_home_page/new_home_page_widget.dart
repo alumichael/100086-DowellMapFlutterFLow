@@ -438,6 +438,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Poppins',
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
@@ -456,6 +457,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Poppins',
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
                                     ),
                               ),
@@ -505,6 +507,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                       ),
                                 ),
@@ -667,6 +670,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .accent2,
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
                                           ),
@@ -718,6 +722,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .accent2,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
                                               ),
                                         ),
@@ -795,6 +800,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .accent2,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
                                               ),
                                         ),
@@ -845,6 +851,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .accent2,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
                                             ),
                                       ),
@@ -885,6 +892,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .accent2,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
                                             ),
                                       ),
@@ -944,6 +952,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .accent2,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -1002,6 +1011,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .accent2,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -1078,6 +1088,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                       .override(
                                                         fontFamily: 'Poppins',
                                                         fontSize: 12.0,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                       ),
@@ -1111,6 +1122,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                                   .of(context)
                                                               .accent2,
                                                           fontSize: 12.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -1218,6 +1230,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .customColor3,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                         ),
@@ -1597,6 +1610,7 @@ class _NewHomePageWidgetState extends State<NewHomePageWidget> {
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           color: Colors.black,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -1653,6 +1667,8 @@ Between */
                                                               fontFamily:
                                                                   'Poppins',
                                                               fontSize: 16.0,
+                                                              letterSpacing:
+                                                                  0.0,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .normal,
@@ -1675,6 +1691,7 @@ Between */
                                                                   .textController1,
                                                               focusNode: _model
                                                                   .textFieldFocusNode1,
+                                                              autofocus: false,
                                                               obscureText:
                                                                   false,
                                                               decoration:
@@ -1694,6 +1711,8 @@ Between */
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .accent2,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                     ),
                                                                 hintText:
                                                                     FFLocalizations.of(
@@ -1710,6 +1729,8 @@ Between */
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .background,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                     ),
                                                                 enabledBorder:
                                                                     OutlineInputBorder(
@@ -1769,7 +1790,14 @@ Between */
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyMedium,
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                              minLines: null,
                                                               keyboardType:
                                                                   const TextInputType
                                                                       .numberWithOptions(
@@ -1814,6 +1842,7 @@ Between */
                                                                   .textController2,
                                                               focusNode: _model
                                                                   .textFieldFocusNode2,
+                                                              autofocus: false,
                                                               obscureText:
                                                                   false,
                                                               decoration:
@@ -1833,6 +1862,8 @@ Between */
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .accent2,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                     ),
                                                                 hintText:
                                                                     FFLocalizations.of(
@@ -1849,6 +1880,8 @@ Between */
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .background,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                     ),
                                                                 enabledBorder:
                                                                     OutlineInputBorder(
@@ -1908,7 +1941,14 @@ Between */
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyMedium,
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                              minLines: null,
                                                               keyboardType:
                                                                   const TextInputType
                                                                       .numberWithOptions(
@@ -1940,6 +1980,8 @@ Between */
                                                                       .accent1,
                                                                   fontSize:
                                                                       20.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
@@ -2061,6 +2103,8 @@ Between */
                                                                   () => setState(
                                                                       () {}),
                                                                 ),
+                                                                autofocus:
+                                                                    false,
                                                                 obscureText:
                                                                     false,
                                                                 decoration:
@@ -2078,6 +2122,8 @@ Between */
                                                                             'Poppins',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .background,
+                                                                        letterSpacing:
+                                                                            0.0,
                                                                       ),
                                                                   hintText: FFLocalizations.of(
                                                                           context)
@@ -2086,7 +2132,13 @@ Between */
                                                                   ),
                                                                   hintStyle: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .labelMedium,
+                                                                      .labelMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Poppins',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
                                                                   enabledBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
@@ -2163,7 +2215,14 @@ Between */
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyMedium,
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Poppins',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                                minLines: null,
                                                                 validator: _model
                                                                     .searchControllerValidator
                                                                     .asValidator(
@@ -2802,7 +2861,11 @@ Between */
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                               ),
                                             ),
                                           ],
@@ -2921,7 +2984,11 @@ Between */
                                                 textAlign: TextAlign.justify,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                               ),
                                             ),
                                           ],

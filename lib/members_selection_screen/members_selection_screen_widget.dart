@@ -89,6 +89,7 @@ class _MembersSelectionScreenWidgetState
                       fontFamily: 'Poppins',
                       color: Colors.white,
                       fontSize: 22.0,
+                      letterSpacing: 0.0,
                     ),
               ),
             ],
@@ -195,6 +196,7 @@ class _MembersSelectionScreenWidgetState
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 16.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
                                     ),
                               ),
@@ -298,6 +300,7 @@ class _MembersSelectionScreenWidgetState
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Poppins',
                                     color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
                           borderSide: BorderSide(

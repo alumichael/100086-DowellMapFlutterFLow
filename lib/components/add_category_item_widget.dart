@@ -53,6 +53,7 @@ class _AddCategoryItemWidgetState extends State<AddCategoryItemWidget> {
               style: FlutterFlowTheme.of(context).bodyMedium.override(
                     fontFamily: 'Poppins',
                     fontSize: 18.0,
+                    letterSpacing: 0.0,
                     fontWeight: FontWeight.normal,
                   ),
             ),

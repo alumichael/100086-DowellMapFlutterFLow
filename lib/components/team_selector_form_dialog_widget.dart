@@ -76,6 +76,7 @@ class _TeamSelectorFormDialogWidgetState
                             fontFamily: 'Poppins',
                             color: FlutterFlowTheme.of(context).primary,
                             fontSize: 16.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
                           ),
                     ),
@@ -119,6 +120,7 @@ class _TeamSelectorFormDialogWidgetState
                             FlutterFlowTheme.of(context).bodyMedium.override(
                                   fontFamily: 'Poppins',
                                   fontSize: 12.0,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                 ),
                         hintText: FFLocalizations.of(context).getText(
@@ -157,7 +159,12 @@ class _TeamSelectorFormDialogWidgetState
                             FFLocalizations.of(context).getText(
                               'dyx9mlif' /* Teams */,
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ),
                       ),
@@ -178,7 +185,12 @@ class _TeamSelectorFormDialogWidgetState
                                 10.0, 0.0, 0.0, 0.0),
                             child: Text(
                               FFAppState().orgByIdTeams.take(1).toList().first,
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                           ),
                         ),
@@ -195,6 +207,7 @@ class _TeamSelectorFormDialogWidgetState
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
                                     fontSize: 12.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                           hintText: FFLocalizations.of(context).getText(
@@ -226,6 +239,7 @@ class _TeamSelectorFormDialogWidgetState
                                     fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context).accent2,
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                         ),
@@ -310,6 +324,7 @@ class _TeamSelectorFormDialogWidgetState
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Poppins',
                                 color: Colors.white,
+                                letterSpacing: 0.0,
                               ),
                       elevation: 3.0,
                       borderSide: BorderSide(

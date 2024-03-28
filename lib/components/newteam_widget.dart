@@ -57,7 +57,10 @@ class _NewteamWidgetState extends State<NewteamWidget> {
               BoxShadow(
                 blurRadius: 4.0,
                 color: Color(0x33000000),
-                offset: Offset(0.0, 2.0),
+                offset: Offset(
+                  0.0,
+                  2.0,
+                ),
               )
             ],
             borderRadius: BorderRadius.circular(12.0),
@@ -78,6 +81,7 @@ class _NewteamWidgetState extends State<NewteamWidget> {
                     style: FlutterFlowTheme.of(context).labelMedium.override(
                           fontFamily: 'Poppins',
                           fontSize: 15.0,
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
                         ),
                   ),
@@ -88,11 +92,19 @@ class _NewteamWidgetState extends State<NewteamWidget> {
                   autofocus: true,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                    labelStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              fontFamily: 'Poppins',
+                              letterSpacing: 0.0,
+                            ),
                     hintText: FFLocalizations.of(context).getText(
                       'rzdflud2' /* Enter Team Name */,
                     ),
-                    hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                    hintStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              fontFamily: 'Poppins',
+                              letterSpacing: 0.0,
+                            ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFF005734),
@@ -122,7 +134,11 @@ class _NewteamWidgetState extends State<NewteamWidget> {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyMedium,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Poppins',
+                        letterSpacing: 0.0,
+                      ),
+                  minLines: null,
                   validator:
                       _model.textControllerValidator.asValidator(context),
                 ),
@@ -211,6 +227,7 @@ class _NewteamWidgetState extends State<NewteamWidget> {
                                 .override(
                                   fontFamily: 'Poppins',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                             elevation: 3.0,
                             borderSide: BorderSide(

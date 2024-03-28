@@ -16,8 +16,6 @@ class LoginComponentModel extends FlutterFlowModel<LoginComponentWidget> {
   // Stores action output result for [Backend Call - API (link bage login )] action in Button widget.
   ApiCallResponse? apiResultj4t;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -25,8 +23,4 @@ class LoginComponentModel extends FlutterFlowModel<LoginComponentWidget> {
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

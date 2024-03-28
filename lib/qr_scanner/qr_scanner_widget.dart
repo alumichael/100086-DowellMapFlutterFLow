@@ -117,6 +117,7 @@ class _QrScannerWidgetState extends State<QrScannerWidget> {
                                           fontFamily: 'Poppins',
                                           color: Color(0xFF29BF12),
                                           fontSize: 16.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
                                         ),
                                   ),
@@ -142,6 +143,7 @@ class _QrScannerWidgetState extends State<QrScannerWidget> {
                             fontFamily: 'Poppins',
                             color: FlutterFlowTheme.of(context).primaryText,
                             fontSize: 24.0,
+                            letterSpacing: 0.0,
                           ),
                     ),
                   ),
@@ -158,6 +160,7 @@ class _QrScannerWidgetState extends State<QrScannerWidget> {
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Noto Sans',
                             color: FlutterFlowTheme.of(context).primaryText,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
                           ),
                     ),

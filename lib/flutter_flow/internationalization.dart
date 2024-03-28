@@ -1795,6 +1795,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // TeamDeletionDialog
+  {
+    'n1mxuls3': {
+      'en': 'Delete Team?',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+    'eo9b47wz': {
+      'en': 'Confirm ',
+      'de': '',
+      'es': '',
+      'fr': '',
+    },
+  },
   // Miscellaneous
   {
     'bwnsa3x4': {

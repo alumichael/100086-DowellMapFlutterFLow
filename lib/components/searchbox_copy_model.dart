@@ -26,8 +26,6 @@ class SearchboxCopyModel extends FlutterFlowModel<SearchboxCopyWidget> {
   TextEditingController? textController3;
   String? Function(BuildContext, String?)? textController3Validator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -43,9 +41,6 @@ class SearchboxCopyModel extends FlutterFlowModel<SearchboxCopyWidget> {
     textController3?.dispose();
   }
 
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
-
+  /// Additional helper methods.
   String? get radioButtonValue => radioButtonValueController?.value;
 }

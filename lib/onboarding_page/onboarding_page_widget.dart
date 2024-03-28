@@ -102,6 +102,7 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
               style: FlutterFlowTheme.of(context).displaySmall.override(
                     fontFamily: 'Poppins',
                     color: FlutterFlowTheme.of(context).primary,
+                    letterSpacing: 0.0,
                   ),
             ),
           ),
@@ -162,6 +163,7 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primary,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ],
@@ -179,7 +181,11 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                                               'zoqoh4mo' /* Create your business personali... */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodySmall,
+                                                .bodySmall
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
                                         ),
                                       ],
@@ -222,6 +228,7 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primary,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ],
@@ -239,7 +246,11 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                                               'bb6xvdv2' /* The Navigation feature providi... */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodySmall,
+                                                .bodySmall
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
                                         ),
                                       ],
@@ -282,6 +293,7 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primary,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ],
@@ -299,7 +311,11 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                                               'p57iowyt' /* You can search nearby points o... */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodySmall,
+                                                .bodySmall
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
                                         ),
                                       ],
@@ -377,6 +393,7 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Poppins',
                           color: FlutterFlowTheme.of(context).primary,
+                          letterSpacing: 0.0,
                         ),
                     elevation: 2.0,
                     borderSide: BorderSide(
@@ -408,6 +425,7 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                           fontFamily: 'Poppins',
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
+                          letterSpacing: 0.0,
                         ),
                     elevation: 2.0,
                     borderSide: BorderSide(

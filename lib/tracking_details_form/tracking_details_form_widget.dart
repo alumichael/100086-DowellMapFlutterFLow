@@ -91,8 +91,16 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                       labelText: FFLocalizations.of(context).getText(
                         'z1yhlp39' /* Full Name */,
                       ),
-                      labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                      hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                      labelStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                fontFamily: 'Poppins',
+                                letterSpacing: 0.0,
+                              ),
+                      hintStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                fontFamily: 'Poppins',
+                                letterSpacing: 0.0,
+                              ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).primary,
@@ -122,7 +130,11 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Poppins',
+                          letterSpacing: 0.0,
+                        ),
+                    minLines: null,
                     validator: _model.nameTextFieldControllerValidator
                         .asValidator(context),
                   ),
@@ -138,8 +150,16 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                         labelText: FFLocalizations.of(context).getText(
                           'g9bqj2wy' /* Email */,
                         ),
-                        labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                        hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                        labelStyle:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Poppins',
+                                  letterSpacing: 0.0,
+                                ),
+                        hintStyle:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Poppins',
+                                  letterSpacing: 0.0,
+                                ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: FlutterFlowTheme.of(context).primary,
@@ -169,7 +189,11 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Poppins',
+                            letterSpacing: 0.0,
+                          ),
+                      minLines: null,
                       validator: _model.emailTextFieldControllerValidator
                           .asValidator(context),
                     ),
@@ -186,8 +210,16 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                         labelText: FFLocalizations.of(context).getText(
                           'o2rtfxjc' /* Company/School Name */,
                         ),
-                        labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                        hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                        labelStyle:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Poppins',
+                                  letterSpacing: 0.0,
+                                ),
+                        hintStyle:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Poppins',
+                                  letterSpacing: 0.0,
+                                ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: FlutterFlowTheme.of(context).primary,
@@ -217,7 +249,11 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Poppins',
+                            letterSpacing: 0.0,
+                          ),
+                      minLines: null,
                       validator: _model.companyNameextFieldControllerValidator
                           .asValidator(context),
                     ),
@@ -234,8 +270,16 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                         labelText: FFLocalizations.of(context).getText(
                           'w5gqe11r' /* Country */,
                         ),
-                        labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                        hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                        labelStyle:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Poppins',
+                                  letterSpacing: 0.0,
+                                ),
+                        hintStyle:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Poppins',
+                                  letterSpacing: 0.0,
+                                ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: FlutterFlowTheme.of(context).primary,
@@ -265,7 +309,11 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Poppins',
+                            letterSpacing: 0.0,
+                          ),
+                      minLines: null,
                       validator: _model.countryTextFieldControllerValidator
                           .asValidator(context),
                     ),
@@ -312,6 +360,7 @@ class _TrackingDetailsFormWidgetState extends State<TrackingDetailsFormWidget> {
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Poppins',
                                     color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
                           borderSide: BorderSide(

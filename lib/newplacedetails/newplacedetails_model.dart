@@ -57,8 +57,6 @@ class NewplacedetailsModel extends FlutterFlowModel<NewplacedetailsWidget> {
   // Stores action output result for [Backend Call - API (Update Location)] action in Button widget.
   ApiCallResponse? apiResultms0;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -86,8 +84,4 @@ class NewplacedetailsModel extends FlutterFlowModel<NewplacedetailsWidget> {
     websiteEdtFocusNode?.dispose();
     websiteEdtController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

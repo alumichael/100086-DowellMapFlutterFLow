@@ -44,8 +44,6 @@ class TrackingPageModel extends FlutterFlowModel<TrackingPageWidget> {
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -55,8 +53,4 @@ class TrackingPageModel extends FlutterFlowModel<TrackingPageWidget> {
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

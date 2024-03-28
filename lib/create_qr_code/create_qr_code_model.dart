@@ -21,8 +21,6 @@ class CreateQrCodeModel extends FlutterFlowModel<CreateQrCodeWidget> {
   // Stores action output result for [Backend Call - API (Generate QRcode)] action in Button widget.
   ApiCallResponse? getQRCodeResponse;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -30,8 +28,4 @@ class CreateQrCodeModel extends FlutterFlowModel<CreateQrCodeWidget> {
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

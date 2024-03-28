@@ -76,6 +76,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                               .override(
                                 fontFamily: 'Poppins',
                                 color: FlutterFlowTheme.of(context).background,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
                               ),
                         ),
@@ -106,6 +107,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 3.0,
                                   borderSide: BorderSide(
@@ -118,91 +120,43 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                               FFButtonWidget(
                                 onPressed: () async {
                                   if (FFAppState().isAuthUser == true) {
-                                    _model.fetchResultAuthUser =
-                                        await FetchUserCall.call(
-                                      apiKey: FFAppState().apiKey,
-                                      email: FFAppState().guestEmail,
-                                    );
-                                    if ((_model
-                                            .fetchResultAuthUser?.succeeded ??
-                                        true)) {
-                                      if (FetchUserCall.data(
-                                            (_model.fetchResultAuthUser
-                                                    ?.jsonBody ??
-                                                ''),
-                                          )?.length ==
-                                          0) {
-                                        _model.insertionResultAuthUser =
-                                            await InsertUserCall.call(
-                                          apiKey: FFAppState().apiKey,
-                                          name: FFAppState().guestName,
-                                          email: FFAppState().guestEmail,
-                                          comapnyName:
-                                              FFAppState().guestCompanyName,
-                                          userid: FFAppState().guestUserId,
-                                        );
-                                        if ((_model.insertionResultAuthUser
-                                                ?.succeeded ??
-                                            true)) {
-                                          setState(() {
-                                            FFAppState().allowLocationTracking =
-                                                true;
-                                            FFAppState()
-                                                    .isFirstLaunchAfterInstall =
-                                                false;
-                                          });
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Successfully registered tracking',
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                ),
-                                              ),
-                                              duration:
-                                                  Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          );
-                                        }
-                                      } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'Email already used',
-                                              style: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                              ),
-                                            ),
-                                            duration:
-                                                Duration(milliseconds: 4000),
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryText,
+                                    setState(() {
+                                      FFAppState().allowLocationTracking = true;
+                                      FFAppState().isFirstLaunchAfterInstall =
+                                          false;
+                                    });
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Successfully registered tracking',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
                                           ),
-                                        );
-                                        setState(() {
-                                          FFAppState().allowLocationTracking =
-                                              true;
-                                          FFAppState()
-                                                  .isFirstLaunchAfterInstall =
-                                              false;
-                                        });
-                                      }
-                                    } else {
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                      ),
+                                    );
+                                  } else {
+                                    _model.finalizeReponse =
+                                        await FinalizedLinkCall.call(
+                                      linkId: FFAppState().linkId,
+                                      product: 'maps',
+                                    );
+                                    if ((_model.finalizeReponse?.succeeded ??
+                                        true)) {
+                                      setState(() {
+                                        FFAppState().allowLocationTracking =
+                                            true;
+                                      });
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
                                           content: Text(
-                                            'Failed to fetch user',
+                                            'Successfully registered tracking',
                                             style: TextStyle(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -216,115 +170,12 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                                   .primaryText,
                                         ),
                                       );
-                                    }
-                                  } else {
-                                    _model.fetchResult =
-                                        await FetchUserCall.call(
-                                      apiKey:
-                                          '0699dbbb-2786-4dfa-a1db-fc12f2210228',
-                                      email: FFAppState().guestEmail,
-                                    );
-                                    if ((_model.fetchResult?.succeeded ??
-                                        true)) {
-                                      if (FetchUserCall.data(
-                                            (_model.fetchResult?.jsonBody ??
-                                                ''),
-                                          )?.length ==
-                                          0) {
-                                        _model.insertionResult =
-                                            await InsertUserCall.call(
-                                          apiKey:
-                                              '0699dbbb-2786-4dfa-a1db-fc12f2210228',
-                                          name: FFAppState().guestName,
-                                          email: FFAppState().guestEmail,
-                                          comapnyName:
-                                              FFAppState().guestCompanyName,
-                                          userid: FFAppState().guestUserId,
-                                        );
-                                        if ((_model
-                                                .insertionResult?.succeeded ??
-                                            true)) {
-                                          _model.finalizeReponse =
-                                              await FinalizedLinkCall.call(
-                                            linkId: FFAppState().linkId,
-                                            product: 'maps',
-                                          );
-                                          if ((_model
-                                                  .finalizeReponse?.succeeded ??
-                                              true)) {
-                                            setState(() {
-                                              FFAppState()
-                                                  .allowLocationTracking = true;
-                                            });
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Successfully registered tracking',
-                                                  style: TextStyle(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                  ),
-                                                ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                            );
-                                          } else {
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Failed to register tracking',
-                                                  style: TextStyle(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                  ),
-                                                ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                            );
-                                          }
-                                        }
-                                      } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'Email already used',
-                                              style: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                              ),
-                                            ),
-                                            duration:
-                                                Duration(milliseconds: 4000),
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryText,
-                                          ),
-                                        );
-                                        setState(() {
-                                          FFAppState().allowLocationTracking =
-                                              true;
-                                        });
-                                      }
                                     } else {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
                                           content: Text(
-                                            'Failed to fetch user',
+                                            'Failed to register tracking',
                                             style: TextStyle(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -360,6 +211,7 @@ class _TrackPermissionWidgetState extends State<TrackPermissionWidget> {
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 3.0,
                                   borderSide: BorderSide(

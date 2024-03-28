@@ -87,6 +87,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                   fontFamily: 'Poppins',
                   color: Colors.white,
                   fontSize: 22.0,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: [],
@@ -143,6 +144,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                   .override(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                   ),
                             ),
                           ),
@@ -202,6 +204,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
                                               fontSize: 16.0,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                             ),
                                       ),
@@ -252,7 +255,12 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                 FFLocalizations.of(context).getText(
                                   'lugc5qdu' /* Public Members */,
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyLarge,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ),
                           ),
@@ -293,6 +301,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Poppins',
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
                                       ),
                                   unselectedTextStyle:
@@ -300,6 +309,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Poppins',
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
                                           ),
                                   checkboxBorderRadius:
@@ -322,6 +332,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 14.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ),
@@ -381,6 +392,7 @@ class _TeamMembersWidgetState extends State<TeamMembersWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .primary,
                                                 fontSize: 16.0,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                         ),

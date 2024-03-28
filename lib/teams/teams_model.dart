@@ -1,6 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/newteam_widget.dart';
+import '/components/team_deletion_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -22,8 +23,6 @@ class TeamsModel extends FlutterFlowModel<TeamsWidget> {
   // Stores action output result for [Backend Call - API (GetMemberByTeamName)] action in Container widget.
   ApiCallResponse? fetchMembers;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -31,8 +30,4 @@ class TeamsModel extends FlutterFlowModel<TeamsWidget> {
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

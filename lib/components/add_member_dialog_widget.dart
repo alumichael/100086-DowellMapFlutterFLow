@@ -94,7 +94,10 @@ class _AddMemberDialogWidgetState extends State<AddMemberDialogWidget> {
                       FFLocalizations.of(context).getText(
                         'ukfpisah' /* From Team members */,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Poppins',
+                            letterSpacing: 0.0,
+                          ),
                     ),
                   ),
                 ),
@@ -139,7 +142,10 @@ class _AddMemberDialogWidgetState extends State<AddMemberDialogWidget> {
                     FFLocalizations.of(context).getText(
                       'oqn57nuj' /* From Guest  members */,
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Poppins',
+                          letterSpacing: 0.0,
+                        ),
                   ),
                 ),
               ),

@@ -127,6 +127,7 @@ class _MemberSelectionBoxWidgetState extends State<MemberSelectionBoxWidget> {
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Poppins',
                             fontSize: 16.0,
+                            letterSpacing: 0.0,
                           ),
                     ),
                     Text(
@@ -138,6 +139,7 @@ class _MemberSelectionBoxWidgetState extends State<MemberSelectionBoxWidget> {
                             fontFamily: 'Poppins',
                             color: FlutterFlowTheme.of(context).accent1,
                             fontSize: 12.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.normal,
                           ),
                     ),

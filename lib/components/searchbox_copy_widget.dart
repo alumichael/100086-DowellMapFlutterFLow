@@ -83,6 +83,7 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
                     textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Poppins',
                           color: Colors.black,
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.normal,
                         ),
                     selectedTextStyle:
@@ -90,6 +91,7 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
                               fontFamily: 'Poppins',
                               color: Colors.black,
                               fontSize: 12.0,
+                              letterSpacing: 0.0,
                             ),
                     buttonPosition: RadioButtonPosition.left,
                     direction: Axis.horizontal,
@@ -133,6 +135,7 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Poppins',
                         color: FlutterFlowTheme.of(context).primaryText,
+                        letterSpacing: 0.0,
                         fontWeight: FontWeight.w500,
                       ),
                 ),
@@ -149,7 +152,11 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
                         hintText: FFLocalizations.of(context).getText(
                           '3zy8ganu' /* From Distance */,
                         ),
-                        hintStyle: FlutterFlowTheme.of(context).bodySmall,
+                        hintStyle:
+                            FlutterFlowTheme.of(context).bodySmall.override(
+                                  fontFamily: 'Poppins',
+                                  letterSpacing: 0.0,
+                                ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF015534),
@@ -181,8 +188,10 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Poppins',
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.normal,
                           ),
+                      minLines: null,
                       validator:
                           _model.textController1Validator.asValidator(context),
                     ),
@@ -200,7 +209,11 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
                         hintText: FFLocalizations.of(context).getText(
                           'argc8hr6' /* To Distance */,
                         ),
-                        hintStyle: FlutterFlowTheme.of(context).bodySmall,
+                        hintStyle:
+                            FlutterFlowTheme.of(context).bodySmall.override(
+                                  fontFamily: 'Poppins',
+                                  letterSpacing: 0.0,
+                                ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF015534),
@@ -230,7 +243,11 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Poppins',
+                            letterSpacing: 0.0,
+                          ),
+                      minLines: null,
                       validator:
                           _model.textController2Validator.asValidator(context),
                     ),
@@ -257,7 +274,11 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
                         hintText: FFLocalizations.of(context).getText(
                           '4yfj0fbm' /* Search  eg School, Park */,
                         ),
-                        hintStyle: FlutterFlowTheme.of(context).bodySmall,
+                        hintStyle:
+                            FlutterFlowTheme.of(context).bodySmall.override(
+                                  fontFamily: 'Poppins',
+                                  letterSpacing: 0.0,
+                                ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF015534),
@@ -289,8 +310,10 @@ class _SearchboxCopyWidgetState extends State<SearchboxCopyWidget> {
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Poppins',
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.normal,
                           ),
+                      minLines: null,
                       validator:
                           _model.textController3Validator.asValidator(context),
                     ),

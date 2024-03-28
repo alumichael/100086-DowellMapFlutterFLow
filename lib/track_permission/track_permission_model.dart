@@ -11,18 +11,8 @@ class TrackPermissionModel extends FlutterFlowModel<TrackPermissionWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (Fetch User)] action in Button widget.
-  ApiCallResponse? fetchResultAuthUser;
-  // Stores action output result for [Backend Call - API (Insert User)] action in Button widget.
-  ApiCallResponse? insertionResultAuthUser;
-  // Stores action output result for [Backend Call - API (Fetch User)] action in Button widget.
-  ApiCallResponse? fetchResult;
-  // Stores action output result for [Backend Call - API (Insert User)] action in Button widget.
-  ApiCallResponse? insertionResult;
   // Stores action output result for [Backend Call - API (FinalizedLink)] action in Button widget.
   ApiCallResponse? finalizeReponse;
-
-  /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {}
@@ -31,8 +21,4 @@ class TrackPermissionModel extends FlutterFlowModel<TrackPermissionWidget> {
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

@@ -18,8 +18,6 @@ class CategoriesModel extends FlutterFlowModel<CategoriesWidget> {
   // Model for categoryItem component.
   late CategoryItemModel categoryItemModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     categoryItemModel = createModel(context, () => CategoryItemModel());
@@ -32,8 +30,4 @@ class CategoriesModel extends FlutterFlowModel<CategoriesWidget> {
 
     categoryItemModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

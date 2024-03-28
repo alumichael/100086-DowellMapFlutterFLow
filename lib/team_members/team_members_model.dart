@@ -22,8 +22,6 @@ class TeamMembersModel extends FlutterFlowModel<TeamMembersWidget> {
   List<String>? checkboxGroupValues;
   FormFieldController<List<String>>? checkboxGroupValueController;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -31,8 +29,4 @@ class TeamMembersModel extends FlutterFlowModel<TeamMembersWidget> {
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

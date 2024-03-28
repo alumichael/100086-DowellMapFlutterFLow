@@ -1201,29 +1201,18 @@ class GenerateQRcodeCall {
     String? product = '',
   }) async {
     final links = _serializeJson(linksJson, true);
-    final ffApiRequestBody = '''
-{
-  "qrcode_type": "Link",
-  "quantity": 1,
-  "company_id": "${cliendId}",
-  "links": ${links},
-  "document_name": "Living Lab Maps"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'Generate QRcode',
-      apiUrl:
-          'https://www.qrcodereviews.uxlivinglab.online/api/v3/qr-code/?product=${product}',
-      callType: ApiCallType.POST,
-      headers: {},
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GenerateQRcodeCall',
+        'variables': {
+          'links': links,
+          'cliendId': cliendId,
+          'product': product,
+        },
+      },
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   static String? imageUrl(dynamic response) => castToType<String>(getJsonField(
@@ -1695,14 +1684,24 @@ class SaveTrackingDetailsCall {
   }
 }
 
-class TwoCall {
-  static Future<ApiCallResponse> call() async {
+class DeleteTeamCall {
+  static Future<ApiCallResponse> call({
+    String? username = '',
+    String? teamName = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+"username":"${username}" ,
+  "team_name": "${teamName}"
+}''';
     return ApiManager.instance.makeApiCall(
-      callName: 'two',
-      apiUrl: 'www.google.com',
-      callType: ApiCallType.GET,
+      callName: 'deleteTeam',
+      apiUrl: 'https://100093.pythonanywhere.com/api/delete_team_data/',
+      callType: ApiCallType.POST,
       headers: {},
       params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
