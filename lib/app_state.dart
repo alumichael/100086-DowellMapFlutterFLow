@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
-import 'backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
-import 'dart:convert';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -123,26 +120,26 @@ class FFAppState extends ChangeNotifier {
 
   String _currentLocation = 'Current Location';
   String get currentLocation => _currentLocation;
-  set currentLocation(String _value) {
-    _currentLocation = _value;
+  set currentLocation(String value) {
+    _currentLocation = value;
   }
 
   String _usernametype = 'User Name';
   String get usernametype => _usernametype;
-  set usernametype(String _value) {
-    _usernametype = _value;
+  set usernametype(String value) {
+    _usernametype = value;
   }
 
   String _myIpAddress = '';
   String get myIpAddress => _myIpAddress;
-  set myIpAddress(String _value) {
-    _myIpAddress = _value;
+  set myIpAddress(String value) {
+    _myIpAddress = value;
   }
 
   String _selectedLocation = '';
   String get selectedLocation => _selectedLocation;
-  set selectedLocation(String _value) {
-    _selectedLocation = _value;
+  set selectedLocation(String value) {
+    _selectedLocation = value;
   }
 
   List<String> _categoriesState = [
@@ -157,454 +154,454 @@ class FFAppState extends ChangeNotifier {
     'Education'
   ];
   List<String> get categoriesState => _categoriesState;
-  set categoriesState(List<String> _value) {
-    _categoriesState = _value;
+  set categoriesState(List<String> value) {
+    _categoriesState = value;
   }
 
-  void addToCategoriesState(String _value) {
-    _categoriesState.add(_value);
+  void addToCategoriesState(String value) {
+    _categoriesState.add(value);
   }
 
-  void removeFromCategoriesState(String _value) {
-    _categoriesState.remove(_value);
+  void removeFromCategoriesState(String value) {
+    _categoriesState.remove(value);
   }
 
-  void removeAtIndexFromCategoriesState(int _index) {
-    _categoriesState.removeAt(_index);
+  void removeAtIndexFromCategoriesState(int index) {
+    _categoriesState.removeAt(index);
   }
 
   void updateCategoriesStateAtIndex(
-    int _index,
+    int index,
     String Function(String) updateFn,
   ) {
-    _categoriesState[_index] = updateFn(_categoriesState[_index]);
+    _categoriesState[index] = updateFn(_categoriesState[index]);
   }
 
-  void insertAtIndexInCategoriesState(int _index, String _value) {
-    _categoriesState.insert(_index, _value);
+  void insertAtIndexInCategoriesState(int index, String value) {
+    _categoriesState.insert(index, value);
   }
 
   bool _isMarkerTapped = false;
   bool get isMarkerTapped => _isMarkerTapped;
-  set isMarkerTapped(bool _value) {
-    _isMarkerTapped = _value;
+  set isMarkerTapped(bool value) {
+    _isMarkerTapped = value;
   }
 
   String _newCategoryTyped = '';
   String get newCategoryTyped => _newCategoryTyped;
-  set newCategoryTyped(String _value) {
-    _newCategoryTyped = _value;
+  set newCategoryTyped(String value) {
+    _newCategoryTyped = value;
   }
 
   dynamic _CCats;
   dynamic get CCats => _CCats;
-  set CCats(dynamic _value) {
-    _CCats = _value;
+  set CCats(dynamic value) {
+    _CCats = value;
   }
 
   bool _mapDataReady = false;
   bool get mapDataReady => _mapDataReady;
-  set mapDataReady(bool _value) {
-    _mapDataReady = _value;
+  set mapDataReady(bool value) {
+    _mapDataReady = value;
   }
 
   String _dowellKey = 'EhdQUTM2K0hNLCBOYWlyb2JpLCBLZW55YSImOiQKCg2PPDr';
   String get dowellKey => _dowellKey;
-  set dowellKey(String _value) {
-    _dowellKey = _value;
+  set dowellKey(String value) {
+    _dowellKey = value;
   }
 
   String _sessionId = 'null';
   String get sessionId => _sessionId;
-  set sessionId(String _value) {
-    _sessionId = _value;
-    prefs.setString('ff_sessionId', _value);
+  set sessionId(String value) {
+    _sessionId = value;
+    prefs.setString('ff_sessionId', value);
   }
 
   String _username = '';
   String get username => _username;
-  set username(String _value) {
-    _username = _value;
-    prefs.setString('ff_username', _value);
+  set username(String value) {
+    _username = value;
+    prefs.setString('ff_username', value);
   }
 
   String _otherorgid = '';
   String get otherorgid => _otherorgid;
-  set otherorgid(String _value) {
-    _otherorgid = _value;
-    prefs.setString('ff_otherorgid', _value);
+  set otherorgid(String value) {
+    _otherorgid = value;
+    prefs.setString('ff_otherorgid', value);
   }
 
   bool _isAuthUser = false;
   bool get isAuthUser => _isAuthUser;
-  set isAuthUser(bool _value) {
-    _isAuthUser = _value;
-    prefs.setBool('ff_isAuthUser', _value);
+  set isAuthUser(bool value) {
+    _isAuthUser = value;
+    prefs.setBool('ff_isAuthUser', value);
   }
 
   String _credit = '0';
   String get credit => _credit;
-  set credit(String _value) {
-    _credit = _value;
+  set credit(String value) {
+    _credit = value;
   }
 
   String _apiKey = '';
   String get apiKey => _apiKey;
-  set apiKey(String _value) {
-    _apiKey = _value;
-    prefs.setString('ff_apiKey', _value);
+  set apiKey(String value) {
+    _apiKey = value;
+    prefs.setString('ff_apiKey', value);
   }
 
   bool _showBottomSheet = false;
   bool get showBottomSheet => _showBottomSheet;
-  set showBottomSheet(bool _value) {
-    _showBottomSheet = _value;
+  set showBottomSheet(bool value) {
+    _showBottomSheet = value;
   }
 
   dynamic _MyMapResponseData;
   dynamic get MyMapResponseData => _MyMapResponseData;
-  set MyMapResponseData(dynamic _value) {
-    _MyMapResponseData = _value;
+  set MyMapResponseData(dynamic value) {
+    _MyMapResponseData = value;
   }
 
   bool _isProfiledUser = false;
   bool get isProfiledUser => _isProfiledUser;
-  set isProfiledUser(bool _value) {
-    _isProfiledUser = _value;
+  set isProfiledUser(bool value) {
+    _isProfiledUser = value;
   }
 
   List<String> _groupList = [];
   List<String> get groupList => _groupList;
-  set groupList(List<String> _value) {
-    _groupList = _value;
-    prefs.setStringList('ff_groupList', _value);
+  set groupList(List<String> value) {
+    _groupList = value;
+    prefs.setStringList('ff_groupList', value);
   }
 
-  void addToGroupList(String _value) {
-    _groupList.add(_value);
+  void addToGroupList(String value) {
+    _groupList.add(value);
     prefs.setStringList('ff_groupList', _groupList);
   }
 
-  void removeFromGroupList(String _value) {
-    _groupList.remove(_value);
+  void removeFromGroupList(String value) {
+    _groupList.remove(value);
     prefs.setStringList('ff_groupList', _groupList);
   }
 
-  void removeAtIndexFromGroupList(int _index) {
-    _groupList.removeAt(_index);
+  void removeAtIndexFromGroupList(int index) {
+    _groupList.removeAt(index);
     prefs.setStringList('ff_groupList', _groupList);
   }
 
   void updateGroupListAtIndex(
-    int _index,
+    int index,
     String Function(String) updateFn,
   ) {
-    _groupList[_index] = updateFn(_groupList[_index]);
+    _groupList[index] = updateFn(_groupList[index]);
     prefs.setStringList('ff_groupList', _groupList);
   }
 
-  void insertAtIndexInGroupList(int _index, String _value) {
-    _groupList.insert(_index, _value);
+  void insertAtIndexInGroupList(int index, String value) {
+    _groupList.insert(index, value);
     prefs.setStringList('ff_groupList', _groupList);
   }
 
   List<dynamic> _groupLocs = [];
   List<dynamic> get groupLocs => _groupLocs;
-  set groupLocs(List<dynamic> _value) {
-    _groupLocs = _value;
+  set groupLocs(List<dynamic> value) {
+    _groupLocs = value;
   }
 
-  void addToGroupLocs(dynamic _value) {
-    _groupLocs.add(_value);
+  void addToGroupLocs(dynamic value) {
+    _groupLocs.add(value);
   }
 
-  void removeFromGroupLocs(dynamic _value) {
-    _groupLocs.remove(_value);
+  void removeFromGroupLocs(dynamic value) {
+    _groupLocs.remove(value);
   }
 
-  void removeAtIndexFromGroupLocs(int _index) {
-    _groupLocs.removeAt(_index);
+  void removeAtIndexFromGroupLocs(int index) {
+    _groupLocs.removeAt(index);
   }
 
   void updateGroupLocsAtIndex(
-    int _index,
+    int index,
     dynamic Function(dynamic) updateFn,
   ) {
-    _groupLocs[_index] = updateFn(_groupLocs[_index]);
+    _groupLocs[index] = updateFn(_groupLocs[index]);
   }
 
-  void insertAtIndexInGroupLocs(int _index, dynamic _value) {
-    _groupLocs.insert(_index, _value);
+  void insertAtIndexInGroupLocs(int index, dynamic value) {
+    _groupLocs.insert(index, value);
   }
 
   bool _showMyLocs = false;
   bool get showMyLocs => _showMyLocs;
-  set showMyLocs(bool _value) {
-    _showMyLocs = _value;
+  set showMyLocs(bool value) {
+    _showMyLocs = value;
   }
 
   List<LatLng> _groupCoordLocs = [];
   List<LatLng> get groupCoordLocs => _groupCoordLocs;
-  set groupCoordLocs(List<LatLng> _value) {
-    _groupCoordLocs = _value;
+  set groupCoordLocs(List<LatLng> value) {
+    _groupCoordLocs = value;
   }
 
-  void addToGroupCoordLocs(LatLng _value) {
-    _groupCoordLocs.add(_value);
+  void addToGroupCoordLocs(LatLng value) {
+    _groupCoordLocs.add(value);
   }
 
-  void removeFromGroupCoordLocs(LatLng _value) {
-    _groupCoordLocs.remove(_value);
+  void removeFromGroupCoordLocs(LatLng value) {
+    _groupCoordLocs.remove(value);
   }
 
-  void removeAtIndexFromGroupCoordLocs(int _index) {
-    _groupCoordLocs.removeAt(_index);
+  void removeAtIndexFromGroupCoordLocs(int index) {
+    _groupCoordLocs.removeAt(index);
   }
 
   void updateGroupCoordLocsAtIndex(
-    int _index,
+    int index,
     LatLng Function(LatLng) updateFn,
   ) {
-    _groupCoordLocs[_index] = updateFn(_groupCoordLocs[_index]);
+    _groupCoordLocs[index] = updateFn(_groupCoordLocs[index]);
   }
 
-  void insertAtIndexInGroupCoordLocs(int _index, LatLng _value) {
-    _groupCoordLocs.insert(_index, _value);
+  void insertAtIndexInGroupCoordLocs(int index, LatLng value) {
+    _groupCoordLocs.insert(index, value);
   }
 
   List<String> _groupAddress = [];
   List<String> get groupAddress => _groupAddress;
-  set groupAddress(List<String> _value) {
-    _groupAddress = _value;
+  set groupAddress(List<String> value) {
+    _groupAddress = value;
   }
 
-  void addToGroupAddress(String _value) {
-    _groupAddress.add(_value);
+  void addToGroupAddress(String value) {
+    _groupAddress.add(value);
   }
 
-  void removeFromGroupAddress(String _value) {
-    _groupAddress.remove(_value);
+  void removeFromGroupAddress(String value) {
+    _groupAddress.remove(value);
   }
 
-  void removeAtIndexFromGroupAddress(int _index) {
-    _groupAddress.removeAt(_index);
+  void removeAtIndexFromGroupAddress(int index) {
+    _groupAddress.removeAt(index);
   }
 
   void updateGroupAddressAtIndex(
-    int _index,
+    int index,
     String Function(String) updateFn,
   ) {
-    _groupAddress[_index] = updateFn(_groupAddress[_index]);
+    _groupAddress[index] = updateFn(_groupAddress[index]);
   }
 
-  void insertAtIndexInGroupAddress(int _index, String _value) {
-    _groupAddress.insert(_index, _value);
+  void insertAtIndexInGroupAddress(int index, String value) {
+    _groupAddress.insert(index, value);
   }
 
   List<String> _groupIds = [];
   List<String> get groupIds => _groupIds;
-  set groupIds(List<String> _value) {
-    _groupIds = _value;
+  set groupIds(List<String> value) {
+    _groupIds = value;
   }
 
-  void addToGroupIds(String _value) {
-    _groupIds.add(_value);
+  void addToGroupIds(String value) {
+    _groupIds.add(value);
   }
 
-  void removeFromGroupIds(String _value) {
-    _groupIds.remove(_value);
+  void removeFromGroupIds(String value) {
+    _groupIds.remove(value);
   }
 
-  void removeAtIndexFromGroupIds(int _index) {
-    _groupIds.removeAt(_index);
+  void removeAtIndexFromGroupIds(int index) {
+    _groupIds.removeAt(index);
   }
 
   void updateGroupIdsAtIndex(
-    int _index,
+    int index,
     String Function(String) updateFn,
   ) {
-    _groupIds[_index] = updateFn(_groupIds[_index]);
+    _groupIds[index] = updateFn(_groupIds[index]);
   }
 
-  void insertAtIndexInGroupIds(int _index, String _value) {
-    _groupIds.insert(_index, _value);
+  void insertAtIndexInGroupIds(int index, String value) {
+    _groupIds.insert(index, value);
   }
 
   dynamic _toEditJson;
   dynamic get toEditJson => _toEditJson;
-  set toEditJson(dynamic _value) {
-    _toEditJson = _value;
+  set toEditJson(dynamic value) {
+    _toEditJson = value;
   }
 
   String _deleteId = '';
   String get deleteId => _deleteId;
-  set deleteId(String _value) {
-    _deleteId = _value;
+  set deleteId(String value) {
+    _deleteId = value;
   }
 
   dynamic _response;
   dynamic get response => _response;
-  set response(dynamic _value) {
-    _response = _value;
-    prefs.setString('ff_response', jsonEncode(_value));
+  set response(dynamic value) {
+    _response = value;
+    prefs.setString('ff_response', jsonEncode(value));
   }
 
   bool _noMoreCredit = false;
   bool get noMoreCredit => _noMoreCredit;
-  set noMoreCredit(bool _value) {
-    _noMoreCredit = _value;
+  set noMoreCredit(bool value) {
+    _noMoreCredit = value;
   }
 
   bool _isGettingDroupLocations = false;
   bool get isGettingDroupLocations => _isGettingDroupLocations;
-  set isGettingDroupLocations(bool _value) {
-    _isGettingDroupLocations = _value;
+  set isGettingDroupLocations(bool value) {
+    _isGettingDroupLocations = value;
   }
 
   bool _showTrackingToggler = false;
   bool get showTrackingToggler => _showTrackingToggler;
-  set showTrackingToggler(bool _value) {
-    _showTrackingToggler = _value;
+  set showTrackingToggler(bool value) {
+    _showTrackingToggler = value;
   }
 
   bool _isDestinationSelected = false;
   bool get isDestinationSelected => _isDestinationSelected;
-  set isDestinationSelected(bool _value) {
-    _isDestinationSelected = _value;
+  set isDestinationSelected(bool value) {
+    _isDestinationSelected = value;
   }
 
   List<dynamic> _convertedCordinate = [];
   List<dynamic> get convertedCordinate => _convertedCordinate;
-  set convertedCordinate(List<dynamic> _value) {
-    _convertedCordinate = _value;
+  set convertedCordinate(List<dynamic> value) {
+    _convertedCordinate = value;
   }
 
-  void addToConvertedCordinate(dynamic _value) {
-    _convertedCordinate.add(_value);
+  void addToConvertedCordinate(dynamic value) {
+    _convertedCordinate.add(value);
   }
 
-  void removeFromConvertedCordinate(dynamic _value) {
-    _convertedCordinate.remove(_value);
+  void removeFromConvertedCordinate(dynamic value) {
+    _convertedCordinate.remove(value);
   }
 
-  void removeAtIndexFromConvertedCordinate(int _index) {
-    _convertedCordinate.removeAt(_index);
+  void removeAtIndexFromConvertedCordinate(int index) {
+    _convertedCordinate.removeAt(index);
   }
 
   void updateConvertedCordinateAtIndex(
-    int _index,
+    int index,
     dynamic Function(dynamic) updateFn,
   ) {
-    _convertedCordinate[_index] = updateFn(_convertedCordinate[_index]);
+    _convertedCordinate[index] = updateFn(_convertedCordinate[index]);
   }
 
-  void insertAtIndexInConvertedCordinate(int _index, dynamic _value) {
-    _convertedCordinate.insert(_index, _value);
+  void insertAtIndexInConvertedCordinate(int index, dynamic value) {
+    _convertedCordinate.insert(index, value);
   }
 
   int _squareCounts = 0;
   int get squareCounts => _squareCounts;
-  set squareCounts(int _value) {
-    _squareCounts = _value;
+  set squareCounts(int value) {
+    _squareCounts = value;
   }
 
   String _qr = '';
   String get qr => _qr;
-  set qr(String _value) {
-    _qr = _value;
+  set qr(String value) {
+    _qr = value;
   }
 
   dynamic _guestUserDetails;
   dynamic get guestUserDetails => _guestUserDetails;
-  set guestUserDetails(dynamic _value) {
-    _guestUserDetails = _value;
+  set guestUserDetails(dynamic value) {
+    _guestUserDetails = value;
   }
 
   String _guestName = '';
   String get guestName => _guestName;
-  set guestName(String _value) {
-    _guestName = _value;
+  set guestName(String value) {
+    _guestName = value;
   }
 
   String _guestEmail = 'email';
   String get guestEmail => _guestEmail;
-  set guestEmail(String _value) {
-    _guestEmail = _value;
-    prefs.setString('ff_guestEmail', _value);
+  set guestEmail(String value) {
+    _guestEmail = value;
+    prefs.setString('ff_guestEmail', value);
   }
 
   String _guestCompanyName = '';
   String get guestCompanyName => _guestCompanyName;
-  set guestCompanyName(String _value) {
-    _guestCompanyName = _value;
+  set guestCompanyName(String value) {
+    _guestCompanyName = value;
   }
 
   String _guestCountry = '';
   String get guestCountry => _guestCountry;
-  set guestCountry(String _value) {
-    _guestCountry = _value;
+  set guestCountry(String value) {
+    _guestCountry = value;
   }
 
   bool _allowLocationTracking = false;
   bool get allowLocationTracking => _allowLocationTracking;
-  set allowLocationTracking(bool _value) {
-    _allowLocationTracking = _value;
-    prefs.setBool('ff_allowLocationTracking', _value);
+  set allowLocationTracking(bool value) {
+    _allowLocationTracking = value;
+    prefs.setBool('ff_allowLocationTracking', value);
   }
 
   String _guestUserId = '';
   String get guestUserId => _guestUserId;
-  set guestUserId(String _value) {
-    _guestUserId = _value;
-    prefs.setString('ff_guestUserId', _value);
+  set guestUserId(String value) {
+    _guestUserId = value;
+    prefs.setString('ff_guestUserId', value);
   }
 
   String _guestCompanyId = '';
   String get guestCompanyId => _guestCompanyId;
-  set guestCompanyId(String _value) {
-    _guestCompanyId = _value;
-    prefs.setString('ff_guestCompanyId', _value);
+  set guestCompanyId(String value) {
+    _guestCompanyId = value;
+    prefs.setString('ff_guestCompanyId', value);
   }
 
   dynamic _userMembers;
   dynamic get userMembers => _userMembers;
-  set userMembers(dynamic _value) {
-    _userMembers = _value;
+  set userMembers(dynamic value) {
+    _userMembers = value;
   }
 
   List<String> _teamList = [];
   List<String> get teamList => _teamList;
-  set teamList(List<String> _value) {
-    _teamList = _value;
+  set teamList(List<String> value) {
+    _teamList = value;
   }
 
-  void addToTeamList(String _value) {
-    _teamList.add(_value);
+  void addToTeamList(String value) {
+    _teamList.add(value);
   }
 
-  void removeFromTeamList(String _value) {
-    _teamList.remove(_value);
+  void removeFromTeamList(String value) {
+    _teamList.remove(value);
   }
 
-  void removeAtIndexFromTeamList(int _index) {
-    _teamList.removeAt(_index);
+  void removeAtIndexFromTeamList(int index) {
+    _teamList.removeAt(index);
   }
 
   void updateTeamListAtIndex(
-    int _index,
+    int index,
     String Function(String) updateFn,
   ) {
-    _teamList[_index] = updateFn(_teamList[_index]);
+    _teamList[index] = updateFn(_teamList[index]);
   }
 
-  void insertAtIndexInTeamList(int _index, String _value) {
-    _teamList.insert(_index, _value);
+  void insertAtIndexInTeamList(int index, String value) {
+    _teamList.insert(index, value);
   }
 
   TeamModelStruct _activeTeam = TeamModelStruct();
   TeamModelStruct get activeTeam => _activeTeam;
-  set activeTeam(TeamModelStruct _value) {
-    _activeTeam = _value;
+  set activeTeam(TeamModelStruct value) {
+    _activeTeam = value;
   }
 
   void updateActiveTeamStruct(Function(TeamModelStruct) updateFn) {
@@ -613,274 +610,274 @@ class FFAppState extends ChangeNotifier {
 
   List<MemberModelStruct> _currentMemberList = [];
   List<MemberModelStruct> get currentMemberList => _currentMemberList;
-  set currentMemberList(List<MemberModelStruct> _value) {
-    _currentMemberList = _value;
+  set currentMemberList(List<MemberModelStruct> value) {
+    _currentMemberList = value;
   }
 
-  void addToCurrentMemberList(MemberModelStruct _value) {
-    _currentMemberList.add(_value);
+  void addToCurrentMemberList(MemberModelStruct value) {
+    _currentMemberList.add(value);
   }
 
-  void removeFromCurrentMemberList(MemberModelStruct _value) {
-    _currentMemberList.remove(_value);
+  void removeFromCurrentMemberList(MemberModelStruct value) {
+    _currentMemberList.remove(value);
   }
 
-  void removeAtIndexFromCurrentMemberList(int _index) {
-    _currentMemberList.removeAt(_index);
+  void removeAtIndexFromCurrentMemberList(int index) {
+    _currentMemberList.removeAt(index);
   }
 
   void updateCurrentMemberListAtIndex(
-    int _index,
+    int index,
     MemberModelStruct Function(MemberModelStruct) updateFn,
   ) {
-    _currentMemberList[_index] = updateFn(_currentMemberList[_index]);
+    _currentMemberList[index] = updateFn(_currentMemberList[index]);
   }
 
-  void insertAtIndexInCurrentMemberList(int _index, MemberModelStruct _value) {
-    _currentMemberList.insert(_index, _value);
+  void insertAtIndexInCurrentMemberList(int index, MemberModelStruct value) {
+    _currentMemberList.insert(index, value);
   }
 
   bool _isFirstLaunchAfterInstall = true;
   bool get isFirstLaunchAfterInstall => _isFirstLaunchAfterInstall;
-  set isFirstLaunchAfterInstall(bool _value) {
-    _isFirstLaunchAfterInstall = _value;
-    prefs.setBool('ff_isFirstLaunchAfterInstall', _value);
+  set isFirstLaunchAfterInstall(bool value) {
+    _isFirstLaunchAfterInstall = value;
+    prefs.setBool('ff_isFirstLaunchAfterInstall', value);
   }
 
   String _linkId = '';
   String get linkId => _linkId;
-  set linkId(String _value) {
-    _linkId = _value;
-    prefs.setString('ff_linkId', _value);
+  set linkId(String value) {
+    _linkId = value;
+    prefs.setString('ff_linkId', value);
   }
 
   String _qrlink = '';
   String get qrlink => _qrlink;
-  set qrlink(String _value) {
-    _qrlink = _value;
+  set qrlink(String value) {
+    _qrlink = value;
   }
 
   bool _isQrFinalized = false;
   bool get isQrFinalized => _isQrFinalized;
-  set isQrFinalized(bool _value) {
-    _isQrFinalized = _value;
+  set isQrFinalized(bool value) {
+    _isQrFinalized = value;
   }
 
   List<dynamic> _trackingData = [];
   List<dynamic> get trackingData => _trackingData;
-  set trackingData(List<dynamic> _value) {
-    _trackingData = _value;
+  set trackingData(List<dynamic> value) {
+    _trackingData = value;
     prefs.setStringList(
-        'ff_trackingData', _value.map((x) => jsonEncode(x)).toList());
+        'ff_trackingData', value.map((x) => jsonEncode(x)).toList());
   }
 
-  void addToTrackingData(dynamic _value) {
-    _trackingData.add(_value);
-    prefs.setStringList(
-        'ff_trackingData', _trackingData.map((x) => jsonEncode(x)).toList());
-  }
-
-  void removeFromTrackingData(dynamic _value) {
-    _trackingData.remove(_value);
+  void addToTrackingData(dynamic value) {
+    _trackingData.add(value);
     prefs.setStringList(
         'ff_trackingData', _trackingData.map((x) => jsonEncode(x)).toList());
   }
 
-  void removeAtIndexFromTrackingData(int _index) {
-    _trackingData.removeAt(_index);
+  void removeFromTrackingData(dynamic value) {
+    _trackingData.remove(value);
+    prefs.setStringList(
+        'ff_trackingData', _trackingData.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeAtIndexFromTrackingData(int index) {
+    _trackingData.removeAt(index);
     prefs.setStringList(
         'ff_trackingData', _trackingData.map((x) => jsonEncode(x)).toList());
   }
 
   void updateTrackingDataAtIndex(
-    int _index,
+    int index,
     dynamic Function(dynamic) updateFn,
   ) {
-    _trackingData[_index] = updateFn(_trackingData[_index]);
+    _trackingData[index] = updateFn(_trackingData[index]);
     prefs.setStringList(
         'ff_trackingData', _trackingData.map((x) => jsonEncode(x)).toList());
   }
 
-  void insertAtIndexInTrackingData(int _index, dynamic _value) {
-    _trackingData.insert(_index, _value);
+  void insertAtIndexInTrackingData(int index, dynamic value) {
+    _trackingData.insert(index, value);
     prefs.setStringList(
         'ff_trackingData', _trackingData.map((x) => jsonEncode(x)).toList());
   }
 
   List<dynamic> _teamMembers = [];
   List<dynamic> get teamMembers => _teamMembers;
-  set teamMembers(List<dynamic> _value) {
-    _teamMembers = _value;
+  set teamMembers(List<dynamic> value) {
+    _teamMembers = value;
   }
 
-  void addToTeamMembers(dynamic _value) {
-    _teamMembers.add(_value);
+  void addToTeamMembers(dynamic value) {
+    _teamMembers.add(value);
   }
 
-  void removeFromTeamMembers(dynamic _value) {
-    _teamMembers.remove(_value);
+  void removeFromTeamMembers(dynamic value) {
+    _teamMembers.remove(value);
   }
 
-  void removeAtIndexFromTeamMembers(int _index) {
-    _teamMembers.removeAt(_index);
+  void removeAtIndexFromTeamMembers(int index) {
+    _teamMembers.removeAt(index);
   }
 
   void updateTeamMembersAtIndex(
-    int _index,
+    int index,
     dynamic Function(dynamic) updateFn,
   ) {
-    _teamMembers[_index] = updateFn(_teamMembers[_index]);
+    _teamMembers[index] = updateFn(_teamMembers[index]);
   }
 
-  void insertAtIndexInTeamMembers(int _index, dynamic _value) {
-    _teamMembers.insert(_index, _value);
+  void insertAtIndexInTeamMembers(int index, dynamic value) {
+    _teamMembers.insert(index, value);
   }
 
   List<dynamic> _guestMembers = [];
   List<dynamic> get guestMembers => _guestMembers;
-  set guestMembers(List<dynamic> _value) {
-    _guestMembers = _value;
+  set guestMembers(List<dynamic> value) {
+    _guestMembers = value;
   }
 
-  void addToGuestMembers(dynamic _value) {
-    _guestMembers.add(_value);
+  void addToGuestMembers(dynamic value) {
+    _guestMembers.add(value);
   }
 
-  void removeFromGuestMembers(dynamic _value) {
-    _guestMembers.remove(_value);
+  void removeFromGuestMembers(dynamic value) {
+    _guestMembers.remove(value);
   }
 
-  void removeAtIndexFromGuestMembers(int _index) {
-    _guestMembers.removeAt(_index);
+  void removeAtIndexFromGuestMembers(int index) {
+    _guestMembers.removeAt(index);
   }
 
   void updateGuestMembersAtIndex(
-    int _index,
+    int index,
     dynamic Function(dynamic) updateFn,
   ) {
-    _guestMembers[_index] = updateFn(_guestMembers[_index]);
+    _guestMembers[index] = updateFn(_guestMembers[index]);
   }
 
-  void insertAtIndexInGuestMembers(int _index, dynamic _value) {
-    _guestMembers.insert(_index, _value);
+  void insertAtIndexInGuestMembers(int index, dynamic value) {
+    _guestMembers.insert(index, value);
   }
 
   List<String> _selectedMembers = [];
   List<String> get selectedMembers => _selectedMembers;
-  set selectedMembers(List<String> _value) {
-    _selectedMembers = _value;
+  set selectedMembers(List<String> value) {
+    _selectedMembers = value;
   }
 
-  void addToSelectedMembers(String _value) {
-    _selectedMembers.add(_value);
+  void addToSelectedMembers(String value) {
+    _selectedMembers.add(value);
   }
 
-  void removeFromSelectedMembers(String _value) {
-    _selectedMembers.remove(_value);
+  void removeFromSelectedMembers(String value) {
+    _selectedMembers.remove(value);
   }
 
-  void removeAtIndexFromSelectedMembers(int _index) {
-    _selectedMembers.removeAt(_index);
+  void removeAtIndexFromSelectedMembers(int index) {
+    _selectedMembers.removeAt(index);
   }
 
   void updateSelectedMembersAtIndex(
-    int _index,
+    int index,
     String Function(String) updateFn,
   ) {
-    _selectedMembers[_index] = updateFn(_selectedMembers[_index]);
+    _selectedMembers[index] = updateFn(_selectedMembers[index]);
   }
 
-  void insertAtIndexInSelectedMembers(int _index, String _value) {
-    _selectedMembers.insert(_index, _value);
+  void insertAtIndexInSelectedMembers(int index, String value) {
+    _selectedMembers.insert(index, value);
   }
 
   String _trackingTeam = '';
   String get trackingTeam => _trackingTeam;
-  set trackingTeam(String _value) {
-    _trackingTeam = _value;
+  set trackingTeam(String value) {
+    _trackingTeam = value;
   }
 
   List<bool> _selectmode = [];
   List<bool> get selectmode => _selectmode;
-  set selectmode(List<bool> _value) {
-    _selectmode = _value;
+  set selectmode(List<bool> value) {
+    _selectmode = value;
   }
 
-  void addToSelectmode(bool _value) {
-    _selectmode.add(_value);
+  void addToSelectmode(bool value) {
+    _selectmode.add(value);
   }
 
-  void removeFromSelectmode(bool _value) {
-    _selectmode.remove(_value);
+  void removeFromSelectmode(bool value) {
+    _selectmode.remove(value);
   }
 
-  void removeAtIndexFromSelectmode(int _index) {
-    _selectmode.removeAt(_index);
+  void removeAtIndexFromSelectmode(int index) {
+    _selectmode.removeAt(index);
   }
 
   void updateSelectmodeAtIndex(
-    int _index,
+    int index,
     bool Function(bool) updateFn,
   ) {
-    _selectmode[_index] = updateFn(_selectmode[_index]);
+    _selectmode[index] = updateFn(_selectmode[index]);
   }
 
-  void insertAtIndexInSelectmode(int _index, bool _value) {
-    _selectmode.insert(_index, _value);
+  void insertAtIndexInSelectmode(int index, bool value) {
+    _selectmode.insert(index, value);
   }
 
   String _activeTeamName = '';
   String get activeTeamName => _activeTeamName;
-  set activeTeamName(String _value) {
-    _activeTeamName = _value;
+  set activeTeamName(String value) {
+    _activeTeamName = value;
   }
 
   bool _deletingFromMain = false;
   bool get deletingFromMain => _deletingFromMain;
-  set deletingFromMain(bool _value) {
-    _deletingFromMain = _value;
+  set deletingFromMain(bool value) {
+    _deletingFromMain = value;
   }
 
   List<String> _myMapOrgNames = [];
   List<String> get myMapOrgNames => _myMapOrgNames;
-  set myMapOrgNames(List<String> _value) {
-    _myMapOrgNames = _value;
+  set myMapOrgNames(List<String> value) {
+    _myMapOrgNames = value;
   }
 
-  void addToMyMapOrgNames(String _value) {
-    _myMapOrgNames.add(_value);
+  void addToMyMapOrgNames(String value) {
+    _myMapOrgNames.add(value);
   }
 
-  void removeFromMyMapOrgNames(String _value) {
-    _myMapOrgNames.remove(_value);
+  void removeFromMyMapOrgNames(String value) {
+    _myMapOrgNames.remove(value);
   }
 
-  void removeAtIndexFromMyMapOrgNames(int _index) {
-    _myMapOrgNames.removeAt(_index);
+  void removeAtIndexFromMyMapOrgNames(int index) {
+    _myMapOrgNames.removeAt(index);
   }
 
   void updateMyMapOrgNamesAtIndex(
-    int _index,
+    int index,
     String Function(String) updateFn,
   ) {
-    _myMapOrgNames[_index] = updateFn(_myMapOrgNames[_index]);
+    _myMapOrgNames[index] = updateFn(_myMapOrgNames[index]);
   }
 
-  void insertAtIndexInMyMapOrgNames(int _index, String _value) {
-    _myMapOrgNames.insert(_index, _value);
+  void insertAtIndexInMyMapOrgNames(int index, String value) {
+    _myMapOrgNames.insert(index, value);
   }
 
   bool _timerStarted = false;
   bool get timerStarted => _timerStarted;
-  set timerStarted(bool _value) {
-    _timerStarted = _value;
+  set timerStarted(bool value) {
+    _timerStarted = value;
   }
 
   GuestInfoStruct _guestGenInfo = GuestInfoStruct();
   GuestInfoStruct get guestGenInfo => _guestGenInfo;
-  set guestGenInfo(GuestInfoStruct _value) {
-    _guestGenInfo = _value;
-    prefs.setString('ff_guestGenInfo', _value.serialize());
+  set guestGenInfo(GuestInfoStruct value) {
+    _guestGenInfo = value;
+    prefs.setString('ff_guestGenInfo', value.serialize());
   }
 
   void updateGuestGenInfoStruct(Function(GuestInfoStruct) updateFn) {
@@ -890,145 +887,145 @@ class FFAppState extends ChangeNotifier {
 
   List<dynamic> _myMapOrgs = [];
   List<dynamic> get myMapOrgs => _myMapOrgs;
-  set myMapOrgs(List<dynamic> _value) {
-    _myMapOrgs = _value;
+  set myMapOrgs(List<dynamic> value) {
+    _myMapOrgs = value;
     prefs.setStringList(
-        'ff_myMapOrgs', _value.map((x) => jsonEncode(x)).toList());
+        'ff_myMapOrgs', value.map((x) => jsonEncode(x)).toList());
   }
 
-  void addToMyMapOrgs(dynamic _value) {
-    _myMapOrgs.add(_value);
-    prefs.setStringList(
-        'ff_myMapOrgs', _myMapOrgs.map((x) => jsonEncode(x)).toList());
-  }
-
-  void removeFromMyMapOrgs(dynamic _value) {
-    _myMapOrgs.remove(_value);
+  void addToMyMapOrgs(dynamic value) {
+    _myMapOrgs.add(value);
     prefs.setStringList(
         'ff_myMapOrgs', _myMapOrgs.map((x) => jsonEncode(x)).toList());
   }
 
-  void removeAtIndexFromMyMapOrgs(int _index) {
-    _myMapOrgs.removeAt(_index);
+  void removeFromMyMapOrgs(dynamic value) {
+    _myMapOrgs.remove(value);
+    prefs.setStringList(
+        'ff_myMapOrgs', _myMapOrgs.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeAtIndexFromMyMapOrgs(int index) {
+    _myMapOrgs.removeAt(index);
     prefs.setStringList(
         'ff_myMapOrgs', _myMapOrgs.map((x) => jsonEncode(x)).toList());
   }
 
   void updateMyMapOrgsAtIndex(
-    int _index,
+    int index,
     dynamic Function(dynamic) updateFn,
   ) {
-    _myMapOrgs[_index] = updateFn(_myMapOrgs[_index]);
+    _myMapOrgs[index] = updateFn(_myMapOrgs[index]);
     prefs.setStringList(
         'ff_myMapOrgs', _myMapOrgs.map((x) => jsonEncode(x)).toList());
   }
 
-  void insertAtIndexInMyMapOrgs(int _index, dynamic _value) {
-    _myMapOrgs.insert(_index, _value);
+  void insertAtIndexInMyMapOrgs(int index, dynamic value) {
+    _myMapOrgs.insert(index, value);
     prefs.setStringList(
         'ff_myMapOrgs', _myMapOrgs.map((x) => jsonEncode(x)).toList());
   }
 
   List<String> _orgByIdTeams = [];
   List<String> get orgByIdTeams => _orgByIdTeams;
-  set orgByIdTeams(List<String> _value) {
-    _orgByIdTeams = _value;
-    prefs.setStringList('ff_orgByIdTeams', _value);
+  set orgByIdTeams(List<String> value) {
+    _orgByIdTeams = value;
+    prefs.setStringList('ff_orgByIdTeams', value);
   }
 
-  void addToOrgByIdTeams(String _value) {
-    _orgByIdTeams.add(_value);
+  void addToOrgByIdTeams(String value) {
+    _orgByIdTeams.add(value);
     prefs.setStringList('ff_orgByIdTeams', _orgByIdTeams);
   }
 
-  void removeFromOrgByIdTeams(String _value) {
-    _orgByIdTeams.remove(_value);
+  void removeFromOrgByIdTeams(String value) {
+    _orgByIdTeams.remove(value);
     prefs.setStringList('ff_orgByIdTeams', _orgByIdTeams);
   }
 
-  void removeAtIndexFromOrgByIdTeams(int _index) {
-    _orgByIdTeams.removeAt(_index);
+  void removeAtIndexFromOrgByIdTeams(int index) {
+    _orgByIdTeams.removeAt(index);
     prefs.setStringList('ff_orgByIdTeams', _orgByIdTeams);
   }
 
   void updateOrgByIdTeamsAtIndex(
-    int _index,
+    int index,
     String Function(String) updateFn,
   ) {
-    _orgByIdTeams[_index] = updateFn(_orgByIdTeams[_index]);
+    _orgByIdTeams[index] = updateFn(_orgByIdTeams[index]);
     prefs.setStringList('ff_orgByIdTeams', _orgByIdTeams);
   }
 
-  void insertAtIndexInOrgByIdTeams(int _index, String _value) {
-    _orgByIdTeams.insert(_index, _value);
+  void insertAtIndexInOrgByIdTeams(int index, String value) {
+    _orgByIdTeams.insert(index, value);
     prefs.setStringList('ff_orgByIdTeams', _orgByIdTeams);
   }
 
   bool _clearmap = false;
   bool get clearmap => _clearmap;
-  set clearmap(bool _value) {
-    _clearmap = _value;
+  set clearmap(bool value) {
+    _clearmap = value;
   }
 
   String _webGoogleApiKey = 'AIzaSyAsH8omDk8y0lSGLTW9YtZiiQ2MkmsF-uQ';
   String get webGoogleApiKey => _webGoogleApiKey;
-  set webGoogleApiKey(String _value) {
-    _webGoogleApiKey = _value;
+  set webGoogleApiKey(String value) {
+    _webGoogleApiKey = value;
   }
 
   String _publicScannedValue = '';
   String get publicScannedValue => _publicScannedValue;
-  set publicScannedValue(String _value) {
-    _publicScannedValue = _value;
-    prefs.setString('ff_publicScannedValue', _value);
+  set publicScannedValue(String value) {
+    _publicScannedValue = value;
+    prefs.setString('ff_publicScannedValue', value);
   }
 
   bool _isOwner = false;
   bool get isOwner => _isOwner;
-  set isOwner(bool _value) {
-    _isOwner = _value;
-    prefs.setBool('ff_isOwner', _value);
+  set isOwner(bool value) {
+    _isOwner = value;
+    prefs.setBool('ff_isOwner', value);
   }
 
   List<dynamic> _emptyList = [];
   List<dynamic> get emptyList => _emptyList;
-  set emptyList(List<dynamic> _value) {
-    _emptyList = _value;
+  set emptyList(List<dynamic> value) {
+    _emptyList = value;
   }
 
-  void addToEmptyList(dynamic _value) {
-    _emptyList.add(_value);
+  void addToEmptyList(dynamic value) {
+    _emptyList.add(value);
   }
 
-  void removeFromEmptyList(dynamic _value) {
-    _emptyList.remove(_value);
+  void removeFromEmptyList(dynamic value) {
+    _emptyList.remove(value);
   }
 
-  void removeAtIndexFromEmptyList(int _index) {
-    _emptyList.removeAt(_index);
+  void removeAtIndexFromEmptyList(int index) {
+    _emptyList.removeAt(index);
   }
 
   void updateEmptyListAtIndex(
-    int _index,
+    int index,
     dynamic Function(dynamic) updateFn,
   ) {
-    _emptyList[_index] = updateFn(_emptyList[_index]);
+    _emptyList[index] = updateFn(_emptyList[index]);
   }
 
-  void insertAtIndexInEmptyList(int _index, dynamic _value) {
-    _emptyList.insert(_index, _value);
+  void insertAtIndexInEmptyList(int index, dynamic value) {
+    _emptyList.insert(index, value);
   }
 
   String _androidGoogleMapKey = 'AIzaSyA_i4bbFV0iKxU_nUI7L3p0--r6UR89du4';
   String get androidGoogleMapKey => _androidGoogleMapKey;
-  set androidGoogleMapKey(String _value) {
-    _androidGoogleMapKey = _value;
+  set androidGoogleMapKey(String value) {
+    _androidGoogleMapKey = value;
   }
 
   String _iosGoogleMapKey = 'AIzaSyAD6nxAHweq0zMBZkI5bcUWJI0k3fLLhVk';
   String get iosGoogleMapKey => _iosGoogleMapKey;
-  set iosGoogleMapKey(String _value) {
-    _iosGoogleMapKey = _value;
+  set iosGoogleMapKey(String value) {
+    _iosGoogleMapKey = value;
   }
 }
 

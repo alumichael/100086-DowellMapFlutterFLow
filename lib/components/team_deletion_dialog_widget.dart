@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'team_deletion_dialog_model.dart';
 export 'team_deletion_dialog_model.dart';
@@ -51,7 +50,7 @@ class _TeamDeletionDialogWidgetState extends State<TeamDeletionDialogWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: MediaQuery.sizeOf(context).width * 0.9,
         height: 200.0,
@@ -60,12 +59,12 @@ class _TeamDeletionDialogWidgetState extends State<TeamDeletionDialogWidget> {
           borderRadius: BorderRadius.circular(16.0),
         ),
         child: Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Align(
-                alignment: AlignmentDirectional(1.0, -1.0),
+                alignment: const AlignmentDirectional(1.0, -1.0),
                 child: FlutterFlowIconButton(
                   borderRadius: 20.0,
                   borderWidth: 0.0,
@@ -81,13 +80,13 @@ class _TeamDeletionDialogWidgetState extends State<TeamDeletionDialogWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'n1mxuls3' /* Delete Team? */,
@@ -115,7 +114,7 @@ class _TeamDeletionDialogWidgetState extends State<TeamDeletionDialogWidget> {
                                       FlutterFlowTheme.of(context).primaryText,
                                 ),
                               ),
-                              duration: Duration(milliseconds: 4000),
+                              duration: const Duration(milliseconds: 4000),
                               backgroundColor:
                                   FlutterFlowTheme.of(context).secondary,
                             ),
@@ -133,7 +132,7 @@ class _TeamDeletionDialogWidgetState extends State<TeamDeletionDialogWidget> {
                                       FlutterFlowTheme.of(context).primaryText,
                                 ),
                               ),
-                              duration: Duration(milliseconds: 4000),
+                              duration: const Duration(milliseconds: 4000),
                               backgroundColor:
                                   FlutterFlowTheme.of(context).alternate,
                             ),
@@ -149,10 +148,10 @@ class _TeamDeletionDialogWidgetState extends State<TeamDeletionDialogWidget> {
                       ),
                       options: FFButtonOptions(
                         height: 40.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).alternate,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -161,7 +160,7 @@ class _TeamDeletionDialogWidgetState extends State<TeamDeletionDialogWidget> {
                                   letterSpacing: 0.0,
                                 ),
                         elevation: 3.0,
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),

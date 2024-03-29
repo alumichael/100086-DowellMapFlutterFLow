@@ -3,9 +3,7 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'delete_member_dialog_model.dart';
 export 'delete_member_dialog_model.dart';
@@ -62,7 +60,7 @@ class _DeleteMemberDialogWidgetState extends State<DeleteMemberDialogWidget> {
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: Padding(
-            padding: EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(12.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -81,7 +79,7 @@ Please note oper... */
                       ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 16.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 16.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -95,9 +93,9 @@ Please note oper... */
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).error,
                           textStyle:
@@ -107,7 +105,7 @@ Please note oper... */
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -135,7 +133,7 @@ Please note oper... */
                                         .secondaryBackground,
                                   ),
                                 ),
-                                duration: Duration(milliseconds: 4000),
+                                duration: const Duration(milliseconds: 4000),
                                 backgroundColor:
                                     FlutterFlowTheme.of(context).primaryText,
                               ),
@@ -156,7 +154,7 @@ Please note oper... */
                                         .secondaryBackground,
                                   ),
                                 ),
-                                duration: Duration(milliseconds: 4000),
+                                duration: const Duration(milliseconds: 4000),
                                 backgroundColor:
                                     FlutterFlowTheme.of(context).primaryText,
                               ),
@@ -177,9 +175,9 @@ Please note oper... */
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -189,7 +187,7 @@ Please note oper... */
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

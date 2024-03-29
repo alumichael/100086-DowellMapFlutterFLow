@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'placedetails2_model.dart';
 export 'placedetails2_model.dart';
@@ -75,10 +74,10 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.0, -0.98),
+                    alignment: const AlignmentDirectional(0.0, -0.98),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'yal01m4s' /* Add a place */,
@@ -92,7 +91,7 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 10.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 10.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -126,7 +125,7 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                           borderColor: FlutterFlowTheme.of(context).primary,
                           borderWidth: 1.0,
                           borderRadius: 10.0,
-                          margin: EdgeInsetsDirectional.fromSTEB(
+                          margin: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 4.0, 16.0, 4.0),
                           hidesUnderline: true,
                           isSearchable: false,
@@ -140,11 +139,11 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: FlutterFlowIconButton(
-                            borderColor: Color(0x00005734),
+                            borderColor: const Color(0x00005734),
                             borderRadius: 20.0,
                             borderWidth: 1.0,
                             buttonSize: 40.0,
-                            fillColor: Color(0x00616161),
+                            fillColor: const Color(0x00616161),
                             icon: Icon(
                               Icons.add,
                               color: FlutterFlowTheme.of(context)
@@ -160,11 +159,11 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, -0.9),
+                    alignment: const AlignmentDirectional(0.0, -0.9),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-                      child: Container(
+                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                      child: SizedBox(
                         width: MediaQuery.sizeOf(context).width * 0.9,
                         child: TextFormField(
                           controller: _model.textController1,
@@ -197,21 +196,21 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
@@ -232,9 +231,9 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, -0.81),
+                    alignment: const AlignmentDirectional(0.0, -0.81),
                     child: Padding(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 0.9,
                         height: MediaQuery.sizeOf(context).height * 0.07,
@@ -249,7 +248,7 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                         child: Stack(
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(-0.79, -0.18),
+                              alignment: const AlignmentDirectional(-0.79, -0.18),
                               child: Text(
                                 FFLocalizations.of(context).getText(
                                   'b93nrvte' /* Category (required) */,
@@ -266,7 +265,7 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.95, -0.55),
+                              alignment: const AlignmentDirectional(0.95, -0.55),
                               child: FlutterFlowDropDown<String>(
                                 controller: _model.dropDownValueController2 ??=
                                     FormFieldController<String>(null),
@@ -319,7 +318,7 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                                 borderColor: Colors.transparent,
                                 borderWidth: 0.0,
                                 borderRadius: 0.0,
-                                margin: EdgeInsetsDirectional.fromSTEB(
+                                margin: const EdgeInsetsDirectional.fromSTEB(
                                     12.0, 4.0, 12.0, 4.0),
                                 hidesUnderline: true,
                                 isSearchable: false,
@@ -332,11 +331,11 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, -0.71),
+                    alignment: const AlignmentDirectional(0.0, -0.71),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-                      child: Container(
+                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                      child: SizedBox(
                         width: MediaQuery.sizeOf(context).width * 0.9,
                         child: TextFormField(
                           controller: _model.textController2,
@@ -369,21 +368,21 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
@@ -393,7 +392,7 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
-                                    color: Color(0xFF2FD106),
+                                    color: const Color(0xFF2FD106),
                                     letterSpacing: 0.0,
                                   ),
                           minLines: null,
@@ -404,10 +403,10 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, -0.64),
+                    alignment: const AlignmentDirectional(0.0, -0.64),
                     child: Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Container(
+                      padding: const EdgeInsets.all(10.0),
+                      child: SizedBox(
                         width: MediaQuery.sizeOf(context).width * 0.9,
                         child: TextFormField(
                           controller: _model.textController3,
@@ -440,21 +439,21 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
@@ -464,7 +463,7 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
-                                    color: Color(0xFF2FD106),
+                                    color: const Color(0xFF2FD106),
                                     letterSpacing: 0.0,
                                   ),
                           minLines: null,
@@ -475,11 +474,11 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, -0.5),
+                    alignment: const AlignmentDirectional(0.0, -0.5),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 10.0, 0.0),
-                      child: Container(
+                          const EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 10.0, 0.0),
+                      child: SizedBox(
                         width: MediaQuery.sizeOf(context).width * 0.9,
                         child: TextFormField(
                           controller: _model.textController4,
@@ -512,21 +511,21 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
@@ -547,10 +546,10 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, -0.35),
+                    alignment: const AlignmentDirectional(0.0, -0.35),
                     child: Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Container(
+                      padding: const EdgeInsets.all(10.0),
+                      child: SizedBox(
                         width: MediaQuery.sizeOf(context).width * 0.9,
                         child: TextFormField(
                           controller: _model.textController5,
@@ -583,21 +582,21 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
@@ -618,10 +617,10 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.84, -0.25),
+                    alignment: const AlignmentDirectional(0.84, -0.25),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () {
                           print('Button pressed ...');
@@ -632,9 +631,9 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                         options: FFButtonOptions(
                           width: 130.0,
                           height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -643,7 +642,7 @@ class _Placedetails2WidgetState extends State<Placedetails2Widget> {
                                     color: Colors.white,
                                     letterSpacing: 0.0,
                                   ),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

@@ -5,9 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'new_members_dialog_model.dart';
 export 'new_members_dialog_model.dart';
@@ -58,7 +56,7 @@ class _NewMembersDialogWidgetState extends State<NewMembersDialogWidget> {
           width: 300.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 blurRadius: 4.0,
                 color: Color(0x33000000),
@@ -71,13 +69,13 @@ class _NewMembersDialogWidgetState extends State<NewMembersDialogWidget> {
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: Padding(
-            padding: EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(12.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'snn05pk3' /* New Member */,
@@ -111,14 +109,14 @@ class _NewMembersDialogWidgetState extends State<NewMembersDialogWidget> {
                               letterSpacing: 0.0,
                             ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0xFF005734),
                         width: 2.0,
                       ),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0xFF005734),
                         width: 2.0,
                       ),
@@ -148,7 +146,7 @@ class _NewMembersDialogWidgetState extends State<NewMembersDialogWidget> {
                       _model.textControllerValidator.asValidator(context),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: FlutterFlowDropDown<String>(
                     controller: _model.dropDownValueController ??=
                         FormFieldController<String>(null),
@@ -185,7 +183,7 @@ class _NewMembersDialogWidgetState extends State<NewMembersDialogWidget> {
                     borderWidth: 1.5,
                     borderRadius: 8.0,
                     margin:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
                     hidesUnderline: true,
                     isOverButton: true,
                     isSearchable: false,
@@ -193,13 +191,13 @@ class _NewMembersDialogWidgetState extends State<NewMembersDialogWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             _model.updatePage(() {
@@ -227,7 +225,7 @@ class _NewMembersDialogWidgetState extends State<NewMembersDialogWidget> {
                                           .secondaryBackground,
                                     ),
                                   ),
-                                  duration: Duration(milliseconds: 4000),
+                                  duration: const Duration(milliseconds: 4000),
                                   backgroundColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                 ),
@@ -242,7 +240,7 @@ class _NewMembersDialogWidgetState extends State<NewMembersDialogWidget> {
                                           .secondaryBackground,
                                     ),
                                   ),
-                                  duration: Duration(milliseconds: 4000),
+                                  duration: const Duration(milliseconds: 4000),
                                   backgroundColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                 ),
@@ -266,11 +264,11 @@ class _NewMembersDialogWidgetState extends State<NewMembersDialogWidget> {
                           ),
                           options: FFButtonOptions(
                             height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFF005734),
+                            color: const Color(0xFF005734),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
@@ -279,7 +277,7 @@ class _NewMembersDialogWidgetState extends State<NewMembersDialogWidget> {
                                   letterSpacing: 0.0,
                                 ),
                             elevation: 3.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

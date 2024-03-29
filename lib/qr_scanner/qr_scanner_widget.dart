@@ -2,10 +2,8 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'qr_scanner_model.dart';
 export 'qr_scanner_model.dart';
@@ -61,7 +59,7 @@ class _QrScannerWidgetState extends State<QrScannerWidget> {
               children: [
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -95,9 +93,9 @@ class _QrScannerWidgetState extends State<QrScannerWidget> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.8, 0.1),
+                              alignment: const AlignmentDirectional(0.8, 0.1),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -115,7 +113,7 @@ class _QrScannerWidgetState extends State<QrScannerWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Poppins',
-                                          color: Color(0xFF29BF12),
+                                          color: const Color(0xFF29BF12),
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -131,10 +129,10 @@ class _QrScannerWidgetState extends State<QrScannerWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.03, 0.1),
+                  alignment: const AlignmentDirectional(0.03, 0.1),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         's6x3gfbw' /* Scanning QR Code */,
@@ -149,10 +147,10 @@ class _QrScannerWidgetState extends State<QrScannerWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: const AlignmentDirectional(0.0, 1.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 20.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 20.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'u9h9ekge' /* Please hold the camera at the ... */,
@@ -166,7 +164,7 @@ class _QrScannerWidgetState extends State<QrScannerWidget> {
                     ),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: double.infinity,
                   height: 600.0,
                   child: custom_widgets.QrCodeScanner(
@@ -185,7 +183,7 @@ class _QrScannerWidgetState extends State<QrScannerWidget> {
                                 color: FlutterFlowTheme.of(context).primaryText,
                               ),
                             ),
-                            duration: Duration(milliseconds: 4000),
+                            duration: const Duration(milliseconds: 4000),
                             backgroundColor:
                                 FlutterFlowTheme.of(context).secondary,
                           ),

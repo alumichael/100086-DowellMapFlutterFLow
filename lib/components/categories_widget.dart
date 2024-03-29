@@ -4,8 +4,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'categories_model.dart';
 export 'categories_model.dart';
 
@@ -58,13 +56,13 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Container(
+                SizedBox(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: MediaQuery.sizeOf(context).height * 2.0,
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(-0.05, -0.98),
+                        alignment: const AlignmentDirectional(-0.05, -0.98),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             '1y6q8j4h' /* Category */,
@@ -77,8 +75,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-0.24, -0.9),
-                        child: Container(
+                        alignment: const AlignmentDirectional(-0.24, -0.9),
+                        child: SizedBox(
                           width: MediaQuery.sizeOf(context).width * 0.8,
                           child: TextFormField(
                             controller: _model.textController,
@@ -105,32 +103,32 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                   topRight: Radius.circular(4.0),
                                 ),
                               ),
-                              focusedBorder: OutlineInputBorder(
+                              focusedBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
-                                borderRadius: const BorderRadius.only(
+                                borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(4.0),
                                   topRight: Radius.circular(4.0),
                                 ),
                               ),
-                              errorBorder: OutlineInputBorder(
+                              errorBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
-                                borderRadius: const BorderRadius.only(
+                                borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(4.0),
                                   topRight: Radius.circular(4.0),
                                 ),
                               ),
-                              focusedErrorBorder: OutlineInputBorder(
+                              focusedErrorBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
-                                borderRadius: const BorderRadius.only(
+                                borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(4.0),
                                   topRight: Radius.circular(4.0),
                                 ),
@@ -149,7 +147,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-0.89, -0.8),
+                        alignment: const AlignmentDirectional(-0.89, -0.8),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             '8gawanoy' /* Popular Categories */,
@@ -162,7 +160,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -0.71),
+                        alignment: const AlignmentDirectional(0.0, -0.71),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -173,12 +171,12 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                           child: wrapWithModel(
                             model: _model.categoryItemModel,
                             updateCallback: () => setState(() {}),
-                            child: CategoryItemWidget(),
+                            child: const CategoryItemWidget(),
                           ),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -0.61),
+                        alignment: const AlignmentDirectional(0.0, -0.61),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -189,7 +187,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                           child: Stack(
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(-0.91, 0.12),
+                                alignment: const AlignmentDirectional(-0.91, 0.12),
                                 child: Icon(
                                   Icons.shopping_cart_outlined,
                                   color: FlutterFlowTheme.of(context).primary,
@@ -197,7 +195,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(-0.46, 0.18),
+                                alignment: const AlignmentDirectional(-0.46, 0.18),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     'ffrraooq' /* Shopping */,
@@ -212,7 +210,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.92, 0.21),
+                                alignment: const AlignmentDirectional(0.92, 0.21),
                                 child: Icon(
                                   Icons.arrow_forward_ios_rounded,
                                   color: FlutterFlowTheme.of(context)
@@ -225,7 +223,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -0.53),
+                        alignment: const AlignmentDirectional(0.0, -0.53),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -236,7 +234,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                           child: Stack(
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(-0.91, 0.12),
+                                alignment: const AlignmentDirectional(-0.91, 0.12),
                                 child: Icon(
                                   Icons.construction_sharp,
                                   color: FlutterFlowTheme.of(context).primary,
@@ -244,7 +242,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(-0.46, 0.18),
+                                alignment: const AlignmentDirectional(-0.46, 0.18),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     '5oktcbw7' /* Services */,
@@ -259,7 +257,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.92, 0.21),
+                                alignment: const AlignmentDirectional(0.92, 0.21),
                                 child: Icon(
                                   Icons.arrow_forward_ios,
                                   color: FlutterFlowTheme.of(context)
@@ -272,7 +270,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -0.45),
+                        alignment: const AlignmentDirectional(0.0, -0.45),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -283,7 +281,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                           child: Stack(
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(-0.91, 0.12),
+                                alignment: const AlignmentDirectional(-0.91, 0.12),
                                 child: FaIcon(
                                   FontAwesomeIcons.bed,
                                   color: FlutterFlowTheme.of(context).primary,
@@ -291,7 +289,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(-0.46, 0.18),
+                                alignment: const AlignmentDirectional(-0.46, 0.18),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     '35sx2xgs' /* Hotels & lodging */,
@@ -306,7 +304,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.92, 0.21),
+                                alignment: const AlignmentDirectional(0.92, 0.21),
                                 child: Icon(
                                   Icons.arrow_forward_ios,
                                   color: FlutterFlowTheme.of(context)
@@ -319,7 +317,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -0.35),
+                        alignment: const AlignmentDirectional(0.0, -0.35),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -330,7 +328,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                           child: Stack(
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(-0.91, 0.12),
+                                alignment: const AlignmentDirectional(-0.91, 0.12),
                                 child: Icon(
                                   Icons.shopping_bag_outlined,
                                   color: FlutterFlowTheme.of(context).primary,
@@ -338,7 +336,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(-0.46, 0.18),
+                                alignment: const AlignmentDirectional(-0.46, 0.18),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     'pwrugvzl' /* Outdoors & recreation */,
@@ -353,7 +351,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.92, 0.21),
+                                alignment: const AlignmentDirectional(0.92, 0.21),
                                 child: Icon(
                                   Icons.arrow_forward_ios,
                                   color: FlutterFlowTheme.of(context)
@@ -366,7 +364,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -0.26),
+                        alignment: const AlignmentDirectional(0.0, -0.26),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -377,7 +375,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                           child: Stack(
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(-0.91, 0.12),
+                                alignment: const AlignmentDirectional(-0.91, 0.12),
                                 child: Icon(
                                   Icons.house_outlined,
                                   color: FlutterFlowTheme.of(context).primary,
@@ -385,7 +383,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(-0.46, 0.18),
+                                alignment: const AlignmentDirectional(-0.46, 0.18),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     '597h05is' /* Religion */,
@@ -400,7 +398,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.92, 0.21),
+                                alignment: const AlignmentDirectional(0.92, 0.21),
                                 child: Icon(
                                   Icons.arrow_forward_ios,
                                   color: FlutterFlowTheme.of(context)
@@ -413,7 +411,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -0.17),
+                        alignment: const AlignmentDirectional(0.0, -0.17),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -424,7 +422,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                           child: Stack(
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(-0.91, 0.12),
+                                alignment: const AlignmentDirectional(-0.91, 0.12),
                                 child: Icon(
                                   Icons.business_sharp,
                                   color: FlutterFlowTheme.of(context).primary,
@@ -432,7 +430,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(-0.46, 0.18),
+                                alignment: const AlignmentDirectional(-0.46, 0.18),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     '9xrgqhhc' /* Office & industrial */,
@@ -447,7 +445,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.92, 0.21),
+                                alignment: const AlignmentDirectional(0.92, 0.21),
                                 child: Icon(
                                   Icons.arrow_forward_ios,
                                   color: FlutterFlowTheme.of(context)
@@ -460,7 +458,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -0.09),
+                        alignment: const AlignmentDirectional(0.0, -0.09),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -471,7 +469,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                           child: Stack(
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(-0.91, 0.12),
+                                alignment: const AlignmentDirectional(-0.91, 0.12),
                                 child: FaIcon(
                                   FontAwesomeIcons.home,
                                   color: FlutterFlowTheme.of(context).primary,
@@ -479,7 +477,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(-0.46, 0.18),
+                                alignment: const AlignmentDirectional(-0.46, 0.18),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     '7nszz26a' /* Residential */,
@@ -494,7 +492,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.92, 0.21),
+                                alignment: const AlignmentDirectional(0.92, 0.21),
                                 child: Icon(
                                   Icons.arrow_forward_ios,
                                   color: FlutterFlowTheme.of(context)
@@ -507,7 +505,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-0.12, 0.0),
+                        alignment: const AlignmentDirectional(-0.12, 0.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.06,
@@ -518,7 +516,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                           child: Stack(
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(-0.91, 0.12),
+                                alignment: const AlignmentDirectional(-0.91, 0.12),
                                 child: Icon(
                                   Icons.school,
                                   color: FlutterFlowTheme.of(context).primary,
@@ -526,7 +524,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(-0.46, 0.18),
+                                alignment: const AlignmentDirectional(-0.46, 0.18),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     'rw5tfw0z' /* Education */,
@@ -541,7 +539,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.92, 0.21),
+                                alignment: const AlignmentDirectional(0.92, 0.21),
                                 child: Icon(
                                   Icons.arrow_forward_ios,
                                   color: FlutterFlowTheme.of(context)
@@ -554,7 +552,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.75, 0.09),
+                        alignment: const AlignmentDirectional(0.75, 0.09),
                         child: FFButtonWidget(
                           onPressed: () {
                             print('Button pressed ...');
@@ -565,9 +563,9 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                           options: FFButtonOptions(
                             width: 130.0,
                             height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).lineColor,
                             textStyle: FlutterFlowTheme.of(context)
@@ -577,7 +575,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                   color: FlutterFlowTheme.of(context).primary,
                                   letterSpacing: 0.0,
                                 ),
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

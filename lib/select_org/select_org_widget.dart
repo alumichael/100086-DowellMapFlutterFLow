@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'select_org_model.dart';
 export 'select_org_model.dart';
@@ -58,7 +57,7 @@ class _SelectOrgWidgetState extends State<SelectOrgWidget> {
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(80.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(80.0, 0.0, 0.0, 0.0),
                     child: FlutterFlowDropDown<String>(
                       controller: _model.dropDownValueController ??=
                           FormFieldController<String>(
@@ -71,7 +70,7 @@ class _SelectOrgWidgetState extends State<SelectOrgWidget> {
                         true,
                       ) as List)
                           .map<String>((s) => s.toString())
-                          .toList()!,
+                          .toList(),
                       onChanged: (val) =>
                           setState(() => _model.dropDownValue = val),
                       width: 200.0,
@@ -96,7 +95,7 @@ class _SelectOrgWidgetState extends State<SelectOrgWidget> {
                       borderWidth: 2.0,
                       borderRadius: 8.0,
                       margin:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
                       hidesUnderline: true,
                       isSearchable: false,
                       isMultiSelect: false,
@@ -105,7 +104,7 @@ class _SelectOrgWidgetState extends State<SelectOrgWidget> {
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () {
                     print('Button pressed ...');
@@ -117,17 +116,17 @@ class _SelectOrgWidgetState extends State<SelectOrgWidget> {
                     width: 100.0,
                     height: 30.0,
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: Color(0xFF337C5E),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: const Color(0xFF337C5E),
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Poppins',
                           color: Colors.white,
                           letterSpacing: 0.0,
                         ),
                     elevation: 3.0,
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),
